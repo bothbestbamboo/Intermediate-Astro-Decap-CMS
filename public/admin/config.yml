@@ -1,11 +1,12 @@
 # Use DecapBridge auth (required)
 backend:
   name: github
-  repo: bothbestbamboo/Intermediate-Astro-Decap-CMS.git  
+  repo: bothbestbamboo/Intermediate-Astro-Decap-CMS
   branch: main
+  base_url: https://gateway.decapbridge.com    # 💡 必须加上这行，拦截默认的 Netlify 登录
   identity_url: https://auth.decapbridge.com/sites/1ea1e8dd-3c54-40d7-bbe1-74af6c8f16f6
   gateway_url: https://gateway.decapbridge.com
-
+  
   # Quickly see who did what (optional)
   commit_messages:
     create: Create {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
