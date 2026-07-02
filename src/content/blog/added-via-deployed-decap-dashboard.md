@@ -8,7 +8,7 @@ imageAlt: This post was added via deployed Decap dashboard
 isFeatured: true
 ---
 
-Netlify Identity has been removed, and the kit now uses decapbridge.com. Why?
+565656556Netlify Identity has been removed, and the kit now uses decapbridge.com. Why?
 
 ## Netlify Identity has been deprecated
 
