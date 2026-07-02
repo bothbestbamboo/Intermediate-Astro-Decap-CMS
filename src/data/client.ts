@@ -17,7 +17,7 @@ export const BUSINESS = {
 	logo: "https://img.bambooflooring.net/file/1782802571919.png",
 	address: {
 		lineOne: "Xiaofeng",
-		lineTwo: "Anji",
+		lineTwo: "Anji County",
 	    city: "Huzhou",
 		state: "Zhejiang",
 		zip: "313300",
