@@ -1,10 +1,10 @@
 // ===== SITE CONSTANTS =====
 export const SITE = {
-	title: "Code Stitch Web Designs",
-	tagline: "Professional Web Design Services",
-	description: "Code Stitch Web Designs offers top-tier web design and development services to meet all your project needs. Start exploring and contact our team for superior quality and reliability.",
-	url: "https://www.yourwebsite.com",
-	author: "Code Stitch Team",
+	title: "China Bamboo Flooring",
+	tagline: "bamboo factory since 2001",
+	description: "Bothbest is a premier factory of bamboo products in China, specializing in manufacturing high-quality, sustainable bamboo flooring, bamboo decking and bamboo plywood for global markets.",
+	url: "https://www.402999.xyz",
+	author: "bothbest",
 	locale: "en",
 };
 
@@ -16,12 +16,11 @@ export const BUSINESS = {
 	phoneFormatted: "(563) 303-2211",
 	logo: "https://img.bambooflooring.net/file/1782802571919.png",
 	address: {
-		lineOne: "First Address Line",
-		lineTwo: "Second Address Line",
-		city: "Denver",
-		state: "CO",
-		zip: "80206",
-		mapLink: "https://goo.gl/maps/UAQn4vuGDiwv7DV39",
+		lineOne: "Xiaofeng, Anji",
+	    city: "Huzhou",
+		state: "Zhejiang",
+		zip: "313300",
+		mapLink: "#",
 	},
 	socials: {
 		facebook: "#",
