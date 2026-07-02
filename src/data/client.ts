@@ -11,10 +11,10 @@ export const SITE = {
 // ===== BUSINESS INFO =====
 export const BUSINESS = {
 	name: SITE.title,
-	email: "help@codestitch.app",
-	phoneForTel: "555-779-4407",
-	phoneFormatted: "(555) 779-4407",
-	logo: "/assets/favicons/favicon.svg",
+	email: "info@bambooindustry.com",
+	phoneForTel: "563-303-2211",
+	phoneFormatted: "(563) 303-2211",
+	logo: "https://img.bambooflooring.net/file/1782802571919.png",
 	address: {
 		lineOne: "First Address Line",
 		lineTwo: "Second Address Line",
@@ -24,8 +24,8 @@ export const BUSINESS = {
 		mapLink: "https://goo.gl/maps/UAQn4vuGDiwv7DV39",
 	},
 	socials: {
-		facebook: "https://www.facebook.com/",
-		instagram: "https://www.instagram.com/",
+		facebook: "#",
+		instagram: "#",
 	},
 };
 
