@@ -16,7 +16,8 @@ export const BUSINESS = {
 	phoneFormatted: "(563) 303-2211",
 	logo: "https://img.bambooflooring.net/file/1782802571919.png",
 	address: {
-		lineOne: "Xiaofeng, Anji",
+		lineOne: "Xiaofeng",
+		lineTwo: "Anji",
 	    city: "Huzhou",
 		state: "Zhejiang",
 		zip: "313300",
