@@ -4,7 +4,7 @@ backend:
   branch: main # change this to your branch
   repo: bothbestbamboo/Intermediate-Astro-Decap-CMS # 1、change this to your repo
   site_domain: 402999.xyz # 2、change this to your domain
-  base_url: https://www.402999.xyz # 3、change this to your prod URL
+  base_url: https://402999.xyz # 3、change this to your prod URL
   auth_endpoint: oauth # the oauth route provided by the integration the oauth route provided by the integration
 
   # Quickly see who did what (optional)
@@ -20,7 +20,7 @@ backend:
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Add site link in DecapCMS (optional)
-site_url: https://www.402999.xyz
+site_url: https://402999.xyz
 
 media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
 public_folder: "@assets/images/blog" # Same folder as above, but using a path alias for easier referencing in the markdown files.
