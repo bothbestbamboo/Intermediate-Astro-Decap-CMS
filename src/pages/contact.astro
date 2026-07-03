@@ -28,23 +28,28 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 				</div>
 				<label>
 					Name
-					<input required type="text" id="name" name="name" placeholder="Name" />
+					<!-- 替换为 fi-sender-fullName -->
+					<input required type="text" id="name" name="fi-sender-fullName" placeholder="Name" />
 				</label>
 				<label>
 					Email
-					<input required type="text" id="email" name="email" placeholder="Email" />
+					<!-- 替换为 fi-sender-email -->
+					<input required type="email" id="email" name="fi-sender-email" placeholder="Email" />
 				</label>
 				<label>
 					Phone
-					<input required type="text" id="phone" name="phone" placeholder="Phone" />
+					<!-- 替换为 fi-sender-phone -->
+					<input required type="text" id="phone" name="fi-sender-phone" placeholder="Phone" />
 				</label>
 				<label>
 					How Did You Find Us
-					<input type="text" id="find" name="find-us" placeholder="How did you find us?" />
+					<!-- 替换为 fi-text-findUs -->
+					<input type="text" id="find" name="fi-text-findUs" placeholder="How did you find us?" />
 				</label>
 				<label class="cs-label-message">
 					Message
-					<textarea required name="Message" id="message" placeholder="Write message..."></textarea>
+					<!-- 替换为 fi-text-message -->
+					<textarea required name="fi-text-message" id="message" placeholder="Write message..."></textarea>
 				</label>
 				<button class="cs-button-solid" type="submit">Submit Message</button>
 			</form>
