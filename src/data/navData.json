@@ -10,9 +10,13 @@
     "children": []
   },
   {
-    "key": "Projects",
+    "key": "Products",
     "url": "/projects/",
     "children": [
+      {
+        "key": "Bamboo Flooring",
+        "url": "/projects/bamboo-flooring/"
+      },
       {
         "key": "Project 1",
         "url": "/projects/project-1/"
