@@ -1,0 +1,231 @@
+---
+/**
+ * * This page is the products index and displays all the articles as image-box cards
+ **/
+
+// Utils
+import { getCollection } from "astro:content";
+import { Image, getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import placeholderImage from "@assets/images/placeholder.jpg";
+const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
+
+// 从 src/content/products/ 获取所有本地产品 md 数据
+const products = await getCollection("products");
+products.sort((a, b) => {
+	const dateA = a.data.date ? new Date(a.data.date).valueOf() : 0;
+	const dateB = b.data.date ? new Date(b.data.date).valueOf() : 0;
+	return dateB - dateA;
+});
+
+// 模拟 Vue 的 littleBadgeColor 动态配色逻辑（针对不同的产品标签自动换色）
+const getBadgeClass = (tag: string) => {
+	switch (tag?.toLowerCase()) {
+		case "bamboo":
+			return "badge-bamboo";
+		case "flooring":
+			return "badge-flooring";
+		case "decking":
+			return "badge-decking";
+		default:
+			return "badge-default";
+	}
+};
+---
+
+<BaseLayout title="🎯 Products ✨" description="All kinds of premium bamboo products and flooring" heroImage={placeholderOptimizedImage}>
+	<Banner title="Products" image={placeholderOptimizedImage} />
+
+	<!-- 🎯 产品首页大标题区域 (完美对齐 VitePress 视觉) -->
+	<div class="vp-page-title">
+		<h1 class="title">🎯 Products ✨</h1>
+		<p class="lead">All kinds of premium bamboo flooring & architectural panels</p>
+	</div>
+
+	<!-- 📦 图片框卡片网格区域 (自动生成并指向内页) -->
+	<section class="projects-section">
+		<div class="ProjectsContent">
+			{products.map((product) => (
+				<a href={`/products/${product.id}`} class="project-card-link">
+					<div class="project-card">
+						<!-- banner 图片框 -->
+						<div class="banner-box">
+							{typeof product.data.image === 'string' ? (
+								<div class="banner-img" style={`background-image: url(${product.data.image})`}></div>
+							) : (
+								<div class="banner-img" style={`background-image: url(${product.data.image?.src || placeholderImage.src})`}></div>
+							)}
+						</div>
+						
+						<!-- 文字与标签内容 -->
+						<div class="text-content">
+							<div class="title-row">
+								<h2 class="product-title">{product.data.title}</h2>
+								{product.data.tags && product.data.tags[0] && (
+									<span class={`badge ${getBadgeClass(product.data.tags[0])}`}>
+										{product.data.tags[0]}
+									</span>
+								)}
+							</div>
+							<p class="product-description">
+								{product.data.description}
+							</p>
+						</div>
+					</div>
+				</a>
+			))}
+		</div>
+	</section>
+
+	<CTA />
+</BaseLayout>
+
+<style lang="less">
+	/* 🎯 对齐 VitePress 质感的精致标题样式 */
+	.vp-page-title {
+		text-align: center;
+		padding: 3.5rem 1rem 1rem 1rem;
+		
+		.title {
+			font-size: 2.25rem;
+			font-weight: 800;
+			color: #111827;
+			margin: 0 0 0.5rem 0;
+		}
+		.lead {
+			font-size: 1.125rem;
+			color: #6b7280;
+			margin: 0;
+		}
+	}
+
+	/* 📦 完美还原的网格卡片流动布局 */
+	.projects-section {
+		padding: 2rem 1.5rem 5rem 1.5rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.ProjectsContent {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+		max-width: 1152px;
+		gap: 24px;
+		margin: 0 auto;
+	}
+
+	.project-card-link {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+	}
+
+	/* ✨ 卡片容器与手势动效 */
+	.project-card {
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+		border-radius: 0.5rem;
+		background-color: #f8fafc; /* bg-slate-50 */
+		cursor: pointer;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		&:hover {
+			/* 悬浮变深色框，完全对齐 hover:border-indigo-800 */
+			border-color: #3730a3; 
+			transform: translateY(-2px);
+			box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+
+			.product-description {
+				color: #1e293b; /* 悬浮时文字颜色变深 group-hover:text-slate-800 */
+			}
+		}
+	}
+
+	/* 🖼️ 大图片框容器 */
+	.banner-box {
+		width: 100%;
+		height: 10rem; /* h-40 */
+		overflow: hidden;
+		
+		.banner-img {
+			width: 100%;
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			transition: transform 0.5s ease;
+		}
+	}
+
+	/* 📝 文字排版 */
+	.text-content {
+		padding: 1rem;
+		padding-bottom: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	.title-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+
+		.product-title {
+			font-size: 1.125rem; /* text-lg */
+			font-weight: 700;
+			color: #0f172a;
+			margin: 0;
+			line-height: 1.3;
+		}
+	}
+
+	.product-description {
+		margin: 0.5rem 0 0 0;
+		font-size: 0.875rem; /* text-sm */
+		color: #94a3b8; /* text-slate-400 */
+		line-height: 1.5;
+		transition: all 0.3s ease;
+		
+		/* 控制描述最多显示两行，超出自动打省略号 line-clamp-2 */
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	/* 🏷️ 自定义小标签配色 (对应 Vue 的 computed) */
+	.badge {
+		font-size: 12px;
+		padding: 0.125rem 0.5rem;
+		border-radius: 9999px;
+		white-space: nowrap;
+		font-weight: 500;
+	}
+	.badge-bamboo {
+		background-color: #115e59; /* 精致重竹绿 */
+		color: #ffffff;
+	}
+	.badge-flooring {
+		background-color: #0369a1; /* 经典天空蓝 */
+		color: #ffffff;
+	}
+	.badge-decking {
+		background-color: #b45309; /* 户外木质棕 */
+		color: #ffffff;
+	}
+	.badge-default {
+		border: 1px solid #cbd5e1;
+		color: #64748b;
+	}
+</style>

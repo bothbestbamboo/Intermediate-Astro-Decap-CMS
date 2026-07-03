@@ -1,0 +1,43 @@
+---
+/**
+ * * This page generates the individual product detail pages based on the products collection
+ * * URL format: /products/your-product-slug
+ **/
+
+// Utils
+import { getCollection, render } from "astro:content";
+
+// Components
+// 💡 这里我们直接套用您的 BlogPostLayout 来渲染产品。因为产品详情和博客文章在静态网格下的排版原理是完全相同的
+import BlogPostLayout from "@layouts/BlogPostLayout.astro";
+
+// 🔽 核心路由逻辑：生成每个产品的静态路由
+export async function getStaticPaths() {
+	const products = await getCollection("products");
+	return products.map((entry) => ({
+		// 将动态路由参数 [product] 绑定为文件名 (id)
+		params: { product: entry.id },
+		props: { product: entry },
+	}));
+}
+
+const { product } = Astro.props;
+
+// 🔽 将产品对象伪装成 post 对象传给布局组件，从而完美复用您项目里已有的排版和样式
+const formattedProduct = {
+	...product,
+	data: {
+		...product.data,
+		// 转换字段以兼容 BlogPostLayout 要求的结构
+		image: product.data.image,
+		tags: ["Products"], 
+	}
+};
+
+const { Content, headings } = await render(product);
+---
+
+<BlogPostLayout post={formattedProduct} headings={headings}>
+	<!-- 这里的 Content 会自动把您产品 MD 文件里的正文、表格、图片渲染出来 -->
+	<Content />
+</BlogPostLayout>
