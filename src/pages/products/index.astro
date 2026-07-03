@@ -39,8 +39,18 @@ const getBadgeClass = (tag: string) => {
 };
 ---
 
-<BaseLayout title="🎯 Products ✨" description="All kinds of premium bamboo products and flooring" heroImage={placeholderOptimizedImage}>
-	<Banner title="Products" image={placeholderOptimizedImage} />
+<BaseLayout 
+	title="🎯 Products ✨" 
+	description="All kinds of premium bamboo products and flooring" 
+	heroImage={placeholderOptimizedImage}
+	imageAlt="Bothbest bamboo products banner"
+>
+	<Banner 
+		title="Products" 
+		image={placeholderOptimizedImage} 
+		alt="Bothbest bamboo products banner" 
+		imageAlt="Bothbest bamboo products banner" 
+	/>
 
 	<!-- 🎯 产品首页大标题区域 (完美对齐 VitePress 视觉) -->
 	<div class="vp-page-title">
