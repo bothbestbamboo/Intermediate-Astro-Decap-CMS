@@ -14,7 +14,6 @@ export default defineConfig({
 	],
 	image: {
 		layout: "constrained",
-		domains: ["img.bambooflooring.net"],
 	},
 	fonts: [
 		{
