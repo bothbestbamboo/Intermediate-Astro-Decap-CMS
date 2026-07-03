@@ -96,13 +96,23 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							aria-expanded="false"
 							id="projects-dropdown-toggle"
 						>
-							Projects
+							Products
 							<Icon name="mdi--caret" class="cs-drop-icon" />
 						</button>
 						<ul
 							class="cs-drop-ul"
 							aria-labelledby="projects-dropdown-toggle"
 						>
+							<li class="cs-drop-li">
+								<a
+									href="/projects/bamboo-flooring/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/project-1/"
+										? "page"
+										: undefined}>Bamboo Flooring</a
+								>
+							</li>
 							<li class="cs-drop-li">
 								<a
 									href="/projects/project-1/"
