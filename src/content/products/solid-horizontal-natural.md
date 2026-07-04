@@ -38,7 +38,7 @@ Finished with a high-grade, non-toxic pre-finished UV lacquer, it delivers a ver
 
 ---
 
-## 🏭 Advanced Manufacturing Process
+## 🏭 Manufacturing Process
 
 Our solid bamboo flooring is engineered using raw Moso bamboo sourced directly from the heart of China's premium ecological plantations, spanning across **Anhui**, Jiangxi, Fujian, and Zhejiang provinces, with the pristine **Huangshan Mountain** region as our core plantation hub.
 
