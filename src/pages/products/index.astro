@@ -58,11 +58,24 @@ const getBadgeClass = (tag: string) => {
 		<p class="lead">All kinds of premium bamboo flooring, durable bamboo decking & architectural bamboo plywood.</p>
 	</div>
 
+	<!-- 🎯 1. 新增：顶部切换过滤标签的控制台区域 -->
+	<div class="filter-tab-container">
+		<button class="filter-btn active" data-filter="all">All Series</button>
+		<button class="filter-btn" data-filter="flooring">Flooring</button>
+		<button class="filter-btn" data-filter="decking">Decking</button>
+		<button class="filter-btn" data-filter="bamboo">Bamboo</button>
+	</div>
+
 	<!-- 📦 图片框卡片网格区域 (自动生成并指向内页) -->
 	<section class="projects-section">
 		<div class="ProjectsContent">
 			{products.map((product) => (
-				<a href={`/products/${product.id}`} class="project-card-link">
+				/* 🌟 2. 核心调整：在最外层包装上绑定 data-tags 方便底层 JS 识别控制 */
+				<a 
+					href={`/products/${product.id}`} 
+					class="project-card-link filterable-product-card"
+					data-tags={`all,${product.data.tags ? product.data.tags.map(t => t.toLowerCase()).join(',') : ''}`}
+				>
 					<div class="project-card">
 						<!-- banner 图片框 -->
 						<div class="banner-box">
@@ -78,7 +91,8 @@ const getBadgeClass = (tag: string) => {
 							<div class="title-row">
 								<h2 class="product-title">{product.data.title}</h2>
 								{product.data.tags && product.data.tags[0] && (
-									<span class={`badge ${getBadgeClass(product.data.tags[0])}`}>
+									/* 🌟 3. 核心调整：卡片上的蓝色小标签也配上特殊 class 和 data-filter，让客户点击它也能直接执行筛选 */
+									<span class={`badge ${getBadgeClass(product.data.tags[0])} filter-badge-click`} data-filter={product.data.tags[0].toLowerCase()}>
 										{product.data.tags[0]}
 									</span>
 								)}
@@ -96,7 +110,109 @@ const getBadgeClass = (tag: string) => {
 	<CTA />
 </BaseLayout>
 
+<!-- 🎯 4. 新增：轻量高效的客户端无刷新无闪烁筛选脚本 -->
+<script>
+	function initFilters() {
+		const filterButtons = document.querySelectorAll('.filter-btn');
+		const productCards = document.querySelectorAll('.filterable-product-card');
+		const badgeClicks = document.querySelectorAll('.filter-badge-click');
+
+		// 核心过滤算法
+		function applyFilter(targetTag: string) {
+			// 1. 同步改变所有的顶部 Button 样式
+			filterButtons.forEach(btn => {
+				if (btn.getAttribute('data-filter') === targetTag) {
+					btn.classList.add('active');
+				} else {
+					btn.classList.remove('active');
+				}
+			});
+
+			// 2. 遍历卡片，隐藏或显示
+			productCards.forEach(card => {
+				const tagsAttr = card.getAttribute('data-tags') || '';
+				const tagsArray = tagsAttr.split(',');
+				
+				if (tagsArray.includes(targetTag)) {
+					(card as HTMLElement).style.display = 'block';
+				} else {
+					(card as HTMLElement).style.display = 'none';
+				}
+			});
+		}
+
+		// 监听顶部过滤器点击
+		filterButtons.forEach(button => {
+			button.addEventListener('click', (e) => {
+				const tag = button.getAttribute('data-filter') || 'all';
+				applyFilter(tag);
+			});
+		});
+
+		// 监听卡片内部蓝色小标签点击（防止触发页面跳转链接）
+		badgeClicks.forEach(badge => {
+			badge.addEventListener('click', (e) => {
+				e.preventDefault(); // 阻止 <a> 标签默认路由跳转
+				e.stopPropagation(); // 阻止冒泡
+				const tag = badge.getAttribute('data-filter') || 'all';
+				applyFilter(tag);
+			});
+		});
+	}
+
+	// 兼容 Astro 的默认加载机制和可能存在的 ViewTransitions 切换
+	initFilters();
+	document.addEventListener('astro:after-swap', initFilters);
+</script>
+
 <style lang="less">
+	/* 🎯 5. 新增：对齐 🌿 绿色环保工业风的高端分类页控制台按钮样式 */
+	.filter-tab-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 12px;
+		margin: 1.5rem auto 1rem auto;
+		max-width: 1152px;
+		padding: 0 1.5rem;
+		flex-wrap: wrap;
+
+		.filter-btn {
+			border: 1px solid #cbd5e1;
+			background-color: #ffffff;
+			color: #475569;
+			font-size: 0.875rem;
+			font-weight: 600;
+			padding: 0.5rem 1.25rem;
+			border-radius: 9999px;
+			cursor: pointer;
+			transition: all 0.25s ease;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+			&:hover {
+				border-color: #334155;
+				color: #0f172a;
+				transform: translateY(-1px);
+			}
+
+			&.active {
+				background-color: #0369a1; /* 点击激活后，变回您图中的高质感地板蓝色 */
+				color: #ffffff;
+				border-color: #0369a1;
+				box-shadow: 0 4px 6px -1px rgba(3, 105, 161, 0.2);
+			}
+		}
+	}
+
+	/* 调整原卡片上蓝色标签，让鼠标放上去变成手势 */
+	.filter-badge-click {
+		cursor: pointer;
+		transition: transform 0.2s ease;
+		&:hover {
+			transform: scale(1.08);
+		}
+	}
+
 	/* 🎯 对齐 VitePress 质感的精致标题样式 */
 	.vp-page-title {
 		text-align: center;
@@ -117,7 +233,7 @@ const getBadgeClass = (tag: string) => {
 
 	/* 📦 完美还原的网格卡片流动布局 */
 	.projects-section {
-		padding: 2rem 1.5rem 5rem 1.5rem;
+		padding: 1rem 1.5rem 5rem 1.5rem; /* 压缩了上内边距，配合按钮更紧凑 */
 		max-width: 1200px;
 		margin: 0 auto;
 	}
