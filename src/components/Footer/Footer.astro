@@ -61,10 +61,20 @@ const currentYear = getCurrentYear();
 					</li>
 					<li>
 						<a href={`tel:${BUSINESS.phoneForTel}`}>
-							T:
-							{BUSINESS.phoneFormatted}
+							T: {BUSINESS.phoneFormatted}
 						</a>
 					</li>
+					
+					<li>
+						<a 
+							href={`https://wa.me/${BUSINESS.whatsAppForLink.replace(/^00/, '')}`} 
+							target="_blank" 
+							rel="noopener noreferrer"
+						>
+							WhatsApp: {BUSINESS.whatsAppFormatted}
+						</a>
+					</li>
+
 					<li>
 						<a href={`mailto:${BUSINESS.email}`}>Click to Email</a>
 					</li>
