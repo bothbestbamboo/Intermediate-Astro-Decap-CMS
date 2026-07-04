@@ -202,11 +202,20 @@ const blogPostingSchema = getBlogPostingSchema(
 			}
 
 			    hr {
-                    margin-top: 40px !important;    /* 撑开线上方间距 */
-                    margin-bottom: 40px !important; /* 撑开线下方间距 */
-                    border: 0;
-                    border-top: 1px solid #e5e7eb;  /* 替换原有的默认粗线，使其变成更高级的浅灰色细线 */
-                }
+                    display: block !important;
+                    height: 1px !important;
+                    border: 0 !important;
+                    border-top: 1px solid #e5e7eb !important; /* 浅灰色细线 */
+        
+                   /* 1. 强制使用内外边距双重扩大上下空间 */
+                    margin-top: 70px !important;    
+                    margin-bottom: 70px !important;
+                    padding-top: 20px !important;
+                    padding-bottom: 20px !important;
+        
+                    /* 2. 清除可能干扰的浮动 */
+                    clear: both !important;
+                    }
 		}
 	}
 
