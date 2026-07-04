@@ -1,6 +1,6 @@
 ---
 title: "Big Wave Brown Strand Woven Bamboo Decking"
-description: "High-density ($1250kg/m^3$) outdoor strand woven bamboo decking featuring a premium big wave texture and deep brown finish. Pre-oiled for superior weather, water, and mold resistance."
+description: "High-density (1250kg/m^3) outdoor strand woven bamboo decking featuring a premium big wave texture and deep brown finish. Pre-oiled for superior weather, water, and mold resistance."
 date: 2026-07-04
 image: "@assets/images/products/deck-brown-big.jpg"
 imageAlt: "Big Wave Brown Strand Woven Bamboo Decking"
@@ -9,7 +9,7 @@ tags: ["Decking"]
 
 ## 📝 Product Overview
 
-**Standard Bamboo Decking** (Terrace Bamboo Flooring) is an elite, high-performance architectural solution engineered specifically for demanding outdoor environments. Crafted from specialized **strand woven bamboo**, natural bamboo fibers are subjected to intense heat and immense hydraulic pressure, compressing them into an ultra-dense compound. Boasting an exceptional industrial density of **$1250kg/m^3$**, this heavy-duty decking delivers superior structural strength, effectively preventing bending, cupping, or warping under harsh weather fluctuations.
+**Standard Bamboo Decking** (Terrace Bamboo Flooring) is an elite, high-performance architectural solution engineered specifically for demanding outdoor environments. Crafted from specialized **strand woven bamboo**, natural bamboo fibers are subjected to intense heat and immense hydraulic pressure, compressing them into an ultra-dense compound. Boasting an exceptional industrial density of **1250kg/m^3**, this heavy-duty decking delivers superior structural strength, effectively preventing bending, cupping, or warping under harsh weather fluctuations.
 
 This series features a distinguished **Profile B design**, meticulously crafted with a bold **Big Wave (Ribbon) texture on one side** and a sleek, smooth flat surface on the alternative side. The lateral edges are precisely profiled with longitudinal grooves to accommodate hidden clipping systems. Factory pre-oiled with premium eco-friendly weatherproofing treatments, this rich **Brown Toned Decking** offers flawless water resistance and advanced anti-mildew defenses, ensuring an outdoor lifespan exceeding 15 years without cracking.
 
