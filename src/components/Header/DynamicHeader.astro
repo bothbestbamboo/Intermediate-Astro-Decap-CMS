@@ -1,27 +1,3 @@
----
-/**
- * DYNAMIC HEADER COMPONENT
- * ========================
- *
- * This header uses data-driven navigation from src/data/navData.json.
- *
- * Features:
- * - Automatically generates nav items from navData.json
- * - Helper functions from utils.js for cleaner code (isCurrentPage, getDropdownId)
- *
- */
-
-// Utils
-import { Icon } from "astro-icon/components";
-import { isCurrentPage, getDropdownId } from "@js/utils.js";
-
-// Components
-import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
-
-// Data
-import navData from "@data/navData.json";
----
-
 <header id="cs-navigation">
 	<div class="cs-container">
 		<!--Nav Logo-->
@@ -49,90 +25,191 @@ import navData from "@data/navData.json";
 					<span class="cs-line cs-line3" aria-hidden="true"></span>
 				</span>
 			</button>
-			<!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how many there are-->
+			<!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. -->
 			<div class="cs-ul-wrapper" id="cs-ul-wrapper">
 				<ul id="cs-expanded" class="cs-ul">
-					{
-						navData.map((entry) => (
-							<li
-								class:list={[
-									"cs-li",
-									{
-										"cs-dropdown":
-											entry.children?.length > 0,
-									},
-								]}
-							>
-								{entry.children?.length > 0 ? (
-									// If entry has children in navData.json, create a button and a dropdown icon
-									<button
-										id={getDropdownId(entry.key)}
-										aria-expanded="false"
-										aria-haspopup="menu"
-										class:list={[
-											"cs-li-link cs-dropdown-toggle",
-											{
-												"cs-active":
-													Astro.url.pathname.includes(
-														entry.url,
-													),
-											},
-										]}
-									>
-										{entry.key}
-										<Icon
-											name="mdi--caret"
-											class="cs-drop-icon"
-										/>
-									</button>
-								) : (
-									// If entry does not have children in navData.json, create an anchor
-									<a
-										href={entry.url}
-										class:list={[
-											"cs-li-link",
-											{
-												"cs-active":
-													Astro.url.pathname ===
-													entry.url,
-											},
-										]}
-										aria-current={isCurrentPage(
-											Astro.url.pathname,
-											entry.url,
-										)}
-									>
-										{entry.key}
-									</a>
-								)}
+					<!-- Home -->
+					<li class="cs-li">
+						<a
+							href="/"
+							class:list={[
+								"cs-li-link",
+								{ "cs-active": Astro.url.pathname === "/" },
+							]}
+							aria-current={Astro.url.pathname === "/"
+								? "page"
+								: undefined}
+						>
+							Home
+						</a>
+					</li>
+					<!-- About Us -->
+					<li class="cs-li">
+						<a
+							href="/about/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/about/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/about/"
+								? "page"
+								: undefined}
+						>
+							About Us
+						</a>
+					</li>
 
-								{entry.children?.length > 0 && (
-									// If entry has children in navData.json, create a drop down menu
-									<ul
-										class="cs-drop-ul"
-										aria-labelledby={getDropdownId(
-											entry.key,
-										)}
-									>
-										{entry.children.map((child) => (
-											<li class="cs-drop-li">
-												<a
-													href={child.url}
-													class="cs-li-link cs-drop-link"
-													aria-current={isCurrentPage(
-														Astro.url.pathname,
-														child.url,
-													)}
-												>
-													{child.key}
-												</a>
-											</li>
-										))}
-									</ul>
-								)}
+					<!-- 🎯 1. 全新添加的 Products 下拉菜单（指向您刚刚搭建完美的 /products 架构） -->
+					<li class="cs-li cs-dropdown">
+						<button
+							class:list={[
+								"cs-li-link cs-dropdown-toggle",
+								{
+									"cs-active":
+										Astro.url.pathname.includes(
+											"/products/",
+										),
+								},
+							]}
+							aria-haspopup="menu"
+							aria-expanded="false"
+							id="products-dropdown-toggle"
+						>
+							Products
+							<Icon name="mdi--caret" class="cs-drop-icon" />
+						</button>
+						<ul
+							class="cs-drop-ul"
+							aria-labelledby="products-dropdown-toggle"
+						>
+							<!-- 建议添加一个“查看全部产品”的入口，对应我们做好的精美卡片首页 -->
+							<li class="cs-drop-li">
+								<a
+									href="/products/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname === "/products/"
+										? "page"
+										: undefined}>All Products</a
+								>
 							</li>
-						))
-					}
+							<!-- 后续您可以根据自己在 content/products/ 里建的文件路径，在这里随时增减子产品 -->
+							<li class="cs-drop-li">
+								<a
+									href="/products/horizontal-natural/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname === "/products/horizontal-natural/"
+										? "page"
+										: undefined}>Horizontal Natural</a
+								>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/products/vertical-carbonized/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname === "/products/vertical-carbonized/"
+										? "page"
+										: undefined}>Vertical Carbonized</a
+								>
+							</li>
+						</ul>
+					</li>
+
+					<!-- 🛠️ 2. 修改原有的菜单：名字换为 Projects，逻辑完全对齐 /projects/ 路径 -->
+					<li class="cs-li cs-dropdown">
+						<button
+							class:list={[
+								"cs-li-link cs-dropdown-toggle",
+								{
+									"cs-active":
+										Astro.url.pathname.includes(
+											"/projects/",
+										),
+								},
+							]}
+							aria-haspopup="menu"
+							aria-expanded="false"
+							id="projects-dropdown-toggle"
+						>
+							Projects
+							<Icon name="mdi--caret" class="cs-drop-icon" />
+						</button>
+						<ul
+							class="cs-drop-ul"
+							aria-labelledby="projects-dropdown-toggle"
+						>
+							<li class="cs-drop-li">
+								<a
+									href="/projects/bamboo-flooring/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/bamboo-flooring/"
+										? "page"
+										: undefined}>Bamboo Flooring</a
+								>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/projects/bamboo-decking/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/bamboo-decking/"
+										? "page"
+										: undefined}>Bamboo Decking</a
+								>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/projects/bamboo-plywood/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/bamboo-plywood/"
+										? "page"
+										: undefined}>Bamboo Plywood</a
+								>
+							</li>
+						</ul>
+					</li>
+
+					<!-- Reviews -->
+					<li class="cs-li">
+						<a
+							href="/reviews/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/reviews/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/reviews/"
+								? "page"
+								: undefined}
+						>
+							Reviews
+						</a>
+					</li>
+					<!-- Blog -->
+					<li class="cs-li">
+						<a
+							href="/blog/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/blog/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/blog/"
+								? "page"
+								: undefined}
+						>
+							Blog
+						</a>
+					</li>
+					<!-- Contact (Mobile Only) -->
 					<li class="cs-li cs-hide-on-desktop">
 						<a
 							href="/contact/"
@@ -143,10 +220,9 @@ import navData from "@data/navData.json";
 										Astro.url.pathname === "/contact/",
 								},
 							]}
-							aria-current={isCurrentPage(
-								Astro.url.pathname,
-								"/contact/",
-							)}
+							aria-current={Astro.url.pathname === "/contact/"
+								? "page"
+								: undefined}
 						>
 							Contact
 						</a>
@@ -155,7 +231,7 @@ import navData from "@data/navData.json";
 			</div>
 		</nav>
 		<a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
-		<!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
+		<!--Dark Mode toggle-->
 		<DarkModeToggle />
 	</div>
 </header>
