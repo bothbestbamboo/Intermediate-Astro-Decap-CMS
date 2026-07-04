@@ -13,7 +13,7 @@ import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
-import placeholderImage from "@assets/images/placeholder.jpg";
+import placeholderImage from "@assets/images//gallery/bannerproduct.jpg";
 const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
 
 // 从 src/content/products/ 获取所有本地产品 md 数据
@@ -40,7 +40,7 @@ const getBadgeClass = (tag: string) => {
 ---
 
 <BaseLayout 
-	title="🎯 Products ✨" 
+	title="Products - Bamboo Flooring Decking Plywood" 
 	description="All kinds of premium bamboo products and flooring" 
 	heroImage={placeholderOptimizedImage}
 	imageAlt="Bothbest bamboo products banner"
@@ -55,7 +55,7 @@ const getBadgeClass = (tag: string) => {
 	<!-- 🎯 产品首页大标题区域 (完美对齐 VitePress 视觉) -->
 	<div class="vp-page-title">
 		<h1 class="title">🎯 Products ✨</h1>
-		<p class="lead">All kinds of premium bamboo flooring & architectural panels</p>
+		<p class="lead">All kinds of premium bamboo flooring, bamboo decking & architectural bamboo panels</p>
 	</div>
 
 	<!-- 📦 图片框卡片网格区域 (自动生成并指向内页) -->
