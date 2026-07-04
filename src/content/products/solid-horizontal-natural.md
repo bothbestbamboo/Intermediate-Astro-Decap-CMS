@@ -60,7 +60,7 @@ This robust flooring system is engineered for a wide variety of upscale interior
 
 ## 🖼️ Product Gallery
 
-![Horizontal Natural Solid Bamboo Flooring Close Up](@assets/images/products/solid-hn-1.jpg)
+![Horizontal Natural Solid Bamboo Flooring Close Up](https://www.bambooindustry.com/img/solid-hn-1.jpg)
 ![Horizontal Natural Solid Bamboo Flooring Edge Detail](https://www.bambooindustry.com/img/solid-hn-2.jpg)
 ![Horizontal Natural Solid Bamboo Flooring Back Grooves](https://www.bambooindustry.com/img/solid-hn-3.jpg)
 ![Horizontal Natural Solid Bamboo Flooring Planks](https://www.bambooindustry.com/img/solid-hn-4.jpg)
