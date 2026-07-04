@@ -13,7 +13,7 @@ tags: ["Flooring"]
 
 Finished with a high-grade, non-toxic pre-finished UV lacquer, it delivers a very light-toned, earthy, and spacious aesthetic that acts as an excellent, ultra-low formaldehyde alternative to traditional hardwoods.
 
-<div style="clear: both; padding-top: 50px; padding-bottom: 50px; border-bottom: 1px solid #e5e7eb; margin-bottom: 50px;"></div>
+---
 
 ## 🔬 Technical Specifications
 
