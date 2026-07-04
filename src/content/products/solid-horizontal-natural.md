@@ -9,7 +9,7 @@ tags: ["Flooring"]
 
 ## 📝 Product Overview
 
-**Solid Bamboo Flooring (Item No. BB - SZ - 0502)** is premium-crafted from rapidly renewable Moso bamboo. By flat-pressing three distinct layers of bamboo strips in a unified direction, this horizontal construction highlights the signature, organic "knuckles" and nodes inherited from botanical bamboo. 
+**Solid Bamboo Flooring** is premium-crafted from rapidly renewable Moso bamboo. By flat-pressing three distinct layers of bamboo strips in a unified direction, this horizontal construction highlights the signature, organic "knuckles" and nodes inherited from botanical bamboo. 
 
 Finished with a high-grade, non-toxic pre-finished UV lacquer, it delivers a very light-toned, earthy, and spacious aesthetic that acts as an excellent, ultra-low formaldehyde alternative to traditional hardwoods.
 
@@ -23,7 +23,7 @@ Finished with a high-grade, non-toxic pre-finished UV lacquer, it delivers a ver
 | **Product Category** | Solid Bamboo Flooring |
 | **Structural Profile** | Horizontal (Flat Pressed) |
 | **Color Finish** | Natural (Bright Blonde / Light Toned) |
-| **Standard Dimensions** | 960 x 96 x 15 mm |
+| **Standard Size** | 960 x 96 x 15 mm |
 | **Milling Profile** | Precision Tongue & Groove (T + G) |
 | **Surface Treatment** | Pre-finished / Premium Lacquered |
 
