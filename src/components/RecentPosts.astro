@@ -432,5 +432,27 @@ color: #ffffff;
         font-weight: 600;
 
     }
+    /* 强制博客卡片标题单行显示，超出部分变省略号 */
+#recent-blog .card-title {
+  display: block;             /* 确保是块级元素 */
+  white-space: nowrap;        /* 强制文本不换行，保持在同一行 */
+  overflow: hidden;           /* 隐藏超出卡片宽度的文字 */
+  text-overflow: ellipsis;    /* 🌟 核心：将超出的部分用 ... 代替 */
+  
+  /* 以下是你原有的样式基础，可根据实际微调 */
+  font-size: 1.25rem;         
+  font-weight: 700;
+  margin: 10px 0;
+  line-height: 1.4;
+}
 
+/* 保证里面的 <a> 标签也能填满宽度 */
+#recent-blog .card-title a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: inherit;             /* 继承父级颜色 */
+  text-decoration: none;
+}
 </style> 
