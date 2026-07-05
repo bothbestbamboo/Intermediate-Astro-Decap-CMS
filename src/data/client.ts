@@ -3,7 +3,7 @@ export const SITE = {
 	title: "China Bamboo Flooring",
 	tagline: "bamboo factory since 2001",
 	description: "Bothbest is a premier factory of bamboo products in China, specializing in manufacturing high-quality, sustainable bamboo flooring, bamboo decking and bamboo plywood for global markets.",
-	url: "https://www.402999.xyz",
+	url: "https://www.bambooflooring.net",
 	author: "bothbest",
 	locale: "en",
 };
@@ -11,7 +11,7 @@ export const SITE = {
 // ===== BUSINESS INFO =====
 export const BUSINESS = {
     name: SITE.title,
-    email: "info@bambooindustry.com",
+    email: "info@bambooflooring.net",
     phoneForTel: "563-303-2211",
     phoneFormatted: "(563) 303-2211",
     // 🌟 新增 WhatsApp 全局配置
