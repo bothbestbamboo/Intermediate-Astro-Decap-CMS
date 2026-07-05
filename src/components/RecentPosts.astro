@@ -20,10 +20,16 @@ const recentPosts = allPosts
 			<div class="header-left">
 				<h2>Insights From the Forefront of Bamboo Innovation</h2>
 			</div>
+			
 			<div class="header-right">
-				<span class="sub-title">INDUSTRY LEADERSHIP</span>
+				<!-- 🌟 核心修复：用 meta-row 把小标题和按钮锁在同一行左右对齐 -->
+				<div class="meta-row">
+					<span class="sub-title">INDUSTRY LEADERSHIP</span>
+					<a href="/blog/" class="view-all-link">All news ➔</a>
+				</div>
+				
+				<!-- 下方的描述文案会自动顺延，绝不会再与按钮重叠 -->
 				<p>Explore our technical analysis, sustainable manufacturing updates, and architectural inspiration curated by experts who understand the true potential of premium bamboo materials.</p>
-				<a href="/blog/" class="view-all-link">All news ➔</a>
 			</div>
 		</div>
 
@@ -50,7 +56,6 @@ const recentPosts = allPosts
 					return (
 						<article class="blog-card">
 							<div class="image-wrapper">
-								{/* 🌟 1. 修改图片链接：post.slug 改为 post.id */}
 								<a href={`/blog/${post.id}/`}>
 									<img 
 										src={imageSrc} 
@@ -68,7 +73,6 @@ const recentPosts = allPosts
 							</div>
 
 							<h3 class="card-title">
-								{/* 🌟 2. 修改标题链接：post.slug 改为 post.id */}
 								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
 							</h3>
 
@@ -76,7 +80,6 @@ const recentPosts = allPosts
 								{post.data.description || post.body?.slice(0, 100) + "..."}
 							</p>
 
-							{/* 🌟 3. 修改按钮链接：post.slug 改为 post.id */}
 							<a href={`/blog/${post.id}/`} class="read-more-btn">
 								Read more ↗
 							</a>
