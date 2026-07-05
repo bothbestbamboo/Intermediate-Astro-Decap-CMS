@@ -172,7 +172,7 @@ const recentPosts = allPosts
 		position: relative;
 		border-radius: 12px;
 		overflow: hidden;
-		aspect-ratio: 16 / 9;       /* 🌟 严格限制宽高比为 16:9 宽屏 */
+		aspect-ratio: 16 / 9 !important;       /* 🌟 严格限制宽高比为 16:9 宽屏 */
 		margin-bottom: 15px;
 	}
 	.image-wrapper img {
@@ -211,10 +211,10 @@ const recentPosts = allPosts
 		font-weight: 700;
 		margin: 0 0 10px 0;
 		line-height: 1.4;
-		display: block;
-		white-space: nowrap;        /* 强制不换行 */
-		overflow: hidden;           /* 溢出隐藏 */
-		text-overflow: ellipsis;    /* 超出变省略号 ... */
+		display: block !important;
+		white-space: nowrap !important;        /* 🌟 强行单行 */
+		overflow: hidden !important;           /* 🌟 强行隐藏溢出 */
+		text-overflow: ellipsis !important;    /* 🌟 强行变省略号 */
 	}
 	.card-title a {
 		color: #1a1a1a;
