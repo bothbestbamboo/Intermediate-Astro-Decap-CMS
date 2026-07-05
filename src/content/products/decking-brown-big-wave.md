@@ -61,17 +61,17 @@ Engineered to outlast elements, this heavy-duty exterior strand woven decking is
 
 ## 🖼️ Product Gallery
 
-![Big Wave Brown Bamboo Decking Close Up Planks](https://www.bambooindustry.com/img/deck-bw-1.jpg)
-![Big Wave Brown Bamboo Decking Surface Texture](https://www.bambooindustry.com/img/deck-bw-2.jpg)
-![Big Wave Brown Bamboo Decking Edge Groove Detail](https://www.bambooindustry.com/img/deck-bw-3.jpg)
-![Big Wave Brown Bamboo Decking Stacked Materials](https://www.bambooindustry.com/img/deck-bw-4.jpg)
+![Big Wave Brown Bamboo Decking Close Up Planks](@assets/images/products/deck-bw-1.jpg)
+![Big Wave Brown Bamboo Decking Surface Texture](@assets/images/products/deck-bw-2.jpg)
+![Big Wave Brown Bamboo Decking Edge Groove Detail](@assets/images/products/deck-bw-3.jpg)
+![Big Wave Brown Bamboo Decking Stacked Materials](@assets/images/products/deck-bw-4.jpg)
 
 ---
 
 ## 🏡 Installation Showcase
 
-![Big Wave Brown Bamboo Decking Garden Terrace Project](https://www.bambooindustry.com/img/deck-bw-5.jpg)
-![Big Wave Brown Bamboo Decking Swimming Pool Walkway](https://www.bambooindustry.com/img/deck-bw-6.jpg)
-![Big Wave Brown Bamboo Decking Public Park Boardwalk](https://www.bambooindustry.com/img/deck-bw-7.jpg)
-![Big Wave Brown Bamboo Decking Commercial Plaza Layout](https://www.bambooindustry.com/img/deck-bw-8.jpg)
-![Big Wave Brown Bamboo Decking Backyard Patio Architecture](https://www.bambooindustry.com/img/deck-bw-9.jpg)
+![Big Wave Brown Bamboo Decking Garden Terrace Project](@assets/images/products/deck-bw-5.jpg)
+![Big Wave Brown Bamboo Decking Swimming Pool Walkway](@assets/images/products/deck-bw-6.jpg)
+![Big Wave Brown Bamboo Decking Public Park Boardwalk](@assets/images/products/deck-bw-7.jpg)
+![Big Wave Brown Bamboo Decking Commercial Plaza Layout](@assets/images/products/deck-bw-8.jpg)
+![Big Wave Brown Bamboo Decking Backyard Patio Architecture](@assets/images/products/deck-bw-9.jpg)

@@ -60,21 +60,21 @@ Engineered to endure, this high-performance linear flooring is perfectly tailore
 
 ## 🖼️ Product Gallery
 
-![Vertical Carbonized Solid Bamboo Flooring Close Up](https://www.bambooindustry.com/img/solid-vc-1.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Edge Detail](https://www.bambooindustry.com/img/solid-vc-2.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Back Grooves](https://www.bambooindustry.com/img/solid-vc-3.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Planks](https://www.bambooindustry.com/img/solid-vc-4.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Surface Texture](https://www.bambooindustry.com/img/solid-vc-5.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Glow](https://www.bambooindustry.com/img/solid-vc-6.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Stock](https://www.bambooindustry.com/img/solid-vc-7.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Profile](https://www.bambooindustry.com/img/solid-vc-8.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Close Up](@assets/images/products/solid-vc-1.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Edge Detail](@assets/images/products/solid-vc-2.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Back Grooves](@assets/images/products/solid-vc-3.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Planks](@assets/images/products/solid-vc-4.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Surface Texture](@assets/images/products/solid-vc-5.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Glow](@assets/images/products/solid-vc-6.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Stock](@assets/images/products/solid-vc-7.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Profile](@assets/images/products/solid-vc-8.jpg)
 
 ---
 
 ## 🏡 Installation Showcase
 
-![Vertical Carbonized Solid Bamboo Flooring Living Room Scene](https://www.bambooindustry.com/img/solid-vc-9.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Modern Office Scene](https://www.bambooindustry.com/img/solid-vc-10.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Bedroom Scene](https://www.bambooindustry.com/img/solid-vc-11.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Studio Design](https://www.bambooindustry.com/img/solid-vc-12.jpg)
-![Vertical Carbonized Solid Bamboo Flooring Commercial Project](https://www.bambooindustry.com/img/solid-vc-13.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Living Room Scene](@assets/images/products/solid-vc-9.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Modern Office Scene](@assets/images/products/solid-vc-10.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Bedroom Scene](@assets/images/products/solid-vc-11.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Studio Design](@assets/images/products/solid-vc-12.jpg)
+![Vertical Carbonized Solid Bamboo Flooring Commercial Project](@assets/images/products/solid-vc-13.jpg)

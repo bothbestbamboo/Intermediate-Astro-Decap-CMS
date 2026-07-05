@@ -60,23 +60,23 @@ With its superior load-bearing capacity and striking edge aesthetics, this 20mm 
 
 ## 🖼️ Product Gallery
 
-![20mm Horizontal Caramel Bamboo Plywood Face Detail](https://www.bambooindustry.com/img/ply-20hc-1.jpg)
-![20mm Horizontal Caramel Bamboo Plywood Stacked Edge Profile](https://www.bambooindustry.com/img/ply-20hc-2.jpg)
-![20mm Horizontal Caramel Bamboo Plywood Multi-Layer Cross Section](https://www.bambooindustry.com/img/ply-20hc-3.jpg)
-![20mm Horizontal Caramel Bamboo Plywood Raw Sheet Surface](https://www.bambooindustry.com/img/ply-20hc-4.jpg)
-![20mm Horizontal Caramel Bamboo Plywood Industrial Sheet Calibration](https://www.bambooindustry.com/img/ply-20hc-5.jpg)
-![20mm Horizontal Caramel Bamboo Plywood Grain Close Up](https://www.bambooindustry.com/img/ply-20hc-6.jpg)
-![20mm Horizontal Caramel Bamboo Plywood Premium Warehouse Stock](https://www.bambooindustry.com/img/ply-20hc-7.jpg)
+![20mm Horizontal Caramel Bamboo Plywood Face Detail](@assets/images/products/ply-20hc-1.jpg)
+![20mm Horizontal Caramel Bamboo Plywood Stacked Edge Profile](@assets/images/products/ply-20hc-2.jpg)
+![20mm Horizontal Caramel Bamboo Plywood Multi-Layer Cross Section](@assets/images/products/ply-20hc-3.jpg)
+![20mm Horizontal Caramel Bamboo Plywood Raw Sheet Surface](@assets/images/products/ply-20hc-4.jpg)
+![20mm Horizontal Caramel Bamboo Plywood Industrial Sheet Calibration](@assets/images/products/ply-20hc-5.jpg)
+![20mm Horizontal Caramel Bamboo Plywood Grain Close Up](@assets/images/products/ply-20hc-6.jpg)
+![20mm Horizontal Caramel Bamboo Plywood Premium Warehouse Stock](@assets/images/products/ply-20hc-7.jpg)
 
 ---
 
 ## 🏡 Installation Showcase
 
-![Horizontal Caramel Bamboo Plywood Modern Kitchen Countertop Application](https://www.bambooindustry.com/img/ply-20hc-8.jpg)
-![Horizontal Caramel Bamboo Plywood Luxury Staircase Steps Project](https://www.bambooindustry.com/img/ply-20hc-9.jpg)
-![Horizontal Caramel Bamboo Plywood Executive Office Desk Design](https://www.bambooindustry.com/img/ply-20hc-10.jpg)
-![Horizontal Caramel Bamboo Plywood Custom Cabinetry Implementation](https://www.bambooindustry.com/img/ply-20hc-11.jpg)
-![Horizontal Caramel Bamboo Plywood High-End Dining Table Showcase](https://www.bambooindustry.com/img/ply-20hc-12.jpg)
-![Horizontal Caramel Bamboo Plywood Retail Showroom Fixtures](https://www.bambooindustry.com/img/ply-20hc-13.jpg)
-![Horizontal Caramel Bamboo Plywood Architectural Wall Cladding Project](https://www.bambooindustry.com/img/ply-20hc-14.jpg)
-![Horizontal Caramel Bamboo Plywood Designer Furniture Detail](https://www.bambooindustry.com/img/ply-20hc-15.jpg)
+![Horizontal Caramel Bamboo Plywood Modern Kitchen Countertop Application](@assets/images/products/ply-20hc-8.jpg)
+![Horizontal Caramel Bamboo Plywood Luxury Staircase Steps Project](@assets/images/products/ply-20hc-9.jpg)
+![Horizontal Caramel Bamboo Plywood Executive Office Desk Design](@assets/images/products/ply-20hc-10.jpg)
+![Horizontal Caramel Bamboo Plywood Custom Cabinetry Implementation](@assets/images/products/ply-20hc-11.jpg)
+![Horizontal Caramel Bamboo Plywood High-End Dining Table Showcase](@assets/images/products/ply-20hc-12.jpg)
+![Horizontal Caramel Bamboo Plywood Retail Showroom Fixtures](@assets/images/products/ply-20hc-13.jpg)
+![Horizontal Caramel Bamboo Plywood Architectural Wall Cladding Project](@assets/images/products/ply-20hc-14.jpg)
+![Horizontal Caramel Bamboo Plywood Designer Furniture Detail](@assets/images/products/ply-20hc-15.jpg)
