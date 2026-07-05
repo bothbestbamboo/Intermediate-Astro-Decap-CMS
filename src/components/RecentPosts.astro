@@ -432,28 +432,4 @@ color: #ffffff;
         font-weight: 600;
 
     }
-   /* 强制博客卡片标题单行显示，超出部分变省略号 */
-#recent-blog .card-title {
-  display: block !important;    /* 确保是块级元素 */
-  white-space: nowrap !important; /* 强制文本不换行，保持在同一行 */
-  overflow: hidden !important;    /* 隐藏超出卡片宽度的文字 */
-  text-overflow: ellipsis !important; /* 将超出的部分用 ... 代替 */
-  flex-shrink: 0 !important;     /* 🌟 核心修复：防止标题抢占空间，导致图片被挤压变形 */
-  
-  /* 基础微调 */
-  font-size: 1.25rem;         
-  font-weight: 700;
-  margin: 10px 0;
-  line-height: 1.4;
-}
-
-/* 保证里面的 <a> 标签也能填满宽度 */
-#recent-blog .card-title a {
-  display: block !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  color: inherit;             /* 继承父级颜色 */
-  text-decoration: none;
-}
 </style> 
