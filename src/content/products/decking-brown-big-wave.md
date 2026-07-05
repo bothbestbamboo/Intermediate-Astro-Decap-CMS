@@ -32,7 +32,7 @@ This series features a distinguished **Profile B design**, meticulously crafted 
 
 ## 💎 Key Advantages
 
-* **Unmatched Material Density:** While common options settle for 1150kg/m³, our elite **1250kg/m³ construction** locks in absolute dimensional stability, guaranteeing over a decade of flawless outdoor performance without cracking.
+* **Unmatched Material Density:** While common options settle for 1050kg/m³, our elite **1250kg/m³ construction** locks in absolute dimensional stability, guaranteeing over a decade of flawless outdoor performance without cracking.
 * **Dual-Surface Profile Versatility:** The reversible Profile B offers an elegant Big Wave aesthetic that provides excellent underfoot traction and efficient water drainage, alongside a classic smooth backing.
 * **Ultimate All-Weather Resilience:** Infused throughout with professional anti-mildew agents and factory pre-oiled to form an impenetrable barrier against torrential rain, severe UV exposure, and moisture.
 * **Premium Architectural Appeal:** Delivers the sophisticated, luxurious grain patterns of premium exotic exotic hardwoods like Ipe or Teak, but at a far more sustainable, cost-effective mid-range investment level.
