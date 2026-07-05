@@ -168,7 +168,7 @@ color: #1a1a1a;
 		margin: 0;                      /* 清除默认间距 */
 	}
 
-.view-all-link {
+     .view-all-link {
 		background-color: #a3e635;  /* 初始荧光绿背景 */
 		color: #111111 !important;   /* 初始文字为深色 */
 		text-decoration: none;
@@ -184,42 +184,50 @@ color: #1a1a1a;
 		align-items: center;
 		gap: 6px;
 		
-		/* 🌟 核心：为了实现滑动特效，必须设置相对定位和隐藏溢出 */
 		position: relative; 
 		overflow: hidden;
-		z-index: 1;                  /* 确保文字在最上层 */
+		z-index: 1;                  
 		
-		/* 文字颜色的平滑过渡 */
-		transition: color 0.3s ease;
+		/* 缩短过渡时间，防止手机端产生残影 */
+		transition: background-color 0.2s ease, color 0.2s ease;
 	}
 
-	/* 🌟 新增：创建隐藏在左侧的黑色滑动层 */
-	.view-all-link::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #111111;   /* 变黑的颜色 */
-		z-index: -1;                 /* 垫在文字下方，背景上方 */
-		
-		/* 初始状态：横向缩放到 0，并把基准点固定在左边 */
-		transform: scaleX(0);
-		transform-origin: left;
-		
-		/* 🌟 核心：控制滑动的速度曲线，使其显得非常丝滑 */
-		transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+	/* 🌟 核心修复：只有在支持鼠标指针的设备（电脑端）上，才加载滑进变黑特效 */
+	@media (hover: hover) and (pointer: fine) {
+		.view-all-link::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #111111;   /* 变黑的颜色 */
+			z-index: -1;                 
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+		}
+
+		/* 电脑端鼠标悬停时：文字变白，黑块滑出 */
+		.view-all-link:hover {
+			color: #ffffff !important;   
+		}
+		.view-all-link:hover::after {
+			transform: scaleX(1);
+		}
 	}
 
-	/* 🌟 鼠标悬停（Hover）状态： */
-	.view-all-link:hover {
-		color: #ffffff !important;   /* 伴随滑动，文字优雅地变成纯白 */
-	}
-
-	/* 🌟 鼠标悬停时，激活黑色层横向铺满（scaleX 变回 1） */
-	.view-all-link:hover::after {
-		transform: scaleX(1);
+	/* 🌟 手机/平板触摸屏的专属表现： */
+	@media (hover: none) or (pointer: coarse) {
+		/* 移除滑块，让手机端点击时直接干净利落地跳转 */
+		.view-all-link::after {
+			display: none !important;
+		}
+		/* 如果你希望手机端按下去时有点反馈，可以加一个简单的点击变深色（可选） */
+		.view-all-link:active {
+			background-color: #111111 !important;
+			color: #ffffff !important;
+		}
 	}
 
 .section-divider {
