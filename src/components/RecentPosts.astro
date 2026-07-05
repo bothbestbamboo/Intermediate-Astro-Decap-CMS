@@ -141,52 +141,63 @@ color: #1a1a1a;
 }
 
 .header-right {
+		max-width: 500px;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;   /* 让内部元素垂直向下排列 */
+	}
 
-max-width: 500px;
+	/* 🌟 新增：专门为小标题和按钮创建的整齐单行容器 */
+	.meta-row {
+		display: flex;
+		justify-content: space-between; /* 左右两端对齐 */
+		align-items: center;            /* 垂直居中对齐 */
+		width: 100%;
+		margin-bottom: 12px;            /* 与下方描述文字拉开距离 */
+	}
 
-position: relative;
-
-}
-
-.sub-title {
-
-font-weight: 700;
-
-color: #1a1a1a;
-
-display: block;
-
-margin-bottom: 5px;
-
-}
+	.sub-title {
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: #333333;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin: 0;                      /* 清除默认间距 */
+	}
 
 .view-all-link {
-		background-color: #a3e635;  /* 🌟 匹配你网站顶部的标志性浅绿/荧光绿 */
-		color: #111111;             /* 初始文字颜色为深色 */
+		background-color: #a3e635;
+		color: #111111;
 		text-decoration: none;
-		font-weight: 700;           /* 极粗体 */
-		font-size: 0.85rem;         /* 稍微缩小字号，对齐导航栏按钮体量 */
-		text-transform: uppercase;  /* 🌟 强制转为全大写：ALL NEWS */
-		letter-spacing: 0.05em;     /* 字间距微微拉开 */
+		font-weight: 700;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
 		
-		/* 按钮尺寸与圆角 */
-		padding: 10px 20px;
-		border-radius: 4px;         /* 如果你其他按钮是圆角，可以改成 6px 或 8px */
-		display: inline-block;
+		/* 规范的按钮内边距 */
+		padding: 8px 16px;
+		border-radius: 4px;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
 		
-		/* 定位微调 */
-		position: absolute;
-		top: 0;
-		right: 0;
+		/* 🌟 核心修改：删除了 position: absolute，回归正常流，绝不压迫文字 */
+		position: relative; 
 		
-		/* 平滑过渡动画 */
 		transition: all 0.3s ease;
 	}
 
-	/* 🌟 鼠标悬停（Hover）状态：背景变黑，文字变白 */
 	.view-all-link:hover {
-		background-color: #111111 !important; /* 悬停时背景变为深黑色 */
-		color: #ffffff !important;             /* 文字变为纯白色 */
+		background-color: #111111 !important;
+		color: #ffffff !important;
+	}
+
+	/* 描述文字样式 */
+	.header-right p {
+		font-size: 1.125rem;
+		line-height: 1.6;
+		color: #4a4a4a;
+		margin: 0;                     /* 清除互相推挤的 margin */
 	}
 
 .section-divider {
