@@ -42,12 +42,17 @@ const recentPosts = allPosts
 						  })
 						: "";
 
+					// 🌟 安全获取图片路径：如果是对象则取 .src，如果是字符串直接用，没有则用默认图
+					const imageSrc = post.data.image 
+						? (typeof post.data.image === 'object' ? post.data.image.src : post.data.image)
+						: "/assets/images/default-blog.jpg";
+
 					return (
 						<article class="blog-card">
 							<div class="image-wrapper">
 								<a href={`/blog/${post.slug}/`}>
 									<img 
-										src={post.data.image || "/assets/images/default-blog.jpg"} 
+										src={imageSrc} 
 										alt={post.data.title}
 										loading="lazy"
 									/>
