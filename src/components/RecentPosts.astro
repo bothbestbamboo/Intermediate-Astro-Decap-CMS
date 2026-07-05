@@ -222,4 +222,41 @@ const recentPosts = allPosts
 		background-color: #1a1a1a;
 		color: #ffffff;
 	}
+    /* 优化新博客区域的整体标题和文本大小 */
+    #recent-blog {
+        padding: 60px 0; /* 顺便给上下留出足够的呼吸空间 */
+    }
+
+    /* 1. 让左侧的主标题更大、更粗、更有分量 */
+        #recent-blog .header-left h2 {
+        font-size: 2.5rem;          /* 显著放大字号，向FAQ看齐 */
+        font-weight: 800;           /* 极粗体，提升视觉冲击力 */
+        line-height: 1.2;
+        color: #111111;             /* 保证颜色足够深 */
+        letter-spacing: -0.02em;    /* 大标题稍微紧凑一点更好看 */
+        margin: 0;
+    }
+
+    /* 2. 优化右侧的小标题 "Our Blog" */
+        #recent-blog .header-right .sub-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;  /* 保持大写风格 */
+        letter-spacing: 0.05em;
+        color: #333;
+    }
+
+    /* 3. 放大右侧的简介文本 */
+        #recent-blog .header-right p {
+        font-size: 1.125rem;        /* 调整到 18px 左右，更易读 */
+        line-height: 1.6;
+        color: #4a4a4a;             /* 稍微加深一点颜色，提升对比度 */
+        margin: 8px 0 15px 0;
+    }
+
+    /* 4. 顺便让 "All news ➔" 链接也更清晰醒目 */
+        #recent-blog .view-all-link {
+        font-size: 1.05rem;
+        font-weight: 600;
+    }
 </style>
