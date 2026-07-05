@@ -106,12 +106,12 @@ const recentPosts = allPosts
 		gap: 20px;
 	}
 	.header-left h2 {
-		font-size: 2.5rem;          /* 放大字号，对齐 FAQ */
-		font-weight: 800;           /* 极粗体，提升大气感 */
+		font-size: 2.5rem;
+		font-weight: 800;
 		max-width: 550px;
 		line-height: 1.2;
 		margin: 0;
-		color: #111111;             /* 加深颜色 */
+		color: #111111;
 		letter-spacing: -0.02em;
 	}
 	.header-right {
@@ -119,25 +119,25 @@ const recentPosts = allPosts
 		position: relative;
 	}
 	.sub-title {
-		font-size: 1.1rem;          /* 优化小标题 */
+		font-size: 1.1rem;
 		font-weight: 700;
 		color: #333333;
-		text-transform: uppercase;  /* 保持大写风格 */
+		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		display: block;
 		margin-bottom: 5px;
 	}
 	.header-right p {
-		font-size: 1.125rem;        /* 放大描述语到 18px，更清晰易读 */
+		font-size: 1.125rem;
 		line-height: 1.6;
-		color: #4a4a4a;             /* 适当加深，提升对比度 */
+		color: #4a4a4a;
 		margin: 8px 0 15px 0;
 	}
 	.view-all-link {
-		color: #7ca922;             /* 匹配企业绿 */
+		color: #7ca922;
 		text-decoration: none;
 		font-weight: 600;
-		font-size: 1.05rem;         /* 略微放大链接 */
+		font-size: 1.05rem;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -153,39 +153,39 @@ const recentPosts = allPosts
 	   2. 博客网格布局 (控制卡片等高与对齐)
 	   ========================================================================== */
 	.blog-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 30px;
+		display: grid !important;
+		grid-template-columns: repeat(3, 1fr) !important;
+		gap: 30px !important;
 	}
 	.blog-card {
-		display: flex;
-		flex-direction: column;     /* 垂直排列内部元素 */
-		height: 100%;               /* 让所有卡片完全等高 */
+		display: flex !important;
+		flex-direction: column !important;
+		height: 100% !important;
 	}
 
 	/* ==========================================================================
 	   3. 卡片内部元素样式 (图片严格统一尺寸)
 	   ========================================================================== */
 	.image-wrapper {
-		width: 100%;
-		display: block;
-		position: relative;
-		border-radius: 12px;
-		overflow: hidden;
-		aspect-ratio: 16 / 9 !important;       /* 🌟 严格限制宽高比为 16:9 宽屏 */
-		margin-bottom: 15px;
+		width: 100% !important;
+		display: block !important;
+		position: relative !important;
+		border-radius: 12px !important;
+		overflow: hidden !important;
+		aspect-ratio: 16 / 9 !important;
+		margin-bottom: 15px !important;
 	}
 	.image-wrapper img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;          /* 🌟 核心：裁剪铺满，不管原图多大都会被强制裁切到一模一样 */
-		transition: transform 0.3s ease;
+		position: absolute !important;
+		top: 0 !important;
+		left: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
+		object-fit: cover !important;
+		transition: transform 0.3s ease !important;
 	}
 	.image-wrapper:hover img {
-		transform: scale(1.05);
+		transform: scale(1.05) !important;
 	}
 	.card-meta {
 		display: flex;
@@ -212,17 +212,17 @@ const recentPosts = allPosts
 		margin: 0 0 10px 0;
 		line-height: 1.4;
 		display: block !important;
-		white-space: nowrap !important;        /* 🌟 强行单行 */
-		overflow: hidden !important;           /* 🌟 强行隐藏溢出 */
-		text-overflow: ellipsis !important;    /* 🌟 强行变省略号 */
+		white-space: nowrap !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
 	}
 	.card-title a {
 		color: #1a1a1a;
 		text-decoration: none;
-		display: block;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		display: block !important;
+		white-space: nowrap !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
 	}
 	.card-title a:hover {
 		color: #7ca922;
@@ -234,16 +234,16 @@ const recentPosts = allPosts
 		font-size: 0.95rem;
 		line-height: 1.5;
 		margin: 0 0 20px 0;
-		flex-grow: 1;               /* 自动填满卡片剩余高度，把按钮顶到最下面 */
-		display: -webkit-box;
-		-webkit-line-clamp: 3;      /* 限制描述最多 3 行 */
-		-webkit-box-orient: vertical;
-		overflow: hidden;
+		flex-grow: 1 !important;
+		display: -webkit-box !important;
+		-webkit-line-clamp: 3 !important;
+		-webkit-box-orient: vertical !important;
+		overflow: hidden !important;
 	}
 
 	/* 按钮样式：始终在卡片最底部水平对齐 */
 	.read-more-btn {
-		align-self: flex-start;
+		align-self: flex-start !important;
 		border: 1px solid #1a1a1a;
 		padding: 6px 18px;
 		border-radius: 6px;
@@ -252,7 +252,7 @@ const recentPosts = allPosts
 		font-size: 0.9rem;
 		font-weight: 500;
 		transition: all 0.2s ease;
-		margin-top: auto;           /* 确保在最底部对齐 */
+		margin-top: auto !important;
 	}
 	.read-more-btn:hover {
 		background-color: #1a1a1a;
@@ -263,18 +263,18 @@ const recentPosts = allPosts
 	   4. 响应式断点 (适配平板和手机端)
 	   ========================================================================== */
 	@media (max-width: 992px) {
-		.blog-grid { 
-			grid-template-columns: repeat(2, 1fr); 
+		.blog-grid {
+			grid-template-columns: repeat(2, 1fr) !important;
 		}
 	}
 	@media (max-width: 768px) {
-		.blog-grid { 
-			grid-template-columns: 1fr; 
+		.blog-grid {
+			grid-template-columns: 1fr !important;
 		}
-		.view-all-link { 
-			position: static; 
-			display: inline-block; 
-			margin-top: 10px; 
+		.view-all-link {
+			position: static !important;
+			display: inline-block !important;
+			margin-top: 10px !important;
 		}
 		.header-left h2 {
 			font-size: 2rem;
