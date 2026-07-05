@@ -430,6 +430,26 @@ color: #ffffff;
         font-size: 1.05rem;
 
         font-weight: 600;
-
     }
+    /* 强制博客卡片标题单行显示，超出部分变省略号（安全不撑开卡片版） */
+#recent-blog .card-title {
+  /* 🌟 核心修复：用这个组合来实现单行截断，绝对不会撑大卡片宽度 */
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important; /* 严格限制只显示 1 行 */
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  
+  /* 基础样式保持不变 */
+  font-size: 1.25rem;         
+  font-weight: 700;
+  margin: 10px 0;
+  line-height: 1.4;
+}
+
+/* 保证里面的 <a> 标签行为正常 */
+#recent-blog .card-title a {
+  display: inline !important; /* 改为 inline，让父级控制截断 */
+  color: inherit;
+  text-decoration: none;
+}
 </style> 
