@@ -21,8 +21,8 @@ export const BUSINESS = {
     address: {
         lineOne: "Bamboo Industry Zone",
         lineTwo: "Xiaofeng",
-        city: "Anji",
-        state: "China",
+        city: "Anji,",
+        state: "China,",
         zip: "313300",
         mapLink: "#",
     },
