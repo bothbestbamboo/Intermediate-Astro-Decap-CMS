@@ -1,6 +1,6 @@
 // ===== SITE CONSTANTS =====
 export const SITE = {
-	title: "China Bamboo Flooring",
+	title: "Bamboo Flooring | Decking | Plywood",
 	tagline: "bamboo factory since 2001",
 	description: "Bothbest is a premier factory of bamboo products in China, specializing in manufacturing high-quality, sustainable bamboo flooring, bamboo decking and bamboo plywood for global markets.",
 	url: "https://www.bambooflooring.net",
@@ -19,10 +19,10 @@ export const BUSINESS = {
     whatsAppFormatted: "+86 150 0582 0528", // 格式化显示，国际买家看起来更专业清晰
     logo: "https://img.bambooflooring.net/file/1782802571919.png",
     address: {
-        lineOne: "Xiaofeng",
-        lineTwo: "Anji County",
-        city: "Huzhou",
-        state: "Zhejiang",
+        lineOne: "Bamboo Industry Zone",
+        lineTwo: "Xiaofeng",
+        city: "Anji",
+        state: "China",
         zip: "313300",
         mapLink: "#",
     },
