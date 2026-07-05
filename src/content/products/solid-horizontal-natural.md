@@ -60,21 +60,21 @@ This robust flooring system is engineered for a wide variety of upscale interior
 
 ## 🖼️ Product Gallery
 
-![Horizontal Natural Solid Bamboo Flooring Close Up](https://www.bambooindustry.com/img/solid-hn-1.jpg)
-![Horizontal Natural Solid Bamboo Flooring Edge Detail](https://www.bambooindustry.com/img/solid-hn-2.jpg)
-![Horizontal Natural Solid Bamboo Flooring Back Grooves](https://www.bambooindustry.com/img/solid-hn-3.jpg)
-![Horizontal Natural Solid Bamboo Flooring Planks](https://www.bambooindustry.com/img/solid-hn-4.jpg)
-![Horizontal Natural Solid Bamboo Flooring Surface Texture](https://www.bambooindustry.com/img/solid-hn-5.jpg)
-![Horizontal Natural Solid Bamboo Flooring Glow](https://www.bambooindustry.com/img/solid-hn-6.jpg)
-![Horizontal Natural Solid Bamboo Flooring Stock](https://www.bambooindustry.com/img/solid-hn-7.jpg)
-![Horizontal Natural Solid Bamboo Flooring Profile](https://www.bambooindustry.com/img/solid-hn-8.jpg)
+![Horizontal Natural Solid Bamboo Flooring Close Up](@assets/images/products/solid-hn-1.jpg)
+![Horizontal Natural Solid Bamboo Flooring Edge Detail](@assets/images/products/solid-hn-2.jpg)
+![Horizontal Natural Solid Bamboo Flooring Back Grooves](@assets/images/products/solid-hn-3.jpg)
+![Horizontal Natural Solid Bamboo Flooring Planks](@assets/images/products/solid-hn-4.jpg)
+![Horizontal Natural Solid Bamboo Flooring Surface Texture](@assets/images/products/solid-hn-5.jpg)
+![Horizontal Natural Solid Bamboo Flooring Glow](@assets/images/products/solid-hn-6.jpg)
+![Horizontal Natural Solid Bamboo Flooring Stock](@assets/images/products/solid-hn-7.jpg)
+![Horizontal Natural Solid Bamboo Flooring Profile](@assets/images/products/solid-hn-8.jpg)
 
 ---
 
 ## 🏡 Installation Showcase
 
-![Horizontal Natural Solid Bamboo Flooring Living Room Scene](https://www.bambooindustry.com/img/solid-hn-9.jpg)
-![Horizontal Natural Solid Bamboo Flooring Modern Office Scene](https://www.bambooindustry.com/img/solid-hn-10.jpg)
-![Horizontal Natural Solid Bamboo Flooring Bedroom Scene](https://www.bambooindustry.com/img/solid-hn-11.jpg)
-![Horizontal Natural Solid Bamboo Flooring Studio Design](https://www.bambooindustry.com/img/solid-hn-12.jpg)
-![Horizontal Natural Solid Bamboo Flooring Commercial Project](https://www.bambooindustry.com/img/solid-hn-13.jpg)
+![Horizontal Natural Solid Bamboo Flooring Living Room Scene](@assets/images/products/solid-hn-9.jpg)
+![Horizontal Natural Solid Bamboo Flooring Modern Office Scene](@assets/images/products/solid-hn-10.jpg)
+![Horizontal Natural Solid Bamboo Flooring Bedroom Scene](@assets/images/products/solid-hn-11.jpg)
+![Horizontal Natural Solid Bamboo Flooring Studio Design](@assets/images/products/solid-hn-12.jpg)
+![Horizontal Natural Solid Bamboo Flooring Commercial Project](@assets/images/products/solid-hn-13.jpg)
