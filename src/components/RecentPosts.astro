@@ -160,23 +160,28 @@ const recentPosts = allPosts
 	.blog-card {
 		display: flex;
 		flex-direction: column;     /* 垂直排列内部元素 */
-		height: 100%;               /* 🌟 核心：让所有卡片完全等高 */
+		height: 100%;               /* 让所有卡片完全等高 */
 	}
 
 	/* ==========================================================================
-	   3. 卡片内部元素样式 (图片、标题、简介与按钮)
+	   3. 卡片内部元素样式 (图片严格统一尺寸)
 	   ========================================================================== */
 	.image-wrapper {
 		width: 100%;
+		display: block;
+		position: relative;
 		border-radius: 12px;
 		overflow: hidden;
-		aspect-ratio: 16 / 9;
+		aspect-ratio: 16 / 9;       /* 🌟 严格限制宽高比为 16:9 宽屏 */
 		margin-bottom: 15px;
 	}
 	.image-wrapper img {
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: cover;          /* 🌟 核心：裁剪铺满，不管原图多大都会被强制裁切到一模一样 */
 		transition: transform 0.3s ease;
 	}
 	.image-wrapper:hover img {
@@ -200,7 +205,7 @@ const recentPosts = allPosts
 		color: #1a1a1a;
 	}
 
-	/* 🌟 核心修改：限制标题为单行，超出显示省略号，解决排版错位 */
+	/* 限制标题为单行，超出显示省略号 */
 	.card-title {
 		font-size: 1.25rem;
 		font-weight: 700;
@@ -229,7 +234,7 @@ const recentPosts = allPosts
 		font-size: 0.95rem;
 		line-height: 1.5;
 		margin: 0 0 20px 0;
-		flex-grow: 1;               /* 🌟 核心：自动填满卡片剩余高度，把按钮顶到最下面 */
+		flex-grow: 1;               /* 自动填满卡片剩余高度，把按钮顶到最下面 */
 		display: -webkit-box;
 		-webkit-line-clamp: 3;      /* 限制描述最多 3 行 */
 		-webkit-box-orient: vertical;
@@ -247,7 +252,7 @@ const recentPosts = allPosts
 		font-size: 0.9rem;
 		font-weight: 500;
 		transition: all 0.2s ease;
-		margin-top: auto;           /* 🌟 核心：确保在最底部对齐 */
+		margin-top: auto;           /* 确保在最底部对齐 */
 	}
 	.read-more-btn:hover {
 		background-color: #1a1a1a;
@@ -272,7 +277,7 @@ const recentPosts = allPosts
 			margin-top: 10px; 
 		}
 		.header-left h2 {
-			font-size: 2rem;        /* 移动端标题稍微缩小一点，更协调 */
+			font-size: 2rem;
 		}
 	}
 </style>
