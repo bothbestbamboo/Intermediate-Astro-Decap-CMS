@@ -42,7 +42,7 @@ const recentPosts = allPosts
 						  })
 						: "";
 
-					// 🌟 安全获取图片路径：如果是对象则取 .src，如果是字符串直接用，没有则用默认图
+					// 安全获取图片路径
 					const imageSrc = post.data.image 
 						? (typeof post.data.image === 'object' ? post.data.image.src : post.data.image)
 						: "/assets/images/default-blog.jpg";
@@ -50,7 +50,8 @@ const recentPosts = allPosts
 					return (
 						<article class="blog-card">
 							<div class="image-wrapper">
-								<a href={`/blog/${post.slug}/`}>
+								{/* 🌟 1. 修改图片链接：post.slug 改为 post.id */}
+								<a href={`/blog/${post.id}/`}>
 									<img 
 										src={imageSrc} 
 										alt={post.data.title}
@@ -67,14 +68,16 @@ const recentPosts = allPosts
 							</div>
 
 							<h3 class="card-title">
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+								{/* 🌟 2. 修改标题链接：post.slug 改为 post.id */}
+								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
 							</h3>
 
 							<p class="card-description">
 								{post.data.description || post.body?.slice(0, 100) + "..."}
 							</p>
 
-							<a href={`/blog/${post.slug}/`} class="read-more-btn">
+							{/* 🌟 3. 修改按钮链接：post.slug 改为 post.id */}
+							<a href={`/blog/${post.id}/`} class="read-more-btn">
 								Read more ↗
 							</a>
 						</article>
