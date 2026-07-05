@@ -2,7 +2,7 @@
 title: About Bothbest Bamboo
 description: factory supplies high-quality, eco-friendly bamboo materials globally, offering custom sizes and structures to meet the precise technical requirements of modern cabinet makers and architectural designers.
 author: bothbest
-date: 2026-07-03T15:42:34.591Z
+date: 2026-07-01T15:42:34.591Z
 image: "@assets/images/blog/about-bothbest.jpg"
 imageAlt: bamboo flooring manufacturing
 isFeatured: true
