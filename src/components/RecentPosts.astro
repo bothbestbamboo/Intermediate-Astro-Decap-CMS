@@ -10,7 +10,7 @@ const recentPosts = allPosts
 		const dateB = b.data.date ? new Date(b.data.date).valueOf() : 0;
 		return dateB - dateA; // 最新发布的排在最前
 	})
-	.slice(0, 3); // 🌟 核心：切片函数，只保留前 3 篇
+	.slice(0, 3); // 只保留前 3 篇
 ---
 
 <section id="recent-blog">
@@ -22,10 +22,10 @@ const recentPosts = allPosts
 			</div>
 			
 			<div class="header-right">
-				<!-- 🌟 核心修复：用 meta-row 把小标题和按钮锁在同一行左右对齐 -->
+				<!-- 用 meta-row 把小标题和按钮锁在同一行左右对齐 -->
 				<div class="meta-row">
 					<span class="sub-title">INDUSTRY LEADERSHIP</span>
-					<a href="/blog/" class="view-all-link">VIEW INSIGHTS ➔</a>
+					<a href="/blog/" class="view-all-link">View insights ➔</a>
 				</div>
 				
 				<!-- 下方的描述文案会自动顺延，绝不会再与按钮重叠 -->
@@ -91,168 +91,105 @@ const recentPosts = allPosts
 	</div>
 </section>
 
-<style>
-
-/* 基础网格与响应式布局 CSS */
-
-#recent-blog {
-
-padding: 60px 0;
-
-background-color: #ffffff;
-
-}
-
-.container {
-
-max-width: 1200px;
-
-margin: 0 auto;
-
-padding: 0 20px;
-
-}
-
-.section-header {
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: flex-start;
-
-flex-wrap: wrap;
-
-gap: 20px;
-
-}
-
-.header-left h2 {
-
-font-size: 2.2rem;
-
-font-weight: 700;
-
-max-width: 500px;
-
-line-height: 1.2;
-
-margin: 0;
-
-color: #1a1a1a;
-
-}
-
-.header-right {
-		max-width: 500px;
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;   /* 让内部元素垂直向下排列 */
+<style lang="less">
+	/* ==========================================================================
+	   容器与头部布局
+	   ========================================================================== */
+	#recent-blog {
+		padding: var(--sectionPadding, 80px 0);
+		background-color: #ffffff;
+		
+		.container {
+			width: 100%;
+			max-width: (1322/16em);
+			margin: 0 auto;
+			padding: 0 (16/16rem);
+			box-sizing: border-box;
+		}
 	}
 
-	/* 🌟 新增：专门为小标题和按钮创建的整齐单行容器 */
+	.section-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: (40/16rem);
+		flex-wrap: wrap;
+	}
+
+	.header-left {
+		flex: 1;
+		min-width: (320/16rem);
+		
+		h2 {
+			font-size: ~"min(2.5rem, 6vw)";
+			font-weight: 800;
+			color: #111111;
+			line-height: 1.2;
+			margin: 0;
+		}
+	}
+
+	.header-right {
+		max-width: (500/16em);
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		
+		p {
+			font-size: (18/16rem);
+			line-height: 1.6;
+			color: #4a4a4a;
+			margin: 0;
+		}
+	}
+
 	.meta-row {
 		display: flex;
-		justify-content: space-between; /* 左右两端对齐 */
-		align-items: center;            /* 垂直居中对齐 */
+		justify-content: space-between;
+		align-items: center;
 		width: 100%;
-		margin-bottom: 12px;            /* 与下方描述文字拉开距离 */
+		margin-bottom: (12/16rem);
 	}
 
 	.sub-title {
-		font-size: 1.1rem;
+		font-size: (16/16rem);
 		font-weight: 700;
 		color: #333333;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		margin: 0;                      /* 清除默认间距 */
+		margin: 0;
 	}
 
-     .view-all-link {
-		background-color: #a3e635;  /* 初始荧光绿背景 */
-		color: #111111 !important;   /* 初始文字为深色 */
-		text-decoration: none;
-		font-weight: 700;
-		font-size: 0.85rem;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		
-		/* 规范的按钮内边距 */
-		padding: 8px 16px;
-		border-radius: 4px;
-		display: inline-flex;
-		align-items: center;
-		gap: 6px;
-		
-		position: relative; 
-		overflow: hidden;
-		z-index: 1;                  
-		
-		/* 缩短过渡时间，防止手机端产生残影 */
-		transition: background-color 0.2s ease, color 0.2s ease;
+	.section-divider {
+		border: 0;
+		height: 1px;
+		background-color: #e5e7eb;
+		margin: (40/16rem) 0;
 	}
 
-	/* 🌟 核心修复：只有在支持鼠标指针的设备（电脑端）上，才加载滑进变黑特效 */
-	@media (hover: hover) and (pointer: fine) {
-		 .view-all-link {
-		/* 🌟 1. 严格对齐你主按钮的高度与内边距 */
-		font-size: (16/16rem);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		text-decoration: none;
-		
-		/* 核心对齐：标准的 46px/48px 高度规格（上下 12px，左右 24px） */
-		padding: (12/16rem) (24/16rem);
-		background-color: #a3e635;  /* 基础荧光绿 */
-		color: #111111 !important;   /* 初始黑色文字 */
-		border-radius: 4px;
-		
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 6px;
-		
-		position: relative; 
-		overflow: hidden;
-		z-index: 1;                  
-		
-		/* 文字变白的过渡，完美匹配原生手感 */
-		transition: color 0.3s ease;
-	}
-
-	/* 🌟 2. 完美的隐藏滑动黑块：完全复刻 VIEW ALL PRODUCTS 的动画层基础 */
 	/* ==========================================================================
-	   VIEW INSIGHTS 按钮：完美像素级对齐 + 丝滑无漏洞版
+	   VIEW INSIGHTS 高级按钮 (100% 闭合安全版)
 	   ========================================================================== */
 	.view-all-link {
-		/* 严格对齐主按钮的高度与内边距 */
 		font-size: (16/16rem);
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		text-decoration: none;
-		
-		/* 核心对齐：标准的宽高比例，上下 12px，左右 24px */
 		padding: (12/16rem) (24/16rem);
-		background-color: #a3e635;  /* 基础荧光绿 */
-		color: #111111 !important;   /* 初始黑色文字 */
+		background-color: #a3e635;
+		color: #111111 !important;
 		border-radius: 4px;
-		
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		gap: 6px;
-		
 		position: relative; 
 		overflow: hidden;
 		z-index: 1;                  
-		
-		/* 文字变白的过渡曲线 */
 		transition: color 0.3s ease;
 	}
 
-	/* 隐藏的圆形/中心向外膨胀滑动黑块 */
 	.view-all-link::before {
 		content: '';
 		position: absolute;
@@ -260,17 +197,14 @@ color: #1a1a1a;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: #111111;   /* 悬停时的纯黑底色 */
+		background-color: #111111;
 		z-index: -1;                 
-		
 		transform: scale(0);
 		border-radius: 4px;
-		
-		/* 严格匹配原生吸附反馈的贝塞尔曲线 */
 		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	/* 🌟 电脑端独立悬停（带完整的闭合括号） */
+	/* 电脑端悬停：黑块膨胀 */
 	@media (hover: hover) and (pointer: fine) {
 		.view-all-link:hover {
 			color: #ffffff !important;   
@@ -278,9 +212,9 @@ color: #1a1a1a;
 		.view-all-link:hover::before {
 			transform: scale(1);
 		}
-	} /* <--- 确保此处的媒体查询闭合 */
+	}
 
-	/* 🌟 手机端触摸优化（带完整的闭合括号） */
+	/* 手机端触摸优化 */
 	@media (hover: none) or (pointer: coarse) {
 		.view-all-link::before {
 			display: none !important;
@@ -289,285 +223,119 @@ color: #1a1a1a;
 			background-color: #111111 !important;
 			color: #ffffff !important;
 		}
-	} /* <--- 确保此处的媒体查询闭合 */
-
-.section-divider {
-
-border: 0;
-
-height: 1px;
-
-background-color: #cbd5e1;
-
-margin: 30px 0;
-
-}
-
-.blog-grid {
-
-display: grid;
-
-grid-template-columns: repeat(3, 1fr);
-
-gap: 30px;
-
-}
-
-@media (max-width: 992px) {
-
-.blog-grid { grid-template-columns: repeat(2, 1fr); }
-
-}
-
-@media (max-width: 768px) {
-
-.blog-grid { grid-template-columns: 1fr; }
-
-.view-all-link { position: static; display: inline-block; margin-top: 10px; }
-
-}
-
-.blog-card {
-
-display: flex;
-
-flex-direction: column;
-
-}
-
-.image-wrapper {
-
-width: 100%;
-
-border-radius: 12px;
-
-overflow: hidden;
-
-aspect-ratio: 16 / 9;
-
-margin-bottom: 15px;
-
-}
-
-.image-wrapper img {
-
-width: 100%;
-
-height: 100%;
-
-object-fit: cover;
-
-transition: transform 0.3s ease;
-
-}
-
-.image-wrapper:hover img {
-
-transform: scale(1.05);
-
-}
-
-.card-meta {
-
-display: flex;
-
-align-items: center;
-
-gap: 15px;
-
-margin-bottom: 10px;
-
-font-size: 0.85rem;
-
-color: #64748b;
-
-}
-
-.category-badge {
-
-border: 1px solid #1a1a1a;
-
-padding: 2px 10px;
-
-border-radius: 20px;
-
-text-transform: uppercase;
-
-font-size: 0.75rem;
-
-font-weight: 600;
-
-color: #1a1a1a;
-
-}
-
-.card-title {
-
-font-size: 1.3rem;
-
-font-weight: 700;
-
-margin: 0 0 10px 0;
-
-line-height: 1.3;
-
-}
-
-.card-title a {
-
-color: #1a1a1a;
-
-text-decoration: none;
-
-}
-
-.card-title a:hover {
-
-color: #7ca922;
-
-}
-
-.card-description {
-
-color: #475569;
-
-font-size: 0.95rem;
-
-line-height: 1.5;
-
-margin: 0 0 15px 0;
-
-display: -webkit-box;
-
--webkit-line-clamp: 3;
-
--webkit-box-orient: vertical;
-
-overflow: hidden;
-
-}
-
-.read-more-btn {
-
-align-self: flex-start;
-
-border: 1px solid #1a1a1a;
-
-padding: 6px 18px;
-
-border-radius: 6px;
-
-color: #1a1a1a;
-
-text-decoration: none;
-
-font-size: 0.9rem;
-
-font-weight: 500;
-
-transition: all 0.2s ease;
-
-}
-
-.read-more-btn:hover {
-
-background-color: #1a1a1a;
-
-color: #ffffff;
-
-}
-
-    /* 优化新博客区域的整体标题和文本大小 */
-
-    #recent-blog {
-
-        padding: 60px 0; /* 顺便给上下留出足够的呼吸空间 */
-
-    }
-
-
-
-    /* 1. 让左侧的主标题更大、更粗、更有分量 */
-
-        #recent-blog .header-left h2 {
-
-        font-size: 2.5rem;          /* 显著放大字号，向FAQ看齐 */
-
-        font-weight: 800;           /* 极粗体，提升视觉冲击力 */
-
-        line-height: 1.2;
-
-        color: #111111;             /* 保证颜色足够深 */
-
-        letter-spacing: -0.02em;    /* 大标题稍微紧凑一点更好看 */
-
-        margin: 0;
-
-    }
-
-
-
-    /* 2. 优化右侧的小标题 "Our Blog" */
-
-        #recent-blog .header-right .sub-title {
-
-        font-size: 1.1rem;
-
-        font-weight: 700;
-
-        text-transform: uppercase;  /* 保持大写风格 */
-
-        letter-spacing: 0.05em;
-
-        color: #333;
-
-    }
-
-
-
-    /* 3. 放大右侧的简介文本 */
-
-        #recent-blog .header-right p {
-
-        font-size: 1.125rem;        /* 调整到 18px 左右，更易读 */
-
-        line-height: 1.6;
-
-        color: #4a4a4a;             /* 稍微加深一点颜色，提升对比度 */
-
-        margin: 8px 0 15px 0;
-
-    }
-
-
-
-    /* 4. 顺便让 "All news ➔" 链接也更清晰醒目 */
-
-        #recent-blog .view-all-link {
-
-        font-size: 1.05rem;
-
-        font-weight: 600;
-    }
-    /* 强制博客卡片标题单行显示，超出部分变省略号（安全不撑开卡片版） */
-#recent-blog .card-title {
-  /* 🌟 核心修复：用这个组合来实现单行截断，绝对不会撑大卡片宽度 */
-  display: -webkit-box !important;
-  -webkit-line-clamp: 1 !important; /* 严格限制只显示 1 行 */
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  
-  /* 基础样式保持不变 */
-  font-size: 1.25rem;         
-  font-weight: 700;
-  margin: 10px 0;
-  line-height: 1.4;
-}
-
-/* 保证里面的 <a> 标签行为正常 */
-#recent-blog .card-title a {
-  display: inline !important; /* 改为 inline，让父级控制截断 */
-  color: inherit;
-  text-decoration: none;
-}
-</style> 
+	}
+
+	/* ==========================================================================
+	   博客卡片网格与卡片标题单行截断
+	   ========================================================================== */
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax((320/16rem), 1fr));
+		gap: (30/16rem);
+	}
+
+	.blog-card {
+		display: flex;
+		flex-direction: column;
+		background: #ffffff;
+		
+		.image-wrapper {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			overflow: hidden;
+			border-radius: 12px;
+			margin-bottom: (16/16rem);
+			
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.3s ease;
+			}
+		}
+		
+		&:hover .image-wrapper img {
+			transform: scale(1.05);
+		}
+	}
+
+	.card-meta {
+		display: flex;
+		align-items: center;
+		gap: (12/16rem);
+		margin-bottom: (8/16rem);
+		font-size: (14/16rem);
+		color: #666666;
+		
+		.category-badge {
+			background-color: #f3f4f6;
+			padding: (4/16rem) (8/16rem);
+			border-radius: 4px;
+			font-weight: 600;
+		}
+	}
+
+	/* 多行截断安全机制：确保单行并带省略号，杜绝挤压图片 */
+	.card-title {
+		display: -webkit-box !important;
+		-webkit-line-clamp: 1 !important;
+		-webkit-box-orient: vertical !important;
+		overflow: hidden !important;
+		font-size: (20/16rem);         
+		font-weight: 700;
+		margin: (10/16rem) 0;
+		line-height: 1.4;
+		
+		a {
+			display: inline !important;
+			color: #111111;
+			text-decoration: none;
+			&:hover {
+				color: #a3e635;
+			}
+		}
+	}
+
+	.card-description {
+		font-size: (16/16rem);
+		line-height: 1.5;
+		color: #666666;
+		margin: 0 0 (16/16rem) 0;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.read-more-btn {
+		font-size: (16/16rem);
+		font-weight: 600;
+		color: #111111;
+		text-decoration: none;
+		margin-top: auto;
+		display: inline-flex;
+		align-items: center;
+		transition: color 0.2s ease;
+		
+		&:hover {
+			color: #a3e635;
+		}
+	}
+
+	/* 暗黑模式暗流适配 */
+	body.dark-mode {
+		#recent-blog {
+			background-color: #111111;
+			.header-left h2, .sub-title, .header-right p, .card-title a, .read-more-btn {
+				color: #ffffff;
+			}
+			.section-divider {
+				background-color: #333333;
+			}
+			.card-meta .category-badge {
+				background-color: #222222;
+				color: #aaaaaa;
+			}
+		}
+	}
+</style>
