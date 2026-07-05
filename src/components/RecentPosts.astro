@@ -86,7 +86,9 @@ const recentPosts = allPosts
 </section>
 
 <style>
-	/* 基础网格与响应式布局 CSS */
+	/* ==========================================================================
+	   1. 基础布局与头部区域 (优化后：向 FAQ 的字号与视觉分量看齐)
+	   ========================================================================== */
 	#recent-blog {
 		padding: 60px 0;
 		background-color: #ffffff;
@@ -104,27 +106,38 @@ const recentPosts = allPosts
 		gap: 20px;
 	}
 	.header-left h2 {
-		font-size: 2.2rem;
-		font-weight: 700;
-		max-width: 500px;
+		font-size: 2.5rem;          /* 放大字号，对齐 FAQ */
+		font-weight: 800;           /* 极粗体，提升大气感 */
+		max-width: 550px;
 		line-height: 1.2;
 		margin: 0;
-		color: #1a1a1a;
+		color: #111111;             /* 加深颜色 */
+		letter-spacing: -0.02em;
 	}
 	.header-right {
 		max-width: 500px;
 		position: relative;
 	}
 	.sub-title {
+		font-size: 1.1rem;          /* 优化小标题 */
 		font-weight: 700;
-		color: #1a1a1a;
+		color: #333333;
+		text-transform: uppercase;  /* 保持大写风格 */
+		letter-spacing: 0.05em;
 		display: block;
 		margin-bottom: 5px;
 	}
+	.header-right p {
+		font-size: 1.125rem;        /* 放大描述语到 18px，更清晰易读 */
+		line-height: 1.6;
+		color: #4a4a4a;             /* 适当加深，提升对比度 */
+		margin: 8px 0 15px 0;
+	}
 	.view-all-link {
-		color: #7ca922; /* 匹配您的企业绿 */
+		color: #7ca922;             /* 匹配企业绿 */
 		text-decoration: none;
 		font-weight: 600;
+		font-size: 1.05rem;         /* 略微放大链接 */
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -135,22 +148,24 @@ const recentPosts = allPosts
 		background-color: #cbd5e1;
 		margin: 30px 0;
 	}
+
+	/* ==========================================================================
+	   2. 博客网格布局 (控制卡片等高与对齐)
+	   ========================================================================== */
 	.blog-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 30px;
 	}
-	@media (max-width: 992px) {
-		.blog-grid { grid-template-columns: repeat(2, 1fr); }
-	}
-	@media (max-width: 768px) {
-		.blog-grid { grid-template-columns: 1fr; }
-		.view-all-link { position: static; display: inline-block; margin-top: 10px; }
-	}
 	.blog-card {
 		display: flex;
-		flex-direction: column;
+		flex-direction: column;     /* 垂直排列内部元素 */
+		height: 100%;               /* 🌟 核心：让所有卡片完全等高 */
 	}
+
+	/* ==========================================================================
+	   3. 卡片内部元素样式 (图片、标题、简介与按钮)
+	   ========================================================================== */
 	.image-wrapper {
 		width: 100%;
 		border-radius: 12px;
@@ -184,29 +199,44 @@ const recentPosts = allPosts
 		font-weight: 600;
 		color: #1a1a1a;
 	}
+
+	/* 🌟 核心修改：限制标题为单行，超出显示省略号，解决排版错位 */
 	.card-title {
-		font-size: 1.3rem;
+		font-size: 1.25rem;
 		font-weight: 700;
 		margin: 0 0 10px 0;
-		line-height: 1.3;
+		line-height: 1.4;
+		display: block;
+		white-space: nowrap;        /* 强制不换行 */
+		overflow: hidden;           /* 溢出隐藏 */
+		text-overflow: ellipsis;    /* 超出变省略号 ... */
 	}
 	.card-title a {
 		color: #1a1a1a;
 		text-decoration: none;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	.card-title a:hover {
 		color: #7ca922;
 	}
+
+	/* 简介文本：自动撑开剩余空间，并限制最多显示 3 行 */
 	.card-description {
 		color: #475569;
 		font-size: 0.95rem;
 		line-height: 1.5;
-		margin: 0 0 15px 0;
+		margin: 0 0 20px 0;
+		flex-grow: 1;               /* 🌟 核心：自动填满卡片剩余高度，把按钮顶到最下面 */
 		display: -webkit-box;
-		-webkit-line-clamp: 3;
+		-webkit-line-clamp: 3;      /* 限制描述最多 3 行 */
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
+
+	/* 按钮样式：始终在卡片最底部水平对齐 */
 	.read-more-btn {
 		align-self: flex-start;
 		border: 1px solid #1a1a1a;
@@ -217,46 +247,32 @@ const recentPosts = allPosts
 		font-size: 0.9rem;
 		font-weight: 500;
 		transition: all 0.2s ease;
+		margin-top: auto;           /* 🌟 核心：确保在最底部对齐 */
 	}
 	.read-more-btn:hover {
 		background-color: #1a1a1a;
 		color: #ffffff;
 	}
-    /* 优化新博客区域的整体标题和文本大小 */
-    #recent-blog {
-        padding: 60px 0; /* 顺便给上下留出足够的呼吸空间 */
-    }
 
-    /* 1. 让左侧的主标题更大、更粗、更有分量 */
-        #recent-blog .header-left h2 {
-        font-size: 2.5rem;          /* 显著放大字号，向FAQ看齐 */
-        font-weight: 800;           /* 极粗体，提升视觉冲击力 */
-        line-height: 1.2;
-        color: #111111;             /* 保证颜色足够深 */
-        letter-spacing: -0.02em;    /* 大标题稍微紧凑一点更好看 */
-        margin: 0;
-    }
-
-    /* 2. 优化右侧的小标题 "Our Blog" */
-        #recent-blog .header-right .sub-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        text-transform: uppercase;  /* 保持大写风格 */
-        letter-spacing: 0.05em;
-        color: #333;
-    }
-
-    /* 3. 放大右侧的简介文本 */
-        #recent-blog .header-right p {
-        font-size: 1.125rem;        /* 调整到 18px 左右，更易读 */
-        line-height: 1.6;
-        color: #4a4a4a;             /* 稍微加深一点颜色，提升对比度 */
-        margin: 8px 0 15px 0;
-    }
-
-    /* 4. 顺便让 "All news ➔" 链接也更清晰醒目 */
-        #recent-blog .view-all-link {
-        font-size: 1.05rem;
-        font-weight: 600;
-    }
+	/* ==========================================================================
+	   4. 响应式断点 (适配平板和手机端)
+	   ========================================================================== */
+	@media (max-width: 992px) {
+		.blog-grid { 
+			grid-template-columns: repeat(2, 1fr); 
+		}
+	}
+	@media (max-width: 768px) {
+		.blog-grid { 
+			grid-template-columns: 1fr; 
+		}
+		.view-all-link { 
+			position: static; 
+			display: inline-block; 
+			margin-top: 10px; 
+		}
+		.header-left h2 {
+			font-size: 2rem;        /* 移动端标题稍微缩小一点，更协调 */
+		}
+	}
 </style>
