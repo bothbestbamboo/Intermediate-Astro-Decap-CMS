@@ -25,21 +25,18 @@ const relatedProducts = allProducts
 // 2. 渲染原始的 Markdown 内容
 const { Content: OriginalContent, headings } = await render(product);
 
-// 3. 🌟 创造一个伪装的“新 Content 组件”，强行把我们的商务元素和布局组装进博客正文轨道！
-const CustomProductContent =  OriginalContent;
+// 3. 创造一个安全的保底文本，防止 Image 组件报错
+const globalFallbackAlt = product.data.title || "Bothbest Premium Bamboo Product";
 ---
 
 <BlogPostLayout post={product} headings={headings}>
 	
-	<!-- 🌟 正文部分：完全回归原有排版 -->
+	<!-- 正文部分：完全回归原有排版 -->
 	<div class="product-custom-body-wrapper">
-		<CustomProductContent />
+		<OriginalContent />
 	</div>
 
-	<!-- 🌟 在正文正下方（属于博客主体左栏内），插入右侧询盘模块的移动端适配以及底部相关产品 -->
-	<!-- 这样能保证整体布局与原博客完美一致，同时解决右侧多余红框的突兀感 -->
-
-	<!-- 额外右侧挂载：我们通过原生脚本把这个高转化询盘卡片塞到右侧 Table of Contents 目录的下方 -->
+	<!-- 额外右侧挂载：通过原生脚本把这个高转化询盘卡片塞到右侧 Table of Contents 目录的下方 -->
 	<div id="factory-inquiry-source" class="cs-hidden-teleport" style="display: none;">
 		<div class="sidebar-card inquiry-card">
 			<h3>Interested in this Product?</h3>
@@ -61,20 +58,26 @@ const CustomProductContent =  OriginalContent;
 		)}
 	</div>
 
-	<!-- 🌟 下方相关产品推荐（修复满屏问题，限制最大 3 列网格） -->
+	<!-- 下方相关产品推荐（修复满屏问题，限制最大 3 列网格，并对图片属性进行彻底的纯 HTML 安全解耦） -->
 	{relatedProducts.length > 0 && (
 		<div class="related-products-section-fixed">
 			<hr class="related-divider-fixed" />
 			<h3 class="related-section-title-fixed">Related Bamboo Products</h3>
 			<div class="related-grid-fixed">
 				{relatedProducts.map((item) => {
+					// 🌟 核心防错：智能解析图片路径，无论是对象还是普通字符串
 					const itemImage = item.data.image 
 						? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
 						: "/assets/images/default-product.jpg";
+					
+					// 🌟 核心防错：这里绝不能留空，必须给一个坚固的保底字符串
+					const itemAlt = item.data.imageAlt || item.data.title || "Bothbest Bamboo Factory Product";
+					
 					return (
 						<div class="related-card-fixed">
+							<!-- 🌟 此处改用原生 <img> 配合解耦后的 itemAlt，彻底绕过 Astro 编译期对特定组件的强校验 -->
 							<a href={`/products/${item.id}/`} class="img-link-fixed">
-								<img src={itemImage} alt={item.data.title} loading="lazy" />
+								<img src={itemImage} alt={itemAlt} loading="lazy" />
 							</a>
 							<div class="related-info-fixed">
 								<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
@@ -88,23 +91,21 @@ const CustomProductContent =  OriginalContent;
 	)}
 </BlogPostLayout>
 
-<!-- 🌟 巧妙的传送门脚本：把询盘组件和分类组件无缝塞到右侧侧边栏中，排在 Quick Navigation 的下面 -->
+<!-- 巧妙的传送门脚本：把询盘组件和分类组件无缝塞到右侧侧边栏中，排在 Quick Navigation 的下面 -->
 <script is:inline>
 	function teleportInquiry() {
 		const source = document.getElementById('factory-inquiry-source');
-		const desktopSidebar = document.getElementById('desktop-toc'); // 对应博客右侧目录容器
+		const desktopSidebar = document.getElementById('desktop-toc'); 
 		
 		if (source && desktopSidebar) {
-			// 创建一个容器挂载到右侧目录组件下方
 			const wrapper = document.createElement('div');
 			wrapper.className = 'teleported-sidebar-wrapper';
 			wrapper.innerHTML = source.innerHTML;
 			desktopSidebar.parentNode.insertBefore(wrapper, desktopSidebar.nextSibling);
 		}
 	}
-	// 确保在 Astro 页面加载完成后执行
 	document.addEventListener('astro:page-load', teleportInquiry);
-	teleportInquiry(); // 兜底初次渲染
+	teleportInquiry(); 
 </script>
 
 <style lang="less" is:global>
@@ -114,7 +115,7 @@ const CustomProductContent =  OriginalContent;
 	.related-products-section-fixed {
 		margin-top: 50px;
 		width: 100%;
-		max-width: 795px; /* 严格对齐左侧文章最大宽度，防止撑开 */
+		max-width: 795px; 
 		clear: both;
 
 		.related-divider-fixed {
@@ -133,7 +134,6 @@ const CustomProductContent =  OriginalContent;
 
 		.related-grid-fixed {
 			display: grid;
-			/* 🌟 核心：限定死最多 3 列，最小 220px，多余空间留白，绝不放大满屏 */
 			grid-template-columns: repeat(3, minmax(200px, 1fr)); 
 			gap: 20px;
 
@@ -157,7 +157,7 @@ const CustomProductContent =  OriginalContent;
 
 			.img-link-fixed {
 				width: 100%;
-				aspect-ratio: 4 / 3; /* 确保图片比例永远是优美的 4:3 */
+				aspect-ratio: 4 / 3; 
 				overflow: hidden;
 				display: block;
 				background-color: #f3f4f6;
@@ -247,7 +247,6 @@ const CustomProductContent =  OriginalContent;
 		}
 	}
 
-	/* 暗黑模式适配 */
 	body.dark-mode {
 		.teleported-sidebar-wrapper {
 			.sidebar-card { background: #1a1a1a; border-color: #333333; }
