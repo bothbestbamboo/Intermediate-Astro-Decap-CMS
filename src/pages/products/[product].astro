@@ -1,6 +1,13 @@
 ---
 import { getCollection, render } from "astro:content";
-import BlogPostLayout from "@layouts/BlogPostLayout.astro";
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
+import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// 🌟 引入原来的博客 Markdown 精美排版样式，确保正文排版和之前一模一样！
+import "@styles/markdown.less";
 
 export async function getStaticPaths() {
 	const products = await getCollection("products");
@@ -11,26 +18,11 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+const { title, description, image, imageAlt, tags, author = "Admin" } = product.data;
 
-// 1. 筑起最强防线：克隆并重构 product 对象，强行在 data 内部塞入 BaseLayout 所需的所有图片相关属性
-// 这样无论 BaseLayout 内部读取的是 .alt、.imageAlt 还是 .title，都绝对不会落空
-const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Factory Product";
-
-const secureProduct = {
-	...product,
-	data: {
-		...product.data,
-		// 强力对齐：为可能引发报错的属性赋予 100% 存在的值
-		imageAlt: safeAltText,
-		alt: safeAltText,
-		title: product.data.title || "Bothbest Bamboo Product",
-		tags: product.data.tags || ["Products"]
-	}
-};
-
-// 2. 获取所有产品并筛选出相同标签的相关推荐（最多 3 个）
+// 1. 获取所有产品，用来做底部的相关产品推荐（最多 3 个）
 const allProducts = await getCollection("products");
-const currentTags = secureProduct.data.tags;
+const currentTags = tags || ["Products"];
 const relatedProducts = allProducts
 	.filter((item) => {
 		const hasCommonTag = item.data.tags?.some(tag => currentTags.includes(tag));
@@ -38,95 +30,183 @@ const relatedProducts = allProducts
 	})
 	.slice(0, 3);
 
-// 3. 渲染原始的 Markdown 内容
-const { Content: OriginalContent, headings } = await render(secureProduct);
+// 2. 正确渲染当前产品的 Markdown 核心内容
+const { Content, headings } = await render(product);
+
+// 3. 彻底防崩溃：安全解析图片路径
+const productImageSrc = image 
+	? (typeof image === 'object' ? image.src : image)
+	: "/assets/images/default-product.jpg";
+
+const safeAltText = imageAlt || title || "Bothbest Bamboo Factory Product";
 ---
 
-<!-- 🌟 关键修正：这里必须传入我们重构过的 secureProduct，确保透传给 BaseLayout 的数据里包含 alt 属性 -->
-<BlogPostLayout post={secureProduct} headings={headings}>
+<BaseLayout title={title} description={description || "Bothbest Premium Bamboo Product"} heroImage={image}>
 	
-	<!-- 正文部分：完全回归原有排版 -->
-	<div class="product-custom-body-wrapper">
-		<OriginalContent />
-	</div>
-
-	<!-- 额外右侧挂载：通过原生脚本把这个高转化询盘卡片塞到右侧 Table of Contents 目录的下方 -->
-	<div id="factory-inquiry-source" class="cs-hidden-teleport" style="display: none;">
-		<div class="sidebar-card inquiry-card">
-			<h3>Interested in this Product?</h3>
-			<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
-			<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
-				Inquire Now ➔
-			</a>
-		</div>
-
-		{currentTags.length > 0 && (
-			<div class="sidebar-card tags-card">
-				<h4>Product Categories</h4>
-				<div class="sidebar-tags-list">
-					{currentTags.map((tag) => (
-						<span class="sidebar-tag-item">{tag}</span>
-					))}
-				</div>
-			</div>
-		)}
-	</div>
-
-	<!-- 下方相关产品推荐（严格网格防满屏，原生 img 标签防错） -->
-	{relatedProducts.length > 0 && (
-		<div class="related-products-section-fixed">
-			<hr class="related-divider-fixed" />
-			<h3 class="related-section-title-fixed">Related Bamboo Products</h3>
-			<div class="related-grid-fixed">
-				{relatedProducts.map((item) => {
-					const itemImage = item.data.image 
-						? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
-						: "/assets/images/default-product.jpg";
-					
-					const itemAlt = item.data.imageAlt || item.data.title || "Bothbest Bamboo Factory Product";
-					
-					return (
-						<div class="related-card-fixed">
-							<a href={`/products/${item.id}/`} class="img-link-fixed">
-								<img src={itemImage} alt={itemAlt} loading="lazy" />
-							</a>
-							<div class="related-info-fixed">
-								<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
-								<a href={`/products/${item.id}/`} class="view-detail-link-fixed">View Details ↗</a>
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		</div>
-	)}
-</BlogPostLayout>
-
-<!-- 巧妙的传送门脚本 -->
-<script is:inline>
-	function teleportInquiry() {
-		const source = document.getElementById('factory-inquiry-source');
-		const desktopSidebar = document.getElementById('desktop-toc'); 
+	<div class="blog-container product-layout-mode">
 		
-		if (source && desktopSidebar) {
-			const wrapper = document.createElement('div');
-			wrapper.className = 'teleported-sidebar-wrapper';
-			wrapper.innerHTML = source.innerHTML;
-			desktopSidebar.parentNode.insertBefore(wrapper, desktopSidebar.nextSibling);
-		}
-	}
-	document.addEventListener('astro:page-load', teleportInquiry);
-	teleportInquiry(); 
-</script>
+		<section class="main-content">
+			<article class="blog-article">
+				
+				<header class="blog-header">
+					<span class="prod-tag-top-fixed">{currentTags[0]}</span>
+					<h1 class="blog-h1">{title}</h1>
+					<div class="blog-authorGroup">
+						<picture class="blog-author-img">
+							<Icon name="profile" width="32" height="32" />
+						</picture>
+						<span class="blog-author">{author}</span>
+					</div>
+				</header>
+
+				{productImageSrc && (
+					<picture class="blog-mainImage">
+						<img src={productImageSrc} alt={safeAltText} decoding="async" />
+					</picture>
+				)}
+
+				<div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
+					<TableOfContents headings={headings} levels={3} />
+				</div>
+
+				<div id="blog-content">
+					<Content />
+				</div>
+			</article>
+
+			{relatedProducts.length > 0 && (
+				<div class="related-products-section-fixed">
+					<hr class="related-divider-fixed" />
+					<h3 class="related-section-title-fixed">Related Bamboo Products</h3>
+					<div class="related-grid-fixed">
+						{relatedProducts.map((item) => {
+							const itemImage = item.data.image 
+								? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
+								: "/assets/images/default-product.jpg";
+							const itemAlt = item.data.imageAlt || item.data.title || "Bothbest Bamboo Product";
+							return (
+								<div class="related-card-fixed">
+									<a href={`/products/${item.id}/`} class="img-link-fixed">
+										<img src={itemImage} alt={itemAlt} loading="lazy" />
+									</a>
+									<div class="related-info-fixed">
+										<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
+										<a href={`/products/${item.id}/`} class="view-detail-link-fixed">View Details ↗</a>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			)}
+		</section>
+
+		<aside class="blog-sidebar">
+			
+			<div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
+				<TableOfContents headings={headings} levels={3} />
+			</div>
+
+			<div class="product-sidebar-card inquiry-card">
+				<h3>Interested in this Product?</h3>
+				<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
+				<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
+					Inquire Now ➔
+				</a>
+			</div>
+
+			{currentTags.length > 0 && (
+				<div class="product-sidebar-card tags-card">
+					<h4>Product Categories</h4>
+					<div class="sidebar-tags-list">
+						{currentTags.map((tag) => (
+							<span class="sidebar-tag-item">{tag}</span>
+						))}
+					</div>
+				</div>
+			)}
+
+			<div class="blog-sidebar_widget-wrapper">
+				<FeaturedPost />
+			</div>
+		</aside>
+	</div>
+
+	<CTA />
+</BaseLayout>
 
 <style lang="less" is:global>
 	/* ==========================================================================
-	   相关产品卡片防满屏修正
+	   对齐原有博客骨架样式体系
+	   ========================================================================== */
+	.product-layout-mode {
+		.prod-tag-top-fixed {
+			font-size: 13px;
+			font-weight: 700;
+			color: #a3e635; /* 工厂专属嫩绿 */
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+
+		/* 强化主图内原生 img 的表现 */
+		.blog-mainImage img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	/* ==========================================================================
+	   右侧专属于产品的卡片组件样式
+	   ========================================================================== */
+	.product-sidebar-card {
+		background: #f9fafb;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		padding: 24px;
+		margin-bottom: 24px;
+		box-sizing: border-box;
+	}
+
+	.inquiry-card {
+		border-left: 4px solid #a3e635;
+		h3 { font-size: 17px; font-weight: 700; color: #111111; margin: 0 0 10px 0; }
+		p { font-size: 13px; line-height: 1.5; color: #666666; margin: 0 0 18px 0; }
+		
+		.sidebar-inquiry-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			padding: 11px;
+			background-color: #111111;
+			color: #ffffff !important;
+			font-size: 12px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			text-decoration: none;
+			border-radius: 4px;
+			transition: background-color 0.3s ease;
+			&:hover { background-color: #a3e635; color: #111111 !important; }
+		}
+	}
+
+	.tags-card {
+		h4 { font-size: 13px; font-weight: 700; color: #111111; margin: 0 0 12px 0; text-transform: uppercase; }
+		.sidebar-tags-list { display: flex; flex-wrap: wrap; gap: 6px; }
+		.sidebar-tag-item { font-size: 11px; font-weight: 600; background-color: #ffffff; border: 1px solid #e5e7eb; color: #4a4a4a; padding: 5px 9px; border-radius: 4px; }
+	}
+
+	/* ==========================================================================
+	   底部相关推荐卡片防满屏、防变形修正（强制 3 列网格）
 	   ========================================================================== */
 	.related-products-section-fixed {
 		margin-top: 50px;
 		width: 100%;
-		max-width: 795px; 
+		max-width: 795px; /* 严格缩在左侧正文最大宽度内，绝不撑满全屏 */
 		clear: both;
 
 		.related-divider-fixed {
@@ -145,11 +225,12 @@ const { Content: OriginalContent, headings } = await render(secureProduct);
 
 		.related-grid-fixed {
 			display: grid;
-			grid-template-columns: repeat(3, minmax(200px, 1fr)); 
+			/* 🌟 锁死最多 3 列，每个组件自适应但绝不超过 1/3 */
+			grid-template-columns: repeat(3, minmax(180px, 1fr)); 
 			gap: 20px;
 
 			@media (max-width: 767px) {
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 			}
 		}
 
@@ -161,23 +242,15 @@ const { Content: OriginalContent, headings } = await render(secureProduct);
 			display: flex;
 			flex-direction: column;
 			transition: transform 0.3s ease;
-
-			&:hover {
-				transform: translateY(-4px);
-			}
+			&:hover { transform: translateY(-4px); }
 
 			.img-link-fixed {
 				width: 100%;
-				aspect-ratio: 4 / 3; 
+				aspect-ratio: 4 / 3; /* 限制图片永远保持完美黄金比例，不拉伸 */
 				overflow: hidden;
 				display: block;
 				background-color: #f3f4f6;
-
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-				}
+				img { width: 100%; height: 100%; object-fit: cover; }
 			}
 
 			.related-info-fixed {
@@ -185,86 +258,27 @@ const { Content: OriginalContent, headings } = await render(secureProduct);
 				display: flex;
 				flex-direction: column;
 				flex: 1;
-
 				h4 {
 					font-size: 14px;
 					font-weight: 700;
 					margin: 0 0 8px 0;
 					line-height: 1.4;
-					
-					a {
-						color: var(--headerColor, #111111);
-						text-decoration: none;
-						&:hover { color: #a3e635; }
-					}
+					a { color: var(--headerColor, #111111); text-decoration: none; &:hover { color: #a3e635; } }
 				}
-
-				.view-detail-link-fixed {
-					font-size: 12px;
-					font-weight: 600;
-					color: #666666;
-					text-decoration: none;
-					margin-top: auto;
-					&:hover { color: #a3e635; }
-				}
+				.view-detail-link-fixed { font-size: 12px; font-weight: 600; color: #666666; text-decoration: none; margin-top: auto; &:hover { color: #a3e635; } }
 			}
 		}
 	}
 
 	/* ==========================================================================
-	   被传送到右侧边栏的工厂询盘及分类样式
+	   暗黑模式完美兼容
 	   ========================================================================== */
-	.teleported-sidebar-wrapper {
-		margin-top: 30px;
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-
-		.sidebar-card {
-			background: #f9fafb;
-			border: 1px solid #e5e7eb;
-			border-radius: 8px;
-			padding: 22px;
-			box-sizing: border-box;
-		}
-
-		.inquiry-card {
-			border-left: 4px solid #a3e635;
-			h3 { font-size: 16px; font-weight: 700; color: #111111; margin: 0 0 10px 0; }
-			p { font-size: 13px; line-height: 1.5; color: #666666; margin: 0 0 16px 0; }
-			
-			.sidebar-inquiry-btn {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				padding: 10px;
-				background-color: #111111;
-				color: #ffffff !important;
-				font-size: 12px;
-				font-weight: 700;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-				text-decoration: none;
-				border-radius: 4px;
-				&:hover { background-color: #a3e635; color: #111111 !important; }
-			}
-		}
-
-		.tags-card {
-			h4 { font-size: 13px; font-weight: 700; color: #111111; margin: 0 0 12px 0; text-transform: uppercase; }
-			.sidebar-tags-list { display: flex; flex-wrap: wrap; gap: 6px; }
-			.sidebar-tag-item { font-size: 11px; font-weight: 600; background-color: #ffffff; border: 1px solid #e5e7eb; color: #4a4a4a; padding: 4px 8px; border-radius: 4px; }
-		}
-	}
-
 	body.dark-mode {
-		.teleported-sidebar-wrapper {
-			.sidebar-card { background: #1a1a1a; border-color: #333333; }
-			.inquiry-card h3, .tags-card h4 { color: #ffffff; }
-			.inquiry-card p { color: #999999; }
-			.tags-card .sidebar-tag-item { background-color: #262626; border-color: #404040; color: #cccccc; }
-		}
+		.product-sidebar-card { background: #1a1a1a; border-color: #333333; }
+		.inquiry-card h3, .tags-card h4 { color: #ffffff; }
+		.inquiry-card p { color: #999999; }
+		.tags-card .sidebar-tag-item { background-color: #262626; border-color: #404040; color: #cccccc; }
+		
 		.related-products-section-fixed {
 			.related-divider-fixed { background-color: #333333; }
 			.related-card-fixed {
