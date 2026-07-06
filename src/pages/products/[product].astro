@@ -16,19 +16,20 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-// 🔽 筑起全方位防御：把所有可能被当做图片描述的字段全填上
+// 全方位图片描述防御体系
 const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
 
 const formattedProduct = {
 	...product,
 	data: {
 		...product.data,
-		author: "Bothbest", // 顺手补齐原博客要求的作者字段
+		author: "Bothbest", 
 		image: product.data.image,
-		imageAlt: safeAltText, // 兼容底层组件
-		alt: safeAltText,      // 兼顾某些特定 Image 标签
+		imageAlt: safeAltText, 
+		alt: safeAltText,      
 		title: product.data.title,
-		tags: product.data.tags || ["Products"], // 传递给布局用来判断并注入询盘框
+		// 🌟 核心点：确保这里带有 "Products" 标签，以便核心布局识别并完成标题置顶与询盘盒子的注入
+		tags: product.data.tags || ["Products"], 
 	}
 };
 
