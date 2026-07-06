@@ -12,9 +12,25 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-// 1. 获取所有产品并筛选出相同标签的相关推荐（最多 3 个）
+// 1. 筑起最强防线：克隆并重构 product 对象，强行在 data 内部塞入 BaseLayout 所需的所有图片相关属性
+// 这样无论 BaseLayout 内部读取的是 .alt、.imageAlt 还是 .title，都绝对不会落空
+const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Factory Product";
+
+const secureProduct = {
+	...product,
+	data: {
+		...product.data,
+		// 强力对齐：为可能引发报错的属性赋予 100% 存在的值
+		imageAlt: safeAltText,
+		alt: safeAltText,
+		title: product.data.title || "Bothbest Bamboo Product",
+		tags: product.data.tags || ["Products"]
+	}
+};
+
+// 2. 获取所有产品并筛选出相同标签的相关推荐（最多 3 个）
 const allProducts = await getCollection("products");
-const currentTags = product.data.tags || ["Products"];
+const currentTags = secureProduct.data.tags;
 const relatedProducts = allProducts
 	.filter((item) => {
 		const hasCommonTag = item.data.tags?.some(tag => currentTags.includes(tag));
@@ -22,14 +38,12 @@ const relatedProducts = allProducts
 	})
 	.slice(0, 3);
 
-// 2. 渲染原始的 Markdown 内容
-const { Content: OriginalContent, headings } = await render(product);
-
-// 3. 创造一个安全的保底文本，防止 Image 组件报错
-const globalFallbackAlt = product.data.title || "Bothbest Premium Bamboo Product";
+// 3. 渲染原始的 Markdown 内容
+const { Content: OriginalContent, headings } = await render(secureProduct);
 ---
 
-<BlogPostLayout post={product} headings={headings}>
+<!-- 🌟 关键修正：这里必须传入我们重构过的 secureProduct，确保透传给 BaseLayout 的数据里包含 alt 属性 -->
+<BlogPostLayout post={secureProduct} headings={headings}>
 	
 	<!-- 正文部分：完全回归原有排版 -->
 	<div class="product-custom-body-wrapper">
@@ -58,24 +72,21 @@ const globalFallbackAlt = product.data.title || "Bothbest Premium Bamboo Product
 		)}
 	</div>
 
-	<!-- 下方相关产品推荐（修复满屏问题，限制最大 3 列网格，并对图片属性进行彻底的纯 HTML 安全解耦） -->
+	<!-- 下方相关产品推荐（严格网格防满屏，原生 img 标签防错） -->
 	{relatedProducts.length > 0 && (
 		<div class="related-products-section-fixed">
 			<hr class="related-divider-fixed" />
 			<h3 class="related-section-title-fixed">Related Bamboo Products</h3>
 			<div class="related-grid-fixed">
 				{relatedProducts.map((item) => {
-					// 🌟 核心防错：智能解析图片路径，无论是对象还是普通字符串
 					const itemImage = item.data.image 
 						? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
 						: "/assets/images/default-product.jpg";
 					
-					// 🌟 核心防错：这里绝不能留空，必须给一个坚固的保底字符串
 					const itemAlt = item.data.imageAlt || item.data.title || "Bothbest Bamboo Factory Product";
 					
 					return (
 						<div class="related-card-fixed">
-							<!-- 🌟 此处改用原生 <img> 配合解耦后的 itemAlt，彻底绕过 Astro 编译期对特定组件的强校验 -->
 							<a href={`/products/${item.id}/`} class="img-link-fixed">
 								<img src={itemImage} alt={itemAlt} loading="lazy" />
 							</a>
@@ -91,7 +102,7 @@ const globalFallbackAlt = product.data.title || "Bothbest Premium Bamboo Product
 	)}
 </BlogPostLayout>
 
-<!-- 巧妙的传送门脚本：把询盘组件和分类组件无缝塞到右侧侧边栏中，排在 Quick Navigation 的下面 -->
+<!-- 巧妙的传送门脚本 -->
 <script is:inline>
 	function teleportInquiry() {
 		const source = document.getElementById('factory-inquiry-source');
@@ -110,7 +121,7 @@ const globalFallbackAlt = product.data.title || "Bothbest Premium Bamboo Product
 
 <style lang="less" is:global>
 	/* ==========================================================================
-	   相关产品卡片防满屏修正（强制 3 列，哪怕只有 1 个也不撑满）
+	   相关产品卡片防满屏修正
 	   ========================================================================== */
 	.related-products-section-fixed {
 		margin-top: 50px;
