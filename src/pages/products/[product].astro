@@ -37,4 +37,104 @@ const { Content, headings } = await render(product);
 
 <BlogPostLayout post={formattedProduct} headings={headings}>
 	<Content />
+
+	<div id="product-sidebar-inquiry-source" style="display: none;">
+		<div class="product-inquiry-box">
+			<h3>Interested in this Product?</h3>
+			<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
+			<a href="/contact/#cs-form" class="product-inquiry-btn">
+				INQUIRE NOW ➔
+			</a>
+		</div>
+	</div>
 </BlogPostLayout>
+
+<script is:inline>
+	function injectInquiryBox() {
+		if (document.querySelector('.product-inquiry-box-inserted')) return;
+
+		const source = document.getElementById('product-sidebar-inquiry-source');
+		const desktopTOC = document.getElementById('desktop-toc');
+
+		if (source && desktopTOC) {
+			const wrapper = document.createElement('div');
+			wrapper.className = 'product-inquiry-box-inserted';
+			wrapper.innerHTML = source.innerHTML;
+			desktopTOC.parentNode.insertBefore(wrapper, desktopTOC.nextSibling);
+		}
+	}
+	document.addEventListener('astro:page-load', injectInquiryBox);
+	injectInquiryBox();
+</script>
+
+<style lang="less" is:global>
+	/* ==========================================================================
+	   高品质询盘挂载组件Less样式体系
+	   ========================================================================== */
+	.product-inquiry-box-inserted {
+		margin-top: 24px;
+		width: 100%;
+		box-sizing: border-box;
+
+		.product-inquiry-box {
+			background: #f9fafb;
+			border: 1px solid #e5e7eb;
+			border-radius: 8px;
+			padding: 24px;
+			border-left: 4px solid #a3e635; /* 经典绿条衬边 */
+			box-sizing: border-box;
+
+			h3 {
+				font-size: 16px;
+				font-weight: 700;
+				color: #111111;
+				margin: 0 0 10px 0;
+			}
+
+			p {
+				font-size: 13px;
+				line-height: 1.5;
+				color: #666666;
+				margin: 0 0 18px 0;
+			}
+
+			.product-inquiry-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				padding: 12px;
+				background-color: #111111;
+				color: #ffffff !important;
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				text-decoration: none;
+				border-radius: 4px;
+				transition: background-color 0.3s ease;
+
+				&:hover {
+					background-color: #a3e635;
+					color: #111111 !important;
+				}
+			}
+		}
+	}
+
+	body.dark-mode {
+		.product-inquiry-box-inserted {
+			.product-inquiry-box {
+				background: #1a1a1a;
+				border-color: #333333;
+				h3 { color: #ffffff; }
+				p { color: #999999; }
+				.product-inquiry-btn {
+					background-color: #f3f4f6;
+					color: #111111 !important;
+					&:hover { background-color: #a3e635; color: #111111 !important; }
+				}
+			}
+		}
+	}
+</style>

@@ -36,54 +36,39 @@ const blogPostingSchema = getBlogPostingSchema(
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
-	<!-- Insert BlogPosting Schema via named slot -->
 	<script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
 
-	<!-- ============================================ -->
-	<!--         Blog Article + Sidebar layout        -->
-	<!-- ============================================ -->
-
 	<div class="blog-container">
-		<!--Main content -->
 		<section class="main-content">
 			<article class="blog-article">
-				<!--Article Info-->
 				<header class="blog-header">
 					<h1 class="blog-h1">{title}</h1>
 					<div class="blog-authorGroup">
-						<!--Author Image-->
 						<picture class="blog-author-img">
 							<Icon name="profile" width="32" height="32" />
 						</picture>
 						<span class="blog-author">{author}</span>
 						<span aria-hidden="true" class="blog-dot"></span>
-						<!--Blog Date-->
 						<span class="blog-date">{formatDate(date)}</span>
 					</div>
 				</header>
 
-				<!--Main Article Image-->
 				<picture class="blog-mainImage">
 					<Image src={image} alt={imageAlt} width="795" height="400" decoding="async" />
 				</picture>
 
-				<!-- Mobile Table of Contents -->
 				<div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
 					<TableOfContents headings={headings} levels={3} />
 				</div>
-				<!--Markdown content-->
 				<div id="blog-content">
-					<Content />
+					<slot /> <Content />
 				</div>
 			</article>
 		</section>
-		<!--Side bar-->
 		<aside class="blog-sidebar">
-			<!-- Desktop Table of Contents -->
 			<div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
 				<TableOfContents headings={headings} levels={3} />
 			</div>
-			<!-- Featured Posts -->
 			<div class="blog-sidebar_widget-wrapper">
 				<FeaturedPost />
 			</div>
@@ -187,10 +172,11 @@ const blogPostingSchema = getBlogPostingSchema(
 			}
 
 			.blog-h1 {
-				font-size: clamp(20px, 5vw, 39px);
-				font-weight: 700;
-				line-height: 1.4em;
-				max-width: (550/16rem);
+				font-size: clamp(22px, 5vw, 38px);
+				font-weight: 800;
+				line-height: 1.3em;
+				/* 🌟 修复点：解除 550px 最大宽度锁定，让标题允许完美铺满整行左侧区域 */
+				max-width: 100%; 
 				margin: (16/16rem) 0;
 				color: var(--headerColor);
 			}
@@ -229,9 +215,9 @@ const blogPostingSchema = getBlogPostingSchema(
 			display: block !important;
 			height: 1px !important;
 			border: 0 !important;
-			border-top: 1px solid #e5e7eb !important; /* 优雅的浅灰色细线 */
-			margin-top: 30px !important;              /* 线上方留白 60px */
-			margin-bottom: 30px !important;           /* 线下方留白 60px */
+			border-top: 1px solid #e5e7eb !important; 
+			margin-top: 30px !important;              
+			margin-bottom: 30px !important;           
 			padding: 0 !important;
 			clear: both !important;
 		}
