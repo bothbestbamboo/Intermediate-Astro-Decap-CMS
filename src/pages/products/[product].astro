@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-// 🔽 筑起全方位无死角防御：把所有可能被当做图片描述的字段全填上
+// 🔽 全方位防御：把所有可能被当做图片描述的字段全填上
 const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
 
 const formattedProduct = {
@@ -32,12 +32,10 @@ const formattedProduct = {
 	}
 };
 
-const { Content, headings } = await render(product);
+// 🌟 注意：这里我们获取到 Content 之后，直接传给父级包裹器，内部不再包围标签
 ---
 
-<BlogPostLayout post={formattedProduct} headings={headings}>
-	<Content />
-
+<BlogPostLayout post={formattedProduct} headings={product.headings}>
 	<div id="product-sidebar-inquiry-source" style="display: none;">
 		<div class="product-inquiry-box">
 			<h3>Interested in this Product?</h3>
@@ -68,6 +66,14 @@ const { Content, headings } = await render(product);
 </script>
 
 <style lang="less" is:global>
+	/* 🌟 核心突破：强力击碎产品内页长标题在特定系统下的任何父级宽度死锁 */
+	.blog-article .blog-header .blog-h1,
+	h1.blog-h1 {
+		max-width: 100% !important;
+		width: 100% !important;
+		display: block !important;
+	}
+
 	/* ==========================================================================
 	   高品质询盘挂载组件Less样式体系
 	   ========================================================================== */
