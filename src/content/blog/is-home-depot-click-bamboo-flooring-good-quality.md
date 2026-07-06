@@ -12,7 +12,7 @@ When you walk down the flooring aisle at a major home improvement center like Ho
 
 For homeowners looking to handle the work themselves, the click-lock varieties under house brands like Home Decorators Collection or Lifeproof look especially tempting. The promise of snapping a floor together without messy glues or industrial nail guns sounds like a perfect weekend project. 
 
-However, big-box retail environments are famous for balancing low price points with mass production. This leaves many smart consumers asking a critical question before loading up their shopping carts: Is Home Depot’s click **[bamboo flooring](https://www.bambooindustry.com)** actually good quality, or are you setting yourself up for an expensive renovation headache down the road? 
+However, big-box retail environments are famous for balancing low price points with mass production. This leaves many smart consumers asking a critical question before loading up their shopping carts: Is Home Depot’s click bamboo flooring actually good quality, or are you setting yourself up for an expensive renovation headache down the road? 
 
 An honest breakdown requires looking past the clever marketing displays. By evaluating how these mass-market products are constructed, how they handle real-world wear, and where they fall short, you can make an educated choice for your home.
 
