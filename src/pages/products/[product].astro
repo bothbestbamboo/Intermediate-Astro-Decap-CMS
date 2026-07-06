@@ -41,67 +41,7 @@ const relatedProducts = allProducts
 	.slice(0, 3);
 ---
 
-<BlogPostLayout post={formattedProduct} headings={headings}>
-	<!-- 🌟 整体采用高端 B2B 的双栏式布局结构 -->
-	<div class="product-detail-container">
-		
-		<!-- 左栏：原本的 Markdown/MDX 核心产品介绍内容 -->
-		<div class="product-main-content">
-			<Content />
-		</div>
 
-		<!-- 右栏：高转化率商务互动边栏 -->
-		<aside class="product-sidebar">
-			<!-- 模块一：在线询盘定位组件 -->
-			<div class="sidebar-card inquiry-card">
-				<h3>Interested in this Product?</h3>
-				<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
-				<!-- 🌟 直接带 #cs-form 锚点定位到联系页面表单部分 -->
-				<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
-					Inquire Now ➔
-				</a>
-			</div>
-
-			<!-- 模块二：产品标签/分类快速筛选 -->
-			{product.data.tags && product.data.tags.length > 0 && (
-				<div class="sidebar-card tags-card">
-					<h4>Product Categories</h4>
-					<div class="sidebar-tags-list">
-						{product.data.tags.map((tag) => (
-							<span class="sidebar-tag-item">{tag}</span>
-						))}
-					</div>
-				</div>
-			)}
-		</aside>
-	</div>
-
-	<!-- 🌟 下方：相关产品推荐区域（只有当存在相关产品时才渲染） -->
-	{relatedProducts.length > 0 && (
-		<div class="related-products-section">
-			<hr class="related-divider" />
-			<h3 class="related-section-title">Related Bamboo Products</h3>
-			<div class="related-grid">
-				{relatedProducts.map((item) => {
-					const itemImage = item.data.image 
-						? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
-						: "/assets/images/default-product.jpg";
-					return (
-						<div class="related-card">
-							<a href={`/products/${item.id}/`} class="img-link">
-								<img src={itemImage} alt={item.data.title} loading="lazy" />
-							</a>
-							<div class="related-info">
-								<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
-								<a href={`/products/${item.id}/`} class="view-detail-link">View Details ↗</a>
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		</div>
-	)}
-</BlogPostLayout>
 
 <style lang="less">
 	/* ==========================================================================
