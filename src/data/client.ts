@@ -30,7 +30,7 @@ export const BUSINESS = {
         facebook: "#",
         instagram: "#",
         // 或者是您也可以选择塞在 socials 社交矩阵里（根据您的底层组件调用习惯二选一即可）
-        whatsapp: "https://wa.me/8615005820528", 
+        whatsapp: "/", 
     },
 };
 
