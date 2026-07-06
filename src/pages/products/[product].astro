@@ -1,9 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
-import { formatDate } from "@js/utils";
-// 🌟 直接引入最核心的全站骨架，彻底摆脱博客布局的枷锁
-import BaseLayout from "@layouts/BaseLayout.astro"; 
+import BlogPostLayout from "@layouts/BlogPostLayout.astro";
 
 export async function getStaticPaths() {
 	const products = await getCollection("products");
@@ -14,11 +11,10 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const { title, description, image, imageAlt, tags } = product.data;
 
-// 1. 获取所有产品，用来做底部的相同标签相关产品推荐
+// 1. 获取所有产品并筛选出相同标签的相关推荐（最多 3 个）
 const allProducts = await getCollection("products");
-const currentTags = tags || ["Products"];
+const currentTags = product.data.tags || ["Products"];
 const relatedProducts = allProducts
 	.filter((item) => {
 		const hasCommonTag = item.data.tags?.some(tag => currentTags.includes(tag));
@@ -26,291 +22,244 @@ const relatedProducts = allProducts
 	})
 	.slice(0, 3);
 
-// 2. 正确渲染当前产品的 Markdown 核心内容
-const { Content } = await render(product);
+// 2. 渲染原始的 Markdown 内容
+const { Content: OriginalContent, headings } = await render(product);
 
-const safeAltText = imageAlt || title || "Bothbest Bamboo Product";
+// 3. 🌟 创造一个伪装的“新 Content 组件”，强行把我们的商务元素和布局组装进博客正文轨道！
+const CustomProductContent =  OriginalContent;
 ---
 
-<BaseLayout title={title} description={description || "Bothbest Premium Bamboo Product"} heroImage={image}>
+<BlogPostLayout post={product} headings={headings}>
 	
-	<div class="product-page-container">
-		
-		<!-- 产品面包屑 / 分类小标签 -->
-		<header class="product-page-header">
-			<span class="prod-tag-top">{currentTags[0]}</span>
-			<h1>{title}</h1>
-		</header>
+	<!-- 🌟 正文部分：完全回归原有排版 -->
+	<div class="product-custom-body-wrapper">
+		<CustomProductContent />
+	</div>
 
-		<!-- 🌟 双栏商务核心布局结构 -->
-		<div class="product-detail-container">
-			
-			<!-- 左栏：主图 + 产品 Markdown 核心描述 -->
-			<div class="product-main-content">
-				<!-- 产品主图（复刻原博客大图的精美质感） -->
-				{image && (
-					<picture class="product-mainImage">
-						<Image src={image} alt={safeAltText} width="795" height="440" decoding="async" />
-					</picture>
-				)}
+	<!-- 🌟 在正文正下方（属于博客主体左栏内），插入右侧询盘模块的移动端适配以及底部相关产品 -->
+	<!-- 这样能保证整体布局与原博客完美一致，同时解决右侧多余红框的突兀感 -->
 
-				<!-- Markdown 正文渲染区 -->
-				<div id="product-markdown-body">
-					<Content />
-				</div>
-			</div>
-
-			<!-- 右栏：高转化商务互动边栏 -->
-			<aside class="product-sidebar">
-				<!-- 模块一：在线询盘定位组件 -->
-				<div class="sidebar-card inquiry-card">
-					<h3>Interested in this Product?</h3>
-					<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
-					<!-- 🌟 精准定位至联系页面的表单 -->
-					<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
-						Inquire Now ➔
-					</a>
-				</div>
-
-				<!-- 模块二：标签分类快速筛选 -->
-				{currentTags.length > 0 && (
-					<div class="sidebar-card tags-card">
-						<h4>Product Categories</h4>
-						<div class="sidebar-tags-list">
-							{currentTags.map((tag) => (
-								<span class="sidebar-tag-item">{tag}</span>
-							))}
-						</div>
-					</div>
-				)}
-			</aside>
+	<!-- 额外右侧挂载：我们通过原生脚本把这个高转化询盘卡片塞到右侧 Table of Contents 目录的下方 -->
+	<div id="factory-inquiry-source" class="cs-hidden-teleport" style="display: none;">
+		<div class="sidebar-card inquiry-card">
+			<h3>Interested in this Product?</h3>
+			<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
+			<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
+				Inquire Now ➔
+			</a>
 		</div>
 
-		<!-- 下方：相关产品推荐区域 -->
-		{relatedProducts.length > 0 && (
-			<div class="related-products-section">
-				<hr class="related-divider" />
-				<h3 class="related-section-title">Related Bamboo Products</h3>
-				<div class="related-grid">
-					{relatedProducts.map((item) => {
-						const itemImage = item.data.image 
-							? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
-							: "/assets/images/default-product.jpg";
-						return (
-							<div class="related-card">
-								<a href={`/products/${item.id}/`} class="img-link">
-									<img src={itemImage} alt={item.data.title} loading="lazy" />
-								</a>
-								<div class="related-info">
-									<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
-									<a href={`/products/${item.id}/`} class="view-detail-link">View Details ↗</a>
-								</div>
-							</div>
-						);
-					})}
+		{currentTags.length > 0 && (
+			<div class="sidebar-card tags-card">
+				<h4>Product Categories</h4>
+				<div class="sidebar-tags-list">
+					{currentTags.map((tag) => (
+						<span class="sidebar-tag-item">{tag}</span>
+					))}
 				</div>
 			</div>
 		)}
 	</div>
-</BaseLayout>
 
-<style lang="less">
-	/* ==========================================================================
-	   独立产品框架容器（严格对齐博客页面的宽度体系）
-	   ========================================================================== */
-	.product-page-container {
-		width: 94%;
-		max-width: (1120/16em);
-		margin: auto;
-		padding: clamp(60px, 7vw, 100px) 0;
-		box-sizing: border-box;
-	}
+	<!-- 🌟 下方相关产品推荐（修复满屏问题，限制最大 3 列网格） -->
+	{relatedProducts.length > 0 && (
+		<div class="related-products-section-fixed">
+			<hr class="related-divider-fixed" />
+			<h3 class="related-section-title-fixed">Related Bamboo Products</h3>
+			<div class="related-grid-fixed">
+				{relatedProducts.map((item) => {
+					const itemImage = item.data.image 
+						? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
+						: "/assets/images/default-product.jpg";
+					return (
+						<div class="related-card-fixed">
+							<a href={`/products/${item.id}/`} class="img-link-fixed">
+								<img src={itemImage} alt={item.data.title} loading="lazy" />
+							</a>
+							<div class="related-info-fixed">
+								<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
+								<a href={`/products/${item.id}/`} class="view-detail-link-fixed">View Details ↗</a>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	)}
+</BlogPostLayout>
 
-	.product-page-header {
-		margin-bottom: clamp(30px, 5vw, 50px);
+<!-- 🌟 巧妙的传送门脚本：把询盘组件和分类组件无缝塞到右侧侧边栏中，排在 Quick Navigation 的下面 -->
+<script is:inline>
+	function teleportInquiry() {
+		const source = document.getElementById('factory-inquiry-source');
+		const desktopSidebar = document.getElementById('desktop-toc'); // 对应博客右侧目录容器
 		
-		.prod-tag-top {
-			font-size: 14px;
-			font-weight: 700;
-			color: #a3e635; /* 工厂标志荧光绿 */
-			text-transform: uppercase;
-			letter-spacing: 0.1em;
-			display: inline-block;
-			margin-bottom: 8px;
-		}
-
-		h1 {
-			font-size: clamp(24px, 5vw, 39px);
-			font-weight: 700;
-			line-height: 1.4em;
-			color: var(--headerColor, #111111);
-			margin: 0;
+		if (source && desktopSidebar) {
+			// 创建一个容器挂载到右侧目录组件下方
+			const wrapper = document.createElement('div');
+			wrapper.className = 'teleported-sidebar-wrapper';
+			wrapper.innerHTML = source.innerHTML;
+			desktopSidebar.parentNode.insertBefore(wrapper, desktopSidebar.nextSibling);
 		}
 	}
+	// 确保在 Astro 页面加载完成后执行
+	document.addEventListener('astro:page-load', teleportInquiry);
+	teleportInquiry(); // 兜底初次渲染
+</script>
 
+<style lang="less" is:global>
 	/* ==========================================================================
-	   双栏响应式布局
+	   相关产品卡片防满屏修正（强制 3 列，哪怕只有 1 个也不撑满）
 	   ========================================================================== */
-	.product-detail-container {
-		display: flex;
-		flex-direction: column;
-		row-gap: (50/16em);
+	.related-products-section-fixed {
+		margin-top: 50px;
 		width: 100%;
+		max-width: 795px; /* 严格对齐左侧文章最大宽度，防止撑开 */
+		clear: both;
 
-		@media only screen and (min-width: 64em) {
-			flex-direction: row;
-			align-items: flex-start;
-			column-gap: (48/16em);
+		.related-divider-fixed {
+			border: 0;
+			height: 1px;
+			background-color: #e5e7eb;
+			margin-bottom: 30px;
 		}
-	}
 
-	.product-main-content {
-		width: 100%;
-		max-width: (795/16em);
-		flex: 1;
+		.related-section-title-fixed {
+			font-size: 22px;
+			font-weight: 700;
+			color: var(--headerColor, #111111);
+			margin: 0 0 20px 0;
+		}
 
-		.product-mainImage {
-			width: 100%;
-			height: clamp(220px, 35vw, 440px);
-			margin-bottom: (40/16em);
-			border-radius: (8/16em);
-			display: block;
-			position: relative;
+		.related-grid-fixed {
+			display: grid;
+			/* 🌟 核心：限定死最多 3 列，最小 220px，多余空间留白，绝不放大满屏 */
+			grid-template-columns: repeat(3, minmax(200px, 1fr)); 
+			gap: 20px;
+
+			@media (max-width: 767px) {
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			}
+		}
+
+		.related-card-fixed {
+			background: #ffffff;
+			border: 1px solid #e5e7eb;
+			border-radius: 6px;
 			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			transition: transform 0.3s ease;
 
-			img {
+			&:hover {
+				transform: translateY(-4px);
+			}
+
+			.img-link-fixed {
 				width: 100%;
-				height: 100%;
-				object-fit: cover;
+				aspect-ratio: 4 / 3; /* 确保图片比例永远是优美的 4:3 */
+				overflow: hidden;
+				display: block;
+				background-color: #f3f4f6;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+
+			.related-info-fixed {
+				padding: 12px;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+
+				h4 {
+					font-size: 14px;
+					font-weight: 700;
+					margin: 0 0 8px 0;
+					line-height: 1.4;
+					
+					a {
+						color: var(--headerColor, #111111);
+						text-decoration: none;
+						&:hover { color: #a3e635; }
+					}
+				}
+
+				.view-detail-link-fixed {
+					font-size: 12px;
+					font-weight: 600;
+					color: #666666;
+					text-decoration: none;
+					margin-top: auto;
+					&:hover { color: #a3e635; }
+				}
 			}
 		}
 	}
 
-	/* Markdown 内部排修 */
-	#product-markdown-body {
-		font-size: 16px;
-		line-height: 1.7;
-		color: var(--bodyTextColor, #333333);
-		
-		p { margin-bottom: 20px; }
-		h2, h3 { color: var(--headerColor, #111111); margin: 30px 0 15px 0; }
-	}
-
 	/* ==========================================================================
-	   右侧高端商务边栏
+	   被传送到右侧边栏的工厂询盘及分类样式
 	   ========================================================================== */
-	.product-sidebar {
-		width: 100%;
+	.teleported-sidebar-wrapper {
+		margin-top: 30px;
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
-
-		@media only screen and (min-width: 64em) {
-			width: (320/16em);
-			flex-shrink: 0;
-			position: sticky;
-			top: 100px;
-		}
+		gap: 20px;
 
 		.sidebar-card {
 			background: #f9fafb;
 			border: 1px solid #e5e7eb;
 			border-radius: 8px;
-			padding: 24px;
+			padding: 22px;
+			box-sizing: border-box;
 		}
 
 		.inquiry-card {
 			border-left: 4px solid #a3e635;
-			h3 { font-size: 18px; font-weight: 700; color: #111111; margin: 0 0 12px 0; }
-			p { font-size: 14px; line-height: 1.5; color: #666666; margin: 0 0 20px 0; }
+			h3 { font-size: 16px; font-weight: 700; color: #111111; margin: 0 0 10px 0; }
+			p { font-size: 13px; line-height: 1.5; color: #666666; margin: 0 0 16px 0; }
 			
 			.sidebar-inquiry-btn {
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				width: 100%;
-				padding: 12px;
+				padding: 10px;
 				background-color: #111111;
 				color: #ffffff !important;
-				font-size: 13px;
+				font-size: 12px;
 				font-weight: 700;
 				text-transform: uppercase;
 				letter-spacing: 0.05em;
 				text-decoration: none;
 				border-radius: 4px;
-				transition: all 0.3s ease;
 				&:hover { background-color: #a3e635; color: #111111 !important; }
 			}
 		}
 
 		.tags-card {
-			h4 { font-size: 14px; font-weight: 700; color: #111111; margin: 0 0 14px 0; text-transform: uppercase; }
-			.sidebar-tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
-			.sidebar-tag-item { font-size: 12px; font-weight: 600; background-color: #ffffff; border: 1px solid #e5e7eb; color: #4a4a4a; padding: 5px 10px; border-radius: 4px; }
+			h4 { font-size: 13px; font-weight: 700; color: #111111; margin: 0 0 12px 0; text-transform: uppercase; }
+			.sidebar-tags-list { display: flex; flex-wrap: wrap; gap: 6px; }
+			.sidebar-tag-item { font-size: 11px; font-weight: 600; background-color: #ffffff; border: 1px solid #e5e7eb; color: #4a4a4a; padding: 4px 8px; border-radius: 4px; }
 		}
 	}
 
-	/* ==========================================================================
-	   底部横向循环推荐
-	   ========================================================================== */
-	.related-products-section {
-		margin-top: 60px;
-		width: 100%;
-		
-		.related-divider { border: 0; height: 1px; background-color: #e5e7eb; margin-bottom: 40px; }
-		.related-section-title { font-size: 24px; font-weight: 700; color: var(--headerColor, #111111); margin: 0 0 24px 0; }
-		.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-		
-		.related-card {
-			background: #ffffff;
-			border: 1px solid #e5e7eb;
-			border-radius: 8px;
-			overflow: hidden;
-			display: flex;
-			flex-direction: column;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			&:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
-			
-			.img-link {
-				width: 100%;
-				aspect-ratio: 16 / 10;
-				overflow: hidden;
-				display: block;
-				img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-			}
-			&:hover .img-link img { transform: scale(1.05); }
-			
-			.related-info {
-				padding: 16px;
-				display: flex;
-				flex-direction: column;
-				flex: 1;
-				h4 { font-size: 16px; font-weight: 700; margin: 0 0 12px 0; line-height: 1.4;
-					a { color: var(--headerColor, #111111); text-decoration: none; &:hover { color: #a3e635; } }
-				}
-				.view-detail-link { font-size: 13px; font-weight: 600; color: #666666; text-decoration: none; margin-top: auto; &:hover { color: #a3e635; } }
-			}
-		}
-	}
-
-	/* ==========================================================================
-	   Dark Mode 全黑适配
-	   ========================================================================== */
+	/* 暗黑模式适配 */
 	body.dark-mode {
-		.product-page-header h1, #product-markdown-body h2, #product-markdown-body h3 { color: #f7f7f7; }
-		#product-markdown-body { color: #cccccc; }
-		.product-sidebar {
+		.teleported-sidebar-wrapper {
 			.sidebar-card { background: #1a1a1a; border-color: #333333; }
 			.inquiry-card h3, .tags-card h4 { color: #ffffff; }
 			.inquiry-card p { color: #999999; }
 			.tags-card .sidebar-tag-item { background-color: #262626; border-color: #404040; color: #cccccc; }
 		}
-		.related-products-section {
-			.related-divider { background-color: #333333; }
-			.related-card {
+		.related-products-section-fixed {
+			.related-divider-fixed { background-color: #333333; }
+			.related-card-fixed {
 				background: #111111; border-color: #333333;
-				.related-info h4 a { color: #f7f7f7; }
-				.related-info .view-detail-link { color: #999999; }
+				.related-info-fixed h4 a { color: #ffffff; }
 			}
 		}
 	}
