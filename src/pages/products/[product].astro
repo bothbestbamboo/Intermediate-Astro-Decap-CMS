@@ -1,8 +1,4 @@
 ---
-/**
- * * This page generates the individual product detail pages based on the products collection
- **/
-
 import { getCollection, render } from "astro:content";
 import BlogPostLayout from "@layouts/BlogPostLayout.astro";
 
@@ -16,25 +12,334 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-// 🔽 筑起全方位无死角防御：把所有可能被当做图片描述的字段全填上
+// 1. 筑起全方位图片防御
 const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
 
 const formattedProduct = {
 	...product,
 	data: {
 		...product.data,
-		author: "Bothbest", // 顺手补齐原博客要求的作者字段
+		author: "Bothbest", 
 		image: product.data.image,
-		imageAlt: safeAltText, // 兼容底层组件
-		alt: safeAltText,      // 兼顾某些特定 Image 标签
+		imageAlt: safeAltText, 
+		alt: safeAltText,      
 		title: product.data.title,
 		tags: product.data.tags || ["Products"], 
 	}
 };
 
 const { Content, headings } = await render(product);
+
+// 2. 🌟 核心：获取所有产品，并筛选出与当前产品标签（tag）相同的相关产品（排除自身，最多取 3 个）
+const allProducts = await getCollection("products");
+const currentTags = product.data.tags || [];
+const relatedProducts = allProducts
+	.filter((item) => {
+		const hasCommonTag = item.data.tags?.some(tag => currentTags.includes(tag));
+		return hasCommonTag && item.id !== product.id;
+	})
+	.slice(0, 3);
 ---
 
 <BlogPostLayout post={formattedProduct} headings={headings}>
-	<Content />
+	<!-- 🌟 整体采用高端 B2B 的双栏式布局结构 -->
+	<div class="product-detail-container">
+		
+		<!-- 左栏：原本的 Markdown/MDX 核心产品介绍内容 -->
+		<div class="product-main-content">
+			<Content />
+		</div>
+
+		<!-- 右栏：高转化率商务互动边栏 -->
+		<aside class="product-sidebar">
+			<!-- 模块一：在线询盘定位组件 -->
+			<div class="sidebar-card inquiry-card">
+				<h3>Interested in this Product?</h3>
+				<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
+				<!-- 🌟 直接带 #cs-form 锚点定位到联系页面表单部分 -->
+				<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
+					Inquire Now ➔
+				</a>
+			</div>
+
+			<!-- 模块二：产品标签/分类快速筛选 -->
+			{product.data.tags && product.data.tags.length > 0 && (
+				<div class="sidebar-card tags-card">
+					<h4>Product Categories</h4>
+					<div class="sidebar-tags-list">
+						{product.data.tags.map((tag) => (
+							<span class="sidebar-tag-item">{tag}</span>
+						))}
+					</div>
+				</div>
+			)}
+		</aside>
+	</div>
+
+	<!-- 🌟 下方：相关产品推荐区域（只有当存在相关产品时才渲染） -->
+	{relatedProducts.length > 0 && (
+		<div class="related-products-section">
+			<hr class="related-divider" />
+			<h3 class="related-section-title">Related Bamboo Products</h3>
+			<div class="related-grid">
+				{relatedProducts.map((item) => {
+					const itemImage = item.data.image 
+						? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
+						: "/assets/images/default-product.jpg";
+					return (
+						<div class="related-card">
+							<a href={`/products/${item.id}/`} class="img-link">
+								<img src={itemImage} alt={item.data.title} loading="lazy" />
+							</a>
+							<div class="related-info">
+								<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
+								<a href={`/products/${item.id}/`} class="view-detail-link">View Details ↗</a>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	)}
 </BlogPostLayout>
+
+<style lang="less">
+	/* ==========================================================================
+	   双栏产品布局
+	   ========================================================================== */
+	.product-detail-container {
+		display: flex;
+		gap: 40px;
+		align-items: flex-start;
+		margin-bottom: 60px;
+		width: 100%;
+		
+		@media (max-width: 991px) {
+			flex-direction: column;
+		}
+	}
+
+	.product-main-content {
+		flex: 1;
+		min-width: 0; /* 防大图/代码块撑破 */
+		
+		/* 深度适配富文本内部样式 */
+		p {
+			font-size: (16/16rem);
+			line-height: 1.6;
+			color: #333333;
+			margin-bottom: 20px;
+		}
+	}
+
+	/* ==========================================================================
+	   右侧商务侧边栏
+	   ========================================================================== */
+	.product-sidebar {
+		width: 320px;
+		position: sticky;
+		top: 100px; /* 滚动吸顶效果 */
+		flex-shrink: 0;
+
+		@media (max-width: 991px) {
+			width: 100%;
+			position: static;
+		}
+
+		.sidebar-card {
+			background: #f9fafb;
+			border: 1px solid #e5e7eb;
+			border-radius: 8px;
+			padding: 24px;
+			margin-bottom: 24px;
+		}
+
+		/* 询盘引导盒子 */
+		.inquiry-card {
+			border-left: 4px solid #a3e635; /* 荧光绿提神 */
+			
+			h3 {
+				font-size: 18px;
+				font-weight: 700;
+				color: #111111;
+				margin: 0 0 12px 0;
+			}
+			p {
+				font-size: 14px;
+				line-height: 1.5;
+				color: #666666;
+				margin: 0 0 20px 0;
+			}
+			.sidebar-inquiry-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				padding: 12px;
+				background-color: #111111;
+				color: #ffffff !important;
+				font-size: 14px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				text-decoration: none;
+				border-radius: 4px;
+				transition: all 0.3s ease;
+
+				&:hover {
+					background-color: #a3e635;
+					color: #111111 !important;
+				}
+			}
+		}
+
+		/* 标签分类盒子 */
+		.tags-card {
+			h4 {
+				font-size: 16px;
+				font-weight: 700;
+				color: #111111;
+				margin: 0 0 16px 0;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+			.sidebar-tags-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+			.sidebar-tag-item {
+				font-size: 13px;
+				font-weight: 600;
+				background-color: #ffffff;
+				border: 1px solid #e5e7eb;
+				color: #4a4a4a;
+				padding: 6px 12px;
+				border-radius: 4px;
+			}
+		}
+	}
+
+	/* ==========================================================================
+	   底部相关产品推荐
+	   ========================================================================== */
+	.related-products-section {
+		margin-top: 60px;
+
+		.related-divider {
+			border: 0;
+			height: 1px;
+			background-color: #e5e7eb;
+			margin-bottom: 40px;
+		}
+
+		.related-section-title {
+			font-size: 24px;
+			font-weight: 800;
+			color: #111111;
+			margin: 0 0 24px 0;
+		}
+
+		.related-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 24px;
+		}
+
+		.related-card {
+			background: #ffffff;
+			border: 1px solid #e5e7eb;
+			border-radius: 8px;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+			&:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+			}
+
+			.img-link {
+				width: 100%;
+				aspect-ratio: 4 / 3;
+				overflow: hidden;
+				display: block;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					transition: transform 0.3s ease;
+				}
+			}
+
+			&:hover .img-link img {
+				transform: scale(1.05);
+			}
+
+			.related-info {
+				padding: 16px;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+
+				h4 {
+					font-size: 16px;
+					font-weight: 700;
+					margin: 0 0 12px 0;
+					line-height: 1.4;
+					
+					a {
+						color: #111111;
+						text-decoration: none;
+						&:hover { color: #a3e635; }
+					}
+				}
+
+				.view-detail-link {
+					font-size: 14px;
+					font-weight: 600;
+					color: #666666;
+					text-decoration: none;
+					margin-top: auto;
+					transition: color 0.2s ease;
+
+					&:hover { color: #a3e635; }
+				}
+			}
+		}
+	}
+
+	/* ==========================================================================
+	   暗黑模式暗流适配
+	   ========================================================================== */
+	body.dark-mode {
+		.product-main-content p { color: #cccccc; }
+		
+		.product-sidebar {
+			.sidebar-card {
+				background: #1a1a1a;
+				border-color: #333333;
+			}
+			.inquiry-card h3, .tags-card h4 { color: #ffffff; }
+			.inquiry-card p { color: #999999; }
+			.tags-card .sidebar-tag-item {
+				background-color: #262626;
+				border-color: #404040;
+				color: #cccccc;
+			}
+		}
+
+		.related-products-section {
+			.related-divider { background-color: #333333; }
+			.related-section-title { color: #ffffff; }
+			.related-card {
+				background: #111111;
+				border-color: #333333;
+				.related-info h4 a { color: #ffffff; }
+				.related-info .view-detail-link { color: #999999; }
+			}
+		}
+	}
+</style>
