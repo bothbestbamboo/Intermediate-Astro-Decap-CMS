@@ -1,4 +1,3 @@
----
 // Utils
 import { Icon } from 'astro-icon/components';
 ---
@@ -44,21 +43,26 @@ import { Icon } from 'astro-icon/components';
       width: 90%;
       max-width: (1320/16em);
       margin: auto;
-      margin-top: (-167/16em);
+      /* 🌟 修正一：调整移动端过大的负边距，防止白底色块无情截断和覆盖上方主图 */
+      margin-top: (-60/16em); 
       margin-bottom: (50/16em);
-      padding: (50/16em) (20/16em);
+      padding: (40/16em) (20/16em);
       background: #fff;
       box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
       border-top: (6/16em) solid var(--primary);
       border-radius: (5/16em);
       position: relative;
       z-index: 100;
+      box-sizing: border-box; /* 强力约束内部空间 */
+
       .card {
         width: 100%;
         max-width: (357/16em);
         margin: auto;
-        margin-bottom: (50/16em);
+        margin-bottom: (40/16em);
         display: block;
+        box-sizing: border-box;
+
         &:last-of-type {
           margin-bottom: 0;
         }
@@ -67,37 +71,43 @@ import { Icon } from 'astro-icon/components';
           width: (88/16em);
           height: (88/16em);
           margin: auto;
-          margin-bottom: (23/16em);
+          margin-bottom: (20/16em);
           background: var(--primary);
           border-radius: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
 
-          img {
+          svg { /* 强效兼容 Icon 标签的缩放 */
             width: (48/16em);
             height: (48/16em);
           }
         }
         h2 {
-          font-size: (32/16em);
+          /* 🌟 修正二：降低移动端字体，从 32px 优化到 22px 黄金字号，彻底解决越界溢出 */
+          font-size: (22/16em); 
           font-weight: 700;
-          line-height: 27/20em;
+          /* 🌟 修正三：修复行高单位比例，保证多行时不会上下重叠 */
+          line-height: 1.3; 
           text-align: center;
-          margin-bottom: 13/20em;
+          margin-bottom: (12/16em);
           color: #1a1a1a;
+          padding: 0 (10/16em); /* 给左右两侧留出安全间距 */
         }
         p {
-          line-height: 24/18em;
+          font-size: (14/16em); /* 移动端正文稍作微调，更加细腻利于阅读 */
+          line-height: 1.5;
           text-align: center;
           width: 100%;
           opacity: 0.7;
+          margin: 0;
+          color: #4a4a4a;
         }
       }
     }
   }
 
-  /* Inbetween */
+  /* Inbetween / Tablet (通过媒体查询无缝恢复原有的精致设计) */
   @media only screen and (min-width: 768px) {
     .services {
       font-size: ~"min(1.8vw, 1em)";
@@ -105,10 +115,22 @@ import { Icon } from 'astro-icon/components';
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      /* 平板及大屏端恢复深度向上的漂亮重叠视觉 */
+      margin-top: (-167/16em); 
 
       .card {
         max-width: (325/16em);
         margin: 0;
+        margin-bottom: 0;
+
+        h2 {
+          font-size: (32/16em); /* 大屏完美展现 32px 霸气标题 */
+          line-height: 27/20em;
+          padding: 0;
+        }
+        p {
+          font-size: 1em;
+        }
       }
     }
   }
@@ -137,6 +159,9 @@ import { Icon } from 'astro-icon/components';
         h2 {
           font-weight: bold;
           color: #fff;
+        }
+        p {
+          color: #cccccc;
         }
       }
     }
