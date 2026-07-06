@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from "astro:content";
-import BlogPostLayout from "@layouts/BlogPostLayout.astro";
+import { Image } from "astro:assets";
+import { formatDate } from "@js/utils";
+// 🌟 直接引入最核心的全站骨架，彻底摆脱博客布局的枷锁
+import BaseLayout from "@layouts/BaseLayout.astro"; 
 
 export async function getStaticPaths() {
 	const products = await getCollection("products");
@@ -11,12 +14,11 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+const { title, description, image, imageAlt, tags } = product.data;
 
-const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
-
-// 1. 获取所有产品，用来做底部的相关产品推荐
+// 1. 获取所有产品，用来做底部的相同标签相关产品推荐
 const allProducts = await getCollection("products");
-const currentTags = product.data.tags || [];
+const currentTags = tags || ["Products"];
 const relatedProducts = allProducts
 	.filter((item) => {
 		const hasCommonTag = item.data.tags?.some(tag => currentTags.includes(tag));
@@ -24,51 +26,58 @@ const relatedProducts = allProducts
 	})
 	.slice(0, 3);
 
-const { Content, headings } = await render(product);
+// 2. 正确渲染当前产品的 Markdown 核心内容
+const { Content } = await render(product);
 
-// 2. 🌟 核心突破：既然外面不渲染，我们将所有新组装的 HTML 作为一个整体数据传给底层布局
-const formattedProduct = {
-	...product,
-	data: {
-		...product.data,
-		author: "Bothbest", 
-		image: product.data.image,
-		imageAlt: safeAltText, 
-		alt: safeAltText,      
-		title: product.data.title,
-		tags: product.data.tags || ["Products"], 
-	}
-};
+const safeAltText = imageAlt || title || "Bothbest Bamboo Product";
 ---
 
-<BlogPostLayout post={formattedProduct} headings={headings}>
+<BaseLayout title={title} description={description || "Bothbest Premium Bamboo Product"} heroImage={image}>
 	
-	<!-- 🌟 把双栏和底部代码牢牢包裹在 Layout 标签内部 -->
-	<div class="product-layout-wrapper">
+	<div class="product-page-container">
 		
+		<!-- 产品面包屑 / 分类小标签 -->
+		<header class="product-page-header">
+			<span class="prod-tag-top">{currentTags[0]}</span>
+			<h1>{title}</h1>
+		</header>
+
+		<!-- 🌟 双栏商务核心布局结构 -->
 		<div class="product-detail-container">
-			<!-- 左栏：产品 Markdown 核心正文 -->
+			
+			<!-- 左栏：主图 + 产品 Markdown 核心描述 -->
 			<div class="product-main-content">
-				<Content />
+				<!-- 产品主图（复刻原博客大图的精美质感） -->
+				{image && (
+					<picture class="product-mainImage">
+						<Image src={image} alt={safeAltText} width="795" height="440" decoding="async" />
+					</picture>
+				)}
+
+				<!-- Markdown 正文渲染区 -->
+				<div id="product-markdown-body">
+					<Content />
+				</div>
 			</div>
 
-			<!-- 右栏：商务互动边栏 -->
+			<!-- 右栏：高转化商务互动边栏 -->
 			<aside class="product-sidebar">
-				<!-- 询盘定位 -->
+				<!-- 模块一：在线询盘定位组件 -->
 				<div class="sidebar-card inquiry-card">
 					<h3>Interested in this Product?</h3>
 					<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
+					<!-- 🌟 精准定位至联系页面的表单 -->
 					<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
 						Inquire Now ➔
 					</a>
 				</div>
 
-				<!-- 标签/分类 -->
-				{product.data.tags && product.data.tags.length > 0 && (
+				<!-- 模块二：标签分类快速筛选 -->
+				{currentTags.length > 0 && (
 					<div class="sidebar-card tags-card">
 						<h4>Product Categories</h4>
 						<div class="sidebar-tags-list">
-							{product.data.tags.map((tag) => (
+							{currentTags.map((tag) => (
 								<span class="sidebar-tag-item">{tag}</span>
 							))}
 						</div>
@@ -102,50 +111,105 @@ const formattedProduct = {
 				</div>
 			</div>
 		)}
-
 	</div>
+</BaseLayout>
 
-</BlogPostLayout>
-
-<style lang="less" is:global>
-	/* 🌟 注意：这里使用了 is:global 确保样式能强行渗透进 BlogPostLayout 内部组件 */
-	.product-layout-wrapper {
-		width: 100%;
-		margin-top: 30px;
+<style lang="less">
+	/* ==========================================================================
+	   独立产品框架容器（严格对齐博客页面的宽度体系）
+	   ========================================================================== */
+	.product-page-container {
+		width: 94%;
+		max-width: (1120/16em);
+		margin: auto;
+		padding: clamp(60px, 7vw, 100px) 0;
+		box-sizing: border-box;
 	}
 
+	.product-page-header {
+		margin-bottom: clamp(30px, 5vw, 50px);
+		
+		.prod-tag-top {
+			font-size: 14px;
+			font-weight: 700;
+			color: #a3e635; /* 工厂标志荧光绿 */
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			display: inline-block;
+			margin-bottom: 8px;
+		}
+
+		h1 {
+			font-size: clamp(24px, 5vw, 39px);
+			font-weight: 700;
+			line-height: 1.4em;
+			color: var(--headerColor, #111111);
+			margin: 0;
+		}
+	}
+
+	/* ==========================================================================
+	   双栏响应式布局
+	   ========================================================================== */
 	.product-detail-container {
 		display: flex;
-		gap: 40px;
-		align-items: flex-start;
-		margin-bottom: 60px;
+		flex-direction: column;
+		row-gap: (50/16em);
 		width: 100%;
-		
-		@media (max-width: 991px) {
-			flex-direction: column;
+
+		@media only screen and (min-width: 64em) {
+			flex-direction: row;
+			align-items: flex-start;
+			column-gap: (48/16em);
 		}
 	}
 
 	.product-main-content {
+		width: 100%;
+		max-width: (795/16em);
 		flex: 1;
-		min-width: 0;
-		p {
-			font-size: 16px;
-			line-height: 1.6;
-			color: #333333;
-			margin-bottom: 20px;
+
+		.product-mainImage {
+			width: 100%;
+			height: clamp(220px, 35vw, 440px);
+			margin-bottom: (40/16em);
+			border-radius: (8/16em);
+			display: block;
+			position: relative;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
 		}
 	}
 
-	.product-sidebar {
-		width: 320px;
-		position: sticky;
-		top: 100px;
-		flex-shrink: 0;
+	/* Markdown 内部排修 */
+	#product-markdown-body {
+		font-size: 16px;
+		line-height: 1.7;
+		color: var(--bodyTextColor, #333333);
+		
+		p { margin-bottom: 20px; }
+		h2, h3 { color: var(--headerColor, #111111); margin: 30px 0 15px 0; }
+	}
 
-		@media (max-width: 991px) {
-			width: 100%;
-			position: static;
+	/* ==========================================================================
+	   右侧高端商务边栏
+	   ========================================================================== */
+	.product-sidebar {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+
+		@media only screen and (min-width: 64em) {
+			width: (320/16em);
+			flex-shrink: 0;
+			position: sticky;
+			top: 100px;
 		}
 
 		.sidebar-card {
@@ -153,23 +217,13 @@ const formattedProduct = {
 			border: 1px solid #e5e7eb;
 			border-radius: 8px;
 			padding: 24px;
-			margin-bottom: 24px;
 		}
 
 		.inquiry-card {
 			border-left: 4px solid #a3e635;
-			h3 {
-				font-size: 18px;
-				font-weight: 700;
-				color: #111111;
-				margin: 0 0 12px 0;
-			}
-			p {
-				font-size: 14px;
-				line-height: 1.5;
-				color: #666666;
-				margin: 0 0 20px 0;
-			}
+			h3 { font-size: 18px; font-weight: 700; color: #111111; margin: 0 0 12px 0; }
+			p { font-size: 14px; line-height: 1.5; color: #666666; margin: 0 0 20px 0; }
+			
 			.sidebar-inquiry-btn {
 				display: flex;
 				align-items: center;
@@ -178,65 +232,35 @@ const formattedProduct = {
 				padding: 12px;
 				background-color: #111111;
 				color: #ffffff !important;
-				font-size: 14px;
+				font-size: 13px;
 				font-weight: 700;
 				text-transform: uppercase;
 				letter-spacing: 0.05em;
 				text-decoration: none;
 				border-radius: 4px;
 				transition: all 0.3s ease;
-				&:hover {
-					background-color: #a3e635;
-					color: #111111 !important;
-				}
+				&:hover { background-color: #a3e635; color: #111111 !important; }
 			}
 		}
 
 		.tags-card {
-			h4 {
-				font-size: 16px;
-				font-weight: 700;
-				color: #111111;
-				margin: 0 0 16px 0;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-			}
-			.sidebar-tags-list {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-			}
-			.sidebar-tag-item {
-				font-size: 13px;
-				font-weight: 600;
-				background-color: #ffffff;
-				border: 1px solid #e5e7eb;
-				color: #4a4a4a;
-				padding: 6px 12px;
-				border-radius: 4px;
-			}
+			h4 { font-size: 14px; font-weight: 700; color: #111111; margin: 0 0 14px 0; text-transform: uppercase; }
+			.sidebar-tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
+			.sidebar-tag-item { font-size: 12px; font-weight: 600; background-color: #ffffff; border: 1px solid #e5e7eb; color: #4a4a4a; padding: 5px 10px; border-radius: 4px; }
 		}
 	}
 
+	/* ==========================================================================
+	   底部横向循环推荐
+	   ========================================================================== */
 	.related-products-section {
 		margin-top: 60px;
-		.related-divider {
-			border: 0;
-			height: 1px;
-			background-color: #e5e7eb;
-			margin-bottom: 40px;
-		}
-		.related-section-title {
-			font-size: 24px;
-			font-weight: 800;
-			color: #111111;
-			margin: 0 0 24px 0;
-		}
-		.related-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-			gap: 24px;
-		}
+		width: 100%;
+		
+		.related-divider { border: 0; height: 1px; background-color: #e5e7eb; margin-bottom: 40px; }
+		.related-section-title { font-size: 24px; font-weight: 700; color: var(--headerColor, #111111); margin: 0 0 24px 0; }
+		.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+		
 		.related-card {
 			background: #ffffff;
 			border: 1px solid #e5e7eb;
@@ -245,54 +269,36 @@ const formattedProduct = {
 			display: flex;
 			flex-direction: column;
 			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			&:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-			}
+			&:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+			
 			.img-link {
 				width: 100%;
-				aspect-ratio: 4 / 3;
+				aspect-ratio: 16 / 10;
 				overflow: hidden;
 				display: block;
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					transition: transform 0.3s ease;
-				}
+				img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
 			}
 			&:hover .img-link img { transform: scale(1.05); }
+			
 			.related-info {
 				padding: 16px;
 				display: flex;
 				flex-direction: column;
 				flex: 1;
-				h4 {
-					font-size: 16px;
-					font-weight: 700;
-					margin: 0 0 12px 0;
-					line-height: 1.4;
-					a {
-						color: #111111;
-						text-decoration: none;
-						&:hover { color: #a3e635; }
-					}
+				h4 { font-size: 16px; font-weight: 700; margin: 0 0 12px 0; line-height: 1.4;
+					a { color: var(--headerColor, #111111); text-decoration: none; &:hover { color: #a3e635; } }
 				}
-				.view-detail-link {
-					font-size: 14px;
-					font-weight: 600;
-					color: #666666;
-					text-decoration: none;
-					margin-top: auto;
-					&:hover { color: #a3e635; }
-				}
+				.view-detail-link { font-size: 13px; font-weight: 600; color: #666666; text-decoration: none; margin-top: auto; &:hover { color: #a3e635; } }
 			}
 		}
 	}
 
-	/* 暗黑模式 */
+	/* ==========================================================================
+	   Dark Mode 全黑适配
+	   ========================================================================== */
 	body.dark-mode {
-		.product-main-content p { color: #cccccc; }
+		.product-page-header h1, #product-markdown-body h2, #product-markdown-body h3 { color: #f7f7f7; }
+		#product-markdown-body { color: #cccccc; }
 		.product-sidebar {
 			.sidebar-card { background: #1a1a1a; border-color: #333333; }
 			.inquiry-card h3, .tags-card h4 { color: #ffffff; }
@@ -301,10 +307,9 @@ const formattedProduct = {
 		}
 		.related-products-section {
 			.related-divider { background-color: #333333; }
-			.related-section-title { color: #ffffff; }
 			.related-card {
 				background: #111111; border-color: #333333;
-				.related-info h4 a { color: #ffffff; }
+				.related-info h4 a { color: #f7f7f7; }
 				.related-info .view-detail-link { color: #999999; }
 			}
 		}
