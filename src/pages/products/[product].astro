@@ -1,13 +1,10 @@
 ---
-import { getCollection, render } from "astro:content";
-import { Icon } from "astro-icon/components";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
-import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+/**
+ * * This page generates the individual product detail pages based on the products collection
+ **/
 
-// 🌟 引入原来的博客 Markdown 精美排版样式，确保正文排版完全对齐
-import "@styles/markdown.less";
+import { getCollection, render } from "astro:content";
+import BlogPostLayout from "@layouts/BlogPostLayout.astro";
 
 export async function getStaticPaths() {
 	const products = await getCollection("products");
@@ -18,321 +15,26 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const { title, description, image, imageAlt, tags, author = "Admin" } = product.data;
 
-// 1. 获取所有产品，用来做底部的相关产品推荐（最多 3 个）
-const allProducts = await getCollection("products");
-const currentTags = tags || ["Products"];
-const relatedProducts = allProducts
-	.filter((item) => {
-		const hasCommonTag = item.data.tags?.some(tag => currentTags.includes(tag));
-		return hasCommonTag && item.id !== product.id;
-	})
-	.slice(0, 3);
+// 🔽 筑起全方位无死角防御：把所有可能被当做图片描述的字段全填上
+const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
 
-// 2. 正确渲染当前产品的 Markdown 核心内容
+const formattedProduct = {
+	...product,
+	data: {
+		...product.data,
+		author: "Bothbest", // 顺手补齐原博客要求的作者字段
+		image: product.data.image,
+		imageAlt: safeAltText, // 兼容底层组件
+		alt: safeAltText,      // 兼顾某些特定 Image 标签
+		title: product.data.title,
+		tags: product.data.tags || ["Products"], 
+	}
+};
+
 const { Content, headings } = await render(product);
-
-// 3. 彻底防崩溃：安全解析图片路径
-const productImageSrc = image 
-	? (typeof image === 'object' ? image.src : image)
-	: "/assets/images/default-product.jpg";
-
-const safeAltText = imageAlt || title || "Bothbest Bamboo Factory Product";
 ---
 
-<BaseLayout title={title} description={description || "Bothbest Premium Bamboo Product"} heroImage={image}>
-	
-	<!-- 🌟 核心修正：使用标准的 blog-container 双栏布局体系结构 -->
-	<div class="blog-container product-layout-mode cs-container-fixed">
-		
-		<!-- 左栏主内容区：最大宽度锁定，不再全屏横切 -->
-		<section class="main-content">
-			<article class="blog-article">
-				
-				<!-- 头部大标题 -->
-				<header class="blog-header">
-					<span class="prod-tag-top-fixed">{currentTags[0]}</span>
-					<h1 class="blog-h1">{title}</h1>
-					<div class="blog-authorGroup">
-						<picture class="blog-author-img">
-							<Icon name="profile" width="32" height="32" />
-						</picture>
-						<span class="blog-author">{author}</span>
-					</div>
-				</header>
-
-				<!-- 产品主图 -->
-				{productImageSrc && (
-					<picture class="blog-mainImage">
-						<img src={productImageSrc} alt={safeAltText} decoding="async" />
-					</picture>
-				)}
-
-				<!-- 移动端目录 -->
-				<div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
-					<TableOfContents headings={headings} levels={3} />
-				</div>
-
-				<!-- 产品 Markdown 正文渲染区 -->
-				<div id="blog-content">
-					<Content />
-				</div>
-			</article>
-
-			<!-- 下方相关产品推荐 -->
-			{relatedProducts.length > 0 && (
-				<div class="related-products-section-fixed">
-					<hr class="related-divider-fixed" />
-					<h3 class="related-section-title-fixed">Related Bamboo Products</h3>
-					<div class="related-grid-fixed">
-						{relatedProducts.map((item) => {
-							const itemImage = item.data.image 
-								? (typeof item.data.image === 'object' ? item.data.image.src : item.data.image)
-								: "/assets/images/default-product.jpg";
-							const itemAlt = item.data.imageAlt || item.data.title || "Bothbest Bamboo Product";
-							return (
-								<div class="related-card-fixed">
-									<a href={`/products/${item.id}/`} class="img-link-fixed">
-										<img src={itemImage} alt={itemAlt} loading="lazy" />
-									</a>
-									<div class="related-info-fixed">
-										<h4><a href={`/products/${item.id}/`}>{item.data.title}</a></h4>
-										<a href={`/products/${item.id}/`} class="view-detail-link-fixed">View Details ↗</a>
-									</div>
-								</div>
-							);
-						})}
-					</div>
-				</div>
-			)}
-		</section>
-
-		<!-- 右栏侧边栏：重新通过 Flex 被拉回右侧 -->
-		<aside class="blog-sidebar">
-			
-			<!-- 模块一：电脑端目录 -->
-			<div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
-				<TableOfContents headings={headings} levels={3} />
-			</div>
-
-			<!-- 模块二：高转化率产品询盘组件 -->
-			<div class="product-sidebar-card inquiry-card">
-				<h3>Interested in this Product?</h3>
-				<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
-				<a href="/contact/#cs-form" class="sidebar-inquiry-btn">
-					Inquire Now ➔
-				</a>
-			</div>
-
-			<!-- 模块三：产品品类标签组件 -->
-			{currentTags.length > 0 && (
-				<div class="product-sidebar-card tags-card">
-					<h4>Product Categories</h4>
-					<div class="sidebar-tags-list">
-						{currentTags.map((tag) => (
-							<span class="sidebar-tag-item">{tag}</span>
-						))}
-					</div>
-				</div>
-			)}
-
-			<!-- 模块四：推荐文章（原博客自带） -->
-			<div class="blog-sidebar_widget-wrapper">
-				<FeaturedPost />
-			</div>
-		</aside>
-	</div>
-
-	<CTA />
-</BaseLayout>
-
-<style lang="less" is:global>
-	/* ==========================================================================
-	   双栏 Flex 强力定位与对齐修正
-	   ========================================================================== */
-	.cs-container-fixed {
-		display: flex;
-		justify-content: space-between;
-		gap: 40px;
-		max-width: 1280px; /* 限制页面最大整体宽度 */
-		margin: 40px auto;
-		padding: 0 20px;
-		box-sizing: border-box;
-
-		/* 锁定左栏主体占比，不再满屏暴走 */
-		.main-content {
-			flex: 1;
-			max-width: 795px; 
-			width: 100%;
-			box-sizing: border-box;
-		}
-
-		/* 锁定右栏固定宽度，强行拉回并排位置 */
-		.blog-sidebar {
-			width: 360px;
-			flex-shrink: 0;
-			box-sizing: border-box;
-		}
-
-		/* 针对平板和手机端自适应降级为单栏结构 */
-		@media (max-width: 1024px) {
-			flex-direction: column;
-			gap: 30px;
-			
-			.main-content {
-				max-width: 100%;
-			}
-			.blog-sidebar {
-				width: 100%;
-			}
-		}
-	}
-
-	.product-layout-mode {
-		.prod-tag-top-fixed {
-			font-size: 13px;
-			font-weight: 700;
-			color: #a3e635;
-			text-transform: uppercase;
-			letter-spacing: 0.1em;
-			display: inline-block;
-			margin-bottom: 5px;
-		}
-
-		.blog-mainImage img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-	}
-
-	/* ==========================================================================
-	   右侧专属于产品的卡片组件样式
-	   ========================================================================== */
-	.product-sidebar-card {
-		background: #f9fafb;
-		border: 1px solid #e5e7eb;
-		border-radius: 8px;
-		padding: 24px;
-		margin-bottom: 24px;
-		box-sizing: border-box;
-	}
-
-	.inquiry-card {
-		border-left: 4px solid #a3e635;
-		h3 { font-size: 17px; font-weight: 700; color: #111111; margin: 0 0 10px 0; }
-		p { font-size: 13px; line-height: 1.5; color: #666666; margin: 0 0 18px 0; }
-		
-		.sidebar-inquiry-btn {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			padding: 11px;
-			background-color: #111111;
-			color: #ffffff !important;
-			font-size: 12px;
-			font-weight: 700;
-			text-transform: uppercase;
-			letter-spacing: 0.05em;
-			text-decoration: none;
-			border-radius: 4px;
-			transition: background-color 0.3s ease;
-			&:hover { background-color: #a3e635; color: #111111 !important; }
-		}
-	}
-
-	.tags-card {
-		h4 { font-size: 13px; font-weight: 700; color: #111111; margin: 0 0 12px 0; text-transform: uppercase; }
-		.sidebar-tags-list { display: flex; flex-wrap: wrap; gap: 6px; }
-		.sidebar-tag-item { font-size: 11px; font-weight: 600; background-color: #ffffff; border: 1px solid #e5e7eb; color: #4a4a4a; padding: 5px 9px; border-radius: 4px; }
-	}
-
-	/* ==========================================================================
-	   底部相关推荐卡片防拉扁
-	   ========================================================================== */
-	.related-products-section-fixed {
-		margin-top: 50px;
-		width: 100%;
-		max-width: 795px; 
-		clear: both;
-
-		.related-divider-fixed {
-			border: 0;
-			height: 1px;
-			background-color: #e5e7eb;
-			margin-bottom: 30px;
-		}
-
-		.related-section-title-fixed {
-			font-size: 22px;
-			font-weight: 700;
-			color: var(--headerColor, #111111);
-			margin: 0 0 20px 0;
-		}
-
-		.related-grid-fixed {
-			display: grid;
-			grid-template-columns: repeat(3, minmax(180px, 1fr)); 
-			gap: 20px;
-
-			@media (max-width: 767px) {
-				grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-			}
-		}
-
-		.related-card-fixed {
-			background: #ffffff;
-			border: 1px solid #e5e7eb;
-			border-radius: 6px;
-			overflow: hidden;
-			display: flex;
-			flex-direction: column;
-			transition: transform 0.3s ease;
-			&:hover { transform: translateY(-4px); }
-
-			.img-link-fixed {
-				width: 100%;
-				aspect-ratio: 4 / 3; 
-				overflow: hidden;
-				display: block;
-				background-color: #f3f4f6;
-				img { width: 100%; height: 100%; object-fit: cover; }
-			}
-
-			.related-info-fixed {
-				padding: 12px;
-				display: flex;
-				flex-direction: column;
-				flex: 1;
-				h4 {
-					font-size: 14px;
-					font-weight: 700;
-					margin: 0 0 8px 0;
-					line-height: 1.4;
-					a { color: var(--headerColor, #111111); text-decoration: none; &:hover { color: #a3e635; } }
-				}
-				.view-detail-link-fixed { font-size: 12px; font-weight: 600; color: #666666; text-decoration: none; margin-top: auto; &:hover { color: #a3e635; } }
-			}
-		}
-	}
-
-	/* ==========================================================================
-	   暗黑模式完美兼容
-	   ========================================================================== */
-	body.dark-mode {
-		.product-sidebar-card { background: #1a1a1a; border-color: #333333; }
-		.inquiry-card h3, .tags-card h4 { color: #ffffff; }
-		.inquiry-card p { color: #999999; }
-		.tags-card .sidebar-tag-item { background-color: #262626; border-color: #404040; color: #cccccc; }
-		
-		.related-products-section-fixed {
-			.related-divider-fixed { background-color: #333333; }
-			.related-card-fixed {
-				background: #111111; border-color: #333333;
-				.related-info-fixed h4 a { color: #ffffff; }
-			}
-		}
-	}
-</style>
+<BlogPostLayout post={formattedProduct} headings={headings}>
+	<Content />
+</BlogPostLayout>
