@@ -1,29 +1,31 @@
 ---
-// 🌟 移除容易在不同版本下报错的组件导入，改用 100% 稳妥的静态资产/或者原项目标准格式
+// 🌟 彻底移除所有容易导致 Vercel 报错或路径丢失的 Icon 导入
 ---
 
 <section id="services" class="services">
   <div class="card">
     <picture>
-      <img src="/assets/svgs/service1.svg" width="48" height="48" alt="Bamboo Flooring Icon" aria-hidden="true" class="service-icon-img" onerror="this.style.display='none'" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="internal-service-svg"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
     </picture>
     <h2>Bamboo Flooring</h2>
     <p>
       Premium solid, engineered, and strand woven bamboo flooring designed for modern interiors. It delivers exceptional wear resistance, natural warmth, and eco-friendly elegance to any residential or commercial space.
     </p>
   </div>
+  
   <div class="card">
     <picture>
-      <img src="/assets/svgs/service2.svg" width="48" height="48" alt="Bamboo Decking Icon" aria-hidden="true" class="service-icon-img" onerror="this.style.display='none'" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="internal-service-svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
     </picture>
     <h2>Bamboo Decking</h2>
     <p>
       High-density, exterior-grade strand woven bamboo decking engineered to withstand harsh outdoor elements. Featuring superior anti-corrosion, mold-resistance, and high stability, it is perfect for luxury patios, gardens, and commercial walkways.
     </p>
   </div>
+  
   <div class="card">
     <picture>
-      <img src="/assets/svgs/service3.svg" width="48" height="48" alt="Bamboo Plywood Icon" aria-hidden="true" class="service-icon-img" onerror="this.style.display='none'" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="internal-service-svg"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
     </picture>
     <h2>Bamboo Plywood</h2>
     <p>
@@ -37,29 +39,33 @@
 <---          Services          -->
 <--- -------------------------- -*/
 
-  /* Mobile */
+  /* ==========================================================================
+     移动端优先基础样式 (Mobile 0em ~ 767px)
+     ========================================================================== */
   @media only screen and (min-width: 0em) {
     .services {
       width: 90%;
       max-width: (1320/16em);
-      margin: auto;
-      margin-top: (-60/16em); 
-      margin-bottom: (50/16em);
-      padding: (40/16em) (20/16em);
-      background: #fff;
-      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
-      border-top: (6/16em) solid var(--primary);
-      border-radius: (5/16em);
+      margin: 0 auto;
+      /* 🌟 核心修正：手机端彻底关闭往上的负边距！防止白色色块遮挡主图文字按钮 */
+      margin-top: 20px !important; 
+      margin-bottom: 40px;
+      padding: 40px 20px;
+      background: #ffffff;
+      box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.06);
+      border-top: 6px solid var(--primary);
+      border-radius: 8px;
       position: relative;
-      z-index: 100;
+      z-index: 99;
       box-sizing: border-box;
 
       .card {
         width: 100%;
-        max-width: (357/16em);
-        margin: auto;
-        margin-bottom: (40/16em);
-        display: block;
+        max-width: 340px;
+        margin: 0 auto 40px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 强力居中 */
         box-sizing: border-box;
 
         &:last-of-type {
@@ -67,39 +73,40 @@
         }
 
         picture {
-          width: (88/16em);
-          height: (88/16em);
-          margin: auto;
-          margin-bottom: (20/16em);
+          width: 80px;
+          height: 80px;
+          margin: 0 auto 20px auto;
           background: var(--primary);
           border-radius: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-shrink: 0;
 
-          /* 🌟 确保原生 img 的色彩和缩放与之前保持完全一致 */
-          .service-icon-img { 
-            width: (48/16em);
-            height: (48/16em);
-            display: block;
-            object-fit: contain;
+          /* 🌟 赋予写死的内联 SVG 统一颜色与完美居中尺寸 */
+          .internal-service-svg {
+            width: 36px;
+            height: 36px;
+            color: #ffffff; /* 如果大底色是嫩绿，这里可以写#1a1a1a，若需要纯白则保留#ffffff */
           }
         }
+
         h2 {
-          font-size: (22/16em); 
+          font-size: 24px; 
           font-weight: 700;
           line-height: 1.3; 
           text-align: center;
-          margin-bottom: (12/16em);
+          margin: 0 0 12px 0;
           color: #1a1a1a;
-          padding: 0 (10/16em); 
+          width: 100%;
         }
+
         p {
-          font-size: (14/16em); 
+          font-size: 14px; 
           line-height: 1.5;
           text-align: center;
           width: 100%;
-          opacity: 0.7;
+          opacity: 0.8;
           margin: 0;
           color: #4a4a4a;
         }
@@ -107,61 +114,70 @@
     }
   }
 
-  /* Inbetween / Tablet */
+  /* ==========================================================================
+     平板端自适应布局 (Tablet 768px 及以上)
+     ========================================================================== */
   @media only screen and (min-width: 768px) {
     .services {
       font-size: ~"min(1.8vw, 1em)";
-      width: 98%;
+      width: 96%;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-top: (-167/16em); 
+      
+      /* 🌟 只有在空间宽裕的大屏端，才允许往上提、形成盖在主图上的精美重叠层 */
+      margin-top: (-140/16em) !important; 
+      margin-bottom: (50/16em);
 
       .card {
         max-width: (325/16em);
         margin: 0;
-        margin-bottom: 0;
 
         h2 {
-          font-size: (32/16em); 
-          line-height: 27/20em;
-          padding: 0;
-        }
-        p {
-          font-size: 1em;
+          font-size: (28/16em); 
+          line-height: 1.3;
         }
       }
     }
   }
 
-  /* Large Desktop */
+  /* ==========================================================================
+     宽屏电脑端样式 (Large Desktop 1300px 及以上)
+     ========================================================================== */
   @media only screen and (min-width: 1300px) {
     .services {
-      padding: (50/16em) (80/16em);
+      padding: (50/16em) (60/16em);
+      margin-top: (-167/16em) !important; 
 
       .card {
         max-width: (357/16em);
+        
+        h2 {
+          font-size: (32/16em);
+        }
       }
     }
   }
 
-  /* Dark mode */
-  @media only screen and (min-width: 0em) {
-    body.dark-mode {
-      #services {
-        background: var(--medium);
+  /* ==========================================================================
+     暗黑模式完美兼容
+     ========================================================================== */
+  body.dark-mode {
+    #services {
+      background: var(--medium, #1a1a1a);
 
-        picture {
-          background: var(--primaryDark);
+      picture {
+        background: var(--primaryDark, #a3e635);
+        .internal-service-svg {
+          color: #111111;
         }
+      }
 
-        h2 {
-          font-weight: bold;
-          color: #fff;
-        }
-        p {
-          color: #cccccc;
-        }
+      h2 {
+        color: #ffffff;
+      }
+      p {
+        color: #cccccc;
       }
     }
   }
