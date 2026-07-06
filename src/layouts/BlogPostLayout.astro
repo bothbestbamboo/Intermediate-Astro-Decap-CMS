@@ -14,8 +14,11 @@ import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
 const { post } = Astro.props;
-const { title, date, description, image, imageAlt, author } = post.data;
+const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
+
+// 判断当前页面是不是产品页面（通过标签或特定字段识别）
+const isProductPage = tags && (tags.includes("Products") || tags.includes("Flooring") || tags.includes("Decking") || tags.includes("Plywood"));
 
 // Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http") ? image.src : Astro.url.origin + image.src;
@@ -69,6 +72,19 @@ const blogPostingSchema = getBlogPostingSchema(
 			<div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
 				<TableOfContents headings={headings} levels={3} />
 			</div>
+			
+			{isProductPage && (
+				<div class="product-inquiry-box-inserted">
+					<div class="product-inquiry-box">
+						<h3>Interested in this Product?</h3>
+						<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
+						<a href="/contact/#cs-form" class="product-inquiry-btn">
+							INQUIRE NOW ➔
+						</a>
+					</div>
+				</div>
+			)}
+
 			<div class="blog-sidebar_widget-wrapper">
 				<FeaturedPost />
 			</div>
@@ -175,7 +191,7 @@ const blogPostingSchema = getBlogPostingSchema(
 				font-size: clamp(22px, 5vw, 38px);
 				font-weight: 800;
 				line-height: 1.3em;
-				/* 🌟 强力解除限制，覆盖外部样式表可能存在的宽度锁死 */
+				/* 🌟 终极修复：把原先锁死 550px 的限制彻底抹除，在这里给予 100% 权限 */
 				max-width: 100% !important; 
 				width: 100% !important;
 				margin: (16/16rem) 0;
@@ -199,6 +215,58 @@ const blogPostingSchema = getBlogPostingSchema(
 		}
 	}
 
+	/* 🌟 询盘挂载组件局部化精准Less样式 */
+	.product-inquiry-box-inserted {
+		margin-top: 24px;
+		width: 100%;
+		box-sizing: border-box;
+
+		.product-inquiry-box {
+			background: #f9fafb;
+			border: 1px solid #e5e7eb;
+			border-radius: 8px;
+			padding: 24px;
+			border-left: 4px solid #a3e635; /* 经典绿色侧栏线 */
+			box-sizing: border-box;
+
+			h3 {
+				font-size: 16px;
+				font-weight: 700;
+				color: #111111;
+				margin: 0 0 10px 0;
+			}
+
+			p {
+				font-size: 13px;
+				line-height: 1.5;
+				color: #666666;
+				margin: 0 0 18px 0;
+			}
+
+			.product-inquiry-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				padding: 12px;
+				background-color: #111111;
+				color: #ffffff !important;
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				text-decoration: none;
+				border-radius: 4px;
+				transition: background-color 0.3s ease;
+
+				&:hover {
+					background-color: #a3e635;
+					color: #111111 !important;
+				}
+			}
+		}
+	}
+
 	/* Dark Mode */
 	@media only screen and (min-width: 0em) {
 		body.dark-mode {
@@ -207,6 +275,19 @@ const blogPostingSchema = getBlogPostingSchema(
 				.blog-author,
 				.blog-date {
 					color: #f7f7f7;
+				}
+			}
+			.product-inquiry-box-inserted {
+				.product-inquiry-box {
+					background: #1a1a1a;
+					border-color: #333333;
+					h3 { color: #ffffff; }
+					p { color: #999999; }
+					.product-inquiry-btn {
+						background-color: #f3f4f6;
+						color: #111111 !important;
+						&:hover { background-color: #a3e635; color: #111111 !important; }
+					}
 				}
 			}
 		}

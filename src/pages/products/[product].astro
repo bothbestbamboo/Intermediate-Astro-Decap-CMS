@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-// 🔽 全方位防御：把所有可能被当做图片描述的字段全填上
+// 🔽 筑起全方位防御：把所有可能被当做图片描述的字段全填上
 const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
 
 const formattedProduct = {
@@ -28,119 +28,11 @@ const formattedProduct = {
 		imageAlt: safeAltText, // 兼容底层组件
 		alt: safeAltText,      // 兼顾某些特定 Image 标签
 		title: product.data.title,
-		tags: product.data.tags || ["Products"], 
+		tags: product.data.tags || ["Products"], // 传递给布局用来判断并注入询盘框
 	}
 };
 
-// 🌟 注意：这里我们获取到 Content 之后，直接传给父级包裹器，内部不再包围标签
+const { headings } = await render(product);
 ---
 
-<BlogPostLayout post={formattedProduct} headings={product.headings}>
-	<div id="product-sidebar-inquiry-source" style="display: none;">
-		<div class="product-inquiry-box">
-			<h3>Interested in this Product?</h3>
-			<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
-			<a href="/contact/#cs-form" class="product-inquiry-btn">
-				INQUIRE NOW ➔
-			</a>
-		</div>
-	</div>
-</BlogPostLayout>
-
-<script is:inline>
-	function injectInquiryBox() {
-		if (document.querySelector('.product-inquiry-box-inserted')) return;
-
-		const source = document.getElementById('product-sidebar-inquiry-source');
-		const desktopTOC = document.getElementById('desktop-toc');
-
-		if (source && desktopTOC) {
-			const wrapper = document.createElement('div');
-			wrapper.className = 'product-inquiry-box-inserted';
-			wrapper.innerHTML = source.innerHTML;
-			desktopTOC.parentNode.insertBefore(wrapper, desktopTOC.nextSibling);
-		}
-	}
-	document.addEventListener('astro:page-load', injectInquiryBox);
-	injectInquiryBox();
-</script>
-
-<style lang="less" is:global>
-	/* 🌟 核心突破：强力击碎产品内页长标题在特定系统下的任何父级宽度死锁 */
-	.blog-article .blog-header .blog-h1,
-	h1.blog-h1 {
-		max-width: 100% !important;
-		width: 100% !important;
-		display: block !important;
-	}
-
-	/* ==========================================================================
-	   高品质询盘挂载组件Less样式体系
-	   ========================================================================== */
-	.product-inquiry-box-inserted {
-		margin-top: 24px;
-		width: 100%;
-		box-sizing: border-box;
-
-		.product-inquiry-box {
-			background: #f9fafb;
-			border: 1px solid #e5e7eb;
-			border-radius: 8px;
-			padding: 24px;
-			border-left: 4px solid #a3e635; /* 经典绿条衬边 */
-			box-sizing: border-box;
-
-			h3 {
-				font-size: 16px;
-				font-weight: 700;
-				color: #111111;
-				margin: 0 0 10px 0;
-			}
-
-			p {
-				font-size: 13px;
-				line-height: 1.5;
-				color: #666666;
-				margin: 0 0 18px 0;
-			}
-
-			.product-inquiry-btn {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				padding: 12px;
-				background-color: #111111;
-				color: #ffffff !important;
-				font-size: 12px;
-				font-weight: 700;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-				text-decoration: none;
-				border-radius: 4px;
-				transition: background-color 0.3s ease;
-
-				&:hover {
-					background-color: #a3e635;
-					color: #111111 !important;
-				}
-			}
-		}
-	}
-
-	body.dark-mode {
-		.product-inquiry-box-inserted {
-			.product-inquiry-box {
-				background: #1a1a1a;
-				border-color: #333333;
-				h3 { color: #ffffff; }
-				p { color: #999999; }
-				.product-inquiry-btn {
-					background-color: #f3f4f6;
-					color: #111111 !important;
-					&:hover { background-color: #a3e635; color: #111111 !important; }
-				}
-			}
-		}
-	}
-</style>
+<BlogPostLayout post={formattedProduct} headings={headings} />
