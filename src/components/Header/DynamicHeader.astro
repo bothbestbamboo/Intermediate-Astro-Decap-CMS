@@ -3,12 +3,10 @@
  * * DYNAMIC HEADER COMPONENT
  * * =======================
  * * 修复了 Icon 缺失引起的打包错误
+ * * 升级为扁平化、分列式产品大导航菜单（Mega Menu）
  **/
 
-// 🌟 关键：必须引入这个 Icon 工具，下面的 <Icon /> 标签才能正常工作！
 import { Icon } from "astro-icon/components";
-
-// Components
 import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 ---
 
@@ -69,8 +67,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						</a>
 					</li>
 
-					<!-- 🎯 1. Products 下拉菜单 -->
-					<li class="cs-li cs-dropdown">
+					<!-- 🎯 1. Products 扁平化多列大菜单 (Mega Menu) -->
+					<li class="cs-li cs-dropdown cs-mega-dropdown">
 						<button
 							class:list={[
 								"cs-li-link cs-dropdown-toggle",
@@ -83,32 +81,43 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							Products
 							<Icon name="mdi--caret" class="cs-drop-icon" />
 						</button>
-						<ul class="cs-drop-ul" aria-labelledby="products-dropdown-toggle">
-							<li class="cs-drop-li">
-								<a
-									href="/products/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/products/" ? "page" : undefined}
-								>All Products</a>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/products/solid-horizontal-natural/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/products/solid-horizontal-natural/" ? "page" : undefined}
-								>Horizontal Natural</a>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/products/solid-vertical-carbonized/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/products/solid-vertical-carbonized/" ? "page" : undefined}
-								>Vertical Carbonized</a>
-							</li>
-						</ul>
+						
+						<!-- 电脑端横向分 3 列，手机端垂直向下展开 -->
+						<div class="cs-drop-ul cs-mega-wrapper">
+							<!-- 第一列：Bamboo Flooring -->
+							<div class="cs-mega-column">
+								<span class="cs-mega-title">Bamboo Flooring</span>
+								<ul class="cs-mega-child-ul">
+									<li class="cs-drop-li"><a href="/products/flooring/" class="cs-li-link cs-drop-link">View All Flooring</a></li>
+									<li class="cs-drop-li"><a href="/products/solid-horizontal-natural/" class="cs-li-link cs-drop-link">Horizontal Natural</a></li>
+									<li class="cs-drop-li"><a href="/products/solid-vertical-carbonized/" class="cs-li-link cs-drop-link">Vertical Carbonized</a></li>
+									<li class="cs-drop-li"><a href="/products/strand-woven-carbonized/" class="cs-li-link cs-drop-link">Strand Woven Carbonized</a></li>
+								</ul>
+							</div>
+							<!-- 第二列：Bamboo Decking -->
+							<div class="cs-mega-column">
+								<span class="cs-mega-title">Bamboo Decking</span>
+								<ul class="cs-mega-child-ul">
+									<li class="cs-drop-li"><a href="/products/decking/" class="cs-li-link cs-drop-link">View All Decking</a></li>
+									<li class="cs-drop-li"><a href="/products/symmetrical-grooved/" class="cs-li-link cs-drop-link">Symmetrical Grooved</a></li>
+									<li class="cs-drop-li"><a href="/products/deep-carbonized/" class="cs-li-link cs-drop-link">Deep Carbonized</a></li>
+									<li class="cs-drop-li"><a href="/products/hidden-fastener/" class="cs-li-link cs-drop-link">Hidden Fastener</a></li>
+								</ul>
+							</div>
+							<!-- 第三列：Bamboo Plywood -->
+							<div class="cs-mega-column">
+								<span class="cs-mega-title">Bamboo Plywood</span>
+								<ul class="cs-mega-child-ul">
+									<li class="cs-drop-li"><a href="/products/plywood/" class="cs-li-link cs-drop-link">View All Plywood</a></li>
+									<li class="cs-drop-li"><a href="/products/single-layer-panel/" class="cs-li-link cs-drop-link">Single-Layer Panel</a></li>
+									<li class="cs-drop-li"><a href="/products/cross-ply-panels/" class="cs-li-link cs-drop-link">Cross-Ply Panels</a></li>
+									<li class="cs-drop-li"><a href="/products/vertical-grain/" class="cs-li-link cs-drop-link">Vertical Grain</a></li>
+								</ul>
+							</div>
+						</div>
 					</li>
 
-					<!-- 🛠️ 2. 原 Products 换名为了 Projects 下拉菜单 -->
+					<!-- 🛠️ 2. Projects 下拉菜单 -->
 					<li class="cs-li cs-dropdown">
 						<button
 							class:list={[
@@ -147,7 +156,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						</ul>
 					</li>
 
-					
 					<!-- Blog -->
 					<li class="cs-li">
 						<a
@@ -197,7 +205,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 		#cs-navigation {
 			width: 100%;
-			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
 			padding: (12/16rem) (16/16rem);
 			background-color: #fff;
@@ -206,7 +213,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			z-index: 10000;
 
 			&:before {
-				/* black blurred overlay */
 				content: "";
 				width: 0%;
 				height: 100vh;
@@ -217,9 +223,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				top: 100%;
 				right: 0;
 				z-index: -11;
-				transition:
-					width 0.5s,
-					opacity 0.3s;
+				transition: width 0.5s, opacity 0.3s;
 				-webkit-backdrop-filter: blur(10px);
 				backdrop-filter: blur(10px);
 			}
@@ -255,7 +259,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				max-width: (146/16rem);
 				height: 100%;
 				margin: 0 auto 0 0;
-				/* prevents padding from affecting height and width */
 				box-sizing: border-box;
 				padding: 0;
 				display: flex;
@@ -266,15 +269,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				svg {
 					width: 100%;
 					height: 100%;
-					/* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
 					object-fit: contain;
-					/* places the image to the left edge of the parent */
 					object-position: left;
 				}
 			}
 
 			.cs-toggle {
-				/* 44px - 48px */
 				width: clamp(2.75rem, 6vw, 3rem);
 				height: clamp(2.75rem, 6vw, 3rem);
 				margin: 0 0 0 auto;
@@ -294,8 +294,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 				.cs-line2 {
 					top: 50%;
-					transform: translate(-50%, -50%) translateY(0)
-						rotate(-225deg);
+					transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
 					transform-origin: center;
 				}
 
@@ -306,9 +305,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-box {
-				/* 24px - 28px */
 				width: clamp(1.5rem, 2vw, 1.75rem);
-				/* 14px - 16px */
 				height: clamp(0.875rem, 1.5vw, 1rem);
 				position: relative;
 			}
@@ -325,10 +322,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-line1 {
 				top: 0;
-				transition:
-					transform 0.5s,
-					top 0.3s,
-					left 0.3s;
+				transition: transform 0.5s, top 0.3s, left 0.3s;
 				animation-duration: 0.7s;
 				animation-timing-function: ease;
 				animation-direction: normal;
@@ -339,10 +333,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-line2 {
 				top: 50%;
 				transform: translateX(-50%) translateY(-50%);
-				transition:
-					top 0.3s,
-					left 0.3s,
-					transform 0.5s;
+				transition: top 0.3s, left 0.3s, transform 0.5s;
 				animation-duration: 0.7s;
 				animation-timing-function: ease;
 				animation-direction: normal;
@@ -351,9 +342,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-line3 {
 				bottom: 0;
-				transition:
-					bottom 0.3s,
-					opacity 0.3s;
+				transition: bottom 0.3s, opacity 0.3s;
 			}
 
 			.cs-ul-wrapper {
@@ -369,9 +358,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				z-index: -1;
 				overflow: hidden;
 				transform: scaleX(0);
-				transition:
-					transform 0.4s,
-					opacity 0.3s;
+				transition: transform 0.4s, opacity 0.3s;
 				transform-origin: top right;
 			}
 
@@ -380,9 +367,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				min-width: 40%;
 				height: 65vh;
 				margin: 0;
-				/* 28px - 40px */
-				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem)
-					(70/16rem);
+				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
@@ -397,43 +382,19 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				width: 100%;
 				margin-right: 0;
 				opacity: 0;
-				/* transition from these values */
 				transform: translateX(-40/16rem);
-				transition:
-					transform 0.6s,
-					opacity 0.9s;
+				transition: transform 0.6s, opacity 0.9s;
 
-				&:nth-of-type(1) {
-					transition-delay: 0.05s;
-				}
-				&:nth-of-type(2) {
-					transition-delay: 0.1s;
-				}
-				&:nth-of-type(3) {
-					transition-delay: 0.15s;
-				}
-				&:nth-of-type(4) {
-					transition-delay: 0.2s;
-				}
-				&:nth-of-type(5) {
-					transition-delay: 0.25s;
-				}
-				&:nth-of-type(6) {
-					transition-delay: 0.3s;
-				}
-				&:nth-of-type(7) {
-					transition-delay: 0.35s;
-				}
-				&:nth-of-type(8) {
-					transition-delay: 0.4s;
-				}
-				&:nth-of-type(9) {
-					transition-delay: 0.45s;
-				}
+				&:nth-of-type(1) { transition-delay: 0.05s; }
+				&:nth-of-type(2) { transition-delay: 0.1s; }
+				&:nth-of-type(3) { transition-delay: 0.15s; }
+				&:nth-of-type(4) { transition-delay: 0.2s; }
+				&:nth-of-type(5) { transition-delay: 0.25s; }
+				&:nth-of-type(6) { transition-delay: 0.3s; }
+				&:nth-of-type(7) { transition-delay: 0.35s; }
 			}
 
 			.cs-li-link {
-				/* 16px - 24px */
 				font-size: clamp(1rem, 2.5vw, 1.5rem);
 				color: inherit;
 				line-height: 1.2em;
@@ -443,7 +404,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				position: relative;
 
 				&:before {
-					/* active state underline */
 					content: "";
 					width: 100%;
 					height: 1px;
@@ -468,67 +428,41 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		}
 	}
 
-	/* Dark Mode */
+	/* Dark Mode Mobile */
 	@media only screen and (max-width: 63.9375rem) {
 		body.dark-mode {
 			#cs-navigation {
 				background-color: var(--dark);
-
-				.cs-logo {
-					/* makes it white */
-					filter: grayscale(1) brightness(1000%);
-				}
-
-				.cs-line {
-					background-color: #fff;
-				}
-
-				.cs-ul-wrapper {
-					background-color: var(--medium);
-				}
-
-				.cs-li-link {
-					color: var(--bodyTextColorWhite);
-				}
+				.cs-logo { filter: grayscale(1) brightness(1000%); }
+				.cs-line { background-color: #fff; }
+				.cs-ul-wrapper { background-color: var(--medium); }
+				.cs-li-link { color: var(--bodyTextColorWhite); }
 			}
 		}
 	}
 
 	/*-- -------------------------- -->
-<---     Navigation Dropdown    -->
-<--- -------------------------- -*/
+	<---     Navigation Dropdown    -->
+	<--- -------------------------- -*/
 
 	/* Mobile - 1023px */
 	@media only screen and (max-width: 63.9375rem) {
 		#cs-navigation {
 			.cs-dropdown {
-				color: var(--bodyTextColorWhite);
 				color: var(--headerColor);
-
 				position: relative;
 
 				&.cs-active {
 					.cs-drop-ul {
 						height: auto;
 						margin: (12/16rem) 0 0 0;
-						padding: (24/16rem);
+						padding: (16/16rem);
 						opacity: 1;
 						visibility: visible;
 						transform: scale(1);
 					}
-
-					.cs-drop-link {
-						opacity: 1;
-					}
-
-					.cs-drop-icon {
-						transform: rotate(0);
-					}
-				}
-
-				.cs-li-link {
-					position: relative;
-					transition: opacity 0.3s;
+					.cs-drop-link { opacity: 1; }
+					.cs-drop-icon { transform: rotate(0); }
 				}
 			}
 
@@ -541,12 +475,37 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transition: 0.3s;
 			}
 
+			/* 手机端大菜单折叠形态适配 */
+			.cs-mega-wrapper {
+				display: flex;
+				flex-direction: column;
+				gap: (20/16rem);
+			}
+			.cs-mega-title {
+				display: block;
+				font-size: (14/16rem);
+				font-weight: 800;
+				text-transform: uppercase;
+				color: #fff;
+				margin-bottom: (8/16rem);
+				border-bottom: 1px solid rgba(255,255,255,0.2);
+				padding-bottom: 4px;
+			}
+			.cs-mega-child-ul {
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+				gap: (10/16rem);
+				align-items: flex-end;
+			}
+
 			.cs-drop-ul {
 				width: 100%;
 				height: 0;
 				margin: 0;
 				box-sizing: border-box;
-				padding: 0 (24/16rem) 0 (24/16rem);
+				padding: 0 (24/16rem);
 				background-color: var(--primary);
 				opacity: 0;
 				display: flex;
@@ -557,13 +516,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				gap: (12/16rem);
 				overflow: hidden;
 				transform: scale(0);
-				transition:
-					padding 0.3s,
-					margin 0.3s,
-					height 0.3s,
-					opacity 0.3s,
-					transform 0.3s,
-					visibility 0.3s;
+				transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, transform 0.3s, visibility 0.3s;
 				transform-origin: top right;
 			}
 
@@ -574,7 +527,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-li-link {
 				&.cs-drop-link {
-					/* 14px - 16px */
 					font-size: clamp(0.875rem, 2vw, 1.25rem);
 					color: #fff;
 				}
@@ -601,7 +553,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						visibility: visible;
 						transform: scaleY(1);
 					}
-
 					.cs-drop-li {
 						opacity: 1;
 						transform: translateY(0);
@@ -613,9 +564,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: flex;
 				align-items: center;
 				&:hover {
-					.cs-drop-icon {
-						transform: rotate(0);
-					}
+					.cs-drop-icon { transform: rotate(0); }
 				}
 			}
 
@@ -628,112 +577,115 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transition: 0.3s;
 			}
 
+			/* 🌟 标准的单列式下拉菜单样式 (用于 Projects) */
+			ul.cs-drop-ul {
+				min-width: (220/16rem);
+				position: absolute;
+				top: 100%;
+				left: 0;
+			}
+
 			.cs-drop-ul {
-				min-width: (200/16rem);
 				margin: 0;
-				padding: 0;
+				padding: (12/16rem) 0;
 				background-color: #fff;
-				box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
+				box-shadow: rgba(149, 157, 165, 0.15) 0px 10px 30px;
 				opacity: 0;
 				border-bottom: 5px solid var(--primary);
 				visibility: hidden;
-				/* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
-				// columns: 2;
-				position: absolute;
-				top: 100%;
 				z-index: -100;
 				overflow: hidden;
 				transform: scaleY(0);
-				transition:
-					transform 0.3s,
-					visibility 0.3s,
-					opacity 0.3s;
+				transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
 				transform-origin: top;
 			}
 
+			/* 🌟 核心升级：电脑端大菜单 (Mega Menu 3列布局) */
+			.cs-mega-dropdown {
+				/* 保持基准线在 navigation 容器内进行超宽绝对定位 */
+				position: static !important; 
+			}
+
+			.cs-mega-wrapper {
+				width: 100%;
+				max-width: (1100/16rem); /* 完美适配宽屏视觉宽度 */
+				left: 50% !important;
+				transform: translateX(-50%) scaleY(0) !important;
+				position: absolute;
+				top: 100%;
+				box-sizing: border-box;
+				padding: (32/16rem) !important;
+				display: grid !important;
+				grid-template-columns: repeat(3, 1fr) !important; /* 严格横向分成 3 列 */
+				gap: (40/16rem) !important;
+			}
+
+			&:hover .cs-mega-wrapper,
+			.cs-mega-dropdown.cs-active .cs-mega-wrapper {
+				transform: translateX(-50%) scaleY(1) !important;
+			}
+
+			.cs-mega-column {
+				display: flex;
+				flex-direction: column;
+			</div>
+
+			.cs-mega-title {
+				font-size: (14/16rem);
+				font-weight: 800;
+				text-transform: uppercase;
+				color: var(--headerColor);
+				letter-spacing: 0.05em;
+				margin-bottom: (16/16rem);
+				padding-bottom: (8/16rem);
+				border-bottom: 2px solid #f3f4f6; /* 清爽的分栏底线 */
+				display: block;
+			}
+
+			.cs-mega-child-ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: (4/16rem);
+			}
+
 			.cs-drop-li {
-				font-size: (16/16rem);
-				text-decoration: none;
+				font-size: (15/16rem);
 				list-style: none;
 				width: 100%;
 				height: auto;
-				color: var(--bodyTextColor);
 				opacity: 0;
 				display: block;
 				transform: translateY(-10/16rem);
-				transition:
-					opacity 0.6s,
-					transform 0.6s;
+				transition: opacity 0.4s, transform 0.4s;
 
-				&:nth-of-type(1) {
-					transition-delay: 0.05s;
-				}
-				&:nth-of-type(2) {
-					transition-delay: 0.1s;
-				}
-				&:nth-of-type(3) {
-					transition-delay: 0.15s;
-				}
-				&:nth-of-type(4) {
-					transition-delay: 0.2s;
-				}
-				&:nth-of-type(5) {
-					transition-delay: 0.25s;
-				}
-				&:nth-of-type(6) {
-					transition-delay: 0.3s;
-				}
-				&:nth-of-type(7) {
-					transition-delay: 0.35s;
-				}
-				&:nth-of-type(8) {
-					transition-delay: 0.4s;
-				}
-				&:nth-of-type(9) {
-					transition-delay: 0.45s;
-				}
-				&:nth-of-type(10) {
-					transition-delay: 0.5s;
-				}
-				&:nth-of-type(11) {
-					transition-delay: 0.55s;
-				}
-				&:nth-of-type(12) {
-					transition-delay: 0.6s;
-				}
-				&:nth-of-type(13) {
-					transition-delay: 0.65s;
-				}
+				&:nth-of-type(1) { transition-delay: 0.03s; }
+				&:nth-of-type(2) { transition-delay: 0.06s; }
+				&:nth-of-type(3) { transition-delay: 0.09s; }
+				&:nth-of-type(4) { transition-delay: 0.12s; }
 			}
 
 			.cs-li-link {
 				&.cs-drop-link {
-					font-size: (16/16rem);
-					line-height: 1.5em;
+					font-size: (15/16rem);
+					line-height: 1.4em;
 					text-decoration: none;
 					white-space: nowrap;
 					width: 100%;
-					/* prevents padding from affecting height and width */
 					box-sizing: border-box;
-					padding: (12/16rem);
+					padding: (8/16rem) (12/16rem);
 					color: var(--bodyTextColor);
 					display: block;
-					transition:
-						color 0.3s,
-						background-color 0.3s;
+					border-radius: 4px;
+					transition: color 0.2s, background-color 0.2s;
 
 					&:hover {
-						background-color: #f7f7f7;
+						background-color: #f4f4f5;
+						color: var(--primary) !important;
 					}
-
-					&:focus-within {
-						outline: 2px solid currentColor;
-						outline-offset: -2px;
-					}
-
-					&:before {
-						display: none;
-					}
+					&:before { display: none; }
 				}
 			}
 
@@ -745,43 +697,42 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		}
 	}
 
-	/* Dark Mode */
-	@media only screen and (min-width: 0rem) {
+	/* Dark Mode Desktop */
+	@media only screen and (min-width: 64rem) {
 		body.dark-mode {
 			#cs-navigation {
 				.cs-drop-ul {
 					background-color: var(--dark);
+					border-bottom-color: var(--primaryLight);
 				}
-
-				.cs-li-link {
-					&.cs-drop-link {
-						&:hover {
-							background-color: var(--medium);
-						}
+				.cs-mega-title {
+					color: #ffffff;
+					border-bottom-color: #222;
+				}
+				.cs-li-link.cs-drop-link {
+					color: var(--bodyTextColorWhite);
+					&:hover {
+						background-color: var(--medium);
+						color: var(--primaryLight) !important;
 					}
 				}
-
-				.cs-drop-icon {
-					/* turns it white */
-					filter: grayscale(1) brightness(1000%);
-				}
+				.cs-drop-icon { filter: grayscale(1) brightness(1000%); }
 			}
 		}
 	}
 
 	/*-- -------------------------- -->
-<---     Desktop Navigation     -->
-<--- -------------------------- -*/
+	<---     Desktop Navigation     -->
+	<--- -------------------------- -*/
 
 	/* Small Desktop - 1024px */
 	@media only screen and (min-width: 64rem) {
 		#cs-navigation {
 			width: 100%;
-			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
 			padding: 0 (16/16rem);
 			background-color: #fff;
-			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+			box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
 			position: fixed;
 			z-index: 10000;
 
@@ -795,15 +746,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				gap: (24/16rem);
 			}
 
-			.cs-toggle {
-				display: none;
-			}
+			.cs-toggle { display: none; }
 
 			.cs-logo {
 				width: 18.4%;
 				max-width: (350/16rem);
 				height: (65/16rem);
-				/* margin-right auto pushes everything away from it to the right */
 				margin: 0 auto 0 0;
 				padding: 0;
 				display: flex;
@@ -814,7 +762,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				svg {
 					width: 100%;
 					height: 100%;
-					/* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
 					object-fit: contain;
 				}
 			}
@@ -826,19 +773,16 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
-				/* 20px - 36px */
 				gap: 0.25rem;
 			}
 
 			.cs-li {
 				list-style: none;
 				padding: (32/16rem) (16/16rem);
-				/* prevent flexbox from squishing it */
 				flex: none;
 			}
 
 			.cs-li-link {
-				/* 14px - 16px */
 				font-size: clamp(0.875rem, 1vw, 1rem);
 				line-height: 1.5em;
 				text-decoration: none;
@@ -847,19 +791,14 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: block;
 				position: relative;
 				&:hover {
-					&:before {
-						width: 100%;
-					}
+					&:before { width: 100%; }
 				}
 
 				&.cs-active {
-					&:before {
-						width: 100%;
-					}
+					&:before { width: 100%; }
 				}
 
 				&:before {
-					/* active state underline */
 					content: "";
 					width: 0%;
 					height: 2px;
@@ -875,25 +814,15 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		}
 	}
 
-	/* Dark Mode */
+	/* Dark Mode Global Desktop */
 	@media only screen and (min-width: 64rem) {
 		body.dark-mode {
 			#cs-navigation {
 				background-color: var(--dark);
-
-				.cs-logo {
-					/* makes it turn white */
-					filter: grayscale(1) brightness(1000%);
-				}
-
+				.cs-logo { filter: grayscale(1) brightness(1000%); }
 				.cs-li-link {
 					color: var(--bodyTextColorWhite);
-				}
-
-				.cs-li-link {
-					&:before {
-						background-color: var(--primaryLight);
-					}
+					&:before { background-color: var(--primaryLight); }
 				}
 			}
 		}
