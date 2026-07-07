@@ -215,23 +215,12 @@ const recentPosts = allPosts
 
 	/* 手机端触摸优化：无多余动效，防闪黑 */
 	@media (hover: none) or (pointer: coarse) {
-		/* 让背景变色的波纹/伪类在手机端以更柔和的阻尼感响应 */
-		.view-all-link {
-			transition: background-color 0.2s ease, color 0.2s ease;
-		}
-
-		/* 当按钮被点击（active）或获得焦点时触发变色 */
-		.view-all-link:active,
-		.view-all-link:focus {
-			background-color: #111111 !important;
-			color: #ffffff !important;
-			/* 🌟 核心技巧：利用 0.1s 的过渡延迟，在手指抬起和页面跳转的空隙中，完美锁死这层黑色 0.4 秒 */
-			transition: background-color 0s 0.1s, color 0s 0.1s;
-		}
-
-		/* 保持手机端底层伪类彻底关闭，防止图层冲突闪烁 */
 		.view-all-link::before {
 			display: none !important;
+		}
+		.view-all-link:active {
+			background-color: #111111 !important;
+			color: #ffffff !important;
 		}
 	}
 
