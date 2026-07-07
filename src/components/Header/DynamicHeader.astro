@@ -602,13 +602,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			/* 🌟 核心升级：电脑端大菜单 (Mega Menu 3列布局) */
 			.cs-mega-dropdown {
-				/* 保持基准线在 navigation 容器内进行超宽绝对定位 */
 				position: static !important; 
 			}
 
 			.cs-mega-wrapper {
 				width: 100%;
-				max-width: (1100/16rem); /* 完美适配宽屏视觉宽度 */
+				max-width: (1100/16rem); 
 				left: 50% !important;
 				transform: translateX(-50%) scaleY(0) !important;
 				position: absolute;
@@ -616,7 +615,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				box-sizing: border-box;
 				padding: (32/16rem) !important;
 				display: grid !important;
-				grid-template-columns: repeat(3, 1fr) !important; /* 严格横向分成 3 列 */
+				grid-template-columns: repeat(3, 1fr) !important; 
 				gap: (40/16rem) !important;
 			}
 
@@ -628,7 +627,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-mega-column {
 				display: flex;
 				flex-direction: column;
-			</div>
+			}
 
 			.cs-mega-title {
 				font-size: (14/16rem);
@@ -638,7 +637,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				letter-spacing: 0.05em;
 				margin-bottom: (16/16rem);
 				padding-bottom: (8/16rem);
-				border-bottom: 2px solid #f3f4f6; /* 清爽的分栏底线 */
+				border-bottom: 2px solid #f3f4f6; 
 				display: block;
 			}
 
