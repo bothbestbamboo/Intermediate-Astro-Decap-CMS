@@ -195,14 +195,15 @@ const blogPostingSchema = getBlogPostingSchema(
 			}
 
 			.blog-h1 {
-				font-size: clamp(22px, 4.5vw, 36px);
-				font-weight: 800;
-				line-height: 1.3em;
-				width: 100% !important;
-				max-width: 100% !important; 
-				margin: (12/16rem) 0;
-				color: var(--headerColor);
-			}
+                  /* 🌟 核心调优：将手机端最小字号从 22px 降到 18px，电脑端保持 36px 不变 */
+                 font-size: clamp(18px, 4.5vw, 36px); 
+                 font-weight: 800;
+                 line-height: 1.3em;
+                 width: 100% !important;
+                 max-width: 100% !important; 
+                 margin: (12/16rem) 0;
+                 color: var(--headerColor);
+            }
 
 			#blog-content {
 				margin-top: (16/16em);
