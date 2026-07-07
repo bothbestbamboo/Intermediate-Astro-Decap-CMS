@@ -607,16 +607,18 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-mega-wrapper {
 				width: 100%;
-				max-width: (1100/16rem); 
+				/* 🛠️ 优化 1：减小最大宽度，从 1100rem 缩小到 960rem (60rem)，让三列更紧凑 */
+				max-width: (960/16rem); 
 				left: 50% !important;
 				transform: translateX(-50%) scaleY(0) !important;
 				position: absolute;
 				top: 100%;
 				box-sizing: border-box;
-				padding: (32/16rem) !important;
+				padding: (28/16rem) (32/16rem) !important; /* 稍微收紧上下内边距 */
 				display: grid !important;
+				/* 🛠️ 优化 1：列间距从 40rem 缩减到 24rem，大幅减少红框处的突兀空白 */
 				grid-template-columns: repeat(3, 1fr) !important; 
-				gap: (40/16rem) !important;
+				gap: (24/16rem) !important;
 			}
 
 			&:hover .cs-mega-wrapper,
@@ -629,16 +631,30 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				flex-direction: column;
 			}
 
+			/* 🛠️ 优化 2：美化大标题 (BAMBOO FLOORING, DECKING, PLYWOOD) */
 			.cs-mega-title {
-				font-size: (14/16rem);
-				font-weight: 800;
+				font-size: (13/16rem);          /* 稍微缩小字号，显得更精致高级 */
+				font-weight: 700;               /* 稳重的粗体 */
 				text-transform: uppercase;
 				color: var(--headerColor);
-				letter-spacing: 0.05em;
-				margin-bottom: (16/16rem);
-				padding-bottom: (8/16rem);
-				border-bottom: 2px solid #f3f4f6; 
+				letter-spacing: 0.08em;         /* 字间距稍微拉开，增强现代感 */
+				margin-bottom: (14/16rem);
+				padding: 0 0 (4/16rem) (10/16rem); /* 留出左边距给绿条 */
+				border-bottom: 1px solid #f3f4f6;  /* 底部淡灰色细分界线 */
+				position: relative;
 				display: block;
+
+				/* 🌟 关键美化：模仿产品页侧边的亮绿色左边框设计 */
+				&:before {
+					content: "";
+					width: 3px;                 /* 绿条宽度 */
+					height: 75%;                /* 绿条高度不完全撑满，显得更灵动 */
+					background-color: var(--primary); /* 使用你的品牌主色/绿色 */
+					position: absolute;
+					left: 0;
+					top: 0;
+					border-radius: 2px;
+				}
 			}
 
 			.cs-mega-child-ul {
@@ -647,11 +663,11 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				list-style: none;
 				display: flex;
 				flex-direction: column;
-				gap: (4/16rem);
+				gap: (2/16rem); /* 稍微收紧子菜单行间距 */
 			}
 
 			.cs-drop-li {
-				font-size: (15/16rem);
+				font-size: (14/16rem); /* 子菜单字号同步微调 */
 				list-style: none;
 				width: 100%;
 				height: auto;
@@ -668,13 +684,13 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-li-link {
 				&.cs-drop-link {
-					font-size: (15/16rem);
+					font-size: (14/16rem);
 					line-height: 1.4em;
 					text-decoration: none;
 					white-space: nowrap;
 					width: 100%;
 					box-sizing: border-box;
-					padding: (8/16rem) (12/16rem);
+					padding: (6/16rem) (10/16rem); /* 轻微缩减菜单项点击区域的内边距 */
 					color: var(--bodyTextColor);
 					display: block;
 					border-radius: 4px;
@@ -704,9 +720,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					background-color: var(--dark);
 					border-bottom-color: var(--primaryLight);
 				}
+				/* 确保暗黑模式下，大标题的底部线条和文字颜色完美融合 */
 				.cs-mega-title {
 					color: #ffffff;
-					border-bottom-color: #222;
+					border-bottom-color: #2e2e33; /* 变更为暗色调的分隔线 */
 				}
 				.cs-li-link.cs-drop-link {
 					color: var(--bodyTextColorWhite);
