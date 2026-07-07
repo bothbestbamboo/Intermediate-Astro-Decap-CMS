@@ -62,42 +62,17 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						</a>
 					</li>
 
-					<li class="cs-li cs-dropdown">
-						<button
-							class:list={[
-								"cs-li-link cs-dropdown-toggle",
-								{ "cs-active": Astro.url.pathname.includes("/products/") },
+					<li class="cs-li">
+                        <a
+                            href="/products/"
+                            class:list={[
+                                "cs-li-link",
+                                { "cs-active": Astro.url.pathname === "/products/" },
 							]}
-							aria-haspopup="menu"
-							aria-expanded="false"
-							id="products-dropdown-toggle"
+							aria-current={Astro.url.pathname === "/products/" ? "page" : undefined}
 						>
 							Products
-							<Icon name="mdi--caret" class="cs-drop-icon" />
-						</button>
-						<ul class="cs-drop-ul" aria-labelledby="products-dropdown-toggle">
-							<li class="cs-drop-li">
-								<a
-									href="/products/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/products/" ? "page" : undefined}
-								>All Products</a>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/products/solid-horizontal-natural/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/products/solid-horizontal-natural/" ? "page" : undefined}
-								>Horizontal Natural</a>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/products/solid-vertical-carbonized/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/products/solid-vertical-carbonized/" ? "page" : undefined}
-								>Vertical Carbonized</a>
-							</li>
-						</ul>
+						</a>
 					</li>
 
 					<li class="cs-li cs-dropdown">
