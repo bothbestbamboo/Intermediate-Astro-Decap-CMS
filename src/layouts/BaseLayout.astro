@@ -95,3 +95,41 @@ const { description, title, heroImage } = Astro.props as Props;
 
 	document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
 </script>
+
+ <style is:global>
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background-color: #ffffff;
+  border: 2px solid #9dc815; /* 你的新LOGO绿 */
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* 当页面滚动，JS 赋予 .show 类名时显示 */
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 鼠标放上去时的交互效果 */
+.back-to-top:hover {
+  background-color: #9dc815;
+  transform: translateY(-3px);
+}
+
+.back-to-top:hover svg {
+  stroke: #ffffff; /* 悬停时箭头变成白色 */
+}
+</style>
