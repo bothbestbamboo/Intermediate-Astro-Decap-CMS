@@ -3,63 +3,58 @@
  * * DYNAMIC HEADER COMPONENT
  * * =======================
  * * 修复了 Icon 缺失引起的打包错误
- * * 升级为扁平化、分列式产品大导航菜单（Mega Menu）
- **/
+ * */
 
+// 🌟 关键：必须引入这个 Icon 工具，下面的 <Icon /> 标签才能正常工作！
 import { Icon } from "astro-icon/components";
+
+// Components
 import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 ---
 
 <header id="cs-navigation">
-	<div class="cs-container">
-		<!--Nav Logo-->
-		<a
-			href="/"
-			class="cs-logo"
-			aria-label="Return to Home page"
-		>
-			<Icon name="logo-black" />
-		</a>
-		<!--Navigation List-->
-		<nav class="cs-nav" aria-label="main navigation">
-			<!--Mobile Nav Toggle-->
-			<button
-				class="cs-toggle"
-				id="cs-toggle"
-				aria-expanded="false"
-				aria-controls="cs-ul-wrapper"
-				aria-haspopup="menu"
-				aria-label="mobile menu toggle"
-			>
-				<span class="cs-box" aria-hidden="true">
-					<span class="cs-line cs-line1" aria-hidden="true"></span>
-					<span class="cs-line cs-line2" aria-hidden="true"></span>
-					<span class="cs-line cs-line3" aria-hidden="true"></span>
-				</span>
-			</button>
-			
-			<div class="cs-ul-wrapper" id="cs-ul-wrapper">
-				<ul id="cs-expanded" class="cs-ul">
-					<!-- Home -->
-					<li class="cs-li">
-						<a
-							href="/"
-							class:list={[
-								"cs-li-link",
-								{ "cs-active": Astro.url.pathname === "/" },
-							]}
-							aria-current={Astro.url.pathname === "/" ? "page" : undefined}
-						>
-							Home
-						</a>
-					</li>
-					<!-- About Us -->
-					<li class="cs-li">
-						<a
-							href="/about/"
-							class:list={[
-								"cs-li-link",
-								{ "cs-active": Astro.url.pathname === "/about/" },
+    <div class="cs-container">
+        <a href="/" class="cs-logo" aria-label="Return to Home page">
+            <Icon name="logo-black" />
+        </a>
+
+        <nav class="cs-nav" aria-label="main navigation">
+            <button
+                class="cs-toggle"
+                id="cs-toggle"
+                aria-expanded="false"
+                aria-controls="cs-ul-wrapper"
+                aria-haspopup="menu"
+                aria-label="mobile menu toggle"
+            >
+                <span class="cs-box" aria-hidden="true">
+                    <span class="cs-line cs-line1" aria-hidden="true"></span>
+                    <span class="cs-line cs-line2" aria-hidden="true"></span>
+                    <span class="cs-line cs-line3" aria-hidden="true"></span>
+                </span>
+            </button>
+
+            <div class="cs-ul-wrapper" id="cs-ul-wrapper">
+                <ul id="cs-expanded" class="cs-ul">
+                    <li class="cs-li">
+                        <a
+                            href="/"
+                            class:list={[
+                                "cs-li-link",
+                                { "cs-active": Astro.url.pathname === "/" },
+                            ]}
+                            aria-current={Astro.url.pathname === "/" ? "page" : undefined}
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="cs-li">
+                        <a
+                            href="/about/"
+                            class:list={[
+                                "cs-li-link",
+                                { "cs-active": Astro.url.pathname === "/about/" },
 							]}
 							aria-current={Astro.url.pathname === "/about/" ? "page" : undefined}
 						>
@@ -67,8 +62,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						</a>
 					</li>
 
-					<!-- 🎯 1. Products 扁平化多列大菜单 (Mega Menu) -->
-					<li class="cs-li cs-dropdown cs-mega-dropdown">
+					<li class="cs-li cs-dropdown">
 						<button
 							class:list={[
 								"cs-li-link cs-dropdown-toggle",
@@ -81,43 +75,31 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							Products
 							<Icon name="mdi--caret" class="cs-drop-icon" />
 						</button>
-						
-						<!-- 电脑端横向分 3 列，手机端垂直向下展开 -->
-						<div class="cs-drop-ul cs-mega-wrapper">
-							<!-- 第一列：Bamboo Flooring -->
-							<div class="cs-mega-column">
-								<span class="cs-mega-title">Bamboo Flooring</span>
-								<ul class="cs-mega-child-ul">
-									<li class="cs-drop-li"><a href="/products/flooring/" class="cs-li-link cs-drop-link">View All Flooring</a></li>
-									<li class="cs-drop-li"><a href="/products/solid-horizontal-natural/" class="cs-li-link cs-drop-link">Horizontal Natural</a></li>
-									<li class="cs-drop-li"><a href="/products/solid-vertical-carbonized/" class="cs-li-link cs-drop-link">Vertical Carbonized</a></li>
-									<li class="cs-drop-li"><a href="/products/strand-woven-carbonized/" class="cs-li-link cs-drop-link">Strand Woven Carbonized</a></li>
-								</ul>
-							</div>
-							<!-- 第二列：Bamboo Decking -->
-							<div class="cs-mega-column">
-								<span class="cs-mega-title">Bamboo Decking</span>
-								<ul class="cs-mega-child-ul">
-									<li class="cs-drop-li"><a href="/products/decking/" class="cs-li-link cs-drop-link">View All Decking</a></li>
-									<li class="cs-drop-li"><a href="/products/symmetrical-grooved/" class="cs-li-link cs-drop-link">Symmetrical Grooved</a></li>
-									<li class="cs-drop-li"><a href="/products/deep-carbonized/" class="cs-li-link cs-drop-link">Deep Carbonized</a></li>
-									<li class="cs-drop-li"><a href="/products/hidden-fastener/" class="cs-li-link cs-drop-link">Hidden Fastener</a></li>
-								</ul>
-							</div>
-							<!-- 第三列：Bamboo Plywood -->
-							<div class="cs-mega-column">
-								<span class="cs-mega-title">Bamboo Plywood</span>
-								<ul class="cs-mega-child-ul">
-									<li class="cs-drop-li"><a href="/products/plywood/" class="cs-li-link cs-drop-link">View All Plywood</a></li>
-									<li class="cs-drop-li"><a href="/products/single-layer-panel/" class="cs-li-link cs-drop-link">Single-Layer Panel</a></li>
-									<li class="cs-drop-li"><a href="/products/cross-ply-panels/" class="cs-li-link cs-drop-link">Cross-Ply Panels</a></li>
-									<li class="cs-drop-li"><a href="/products/vertical-grain/" class="cs-li-link cs-drop-link">Vertical Grain</a></li>
-								</ul>
-							</div>
-						</div>
+						<ul class="cs-drop-ul" aria-labelledby="products-dropdown-toggle">
+							<li class="cs-drop-li">
+								<a
+									href="/products/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname === "/products/" ? "page" : undefined}
+								>All Products</a>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/products/solid-horizontal-natural/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname === "/products/solid-horizontal-natural/" ? "page" : undefined}
+								>Horizontal Natural</a>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/products/solid-vertical-carbonized/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname === "/products/solid-vertical-carbonized/" ? "page" : undefined}
+								>Vertical Carbonized</a>
+							</li>
+						</ul>
 					</li>
 
-					<!-- 🛠️ 2. Projects 下拉菜单 -->
 					<li class="cs-li cs-dropdown">
 						<button
 							class:list={[
@@ -156,7 +138,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						</ul>
 					</li>
 
-					<!-- Blog -->
 					<li class="cs-li">
 						<a
 							href="/blog/"
@@ -169,7 +150,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							Blog
 						</a>
 					</li>
-					<!-- Contact (Mobile Only) -->
+
 					<li class="cs-li cs-hide-on-desktop">
 						<a
 							href="/contact/"
@@ -185,6 +166,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				</ul>
 			</div>
 		</nav>
+
 		<a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
 		<DarkModeToggle />
 	</div>
@@ -192,8 +174,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 <style lang="less">
 	/*-- -------------------------- -->
-<---     Mobile Navigation      -->
-<--- -------------------------- -*/
+	<---      Mobile Navigation     -->
+	<--- -------------------------- -*/
 
 	/* Mobile - 1023px */
 	@media only screen and (max-width: 63.9375rem) {
@@ -213,6 +195,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			z-index: 10000;
 
 			&:before {
+				/* black blurred overlay */
 				content: "";
 				width: 0%;
 				height: 100vh;
@@ -291,13 +274,11 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					top: 50%;
 					transform: translate(-50%, -50%) rotate(225deg);
 				}
-
 				.cs-line2 {
 					top: 50%;
 					transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
 					transform-origin: center;
 				}
-
 				.cs-line3 {
 					opacity: 0;
 					bottom: 100%;
@@ -392,6 +373,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				&:nth-of-type(5) { transition-delay: 0.25s; }
 				&:nth-of-type(6) { transition-delay: 0.3s; }
 				&:nth-of-type(7) { transition-delay: 0.35s; }
+				&:nth-of-type(8) { transition-delay: 0.4s; }
+				&:nth-of-type(9) { transition-delay: 0.45s; }
 			}
 
 			.cs-li-link {
@@ -456,13 +439,17 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					.cs-drop-ul {
 						height: auto;
 						margin: (12/16rem) 0 0 0;
-						padding: (16/16rem);
+						padding: (24/16rem);
 						opacity: 1;
 						visibility: visible;
 						transform: scale(1);
 					}
 					.cs-drop-link { opacity: 1; }
 					.cs-drop-icon { transform: rotate(0); }
+				}
+				.cs-li-link {
+					position: relative;
+					transition: opacity 0.3s;
 				}
 			}
 
@@ -475,37 +462,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transition: 0.3s;
 			}
 
-			/* 手机端大菜单折叠形态适配 */
-			.cs-mega-wrapper {
-				display: flex;
-				flex-direction: column;
-				gap: (20/16rem);
-			}
-			.cs-mega-title {
-				display: block;
-				font-size: (14/16rem);
-				font-weight: 800;
-				text-transform: uppercase;
-				color: #fff;
-				margin-bottom: (8/16rem);
-				border-bottom: 1px solid rgba(255,255,255,0.2);
-				padding-bottom: 4px;
-			}
-			.cs-mega-child-ul {
-				padding: 0;
-				margin: 0;
-				display: flex;
-				flex-direction: column;
-				gap: (10/16rem);
-				align-items: flex-end;
-			}
-
 			.cs-drop-ul {
 				width: 100%;
 				height: 0;
 				margin: 0;
 				box-sizing: border-box;
-				padding: 0 (24/16rem);
+				padding: 0 (24/16rem) 0 (24/16rem);
 				background-color: var(--primary);
 				opacity: 0;
 				display: flex;
@@ -577,15 +539,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transition: 0.3s;
 			}
 
-			/* 🌟 标准的单列式下拉菜单样式 (用于 Projects) */
-			ul.cs-drop-ul {
-				min-width: (220/16rem);
-				position: absolute;
-				top: 100%;
-				left: 0;
-			}
-
 			.cs-drop-ul {
+				min-width: (200/16rem);
 				margin: 0;
 				padding: (12/16rem) 0;
 				background-color: #fff;
@@ -593,6 +548,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				opacity: 0;
 				border-bottom: 5px solid var(--primary);
 				visibility: hidden;
+				position: absolute;
+				top: 100%;
+				left: 0;
 				z-index: -100;
 				overflow: hidden;
 				transform: scaleY(0);
@@ -600,77 +558,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transform-origin: top;
 			}
 
-			/* 🌟 核心升级：电脑端大菜单 (Mega Menu 3列布局) */
-			.cs-mega-dropdown {
-				position: static !important; 
-			}
-
-			.cs-mega-wrapper {
-				width: 100%;
-				/* 🛠️ 优化 1：减小最大宽度，从 1100rem 缩小到 960rem (60rem)，让三列更紧凑 */
-				max-width: (960/16rem); 
-				left: 50% !important;
-				transform: translateX(-50%) scaleY(0) !important;
-				position: absolute;
-				top: 100%;
-				box-sizing: border-box;
-				padding: (28/16rem) (32/16rem) !important; /* 稍微收紧上下内边距 */
-				display: grid !important;
-				/* 🛠️ 优化 1：列间距从 40rem 缩减到 24rem，大幅减少红框处的突兀空白 */
-				grid-template-columns: repeat(3, 1fr) !important; 
-				gap: (24/16rem) !important;
-			}
-
-			&:hover .cs-mega-wrapper,
-			.cs-mega-dropdown.cs-active .cs-mega-wrapper {
-				transform: translateX(-50%) scaleY(1) !important;
-			}
-
-			.cs-mega-column {
-				display: flex;
-				flex-direction: column;
-			}
-
-			/* 🛠️ 优化 2：美化大标题 (BAMBOO FLOORING, DECKING, PLYWOOD) */
-			.cs-mega-title {
-				font-size: (13/16rem);          /* 稍微缩小字号，显得更精致高级 */
-				font-weight: 700;               /* 稳重的粗体 */
-				text-transform: uppercase;
-				color: var(--headerColor);
-				letter-spacing: 0.08em;         /* 字间距稍微拉开，增强现代感 */
-				margin-bottom: (14/16rem);
-				padding: 0 0 (4/16rem) (10/16rem); /* 留出左边距给绿条 */
-				border-bottom: 1px solid #f3f4f6;  /* 底部淡灰色细分界线 */
-				position: relative;
-				display: block;
-
-				/* 🌟 关键美化：模仿产品页侧边的亮绿色左边框设计 */
-				&:before {
-					content: "";
-					width: 3px;                 /* 绿条宽度 */
-					height: 75%;                /* 绿条高度不完全撑满，显得更灵动 */
-					background-color: var(--primary); /* 使用你的品牌主色/绿色 */
-					position: absolute;
-					left: 0;
-					top: 0;
-					border-radius: 2px;
-				}
-			}
-
-			.cs-mega-child-ul {
-				padding: 0;
-				margin: 0;
-				list-style: none;
-				display: flex;
-				flex-direction: column;
-				gap: (2/16rem); /* 稍微收紧子菜单行间距 */
-			}
-
 			.cs-drop-li {
-				font-size: (14/16rem); /* 子菜单字号同步微调 */
+				font-size: (15/16rem);
 				list-style: none;
 				width: 100%;
 				height: auto;
+				color: var(--bodyTextColor);
 				opacity: 0;
 				display: block;
 				transform: translateY(-10/16rem);
@@ -680,25 +573,36 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				&:nth-of-type(2) { transition-delay: 0.06s; }
 				&:nth-of-type(3) { transition-delay: 0.09s; }
 				&:nth-of-type(4) { transition-delay: 0.12s; }
+				&:nth-of-type(5) { transition-delay: 0.15s; }
+				&:nth-of-type(6) { transition-delay: 0.18s; }
+				&:nth-of-type(7) { transition-delay: 0.21s; }
+				&:nth-of-type(8) { transition-delay: 0.24s; }
+				&:nth-of-type(9) { transition-delay: 0.27s; }
+				&:nth-of-type(10) { transition-delay: 0.30s; }
+				&:nth-of-type(11) { transition-delay: 0.33s; }
+				&:nth-of-type(12) { transition-delay: 0.36s; }
+				&:nth-of-type(13) { transition-delay: 0.39s; }
 			}
 
 			.cs-li-link {
 				&.cs-drop-link {
-					font-size: (14/16rem);
+					font-size: (15/16rem);
 					line-height: 1.4em;
 					text-decoration: none;
 					white-space: nowrap;
 					width: 100%;
 					box-sizing: border-box;
-					padding: (6/16rem) (10/16rem); /* 轻微缩减菜单项点击区域的内边距 */
+					padding: (12/16rem);
 					color: var(--bodyTextColor);
 					display: block;
-					border-radius: 4px;
 					transition: color 0.2s, background-color 0.2s;
 
 					&:hover {
 						background-color: #f4f4f5;
-						color: var(--primary) !important;
+					}
+					&:focus-within {
+						outline: 2px solid currentColor;
+						outline-offset: -2px;
 					}
 					&:before { display: none; }
 				}
@@ -712,24 +616,16 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		}
 	}
 
-	/* Dark Mode Desktop */
-	@media only screen and (min-width: 64rem) {
+	/* Dark Mode Dropdown Desktop */
+	@media only screen and (min-width: 0rem) {
 		body.dark-mode {
 			#cs-navigation {
 				.cs-drop-ul {
 					background-color: var(--dark);
-					border-bottom-color: var(--primaryLight);
 				}
-				/* 确保暗黑模式下，大标题的底部线条和文字颜色完美融合 */
-				.cs-mega-title {
-					color: #ffffff;
-					border-bottom-color: #2e2e33; /* 变更为暗色调的分隔线 */
-				}
-				.cs-li-link.cs-drop-link {
-					color: var(--bodyTextColorWhite);
-					&:hover {
-						background-color: var(--medium);
-						color: var(--primaryLight) !important;
+				.cs-li-link {
+					&.cs-drop-link {
+						&:hover { background-color: var(--medium); }
 					}
 				}
 				.cs-drop-icon { filter: grayscale(1) brightness(1000%); }
@@ -806,10 +702,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				color: var(--bodyTextColor);
 				display: block;
 				position: relative;
+
 				&:hover {
 					&:before { width: 100%; }
 				}
-
 				&.cs-active {
 					&:before { width: 100%; }
 				}
