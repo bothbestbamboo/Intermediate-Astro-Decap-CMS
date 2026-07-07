@@ -41,39 +41,22 @@ const blogPostingSchema = getBlogPostingSchema(
 <BaseLayout title={title} description={description} heroImage={image}>
 	<script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
 
-	<div class="blog-container">
-		
-		{isProductPage && (
-			<header class="blog-header product-top-header">
-				<h1 class="blog-h1">{title}</h1>
-				<div class="blog-authorGroup">
-					<picture class="blog-author-img">
-						<Icon name="profile" width="32" height="32" />
-					</picture>
-					<span class="blog-author">{author}</span>
-					<span aria-hidden="true" class="blog-dot"></span>
-					<span class="blog-date">{formatDate(date)}</span>
-				</div>
-			</header>
-		)}
-
+	<div class={`blog-container ${isProductPage ? 'product-page-layout' : ''}`}>
 		<div class="blog-wrapper-inner">
 			<section class="main-content">
 				<article class="blog-article">
 					
-					{!isProductPage && (
-						<header class="blog-header">
-							<h1 class="blog-h1">{title}</h1>
-							<div class="blog-authorGroup">
-								<picture class="blog-author-img">
-									<Icon name="profile" width="32" height="32" />
-								</picture>
-								<span class="blog-author">{author}</span>
-								<span aria-hidden="true" class="blog-dot"></span>
-								<span class="blog-date">{formatDate(date)}</span>
-							</div>
-						</header>
-					)}
+					<header class="blog-header">
+						<h1 class="blog-h1">{title}</h1>
+						<div class="blog-authorGroup">
+							<picture class="blog-author-img">
+								<Icon name="profile" width="32" height="32" />
+							</picture>
+							<span class="blog-author">{author}</span>
+							<span aria-hidden="true" class="blog-dot"></span>
+							<span class="blog-date">{formatDate(date)}</span>
+						</div>
+					</header>
 
 					<picture class="blog-mainImage">
 						<Image src={image} alt={imageAlt} width="795" height="400" decoding="async" />
@@ -128,12 +111,6 @@ const blogPostingSchema = getBlogPostingSchema(
 			position: relative;
 		}
 
-		.product-top-header {
-			width: 100%;
-			margin-bottom: 24px;
-			display: block;
-		}
-
 		.blog-wrapper-inner {
 			width: 100%;
 			display: flex;
@@ -155,7 +132,7 @@ const blogPostingSchema = getBlogPostingSchema(
 			display: block;
 
 			.blog-header {
-				margin-block: clamp(30px, 5vw, 50px);
+				margin-block: clamp(24px, 4vw, 40px);
 			}
 
 			.blog-mainImage {
@@ -218,13 +195,12 @@ const blogPostingSchema = getBlogPostingSchema(
 			}
 
 			.blog-h1 {
-				font-size: clamp(24px, 5vw, 39px);
+				font-size: clamp(22px, 4.5vw, 36px);
 				font-weight: 800;
 				line-height: 1.3em;
-				/* 🌟 100% 满宽，不设置最大像素限制 */
 				width: 100% !important;
 				max-width: 100% !important; 
-				margin: (16/16rem) 0;
+				margin: (12/16rem) 0;
 				color: var(--headerColor);
 			}
 
@@ -243,9 +219,28 @@ const blogPostingSchema = getBlogPostingSchema(
 			align-items: flex-start;
 			column-gap: (48/16em);
 		}
+
+		/* 🌟 核心调优：如果是产品页面，强行解除左侧文章容器的宽度锁死，为其向右侧借调更多像素空间 */
+		.product-page-layout {
+			.blog-wrapper-inner {
+				column-gap: (40/16em); /* 稍微收紧间距 */
+			}
+			.main-content {
+				flex: 1; /* 弹性自适应扩展 */
+				width: auto;
+			}
+			.blog-article {
+				max-width: 100% !important; /* 彻底打破 795px 的牢笼 */
+				width: 100% !important;
+			}
+			.blog-sidebar {
+				width: (320/16em); /* 锁定侧边栏合理宽度，防止多余模块把整体推宽 */
+				min-width: (320/16em);
+			}
+		}
 	}
 
-	/* 询盘框Less样式 */
+	/* 询盘框样式保持稳定 */
 	.product-inquiry-box-inserted {
 		margin-top: 24px;
 		width: 100%;
