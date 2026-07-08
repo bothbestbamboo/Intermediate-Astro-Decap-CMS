@@ -4,12 +4,15 @@
  * * It uses a loop so be careful when swapping out the HTML and CSS with the stitch of your choice
  * * Usage, in src/pages/blog/index.astro:
  * * <BlogRecentArticlesWithSidebar posts={posts} />
- **/
+ * **/
 
 // Utils
-import { Picture } from "astro:assets";
+import { Picture, Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { formatDate } from "@js/utils";
+
+// 导入作者真实的头像图片
+import bothbestAvatar from "@assets/images/authors/bothbest.png";
 
 // Components
 import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
@@ -18,47 +21,57 @@ const { posts } = Astro.props;
 ---
 
 <section class="blog-container">
-	<section class="main-content">
-		{posts.length === 0 && <h1>No Recent Posts</h1>}
-		{
-			posts.length >= 1 &&
-				posts.map((post) => (
-					<article class="recent-articles">
-						<Picture
-							pictureAttributes={{
-								class: "blog-mainImage",
-							}}
-							src={post.data.image}
-							quality={"mid"}
-							formats={["avif", "webp"]}
-							alt={post.data.imageAlt}
-							aria-hidden="true"
-						/>
+    <section class="main-content">
+        {posts.length === 0 && <h1>No Recent Posts</h1>}
+        {
+            posts.length >= 1 &&
+                posts.map((post) => (
+                    <article class="recent-articles">
+                        <Picture
+                            pictureAttributes={{
+                                class: "blog-mainImage",
+                            }}
+                            src={post.data.image}
+                            quality={"mid"}
+                            formats={["avif", "webp"]}
+                            alt={post.data.imageAlt}
+                            aria-hidden="true"
+                        />
 
-						<div class="blog-header">
-							<div class="blog-authorGroup">
-								<picture class="blog-author-img">
-									<Icon name="profile" width="32" height="32" />
-								</picture>
-								<span class="blog-author">{post.data.author}</span>
-								<span aria-hidden="true" class="blog-dot" />
-								<span class="blog-date">{formatDate(post.data.date)}</span>
-							</div>
-							<h2 class="blog-h1">{post.data.title}</h2>
-							<p class="blog-desc">{post.data.description}</p>
-							<a href={post.id} class="blog-link">
-								Continue Reading
-							</a>
-						</div>
-					</article>
-				))
-		}
-	</section>
-	<aside class="blog-sidebar">
-		<div class="blog-sidebar_widget-wrapper">
-			<FeaturedPost />
-		</div>
-	</aside>
+                        <div class="blog-header">
+                            <div class="blog-authorGroup">
+                                <picture class="blog-author-img">
+                                    {(!post.data.author || post.data.author.toLowerCase().trim() === "bothbest") ? (
+                                        <Image 
+                                            src={bothbestAvatar} 
+                                            alt="Bothbest Bamboo" 
+                                            width="32" 
+                                            height="32" 
+                                            style={{ borderRadius: '50%', objectFit: 'cover' }}
+                                        />
+                                    ) : (
+                                        <Icon name="profile" width="32" height="32" />
+                                    )}
+                                </picture>
+                                <span class="blog-author">{post.data.author}</span>
+                                <span aria-hidden="true" class="blog-dot" />
+                                <span class="blog-date">{formatDate(post.data.date)}</span>
+                            </div>
+                            <h2 class="blog-h1">{post.data.title}</h2>
+                            <p class="blog-desc">{post.data.description}</p>
+                            <a href={post.id} class="blog-link">
+                                Continue Reading
+                            </a>
+                        </div>
+                    </article>
+                ))
+        }
+    </section>
+    <aside class="blog-sidebar">
+        <div class="blog-sidebar_widget-wrapper">
+            <FeaturedPost />
+        </div>
+    </aside>
 </section>
 
 <style lang="less">
