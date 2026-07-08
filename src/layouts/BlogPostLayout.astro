@@ -7,6 +7,9 @@ import { formatDate } from "@js/utils";
 import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
 import "@styles/markdown.less";
 
+// 导入作者真实的头像图片
+import bothbestAvatar from "@assets/images/authors/bothbest.png";
+
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
@@ -24,78 +27,90 @@ const isProductPage = tags && (tags.includes("Products") || tags.includes("Floor
 const imageUrl = image.src.startsWith("http") ? image.src : Astro.url.origin + image.src;
 
 const blogPostingSchema = getBlogPostingSchema(
-	{
-		title,
-		description,
-		url: Astro.url.href,
-		imageUrl,
-		imageAlt,
-		publishedTime: date.toISOString(),
-		modifiedTime: date.toISOString(),
-		author,
-	},
-	Astro.url.origin
+    {
+        title,
+        description,
+        url: Astro.url.href,
+        imageUrl,
+        imageAlt,
+        publishedTime: date.toISOString(),
+        modifiedTime: date.toISOString(),
+        author,
+    },
+    Astro.url.origin
 );
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
-	<script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+    <script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
 
-	<div class={`blog-container ${isProductPage ? 'product-page-layout' : ''}`}>
-		<div class="blog-wrapper-inner">
-			<section class="main-content">
-				<article class="blog-article">
-					
-					<header class="blog-header">
-						<h1 class="blog-h1">{title}</h1>
-						<div class="blog-authorGroup">
-							<picture class="blog-author-img">
-								<Icon name="profile" width="32" height="32" />
-							</picture>
-							<span class="blog-author">{author}</span>
-							<span aria-hidden="true" class="blog-dot"></span>
-							<span class="blog-date">{formatDate(date)}</span>
-						</div>
-					</header>
+    <div class={`blog-container ${isProductPage ? 'product-page-layout' : ''}`}>
+        <div class="blog-wrapper-inner">
+            <section class="main-content">
+                <article class="blog-article">
+                    
+                    <header class="blog-header">
+                        <h1 class="blog-h1">{title}</h1>
+                        <div class="blog-authorGroup">
+                            <picture class="blog-author-img">
+                                {author === "bothbest" ? (
+                                    // 当作者是 bothbest 时，使用 Image 组件渲染你的真实头像
+                                    <Image 
+                                        src={bothbestAvatar} 
+                                        alt={`${author}'s avatar`} 
+                                        width="32" 
+                                        height="32" 
+                                        style={{ borderRadius: '50%', objectFit: 'cover' }}
+                                    />
+                                ) : (
+                                    // 其他情况保持默认图标
+                                    <Icon name="profile" width="32" height="32" />
+                                )}
+                            </picture>
+                            <span class="blog-author">{author}</span>
+                            <span aria-hidden="true" class="blog-dot"></span>
+                            <span class="blog-date">{formatDate(date)}</span>
+                        </div>
+                    </header>
 
-					<picture class="blog-mainImage">
-						<Image src={image} alt={imageAlt} width="795" height="400" decoding="async" />
-					</picture>
+                    <picture class="blog-mainImage">
+                        <Image src={image} alt={imageAlt} width="795" height="400" decoding="async" />
+                    </picture>
 
-					<div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
-						<TableOfContents headings={headings} levels={3} />
-					</div>
-					<div id="blog-content">
-						<Content />
-					</div>
-				</article>
-			</section>
+                    <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
+                        <TableOfContents headings={headings} levels={3} />
+                    </div>
+                    <div id="blog-content">
+                        <Content />
+                    </div>
+                </article>
+            </section>
 
-			<aside class="blog-sidebar">
-				<div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
-					<TableOfContents headings={headings} levels={3} />
-				</div>
-				
-				{isProductPage && (
-					<div class="product-inquiry-box-inserted">
-						<div class="product-inquiry-box">
-							<h3>Interested in this Product?</h3>
-							<p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
-							<a href="/contact/#cs-form" class="product-inquiry-btn">
-								INQUIRE NOW ➔
-							</a>
-						</div>
-					</div>
-				)}
+            <aside class="blog-sidebar">
+                <div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
+                    <TableOfContents headings={headings} levels={3} />
+                </div>
+                
+                {isProductPage && (
+                    <div class="product-inquiry-box-inserted">
+                        <div class="product-inquiry-box">
+                            <h3>Interested in this Product?</h3>
+                            <p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
+                            <a href="/contact/#cs-form" class="product-inquiry-btn">
+                                INQUIRE NOW ➔
+                            </a>
+                        </div>
+                    </div>
+                )}
 
-				<div class="blog-sidebar_widget-wrapper">
-					<FeaturedPost />
-				</div>
-			</aside>
-		</div>
-	</div>
+                <div class="blog-sidebar_widget-wrapper">
+                    <FeaturedPost />
+                </div>
+            </aside>
+        </div>
+    </div>
 
-	<CTA />
+    <CTA />
 </BaseLayout>
 
 <style lang="less">
