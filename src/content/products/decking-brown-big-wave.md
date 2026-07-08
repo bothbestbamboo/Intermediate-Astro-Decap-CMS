@@ -1,6 +1,7 @@
 ---
 title: "Big Wave Brown Strand Woven Bamboo Decking"
 description: "High-density (1250kg/m³) outdoor strand woven bamboo decking featuring a premium big wave texture and deep brown finish. Pre-oiled for superior weather, water, and mold resistance."
+author: bothbest
 date: 2026-07-04
 image: "@assets/images/products/deck-brown-big.jpg"
 imageAlt: "Big Wave Brown Strand Woven Bamboo Decking"
