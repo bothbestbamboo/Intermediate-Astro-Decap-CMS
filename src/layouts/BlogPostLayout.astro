@@ -52,19 +52,20 @@ const blogPostingSchema = getBlogPostingSchema(
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <picture class="blog-author-img">
-                                {(!author || author === "bothbest") ? (
-                                    <Image 
-                                        src={bothbestAvatar} 
-                                        alt="Bothbest Bamboo" 
-                                        width="32" 
-                                        height="32" 
-                                        style={{ borderRadius: '50%', objectFit: 'cover' }}
-                                    />
-                                ) : (
-                                    <Icon name="profile" width="32" height="32" />
-                                )}
-                            </picture>
+                             <picture class="blog-author-img">
+    {(!author || author.toLowerCase().trim() === "bothbest") ? (
+        // 💡 亮点：toLowerCase() 转换为全小写，trim() 去掉前后空格。不管默认值怎么写，都能完美匹配！
+        <Image 
+            src={bothbestAvatar} 
+            alt="Bothbest Bamboo" 
+            width="32" 
+            height="32" 
+            style={{ borderRadius: '50%', objectFit: 'cover' }}
+        />
+    ) : (
+        <Icon name="profile" width="32" height="32" />
+    )}
+</picture>
                             <span class="blog-author">{author}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
                             <span class="blog-date">{formatDate(date)}</span>
