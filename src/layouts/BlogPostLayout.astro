@@ -53,20 +53,20 @@ const blogPostingSchema = getBlogPostingSchema(
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
                             <picture class="blog-author-img">
-                                {author === "bothbest" ? (
-                                    // 当作者是 bothbest 时，使用 Image 组件渲染你的真实头像
-                                    <Image 
-                                        src={bothbestAvatar} 
-                                        alt={`${author}'s avatar`} 
-                                        width="32" 
-                                        height="32" 
-                                        style={{ borderRadius: '50%', objectFit: 'cover' }}
-                                    />
-                                ) : (
-                                    // 其他情况保持默认图标
-                                    <Icon name="profile" width="32" height="32" />
-                                )}
-                            </picture>
+                                {(!author || author === "bothbest") ? (
+                              // 💡 亮点修改：如果没有指定 author(比如产品页)，或者 author 是 bothbest，都直接展示你的真实头像！
+                             <Image 
+                                   src={bothbestAvatar} 
+                                   alt="Bothbest Bamboo" 
+                                   width="32" 
+                                   height="32" 
+                                   style={{ borderRadius: '50%', objectFit: 'cover' }}
+                             />
+                               ) : (
+                              // 只有当写了其他明确的作者名字时，才降级显示默认图标
+                             <Icon name="profile" width="32" height="32" />
+                             )}
+                           </picture>
                             <span class="blog-author">{author}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
                             <span class="blog-date">{formatDate(date)}</span>
