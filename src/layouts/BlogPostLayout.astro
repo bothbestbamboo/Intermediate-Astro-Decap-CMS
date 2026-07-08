@@ -21,95 +21,135 @@ const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
 // 判断当前页面是不是产品页面
-const isProductPage = tags && (tags.includes("Products") || tags.includes("Flooring") || tags.includes("Decking") || tags.includes("Plywood"));
+const isProductPage =
+	tags &&
+	(tags.includes("Products") ||
+		tags.includes("Flooring") ||
+		tags.includes("Decking") ||
+		tags.includes("Plywood"));
 
 // Generate BlogPosting schema
-const imageUrl = image.src.startsWith("http") ? image.src : Astro.url.origin + image.src;
+const imageUrl = image.src.startsWith("http")
+	? image.src
+	: Astro.url.origin + image.src;
 
 const blogPostingSchema = getBlogPostingSchema(
-    {
-        title,
-        description,
-        url: Astro.url.href,
-        imageUrl,
-        imageAlt,
-        publishedTime: date.toISOString(),
-        modifiedTime: date.toISOString(),
-        author,
-    },
-    Astro.url.origin
+	{
+		title,
+		description,
+		url: Astro.url.href,
+		imageUrl,
+		imageAlt,
+		publishedTime: date.toISOString(),
+		modifiedTime: date.toISOString(),
+		author,
+	},
+	Astro.url.origin,
 );
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
-    <script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+	<script
+		slot="schema"
+		is:inline
+		type="application/ld+json"
+		set:html={JSON.stringify(blogPostingSchema)}
+	/>
 
-    <div class={`blog-container ${isProductPage ? 'product-page-layout' : ''}`}>
-        <div class="blog-wrapper-inner">
-            <section class="main-content">
-                <article class="blog-article">
-                    
-                    <header class="blog-header">
-                        <h1 class="blog-h1">{title}</h1>
-                        <div class="blog-authorGroup">
-                             <picture class="blog-author-img">
-    {(!author || author.toLowerCase().trim() === "bothbest") ? (
-        // 💡 亮点：toLowerCase() 转换为全小写，trim() 去掉前后空格。不管默认值怎么写，都能完美匹配！
-        <Image 
-            src={bothbestAvatar} 
-            alt="Bothbest Bamboo" 
-            width="32" 
-            height="32" 
-            style={{ borderRadius: '50%', objectFit: 'cover' }}
-        />
-    ) : (
-        <Icon name="profile" width="32" height="32" />
-    )}
-</picture>
-                            <span class="blog-author">{author}</span>
-                            <span aria-hidden="true" class="blog-dot"></span>
-                            <span class="blog-date">{formatDate(date)}</span>
-                        </div>
-                    </header>
+	<div class={`blog-container ${isProductPage ? "product-page-layout" : ""}`}>
+		<div class="blog-wrapper-inner">
+			<section class="main-content">
+				<article class="blog-article">
+					<header class="blog-header">
+						<h1 class="blog-h1">{title}</h1>
+						<div class="blog-authorGroup">
+							<picture class="blog-author-img">
+								{
+									!author ||
+									author.toLowerCase().trim() ===
+										"bothbest" ? (
+										// 💡 亮点：toLowerCase() 转换为全小写，trim() 去掉前后空格。不管默认值怎么写，都能完美匹配！
+										<Image
+											src={bothbestAvatar}
+											alt="Bothbest Bamboo"
+											width="32"
+											height="32"
+											style={{
+												borderRadius: "50%",
+												objectFit: "cover",
+											}}
+										/>
+									) : (
+										<Icon
+											name="profile"
+											width="32"
+											height="32"
+										/>
+									)
+								}
+							</picture>
+							<span class="blog-author">{author}</span>
+							<span aria-hidden="true" class="blog-dot"></span>
+							<span class="blog-date">{formatDate(date)}</span>
+						</div>
+					</header>
 
-                    <picture class="blog-mainImage">
-                        <Image src={image} alt={imageAlt} width="795" height="400" decoding="async" />
-                    </picture>
+					<picture class="blog-mainImage">
+						<Image
+							src={image}
+							alt={imageAlt}
+							width="795"
+							height="400"
+							decoding="async"
+						/>
+					</picture>
 
-                    <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
-                        <TableOfContents headings={headings} levels={3} />
-                    </div>
-                    <div id="blog-content">
-                        <Content />
-                    </div>
-                </article>
-            </section>
+					<div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
+						<TableOfContents headings={headings} levels={3} />
+					</div>
+					<div id="blog-content">
+						<Content />
+					</div>
+				</article>
+			</section>
 
-            <aside class="blog-sidebar">
-                <div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
-                    <TableOfContents headings={headings} levels={3} />
-                </div>
-                
-                {isProductPage && (
-                    <div class="product-inquiry-box-inserted">
-                        <div class="product-inquiry-box">
-                            <h3>Interested in this Product?</h3>
-                            <p>Get instant factory-direct pricing, custom specifications, and material samples for your projects.</p>
-                            <a href="/contact/#cs-form" class="product-inquiry-btn">
-                                INQUIRE NOW ➔
-                            </a>
-                        </div>
-                    </div>
-                )}
+			<aside class="blog-sidebar">
+				<div
+					class="blog-sidebar_widget-wrapper cs-hide-on-mobile"
+					id="desktop-toc"
+				>
+					<TableOfContents headings={headings} levels={3} />
+				</div>
 
-                <div class="blog-sidebar_widget-wrapper">
-                    <FeaturedPost />
-                </div>
-            </aside>
-        </div>
-    </div>
+				{
+					isProductPage && (
+						<div class="product-inquiry-box-inserted">
+							<div class="product-inquiry-box">
+								<h3>Interested in this Product?</h3>
+								<p>
+									Get instant factory-direct pricing, custom
+									specifications, and material samples for
+									your projects.
+								</p>
+								<a
+									href="/contact/#cs-form"
+									class="product-inquiry-btn"
+								>
+									INQUIRE NOW ➔
+								</a>
+							</div>
+						</div>
+					)
+				}
 
-    <CTA />
+				<div class="blog-sidebar_widget-wrapper">
+					<FeaturedPost />
+				</div>
+			</aside>
+		</div>
+	</div>
+
+	<CTA />
 </BaseLayout>
 
 <style lang="less">
@@ -210,11 +250,11 @@ const blogPostingSchema = getBlogPostingSchema(
 
 			.blog-h1 {
 				/* 🌟 核心调优：将手机端最小字号从 22px 降到 18px，电脑端保持 36px 不变 */
-				font-size: clamp(18px, 4.5vw, 36px); 
+				font-size: clamp(18px, 4.5vw, 36px);
 				font-weight: 800;
 				line-height: 1.3em;
 				width: 100% !important;
-				max-width: 100% !important; 
+				max-width: 100% !important;
 				margin: (12/16rem) 0;
 				color: var(--headerColor);
 			}
@@ -249,7 +289,9 @@ const blogPostingSchema = getBlogPostingSchema(
 				width: 100% !important;
 			}
 			.blog-sidebar {
-				width: (320/16em); /* 锁定侧边栏合理宽度，防止多余模块把整体推宽 */
+				width: (
+					320/16em
+				); /* 锁定侧边栏合理宽度，防止多余模块把整体推宽 */
 				min-width: (320/16em);
 			}
 		}
@@ -295,13 +337,15 @@ const blogPostingSchema = getBlogPostingSchema(
 				letter-spacing: 0.05em;
 				text-decoration: none;
 				border-radius: 4px;
-				transition: background-color 0.3s ease, color 0.3s ease; /* 确保过渡平滑 */
+				transition:
+					background-color 0.3s ease,
+					color 0.3s ease; /* 确保过渡平滑 */
 
 				/* 1. 正常状态：固定为绿底黑字 */
 				background-color: #9dc815 !important;
 				color: #111111 !important;
 			}
-			
+
 			/* 2. 🌟 独立提取 Hover，并加上最高权重，强制让鼠标放上去时变成黑底白字 */
 			.product-inquiry-btn:hover {
 				background-color: #111111 !important;
@@ -324,15 +368,19 @@ const blogPostingSchema = getBlogPostingSchema(
 				.product-inquiry-box {
 					background: #1a1a1a;
 					border-color: #333333;
-					h3 { color: #ffffff; }
-					p { color: #999999; }
-					
+					h3 {
+						color: #ffffff;
+					}
+					p {
+						color: #999999;
+					}
+
 					/* 暗黑模式正常状态：绿底黑字 */
 					.product-inquiry-btn {
 						background-color: #9dc815 !important;
 						color: #111111 !important;
 					}
-					
+
 					/* 暗黑模式悬停状态：黑底白字（如果嫌黑底在黑夜模式不明显，也可以换成白底黑字，这里先严格对齐网页版黑底白字） */
 					.product-inquiry-btn:hover {
 						background-color: #111111 !important;
@@ -342,15 +390,15 @@ const blogPostingSchema = getBlogPostingSchema(
 			}
 		}
 	}
-	
+
 	#blog-content {
 		:global(hr) {
 			display: block !important;
 			height: 1px !important;
 			border: 0 !important;
-			border-top: 1px solid #e5e7eb !important; 
-			margin-top: 30px !important;              
-			margin-bottom: 30px !important;           
+			border-top: 1px solid #e5e7eb !important;
+			margin-top: 30px !important;
+			margin-bottom: 30px !important;
 			padding: 0 !important;
 			clear: both !important;
 		}
