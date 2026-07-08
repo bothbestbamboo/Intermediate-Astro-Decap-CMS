@@ -7,7 +7,11 @@ import "@styles/sidebar.less";
 
 // Data
 const posts = await getCollection("blog");
-const featuredPosts = posts.filter((post) => post.data.isFeatured === true);
+
+// 1. 先筛选出推荐文章，2. 紧接着按照日期（date）从新到旧进行倒序排列
+const featuredPosts = posts
+  .filter((post) => post.data.isFeatured === true)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
 <h3 class="blog-sidebar_widget-header">Featured Posts</h3>
