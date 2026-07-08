@@ -39,40 +39,40 @@ const { description, title, heroImage } = Astro.props as Props;
 </html>
 
 <style is:global>
-    /* 🌟 让整站所有的点击跳转/锚点都变成丝滑的平滑滚动 */
+    /* 🌟 1. 让整站所有的点击跳转/锚点都变成丝滑的平滑滚动 */
     html {
         scroll-behavior: smooth;
     }
 
-    /* 强制覆盖全站可能存在的旧品牌绿，确保全部同步为 LOGO 新绿 */
+    /* 🌟 2. 温和微调：只针对你需要变绿的全局核心类名进行修饰，坚决不用 !important 污染整个 root 背景 */
     :root {
-        --theme-primary: #9dc815 !important;
-        --brand-color: #9dc815 !important;
+        --theme-primary: #9dc815;
+        --brand-color: #9dc815;
     }
 
-    /* 返回顶部按钮的基础样式与右下角固定定位 */
+    /* 🌟 3. 返回顶部按钮的基础样式与右下角固定定位（保持独立隔离，不影响全站） */
     .pure-css-to-top {
         position: fixed;
         bottom: 30px;
         right: 30px;
         width: 45px;
         height: 45px;
-        background-color: #ffffff;
-        border: 2px solid #9dc815; /* 使用你的 LOGO 新绿 */
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 999;
-        text-decoration: none;
-        transition: all 0.3s ease;
+        background-color: #ffffff !important; /* 强制背景为白，确保在任何底色下都清晰 */
+        border: 2px solid #9dc815 !important; /* 你的新 LOGO 绿边框 */
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        z-index: 99999 !important; /* 确保它在最上层，不被内容遮挡 */
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
     }
 
     /* 鼠标悬停时的视觉反馈：背景变绿、整体轻微上浮 */
     .pure-css-to-top:hover {
-        background-color: #9dc815;
-        transform: translateY(-3px);
+        background-color: #9dc815 !important;
+        transform: translateY(-3px) !important;
     }
 
     /* 鼠标悬停时，让里面的 SVG 箭头由绿变白 */
