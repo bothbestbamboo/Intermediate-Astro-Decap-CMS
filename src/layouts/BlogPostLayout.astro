@@ -241,7 +241,7 @@ const blogPostingSchema = getBlogPostingSchema(
 		}
 	}
 
-	/* 🌟 询盘框样式：已一比一同步修改为 CONTACT US 交互效果 */
+	/* 🌟 询盘框样式核心修复区 */
 	.product-inquiry-box-inserted {
 		margin-top: 24px;
 		width: 100%;
@@ -275,28 +275,28 @@ const blogPostingSchema = getBlogPostingSchema(
 				justify-content: center;
 				width: 100%;
 				padding: 12px;
-				font-size: 13px; /* 稍微提升字号以和导航条匹配 */
+				font-size: 13px;
 				font-weight: 700;
 				text-transform: uppercase;
 				letter-spacing: 0.05em;
 				text-decoration: none;
 				border-radius: 4px;
-				transition: all 0.3s ease; /* 顺滑过渡 */
+				transition: background-color 0.3s ease, color 0.3s ease; /* 确保过渡平滑 */
 
-				/* 正常状态：完美应用你的新 LOGO 绿底，黑字 */
+				/* 1. 正常状态：固定为绿底黑字 */
 				background-color: #9dc815 !important;
 				color: #111111 !important;
-
-				/* 鼠标悬停状态（Hover）：完美变回黑底，白字 */
-				&:hover {
-					background-color: #111111 !important;
-					color: #ffffff !important;
-				}
+			}
+			
+			/* 2. 🌟 独立提取 Hover，并加上最高权重，强制让鼠标放上去时变成黑底白字 */
+			.product-inquiry-btn:hover {
+				background-color: #111111 !important;
+				color: #ffffff !important;
 			}
 		}
 	}
 
-	/* Dark Mode - 暗黑模式下的询盘框配色同步调整 */
+	/* Dark Mode - 暗黑模式 */
 	@media only screen and (min-width: 0em) {
 		body.dark-mode {
 			.blog-article {
@@ -313,16 +313,16 @@ const blogPostingSchema = getBlogPostingSchema(
 					h3 { color: #ffffff; }
 					p { color: #999999; }
 					
-					/* 暗黑模式正常状态：也是统一的绿底黑字 */
+					/* 暗黑模式正常状态：绿底黑字 */
 					.product-inquiry-btn {
 						background-color: #9dc815 !important;
 						color: #111111 !important;
-						
-						/* 暗黑模式悬停状态：可以变成白底黑字或反色，这里保持黑白过渡 */
-						&:hover {
-							background-color: #ffffff !important;
-							color: #111111 !important;
-						}
+					}
+					
+					/* 暗黑模式悬停状态：黑底白字（如果嫌黑底在黑夜模式不明显，也可以换成白底黑字，这里先严格对齐网页版黑底白字） */
+					.product-inquiry-btn:hover {
+						background-color: #111111 !important;
+						color: #ffffff !important;
 					}
 				}
 			}
