@@ -11,7 +11,7 @@ type HeroImage = GetImageResult | ImageMetadata;
 interface Props {
     title: string;
     description: string;
-    heroImage?: HeroImage; // optional - passing a heroImage to BaseLayout will 1. preload the...
+    heroImage?: HeroImage; 
 }
 
 const { description, title, heroImage } = Astro.props as Props;
@@ -19,7 +19,7 @@ const { description, title, heroImage } = Astro.props as Props;
 
 <html lang={SITE.locale}>
     <head>
-        <ClientRouter />
+        <meta name="astro-view-transitions-fallback" content="animate" />
 
         <Meta title={title} description={description} heroImage={heroImage} />
     </head>
