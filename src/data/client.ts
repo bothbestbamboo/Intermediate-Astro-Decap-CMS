@@ -1,6 +1,6 @@
 // ===== SITE CONSTANTS =====
 export const SITE = {
-	title: "Bamboo Flooring | Decking | Plywood",
+	title: "Bamboo Flooring, Decking, Plywood | China Factory",
 	tagline: "bamboo factory since 2001",
 	description: "Bothbest is a premier factory of bamboo products in China, specializing in manufacturing high-quality, sustainable bamboo flooring, bamboo decking and bamboo plywood for global markets.",
 	url: "https://www.bambooflooring.net",
