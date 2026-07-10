@@ -23,7 +23,13 @@ posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).val
 ---
 
 <BaseLayout title="Blog" description="Meta description for the page" heroImage={placeholderOptimizedImage}>
-	<Banner title="Blog" image={placeholderOptimizedImage} />
+	<Banner 
+    title="Bamboo Insights & Trends" 
+    subtitle="Deep dives into performance standards, material science, and technical updates straight from our factory." 
+    image={placeholderOptimizedImage} 
+    alt="Bothbest factory technical updates and industry insights banner" 
+    imageAlt="Bothbest factory technical updates and industry insights banner" 
+/>
 
 	<!-- Use the BlogRecentArticles layout to display the recent articles in a standard grid -->
 	<!-- <BlogRecentArticles posts={posts} /> -->
