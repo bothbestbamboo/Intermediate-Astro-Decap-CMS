@@ -111,7 +111,6 @@ const { image } = Astro.props as Props;
 
 				&:before {
 					/* Left Line */
-					display: none; /* 加上这一行来隐藏左线 */
 					content: "";
 					width: 1px;
 					height: 100%;
@@ -287,3 +286,9 @@ const { image } = Astro.props as Props;
 		}
 	}
 </style>
+/* 追加到样式表的最后，强制关闭这两条分隔线 */
+#hero .cs-container {
+    &:before, &:after {
+        display: none !important;
+    }
+}
