@@ -245,10 +245,9 @@ const blogPostingSchema = getBlogPostingSchema(
                 background-color: #fe4f70;
                 border-radius: 50%;
                 display: block;
-                }
+            }
 
             .blog-h1 {
-                /* 🌟 调优：手机端保持小尺寸防溢出，桌面端上限稍微压缩到 32px，有效提高长句单行容纳率 */
                 font-size: clamp(18px, 4vw, 32px);
                 font-weight: 800;
                 line-height: 1.25em;
@@ -264,8 +263,8 @@ const blogPostingSchema = getBlogPostingSchema(
                 padding-top: (25/16em);
                 border-top: 1px solid #a2a0a0;
             }
-        }
-    </div>
+        } /* 🌟 修复点：这里原本被错写成了 </div>，现已更正为正确的 Less 大括号 */
+    }
 
     /* Tablet/Desktop - 1024px */
     @media only screen and (min-width: 64em) {
@@ -277,7 +276,6 @@ const blogPostingSchema = getBlogPostingSchema(
 
         .product-page-layout {
             .blog-wrapper-inner {
-                /* 🌟 调优：左右大容器间距微调，为左侧标题腾出更多伸展空间 */
                 column-gap: (32/16em); 
             }
             .main-content {
