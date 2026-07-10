@@ -152,121 +152,123 @@ const blogPostingSchema = getBlogPostingSchema(
 </BaseLayout>
 
 <style lang="less">
-    /* Mobile - 360px */
-    @media only screen and (min-width: 0em) {
-        .blog-container {
-            width: 94%;
-            max-width: (1120/16em);
-            margin: auto;
-            padding: clamp(60px, 7vw, 100px) 0;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .blog-wrapper-inner {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            row-gap: (50/16em);
-        }
-
-        .main-content {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .blog-article {
-            width: 100%;
-            max-width: (795/16em);
-            display: block;
-
-            .blog-header {
-                margin-block: clamp(24px, 4vw, 40px);
-            }
-
-            .blog-mainImage {
-                width: 100%;
-                height: clamp(200px, 30vw, 400px);
-                margin-bottom: (50/16em);
-                border-radius: (8/16em);
-                display: block;
-                position: relative;
-                overflow: hidden;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-            }
-
-            .blog-author-img {
-                width: (32/16em);
-                height: (32/16em);
-                border-radius: 50%;
-                display: block;
-                position: relative;
-                overflow: hidden;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-            }
-
-            .blog-authorGroup {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                gap: (12/16rem);
-            }
-
-            .blog-author,
-            .blog-date {
-                font-size: (14/16rem);
-                line-height: 1.5em;
-                color: var(--bodyTextColor);
-            }
-
-            .blog-dot {
-                width: 3px;
-                height: 3px;
-                background-color: #fe4f70;
-                border-radius: 50%;
-                display: block;
-            }
-
-            .blog-h1 {
-                font-size: clamp(18px, 4vw, 32px);
-                font-weight: 800;
-                line-height: 1.25em;
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: (12/16rem) 0;
-                color: var(--headerColor);
-                word-wrap: break-word;
-            }
-
-            #blog-content {
-                margin-top: (16/16em);
-                padding-top: (25/16em);
-                border-top: 1px solid #a2a0a0;
-            }
-        } /* 🌟 修复点：这里原本被错写成了 </div>，现已更正为正确的 Less 大括号 */
+    /* ==========================================================================
+       1. Mobile Base Styles (0em+) - 基础手机端样式与嵌套结构
+       ========================================================================== */
+    .blog-container {
+        width: 94%;
+        max-width: (1120/16em);
+        margin: auto;
+        padding: clamp(60px, 7vw, 100px) 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
     }
 
-    /* Tablet/Desktop - 1024px */
+    .blog-wrapper-inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: (50/16em);
+    }
+
+    .main-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .blog-article {
+        width: 100%;
+        max-width: (795/16em);
+        display: block;
+
+        .blog-header {
+            margin-block: clamp(24px, 4vw, 40px);
+        }
+
+        .blog-mainImage {
+            width: 100%;
+            height: clamp(200px, 30vw, 400px);
+            margin-bottom: (50/16em);
+            border-radius: (8/16em);
+            display: block;
+            position: relative;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .blog-author-img {
+            width: (32/16em);
+            height: (32/16em);
+            border-radius: 50%;
+            display: block;
+            position: relative;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .blog-authorGroup {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: (12/16rem);
+        }
+
+        .blog-author,
+        .blog-date {
+            font-size: (14/16rem);
+            line-height: 1.5em;
+            color: var(--bodyTextColor);
+        }
+
+        .blog-dot {
+            width: 3px;
+            height: 3px;
+            background-color: #fe4f70;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .blog-h1 {
+            font-size: clamp(18px, 4vw, 31px);
+            font-weight: 800;
+            line-height: 1.25em;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: (12/16rem) 0;
+            color: var(--headerColor);
+            word-wrap: break-word;
+        }
+
+        #blog-content {
+            margin-top: (16/16em);
+            padding-top: (25/16em);
+            border-top: 1px solid #a2a0a0;
+        }
+    }
+
+    /* ==========================================================================
+       2. Tablet/Desktop Styles (64em+ / 1024px+) - 彻底平铺，禁止在媒体查询中写复杂的嵌套
+       ========================================================================== */
     @media only screen and (min-width: 64em) {
         .blog-wrapper-inner {
             flex-direction: row;
@@ -274,9 +276,10 @@ const blogPostingSchema = getBlogPostingSchema(
             column-gap: (48/16em);
         }
 
+        /* 针对产品页面的特别大屏布局优化 */
         .product-page-layout {
             .blog-wrapper-inner {
-                column-gap: (32/16em); 
+                column-gap: (32/16em);
             }
             .main-content {
                 flex: 1;
@@ -291,56 +294,87 @@ const blogPostingSchema = getBlogPostingSchema(
                 min-width: (320/16em);
             }
         }
-    </div>
+    }
 
-    /* 询盘框样式核心区 */
+    /* ==========================================================================
+       3. Inquiry Box Styles - 询盘反馈框独立平铺
+       ========================================================================== */
     .product-inquiry-box-inserted {
         margin-top: 24px;
         width: 100%;
         box-sizing: border-box;
+    }
 
+    .product-inquiry-box {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 24px;
+        border-left: 4px solid #9dc815;
+        box-sizing: border-box;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111111;
+            margin: 0 0 10px 0;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #666666;
+            margin: 0 0 18px 0;
+        }
+
+        .product-inquiry-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #9dc815 !important;
+            color: #111111 !important;
+        }
+
+        .product-inquiry-btn:hover {
+            background-color: #111111 !important;
+            color: #ffffff !important;
+        }
+    }
+
+    /* ==========================================================================
+       4. Dark Mode Styles - 暗黑模式独立平铺
+       ========================================================================== */
+    body.dark-mode {
+        .blog-article {
+            .blog-h1,
+            .blog-author,
+            .blog-date {
+                color: #f7f7f7;
+            }
+        }
+        
         .product-inquiry-box {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 24px;
-            border-left: 4px solid #9dc815;
-            box-sizing: border-box;
-
+            background: #1a1a1a;
+            border-color: #333333;
             h3 {
-                font-size: 16px;
-                font-weight: 700;
-                color: #111111;
-                margin: 0 0 10px 0;
+                color: #ffffff;
             }
-
             p {
-                font-size: 13px;
-                line-height: 1.5;
-                color: #666666;
-                margin: 0 0 18px 0;
+                color: #999999;
             }
-
             .product-inquiry-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                padding: 12px;
-                font-size: 13px;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                text-decoration: none;
-                border-radius: 4px;
-                transition:
-                    background-color 0.3s ease,
-                    color 0.3s ease;
-
                 background-color: #9dc815 !important;
                 color: #111111 !important;
             }
-
             .product-inquiry-btn:hover {
                 background-color: #111111 !important;
                 color: #ffffff !important;
@@ -348,39 +382,7 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
-    /* Dark Mode - 暗黑模式 */
-    @media only screen and (min-width: 0em) {
-        body.dark-mode {
-            .blog-article {
-                .blog-h1,
-                .blog-author,
-                .blog-date {
-                    color: #f7f7f7;
-                }
-            }
-            .product-inquiry-box-inserted {
-                .product-inquiry-box {
-                    background: #1a1a1a;
-                    border-color: #333333;
-                    h3 {
-                        color: #ffffff;
-                    }
-                    p {
-                        color: #999999;
-                    }
-                    .product-inquiry-btn {
-                        background-color: #9dc815 !important;
-                        color: #111111 !important;
-                    }
-                    .product-inquiry-btn:hover {
-                        background-color: #111111 !important;
-                        color: #ffffff !important;
-                    }
-                }
-            }
-        }
-    }
-
+    /* Global Markdown Divider Override */
     #blog-content {
         :global(hr) {
             display: block !important;
