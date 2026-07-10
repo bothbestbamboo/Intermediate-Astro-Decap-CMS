@@ -22,385 +22,377 @@ const { Content, headings } = await render(post);
 
 // 判断当前页面是不是产品页面
 const isProductPage =
-	tags &&
-	(tags.includes("Products") ||
-		tags.includes("Flooring") ||
-		tags.includes("Decking") ||
-		tags.includes("Plywood"));
+    tags &&
+    (tags.includes("Products") ||
+        tags.includes("Flooring") ||
+        tags.includes("Decking") ||
+        tags.includes("Plywood"));
 
 // Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
-	? image.src
-	: Astro.url.origin + image.src;
+    ? image.src
+    : Astro.url.origin + image.src;
 
 const blogPostingSchema = getBlogPostingSchema(
-	{
-		title,
-		description,
-		url: Astro.url.href,
-		imageUrl,
-		imageAlt,
-		publishedTime: date.toISOString(),
-		modifiedTime: date.toISOString(),
-		author,
-	},
-	Astro.url.origin,
+    {
+        title,
+        description,
+        url: Astro.url.href,
+        imageUrl,
+        imageAlt,
+        publishedTime: date.toISOString(),
+        modifiedTime: date.toISOString(),
+        author,
+    },
+    Astro.url.origin,
 );
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
-	<script
-		slot="schema"
-		is:inline
-		type="application/ld+json"
-		set:html={JSON.stringify(blogPostingSchema)}
-	/>
+    <script
+        slot="schema"
+        is:inline
+        type="application/ld+json"
+        set:html={JSON.stringify(blogPostingSchema)}
+    />
 
-	<div class={`blog-container ${isProductPage ? "product-page-layout" : ""}`}>
-		<div class="blog-wrapper-inner">
-			<section class="main-content">
-				<article class="blog-article">
-					<header class="blog-header">
-						<h1 class="blog-h1">{title}</h1>
-						<div class="blog-authorGroup">
-							<picture class="blog-author-img">
-								{
-									!author ||
-									author.toLowerCase().trim() ===
-										"bothbest" ? (
-										// 💡 亮点：toLowerCase() 转换为全小写，trim() 去掉前后空格。不管默认值怎么写，都能完美匹配！
-										<Image
-											src={bothbestAvatar}
-											alt="Bothbest Bamboo"
-											width="32"
-											height="32"
-											style={{
-												borderRadius: "50%",
-												objectFit: "cover",
-											}}
-										/>
-									) : (
-										<Icon
-											name="profile"
-											width="32"
-											height="32"
-										/>
-									)
-								}
-							</picture>
-							<span class="blog-author">{author}</span>
-							<span aria-hidden="true" class="blog-dot"></span>
-							<span class="blog-date">{formatDate(date)}</span>
-						</div>
-					</header>
+    <div class={`blog-container ${isProductPage ? "product-page-layout" : ""}`}>
+        <div class="blog-wrapper-inner">
+            <section class="main-content">
+                <article class="blog-article">
+                    <header class="blog-header">
+                        <h1 class="blog-h1">{title}</h1>
+                        <div class="blog-authorGroup">
+                            <picture class="blog-author-img">
+                                {
+                                    !author ||
+                                    author.toLowerCase().trim() ===
+                                        "bothbest" ? (
+                                        <Image
+                                            src={bothbestAvatar}
+                                            alt="Bothbest Bamboo"
+                                            width="32"
+                                            height="32"
+                                            style={{
+                                                borderRadius: "50%",
+                                                objectFit: "cover",
+                                            }}
+                                        />
+                                    ) : (
+                                        <Icon
+                                            name="profile"
+                                            width="32"
+                                            height="32"
+                                        />
+                                    )
+                                }
+                            </picture>
+                            <span class="blog-author">{author}</span>
+                            <span aria-hidden="true" class="blog-dot"></span>
+                            <span class="blog-date">{formatDate(date)}</span>
+                        </div>
+                    </header>
 
-					<picture class="blog-mainImage">
-						<Image
-							src={image}
-							alt={imageAlt}
-							width="795"
-							height="400"
-							decoding="async"
-						/>
-					</picture>
+                    <picture class="blog-mainImage">
+                        <Image
+                            src={image}
+                            alt={imageAlt}
+                            width="795"
+                            height="400"
+                            decoding="async"
+                        />
+                    </picture>
 
-					<div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
-						<TableOfContents headings={headings} levels={3} />
-					</div>
-					<div id="blog-content">
-						<Content />
-					</div>
-				</article>
-			</section>
+                    <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
+                        <TableOfContents headings={headings} levels={3} />
+                    </div>
+                    <div id="blog-content">
+                        <Content />
+                    </div>
+                </article>
+            </section>
 
-			<aside class="blog-sidebar">
-				<div
-					class="blog-sidebar_widget-wrapper cs-hide-on-mobile"
-					id="desktop-toc"
-				>
-					<TableOfContents headings={headings} levels={3} />
-				</div>
+            <aside class="blog-sidebar">
+                <div
+                    class="blog-sidebar_widget-wrapper cs-hide-on-mobile"
+                    id="desktop-toc"
+                >
+                    <TableOfContents headings={headings} levels={3} />
+                </div>
 
-				{
-					isProductPage && (
-						<div class="product-inquiry-box-inserted">
-							<div class="product-inquiry-box">
-								<h3>Interested in this Product?</h3>
-								<p>
-									Get instant factory-direct pricing, custom
-									specifications, and material samples for
-									your projects.
-								</p>
-								<a
-									href="/contact/#cs-form"
-									class="product-inquiry-btn"
-								>
-									INQUIRE NOW ➔
-								</a>
-							</div>
-						</div>
-					)
-				}
+                {
+                    isProductPage && (
+                        <div class="product-inquiry-box-inserted">
+                            <div class="product-inquiry-box">
+                                <h3>Interested in this Product?</h3>
+                                <p>
+                                    Get instant factory-direct pricing, custom
+                                    specifications, and material samples for
+                                    your projects.
+                                </p>
+                                <a
+                                    href="/contact/#cs-form"
+                                    class="product-inquiry-btn"
+                                >
+                                    INQUIRE NOW ➔
+                                </a>
+                            </div>
+                        </div>
+                    )
+                }
 
-				<div class="blog-sidebar_widget-wrapper">
-					<FeaturedPost />
-				</div>
-			</aside>
-		</div>
-	</div>
+                <div class="blog-sidebar_widget-wrapper">
+                    <FeaturedPost />
+                </div>
+            </aside>
+        </div>
+    </div>
 
-	<CTA />
+    <CTA />
 </BaseLayout>
 
 <style lang="less">
-	/* Mobile - 360px */
-	@media only screen and (min-width: 0em) {
-		.blog-container {
-			width: 94%;
-			max-width: (1120/16em);
-			margin: auto;
-			padding: clamp(60px, 7vw, 100px) 0;
-			display: flex;
-			flex-direction: column;
-			position: relative;
-		}
+    /* Mobile - 360px */
+    @media only screen and (min-width: 0em) {
+        .blog-container {
+            width: 94%;
+            max-width: (1120/16em);
+            margin: auto;
+            padding: clamp(60px, 7vw, 100px) 0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
 
-		.blog-wrapper-inner {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			row-gap: (50/16em);
-		}
+        .blog-wrapper-inner {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: (50/16em);
+        }
 
-		.main-content {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
+        .main-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-		.blog-article {
-			width: 100%;
-			max-width: (795/16em);
-			display: block;
+        .blog-article {
+            width: 100%;
+            max-width: (795/16em);
+            display: block;
 
-			.blog-header {
-				margin-block: clamp(24px, 4vw, 40px);
-			}
+            .blog-header {
+                margin-block: clamp(24px, 4vw, 40px);
+            }
 
-			.blog-mainImage {
-				width: 100%;
-				height: clamp(200px, 30vw, 400px);
-				margin-bottom: (50/16em);
-				border-radius: (8/16em);
-				display: block;
-				position: relative;
-				overflow: hidden;
+            .blog-mainImage {
+                width: 100%;
+                height: clamp(200px, 30vw, 400px);
+                margin-bottom: (50/16em);
+                border-radius: (8/16em);
+                display: block;
+                position: relative;
+                overflow: hidden;
 
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-			}
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
 
-			.blog-author-img {
-				width: (32/16em);
-				height: (32/16em);
-				border-radius: 50%;
-				display: block;
-				position: relative;
-				overflow: hidden;
+            .blog-author-img {
+                width: (32/16em);
+                height: (32/16em);
+                border-radius: 50%;
+                display: block;
+                position: relative;
+                overflow: hidden;
 
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-			}
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
 
-			.blog-authorGroup {
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				gap: (12/16rem);
-			}
+            .blog-authorGroup {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: (12/16rem);
+            }
 
-			.blog-author,
-			.blog-date {
-				font-size: (14/16rem);
-				line-height: 1.5em;
-				color: var(--bodyTextColor);
-			}
+            .blog-author,
+            .blog-date {
+                font-size: (14/16rem);
+                line-height: 1.5em;
+                color: var(--bodyTextColor);
+            }
 
-			.blog-dot {
-				width: 3px;
-				height: 3px;
-				background-color: #fe4f70;
-				border-radius: 50%;
-				display: block;
-			}
+            .blog-dot {
+                width: 3px;
+                height: 3px;
+                background-color: #fe4f70;
+                border-radius: 50%;
+                display: block;
+                }
 
-			.blog-h1 {
-				/* 🌟 核心调优：将手机端最小字号从 22px 降到 18px，电脑端保持 36px 不变 */
-				font-size: clamp(18px, 4.5vw, 36px);
-				font-weight: 800;
-				line-height: 1.3em;
-				width: 100% !important;
-				max-width: 100% !important;
-				margin: (12/16rem) 0;
-				color: var(--headerColor);
-			}
+            .blog-h1 {
+                /* 🌟 调优：手机端保持小尺寸防溢出，桌面端上限稍微压缩到 32px，有效提高长句单行容纳率 */
+                font-size: clamp(18px, 4vw, 32px);
+                font-weight: 800;
+                line-height: 1.25em;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: (12/16rem) 0;
+                color: var(--headerColor);
+                word-wrap: break-word;
+            }
 
-			#blog-content {
-				margin-top: (16/16em);
-				padding-top: (25/16em);
-				border-top: 1px solid #a2a0a0;
-			}
-		}
-	}
+            #blog-content {
+                margin-top: (16/16em);
+                padding-top: (25/16em);
+                border-top: 1px solid #a2a0a0;
+            }
+        }
+    </div>
 
-	/* Tablet/Desktop - 1024px */
-	@media only screen and (min-width: 64em) {
-		.blog-wrapper-inner {
-			flex-direction: row;
-			align-items: flex-start;
-			column-gap: (48/16em);
-		}
+    /* Tablet/Desktop - 1024px */
+    @media only screen and (min-width: 64em) {
+        .blog-wrapper-inner {
+            flex-direction: row;
+            align-items: flex-start;
+            column-gap: (48/16em);
+        }
 
-		/* 🌟 核心调优：如果是产品页面，强行解除左侧文章容器的宽度锁死，为其向右侧借调更多像素空间 */
-		.product-page-layout {
-			.blog-wrapper-inner {
-				column-gap: (40/16em); /* 稍微收紧间距 */
-			}
-			.main-content {
-				flex: 1; /* 弹性自适应扩展 */
-				width: auto;
-			}
-			.blog-article {
-				max-width: 100% !important; /* 彻底打破 795px 的牢笼 */
-				width: 100% !important;
-			}
-			.blog-sidebar {
-				width: (
-					320/16em
-				); /* 锁定侧边栏合理宽度，防止多余模块把整体推宽 */
-				min-width: (320/16em);
-			}
-		}
-	}
+        .product-page-layout {
+            .blog-wrapper-inner {
+                /* 🌟 调优：左右大容器间距微调，为左侧标题腾出更多伸展空间 */
+                column-gap: (32/16em); 
+            }
+            .main-content {
+                flex: 1;
+                width: auto;
+            }
+            .blog-article {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            .blog-sidebar {
+                width: (320/16em);
+                min-width: (320/16em);
+            }
+        }
+    </div>
 
-	/* 🌟 询盘框样式核心修复区 */
-	.product-inquiry-box-inserted {
-		margin-top: 24px;
-		width: 100%;
-		box-sizing: border-box;
+    /* 询盘框样式核心区 */
+    .product-inquiry-box-inserted {
+        margin-top: 24px;
+        width: 100%;
+        box-sizing: border-box;
 
-		.product-inquiry-box {
-			background: #f9fafb;
-			border: 1px solid #e5e7eb;
-			border-radius: 8px;
-			padding: 24px;
-			border-left: 4px solid #9dc815;
-			box-sizing: border-box;
+        .product-inquiry-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            border-left: 4px solid #9dc815;
+            box-sizing: border-box;
 
-			h3 {
-				font-size: 16px;
-				font-weight: 700;
-				color: #111111;
-				margin: 0 0 10px 0;
-			}
+            h3 {
+                font-size: 16px;
+                font-weight: 700;
+                color: #111111;
+                margin: 0 0 10px 0;
+            }
 
-			p {
-				font-size: 13px;
-				line-height: 1.5;
-				color: #666666;
-				margin: 0 0 18px 0;
-			}
+            p {
+                font-size: 13px;
+                line-height: 1.5;
+                color: #666666;
+                margin: 0 0 18px 0;
+            }
 
-			.product-inquiry-btn {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				padding: 12px;
-				font-size: 13px;
-				font-weight: 700;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-				text-decoration: none;
-				border-radius: 4px;
-				transition:
-					background-color 0.3s ease,
-					color 0.3s ease; /* 确保过渡平滑 */
+            .product-inquiry-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 12px;
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                text-decoration: none;
+                border-radius: 4px;
+                transition:
+                    background-color 0.3s ease,
+                    color 0.3s ease;
 
-				/* 1. 正常状态：固定为绿底黑字 */
-				background-color: #9dc815 !important;
-				color: #111111 !important;
-			}
+                background-color: #9dc815 !important;
+                color: #111111 !important;
+            }
 
-			/* 2. 🌟 独立提取 Hover，并加上最高权重，强制让鼠标放上去时变成黑底白字 */
-			.product-inquiry-btn:hover {
-				background-color: #111111 !important;
-				color: #ffffff !important;
-			}
-		}
-	}
+            .product-inquiry-btn:hover {
+                background-color: #111111 !important;
+                color: #ffffff !important;
+            }
+        }
+    }
 
-	/* Dark Mode - 暗黑模式 */
-	@media only screen and (min-width: 0em) {
-		body.dark-mode {
-			.blog-article {
-				.blog-h1,
-				.blog-author,
-				.blog-date {
-					color: #f7f7f7;
-				}
-			}
-			.product-inquiry-box-inserted {
-				.product-inquiry-box {
-					background: #1a1a1a;
-					border-color: #333333;
-					h3 {
-						color: #ffffff;
-					}
-					p {
-						color: #999999;
-					}
+    /* Dark Mode - 暗黑模式 */
+    @media only screen and (min-width: 0em) {
+        body.dark-mode {
+            .blog-article {
+                .blog-h1,
+                .blog-author,
+                .blog-date {
+                    color: #f7f7f7;
+                }
+            }
+            .product-inquiry-box-inserted {
+                .product-inquiry-box {
+                    background: #1a1a1a;
+                    border-color: #333333;
+                    h3 {
+                        color: #ffffff;
+                    }
+                    p {
+                        color: #999999;
+                    }
+                    .product-inquiry-btn {
+                        background-color: #9dc815 !important;
+                        color: #111111 !important;
+                    }
+                    .product-inquiry-btn:hover {
+                        background-color: #111111 !important;
+                        color: #ffffff !important;
+                    }
+                }
+            }
+        }
+    }
 
-					/* 暗黑模式正常状态：绿底黑字 */
-					.product-inquiry-btn {
-						background-color: #9dc815 !important;
-						color: #111111 !important;
-					}
-
-					/* 暗黑模式悬停状态：黑底白字（如果嫌黑底在黑夜模式不明显，也可以换成白底黑字，这里先严格对齐网页版黑底白字） */
-					.product-inquiry-btn:hover {
-						background-color: #111111 !important;
-						color: #ffffff !important;
-					}
-				}
-			}
-		}
-	}
-
-	#blog-content {
-		:global(hr) {
-			display: block !important;
-			height: 1px !important;
-			border: 0 !important;
-			border-top: 1px solid #e5e7eb !important;
-			margin-top: 30px !important;
-			margin-bottom: 30px !important;
-			padding: 0 !important;
-			clear: both !important;
-		}
-	}
+    #blog-content {
+        :global(hr) {
+            display: block !important;
+            height: 1px !important;
+            border: 0 !important;
+            border-top: 1px solid #e5e7eb !important;
+            margin-top: 30px !important;
+            margin-bottom: 30px !important;
+            padding: 0 !important;
+            clear: both !important;
+        }
+    }
 </style>
