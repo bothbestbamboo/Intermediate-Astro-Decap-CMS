@@ -2,7 +2,7 @@
 title: "Outdoor Bamboo Decking Strand Woven Big Wave Dark Carbonized"
 description: "Strand woven (1250kg/m³) outdoor bamboo decking featuring an architectural big wave texture and an elegant dark carbonized finish. Pre-oiled for premium waterproofing, mold prevention, and superior longevity."
 author: bothbest
-date: 2026-07-04
+date: 2026-07-12
 image: "@assets/images/products/deck-dw-1.jpg"
 imageAlt: "Big Wave Dark Carbonized Strand Woven Bamboo Decking"
 tags: ["Decking"]
