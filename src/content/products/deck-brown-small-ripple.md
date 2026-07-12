@@ -76,4 +76,3 @@ Engineered to outlast elements, this strand woven exterior strand woven decking 
 ![Small Ripple Brown Bamboo Decking Swimming Pool Walkway](@assets/images/products/deck-br-7.jpg)
 ![Small Ripple Brown Bamboo Decking Public Park Boardwalk](@assets/images/products/deck-br-8.jpg)
 ![Small Ripple Brown Bamboo Decking Commercial Plaza Layout](@assets/images/products/deck-br-9.jpg)
-![Small Ripple Brown Bamboo Decking Backyard Patio Architecture](@assets/images/products/deck-br-10.jpg)
