@@ -8,6 +8,7 @@
     // set to true if you want strict checks on your .js files
     "checkJs": false, 
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     // creates shortcuts for imports
     "paths": {
       "@layouts/*":["src/layouts/*"],
