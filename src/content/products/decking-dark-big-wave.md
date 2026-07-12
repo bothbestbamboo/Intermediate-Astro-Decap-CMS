@@ -46,7 +46,7 @@ Our strand woven outdoor bamboo decking is manufactured utilizing sustainable ra
 
 1. **Fiber Extraction & Thermal Conditioning:** Raw Moso bamboo is split into premium structural strips and mechanically processed into fine, pliable bamboo fiber bundles.
 2. **Deep Carbonization Treatment:** The extracted fibers undergo deep high-temperature steam carbonization, completely caramelizing internal sugars to achieve the rich, dark tone while purging nutrients to actively resist fungal growth.
-3. **High-Stress Stranded Compression:** Immersed in non-toxic, eco-conscious marine-grade adhesives, the fibers are bundled and subjected to immense hydraulic cross-weaving and heavy compression to achieve the targeted 1100kg/m³ density.
+3. **High-Stress Stranded Compression:** Immersed in non-toxic, eco-conscious marine-grade adhesives, the fibers are bundled and subjected to immense hydraulic cross-weaving and heavy compression to achieve the targeted 1250kg/m³ density.
 4. **Automated CNC Milling:** The solidified heavy timbers pass through high-precision automated milling lines to shape the iconic Big Wave surface texture and exact side interlocking grooves.
 5. **Weatherproof Coating Line:** Finished with multi-layered, deep-penetrating exterior oils and protective topcoats to safeguard the planks for immediate commercial deployment.
 
