@@ -2,7 +2,7 @@
 title: "Flat Side Dark Carbonized Strand Woven Bamboo Decking"
 description: "High-density (1250kg/m³) outdoor strand woven bamboo decking featuring a sleek flat profile on both sides and a rich dark carbonized finish. Available pre-oiled or non-oiled for superior weather, water, and mold resistance."
 author: bothbest
-date: 2026-07-12
+date: 2026-07-13
 image: "@assets/images/products/deck-black-flat.jpg"
 imageAlt: "Flat Side Dark Carbonized Strand Woven Bamboo Decking"
 tags: ["Decking"]
@@ -77,4 +77,3 @@ Engineered to outlast elements, this strand woven exterior decking is ideal for:
 ![Flat Side Dark Carbonized Bamboo Decking Public Park Boardwalk](@assets/images/products/deck-df-8.jpg)
 ![Flat Side Dark Carbonized Bamboo Decking Commercial Plaza Layout](@assets/images/products/deck-df-9.jpg)
 ![Flat Side Dark Carbonized Bamboo Decking Outdoor Architecture](@assets/images/products/deck-df-10.jpg)
-![Flat Side Dark Carbonized Bamboo Decking Premium Terrace Layout](@assets/images/products/deck-df-11.jpg)
