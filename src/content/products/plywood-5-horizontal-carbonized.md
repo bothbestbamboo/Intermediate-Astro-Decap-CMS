@@ -2,7 +2,7 @@
 title: "Single Layer Bamboo Panel Horizontal Carbonized 5mm"
 description: "Premium 5mm single-layer structural horizontal flat-pressed bamboo panels in a rich caramel finish. 4'x8' industrial size, beautifully showcasing traditional organic bamboo knuckles. Ideal for architectural wall cladding, luxury cabinetry facing, CNC engraving, and eco-friendly furniture veneers."
 date: 2026-07-12
-image: "@assets/images/products/ply-55hc.jpg"
+image: "@assets/images/products/ply-5-hc.jpg"
 imageAlt: "Single-Layer Horizontal Carbonized 5mm Bamboo Panel"
 tags: ["Plywood"]
 ---
