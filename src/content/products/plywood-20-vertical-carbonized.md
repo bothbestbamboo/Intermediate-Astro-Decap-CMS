@@ -2,7 +2,7 @@
 title: "Bamboo Plywood Sheets Vertical Carbonized 20mm"
 description: "Premium 20mm (3-layer with vertical core) vertical side-pressed bamboo plywood sheets in a rich caramel finish. 4'x8' industrial size, featuring a clean, fine linear grain ideal for modern cabinetry, countertops, and luxury millwork."
 date: 2026-07-12
-image: "@assets/images/products/ply-20vc.jpg"
+image: "@assets/images/products/ply-20-vc.jpg"
 imageAlt: "Vertical Carbonized 20mm Bamboo Plywood"
 tags: ["Plywood"]
 ---
