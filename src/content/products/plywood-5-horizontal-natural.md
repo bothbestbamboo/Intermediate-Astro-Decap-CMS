@@ -1,5 +1,5 @@
 ---
-title: "Single-Layer Bamboo Plywood Sheets Horizontal Natural 5mm"
+title: "Single Layer Bamboo Plywood Sheets Horizontal Natural 5mm"
 description: "Premium 5mm single-layer structural horizontal flat-pressed bamboo panels in a bright, botanical natural blonde finish. 4'x8' industrial size, beautifully showcasing traditional organic bamboo knuckles. Ideal for eco-luxury architectural wall cladding, cabinetry facing, CNC engraving, and modern furniture veneers."
 date: 2026-07-12
 image: "@assets/images/products/ply-5-hn.jpg"
