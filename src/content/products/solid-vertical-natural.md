@@ -77,4 +77,5 @@ This robust flooring system is engineered for a wide variety of upscale interior
 ![Vertical Natural Solid Bamboo Flooring Modern Office Scene](@assets/images/products/solid-vn-10.jpg)
 ![Vertical Natural Solid Bamboo Flooring Bedroom Scene](@assets/images/products/solid-vn-11.jpg)
 ![Vertical Natural Solid Bamboo Flooring Studio Design](@assets/images/products/solid-vn-12.jpg)
-![Vertical Natural Solid Bamboo Flooring Commercial Project](@assets/assets/images/products/solid-vn-14.jpg)
+![Vertical Natural Solid Bamboo Flooring Commercial Project](@assets/images/products/solid-vn-13.jpg)
+![Vertical Natural Solid Bamboo Flooring Commercial Project](@assets/images/products/solid-vn-14.jpg)
