@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/BaseLayout.astro'; // Import your layout to maintain consistent styling
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout title="404 - Page Not Found">
+<BaseLayout title="404 - Page Not Found" description="The page you are looking for does not exist.">
   <main style="text-align: center; padding: 5rem 1rem;">
     <h1>Oops! Page Not Found</h1>
     <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
     <a href="/" style="color: blue; text-decoration: underline;">Back to Homepage</a>
   </main>
-</Layout>
+</BaseLayout>
