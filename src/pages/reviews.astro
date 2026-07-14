@@ -14,7 +14,11 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
 <BaseLayout title="Reviews" description="Customers reviews for Bothbest Bamboo Flooring, Bothbest is a professional manufacturer and exporter of bamboo panels, bamboo veneer, and bamboo flooring in China" heroImage={optimizedImage}>
-	<Banner title="Reviews" image={optimizedImage} />
-	<ReviewsSection />
-	<CTA />
+    <Banner 
+        title="Reviews" 
+        subtitle="See why global wholesalers, contractors, and architects trust Bothbest for factory-direct bamboo solutions and exceptional product quality." 
+        image={optimizedImage} 
+    />
+    <ReviewsSection />
+    <CTA />
 </BaseLayout>

@@ -13,8 +13,12 @@ import landingImage from "@assets/images/gallery/bannerproduct.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Products" description="Bothbest is a professional manufacturer and exporter of bamboo panels, bamboo veneer, and bamboo flooring in China" heroImage={optimizedImage}>
-	<Banner title="All About Bamboo" image={optimizedImage} />
-	<Gallery />
-	<CTA />
+<BaseLayout title="Projects" description="Bothbest is a professional manufacturer and exporter of bamboo panels, bamboo veneer, and bamboo flooring in China" heroImage={optimizedImage}>
+    <Banner 
+        title="Global Excellence in Action" 
+        subtitle="Explore our verified portfolio of international commercial supply, luxury residential spaces, and custom architectural bamboo installations." 
+        image={optimizedImage} 
+    />
+    <Gallery />
+    <CTA />
 </BaseLayout>
