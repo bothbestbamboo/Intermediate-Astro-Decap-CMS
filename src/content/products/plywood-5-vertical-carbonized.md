@@ -1,7 +1,7 @@
 ---
 title: "Single Layer Bamboo Panel Vertical Carbonized 5mm"
 description: "Premium 5mm single-layer, vertical side-pressed bamboo panels in a rich caramel finish. Flexible yet strong 4'x8' industrial size, featuring a clean linear grain profile ideal for architectural wall paneling, cabinetry facing, CNC carving, and modern furniture backings."
-date: 2026-07-12
+date: 2026-07-11
 image: "@assets/images/products/ply-5-vc.jpg"
 imageAlt: "Vertical Carbonized 5mm Bamboo Panel"
 tags: ["Plywood"]

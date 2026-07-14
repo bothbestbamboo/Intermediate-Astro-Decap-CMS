@@ -1,7 +1,7 @@
 ---
 title: "Bamboo Plywood Sheets Horizontal Carbonized 20mm "
 description: "Premium 20mm (3-layer with vertical core) horizontal flat-pressed bamboo plywood sheets in a rich caramel finish. 4'x8' industrial size, ideal for kitchen countertops, stairs, and modern furniture."
-date: 2026-07-04
+date: 2026-07-11
 image: "@assets/images/products/ply-20-hc.jpg"
 imageAlt: "Horizontal Carbonized 20mm Bamboo Plywood"
 tags: ["Plywood"]

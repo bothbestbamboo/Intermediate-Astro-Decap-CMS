@@ -1,7 +1,7 @@
 ---
 title: "Vertical Carbonized Solid Bamboo Flooring"
 description: "Features a sleek, fine-lined vertical grain with a rich, elegant caramel tone. BB-SZ-0503 delivers enhanced dimensional stability and a modern aesthetic for high-end interiors."
-date: 2026-07-03
+date: 2026-07-13
 image: "@assets/images/products/solid-vc.jpg"
 imageAlt: "Vertical Carbonized Solid Bamboo Flooring"
 tags: ["Flooring"]

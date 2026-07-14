@@ -1,7 +1,7 @@
 ---
 title: "Single Layer Bamboo Plywood Vertical Natural 5mm"
 description: "Premium 5mm single-layer structural vertical side-pressed bamboo panels in a bright, botanical natural blonde finish. Flexible yet strong 4'x8' industrial size, featuring a clean linear grain profile ideal for architectural wall paneling, cabinetry facing, CNC carving, and modern furniture backings."
-date: 2026-07-12
+date: 2026-07-11
 image: "@assets/images/products/ply-5-vn.jpg"
 imageAlt: "Single-Layer Vertical Natural 5mm Bamboo Panel"
 tags: ["Plywood"]

@@ -1,7 +1,7 @@
 ---
 title: "Horizontal Natural Solid Bamboo Flooring"
 description: "Features wide, traditional bamboo nodes and a bright, natural grain pattern. BB-SZ-0502 delivers classic eco-elegant aesthetics and robust wear resistance for contemporary spaces."
-date: 2026-07-03
+date: 2026-07-13
 image: "@assets/images/products/solid-hn.jpg"
 imageAlt: "Natural Horizontal Solid Bamboo Flooring"
 tags: ["Flooring"]

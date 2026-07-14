@@ -1,7 +1,7 @@
 ---
 title: "Bamboo Plywood Sheets Vertical Natural 20mm"
 description: "Premium 20mm (3-layer with vertical core) vertical side-pressed bamboo plywood sheets in a bright, botanical natural blonde finish. 4'x8' industrial size, featuring a clean, fine linear grain ideal for modern eco-friendly cabinetry and countertops."
-date: 2026-07-12
+date: 2026-07-11
 image: "@assets/images/products/ply-20-vn.jpg"
 imageAlt: "Vertical Natural 20mm Bamboo Plywood"
 tags: ["Plywood"]

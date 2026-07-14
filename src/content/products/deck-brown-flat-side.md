@@ -2,7 +2,7 @@
 title: "Flat Side Brown Strand Bamboo Composite Decking"
 description: "High-density (1250kg/m³) outdoor strand woven bamboo composite decking featuring a sleek flat profile on both sides and a rich brown finish. Available pre-oiled or non-oiled for superior weather, water, and mold resistance."
 author: bothbest
-date: 2026-07-13
+date: 2026-07-12
 image: "@assets/images/products/deck-brown-flat.jpg"
 imageAlt: "Flat Side Brown Strand Woven Bamboo Composite Decking"
 tags: ["Decking"]
