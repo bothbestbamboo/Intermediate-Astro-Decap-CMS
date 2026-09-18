@@ -1,16 +1,16 @@
 ---
-title: "Small Groove Brown Strand Woven Bamboo Decking"
-description: "High-density (1250kg/m³) outdoor strand woven bamboo decking featuring an elegant small groove texture and a rich brown finish. Available pre-oiled or non-oiled for superior weather, water, and mold resistance."
+title: "Fused  Bamboo Decking Small Groove Brown Strand Woven"
+description: "High-density (1250kg/m³) outdoor strand woven fused bamboo decking featuring an elegant small groove texture and a rich brown finish. Available pre-oiled or non-oiled for superior weather, water, and mold resistance."
 author: bothbest
 date: 2026-07-12
 image: "@assets/images/products/deck-brown-deep.jpg"
-imageAlt: "Small Groove Brown Strand Woven Bamboo Decking"
+imageAlt: "Small Groove Brown Strand Woven Fused Bamboo Decking"
 tags: ["Decking"]
 ---
 
 ## 📝 Product Overview
 
-**Standard Bamboo Decking** (Terrace Bamboo Flooring) is an elite, high-performance architectural solution engineered specifically for demanding outdoor environments. Crafted from specialized **strand woven bamboo**, natural bamboo fibers are subjected to intense heat and immense hydraulic pressure, compressing them into an ultra-dense compound. Boasting an exceptional material density of **1250kg/m³**, this robust decking delivers superior structural strength, effectively preventing bending, cupping, or warping under harsh weather fluctuations.
+**Fused Bamboo Decking** (Terrace Bamboo Flooring) is an elite, high-performance architectural solution engineered specifically for demanding outdoor environments. Crafted from specialized **strand woven bamboo**, natural bamboo fibers are subjected to intense heat and immense hydraulic pressure, compressing them into an ultra-dense compound. Boasting an exceptional material density of **1250kg/m³**, this robust decking delivers superior structural strength, effectively preventing bending, cupping, or warping under harsh weather fluctuations.
 
 This series features a distinguished **Profile C design**, meticulously crafted with a refined **Small Groove (Ribbon) texture on one side** and a sleek, smooth flat surface on the alternative side. The lateral edges are precisely profiled with longitudinal grooves to accommodate hidden clipping systems. Available factory pre-oiled or non-oiled with premium eco-friendly weatherproofing treatments, this rich **Brown Toned Decking** offers flawless water resistance and advanced anti-mildew defenses, ensuring an extended outdoor lifespan without cracking.
 
@@ -21,7 +21,7 @@ This series features a distinguished **Profile C design**, meticulously crafted 
 | Parameter | Specifications & Details |
 | :--- | :--- |
 | **Item Number** | BB - D60 |
-| **Product Category** | Standard Bamboo Decking / Terrace Flooring |
+| **Product Category** | Fused Bamboo Decking / Terrace Flooring |
 | **Material Composition** | High-Density Strand Woven Bamboo |
 | **Surface Profile** | Profile C: Small Groove (Ribbon) / Smooth Flat Reverse |
 | **Edge Milling** | Precision Side Grooved for Installation Clips |
@@ -42,7 +42,7 @@ This series features a distinguished **Profile C design**, meticulously crafted 
 
 ## 🏭 Manufacturing Process
 
-Our strand woven outdoor bamboo decking is manufactured utilizing sustainable raw Moso bamboo harvested at peak maturity from China's premier ecological forestry hubs across **Anhui**, Jiangxi, Fujian, and Zhejiang, centered around our pristine source base in the **Huangshan Mountain** range.
+Our strand woven outdoor fused bamboo decking is manufactured utilizing sustainable raw Moso bamboo harvested at peak maturity from China's premier ecological forestry hubs across **Anhui**, Jiangxi, Fujian, and Zhejiang, centered around our pristine source base in the **Huangshan Mountain** range.
 
 1. **Fiber Extraction & Thermal Conditioning:** Raw Moso bamboo is split into premium structural strips and mechanically processed into fine, pliable bamboo fiber bundles.
 2. **Advanced Thermal Carbonization:** The extracted fibers undergo deep high-temperature steam carbonization, caramelizing internal starches to achieve the natural deep brown hue while purging nutrients to resist fungal growth.
@@ -62,11 +62,11 @@ Engineered to outlast elements, this strand woven exterior decking is ideal for:
 
 ## 🖼️ Product Gallery
 
-![Small Groove Brown Bamboo Decking Close Up Planks](@assets/images/products/deck-bg-1.jpg)
-![Small Groove Brown Bamboo Decking Surface Texture](@assets/images/products/deck-bg-2.jpg)
-![Small Groove Brown Bamboo Decking Edge Groove Detail](@assets/images/products/deck-bg-3.jpg)
-![Small Groove Brown Bamboo Decking Stacked Materials](@assets/images/products/deck-bg-4.jpg)
-![Small Groove Brown Bamboo Decking Product Details](@assets/images/products/deck-bg-5.jpg)
+![Small Groove Brown Fused Bamboo Decking Close Up Planks](@assets/images/products/deck-bg-1.jpg)
+![Small Groove Brown Fused Bamboo Decking Surface Texture](@assets/images/products/deck-bg-2.jpg)
+![Small Groove Brown Fused Bamboo Decking Edge Groove Detail](@assets/images/products/deck-bg-3.jpg)
+![Small Groove Brown Fused Bamboo Decking Stacked Materials](@assets/images/products/deck-bg-4.jpg)
+![Small Groove Brown Fused Bamboo Decking Product Details](@assets/images/products/deck-bg-5.jpg)
 
 ---
 
