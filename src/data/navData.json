@@ -11,7 +11,7 @@
   },
   {
     "key": "Products",
-    "url": "/products/",
+    "url": "/product/",
     "children": [
       {
         "key": "Bamboo Flooring",
@@ -34,7 +34,7 @@
   },
   {
     "key": "Blog",
-    "url": "/blog/",
+    "url": "/news/",
     "children": []     
   }
 ]
