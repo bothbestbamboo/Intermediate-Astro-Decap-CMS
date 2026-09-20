@@ -23,7 +23,7 @@ const recentPosts = allPosts
 			<div class="header-right">
 				<div class="meta-row">
 					<span class="sub-title">INDUSTRY LEADERSHIP</span>
-					<a href="/blog/" class="view-all-link">View insights ➔</a>
+					<a href="/news/" class="view-all-link">View insights ➔</a>
 				</div>
 				
 				<p>Explore our technical analysis, sustainable manufacturing updates, and architectural inspiration curated by experts who understand the true potential of premium bamboo materials.</p>
@@ -52,7 +52,7 @@ const recentPosts = allPosts
 					return (
 						<article class="blog-card">
 							<div class="image-wrapper">
-								<a href={`/blog/${post.id}/`}>
+								<a href={`/news/${post.id}/`}>
 									<img 
 										src={imageSrc} 
 										alt={post.data.title}
@@ -69,14 +69,14 @@ const recentPosts = allPosts
 							</div>
 
 							<h3 class="card-title">
-								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+								<a href={`/news/${post.id}/`}>{post.data.title}</a>
 							</h3>
 
 							<p class="card-description">
 								{post.data.description || post.body?.slice(0, 100) + "..."}
 							</p>
 
-							<a href={`/blog/${post.id}/`} class="read-more-btn">
+							<a href={`/news/${post.id}/`} class="read-more-btn">
 								Read more ↗
 							</a>
 						</article>
