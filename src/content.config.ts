@@ -5,9 +5,10 @@ import { glob } from "astro/loaders";
 // In order to be able to optimize images with Astro built-in compoments, like <Image />, we first must use this image helper
 // Doc: https://docs.astro.build/en/guides/images/#images-in-content-collections
 
-// 1. 您的博客数据集 (完全保留原样)
+// 1. 您的新闻数据集 (对齐 src/content/news 文件夹)
 const blogsCollection = defineCollection({
-    loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/blog" }),
+    // 修改 base 路径为 ./src/content/news
+    loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/news" }),
     schema: ({ image }) =>
         z.object({
             title: z.string(),
@@ -20,21 +21,24 @@ const blogsCollection = defineCollection({
         }),
 });
 
-// 2. 🎯 新增定义 products 数据集 (对齐您的卡片流和外链需求)
+// 2. 新增定义 products 数据集 (对齐 src/content/product 文件夹)
 const productsCollection = defineCollection({
-    loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/products" }),
+    // 修改 base 路径为 ./src/content/product (单数)
+    loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/product" }),
     schema: ({ image }) =>
         z.object({
             title: z.string(),
             description: z.string(),
             date: z.date().optional(),
-            image: image().optional().or(z.string()), // 👈 核心：既支持本地资产，也支持外链大图
-            tags: z.array(z.string()).optional(),      // 👈 支持我们卡片网格的彩色标签逻辑
+            image: image().optional().or(z.string()), 
+            tags: z.array(z.string()).optional(),      
         }),
 });
 
 // 3. 统一导出到 collections 中
 export const collections = {
-    blog: blogsCollection,
-    products: productsCollection, // 👈 变量名已经正确对应，再也不会报 is not defined 了！
+    // 这里导出的名称 (blog 和 products) 决定了你在页面中 getCollection("xxx") 的参数。
+    // 为了不改动现有的页面代码，我们保持导出的键名不变：
+    blog: blogsCollection,      // 页面中依然使用 getCollection("blog")
+    products: productsCollection, // 页面中依然使用 getCollection("products")
 };
