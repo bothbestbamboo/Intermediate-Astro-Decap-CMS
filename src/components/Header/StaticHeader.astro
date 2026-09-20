@@ -70,7 +70,7 @@
 								{
 									"cs-active":
 										Astro.url.pathname.includes(
-											"/products/",
+											"/product/",
 										),
 								},
 							]}
@@ -90,7 +90,7 @@
 								<a
 									href="/products/"
 									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/products/"
+									aria-current={Astro.url.pathname === "/product/"
 										? "page"
 										: undefined}>All Products</a
 								>
@@ -193,15 +193,15 @@
 					<!-- Blog -->
 					<li class="cs-li">
 						<a
-							href="/blog/"
+							href="/news/"
 							class:list={[
 								"cs-li-link",
 								{
 									"cs-active":
-										Astro.url.pathname === "/blog/",
+										Astro.url.pathname === "/news/",
 								},
 							]}
-							aria-current={Astro.url.pathname === "/blog/"
+							aria-current={Astro.url.pathname === "/news/"
 								? "page"
 								: undefined}
 						>

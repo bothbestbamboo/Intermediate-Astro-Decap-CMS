@@ -67,9 +67,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
                             href="/products/"
                             class:list={[
                                 "cs-li-link",
-                                { "cs-active": Astro.url.pathname === "/products/" },
+                                { "cs-active": Astro.url.pathname === "/product/" },
 							]}
-							aria-current={Astro.url.pathname === "/products/" ? "page" : undefined}
+							aria-current={Astro.url.pathname === "/product/" ? "page" : undefined}
 						>
 							Products
 						</a>
@@ -115,12 +115,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 					<li class="cs-li">
 						<a
-							href="/blog/"
+							href="/news/"
 							class:list={[
 								"cs-li-link",
-								{ "cs-active": Astro.url.pathname === "/blog/" },
+								{ "cs-active": Astro.url.pathname === "/news/" },
 							]}
-							aria-current={Astro.url.pathname === "/blog/" ? "page" : undefined}
+							aria-current={Astro.url.pathname === "/news/" ? "page" : undefined}
 						>
 							Blog
 						</a>
