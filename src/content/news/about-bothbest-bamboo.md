@@ -80,7 +80,6 @@ Whether you are looking to place a bulk commercial container order, source relia
 
 *   **Corporate Headquarters & Factory:** Xuancheng, Anhui, China
 *   **Core Portfolio:** Strand Woven Bamboo Flooring, Architectural Veneers, Engineered Panels, Heavy-Duty Outdoor Decking & Countertops.
-*   **Official Digital Product Center:** [www.bambooflooringchina.com](http://www.bambooflooringchina.com)
 *   **Whatsapp:** 📱 0086.150.0582.0528
 
 Let us collaborate to build a greener, more resilient future with premium bamboo engineering. Partner with Bothbest—where sustainability meets structural perfection.
