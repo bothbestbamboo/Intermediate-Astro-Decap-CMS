@@ -1,10 +1,7 @@
 ---
 /**
- * * This custom layout displays blog posts and a sidebar
- * * It uses a loop so be careful when swapping out the HTML and CSS with the stitch of your choice
- * * Usage, in src/pages/blog/index.astro:
- * * <BlogRecentArticlesWithSidebar posts={posts} />
- * **/
+ * * Custom layout displays blog posts and a sidebar
+ **/
 
 // Utils
 import { Picture, Image } from "astro:assets";
@@ -59,7 +56,8 @@ const { posts } = Astro.props;
                             </div>
                             <h2 class="blog-h1">{post.data.title}</h2>
                             <p class="blog-desc">{post.data.description}</p>
-                            <a href={post.id} class="blog-link">
+                            <!-- 修复这里的链接为 /news/${post.id} -->
+                            <a href={`/news/${post.id}`} class="blog-link">
                                 Continue Reading
                             </a>
                         </div>
