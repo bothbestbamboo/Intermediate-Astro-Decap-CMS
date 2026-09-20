@@ -1,0 +1,32 @@
+{
+  "rewrites": [
+    {
+      "source": "/index.html",
+      "destination": "/home.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.bambooflooring.net"
+        }
+      ],
+      "destination": "https://www.bambooindustry.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bambooflooring.net"
+        }
+      ],
+      "destination": "https://www.bambooindustry.com/:path*",
+      "permanent": true
+    }
+  ]
+}
