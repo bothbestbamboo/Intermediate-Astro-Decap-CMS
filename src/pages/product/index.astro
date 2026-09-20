@@ -73,7 +73,7 @@ const getBadgeClass = (tag: string) => {
 			{products.map((product) => (
 				/* 🌟 2. 核心调整：在最外层包装上绑定 data-tags 方便底层 JS 识别控制 */
 				<a 
-					href={`/products/${product.id}`} 
+					href={`/product/${product.id}`} 
 					class="project-card-link filterable-product-card"
 					data-tags={`all,${product.data.tags ? product.data.tags.map(t => t.toLowerCase()).join(',') : ''}`}
 				>
