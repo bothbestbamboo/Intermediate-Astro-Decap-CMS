@@ -1,0 +1,40 @@
+/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+body{font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#333; margin:0 auto; }
+table{border-collapse:collapse;border-spacing:0;}
+
+a{color:#333;text-decoration:none;}
+a:hover{color:#c00;}
+
+.box-163css{ margin:5px 150px;}
+#ztbox {width:100%; position:relative; height:120px;}
+.spic{ position:relative; background:#f9f9f9; padding-top:6px;padding-right:40px; height:88px;}
+#left {width:13px; height:43px; float:left; top:20px; position:absolute; left:4px; cursor:pointer; background:url(/imagesgallery/left.gif) no-repeat; }
+#right{ width:13px; height:43px; right:4px; top:20px; position:absolute;cursor:pointer; background:url(/imagesgallery/right.gif) no-repeat; }
+#conter{ margin-left:20px;width:100%; position:relative; height:90px; float:left; display:inline; overflow:hidden;}
+#conter .txt{ display:none;}
+#conter ul { width:auto; height:76px; overflow:hidden; top:0px; left:0px; position:absolute; }
+#conter li{ cursor:pointer; height:76px; float:left; border:1px solid #eaeaea; display:inline; margin:0 0 0 4px; }
+#conter li b,#conter li strong{ font-weight:normal;}
+#conter li.on{border:1px solid #FFFF00; }
+#conter li.on span{ background:#898989; color:#fff;}
+#conter li img{ width:98px; float:left; overflow:hidden;}
+#conter li span{ display:block; width:100%; line-height:17px; color:#797979; float:left; height:17px; overflow:hidden; background:#eaeaea; text-align:center; }
+#scroll{ background:url(../images/line.gif) repeat-x left bottom; width:100%; height:13px; left:0px; bottom:14px; cursor:pointer; position:absolute;  }
+#scroll span { width:142px; height:13px; left:0px; bottom:0px; cursor:pointer; position:absolute; background:url(/imagesgallery/scrollBg.png) no-repeat; }
+.bpic{ width:100%; margin:0 auto 0 auto; }
+
+.bigpic{ width:100%; position:relative; margin-bottom:10px;}
+.intro{margin:5px 150px;}
+.bg{ background:#000;filter:alpha(opacity=40); opacity:0.4; z-index:0; width:100%; height:52px; position:absolute; bottom:0;}
+.txt{color:#000;}
+.bclose{ position:absolute; right:10px; top:10px; z-index:11; cursor:pointer; color:#fff;}
+.logo{float:left;display:inline;margin-left:-2px}.top-right-nav{float:right;display:inline;}.top-right-nav li{float:left;display:inline;width:60px;list-style:none;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px;margin-right:10px;text-align:center}.top-right-nav a{color:#000;text-decoration:none;width:60px;display:block;background-color:#fff;line-height:20px}.top-right-nav a:hover{background-color:#ccc;color:#f30}.top-top{float:left;width:100%;background-repeat: no-repeat;background-position: right;}.top-nav{float:left;width:100%}.top-nav li{float:left;margin-right:10px;width:130px;border-bottom:1px solid #fff}
+.container .main .box-163css #ztbox .spic #conter .on .txt h2{
+	width:100%;
+	margin:0 auto 0 auto;
+	background-image: url(/imagesgallery/arrow3.png);
+	background-repeat: no-repeat;
+}

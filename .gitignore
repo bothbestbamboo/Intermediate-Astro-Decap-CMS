@@ -30,3 +30,8 @@ scripts/deleted/
 
 # vscode setting folder
 .vscode/settings.json
+
+*.tar.gz
+*.zip
+*.rar
+*.7z
