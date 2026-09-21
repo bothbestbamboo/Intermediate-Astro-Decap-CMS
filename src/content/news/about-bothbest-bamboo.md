@@ -10,7 +10,7 @@ isFeatured: true
 
 # Welcome to Bothbest
 
-!['Bothbest Factory Show: Office Building'](src/assets/images/blog/bothbest-bamboo-1.jpg)
+![Bothbest Factory Show: Office Building](src/assets/images/blog/bothbest-bamboo-1.jpg)
 
 Welcome to Bothbest, a world-class manufacturing facility and a global leader dedicated to the research, development, and large-scale production of premium bamboo products. Founded with a vision to bridge industrial excellence with ecological responsibility, Bothbest has grown into a highly trusted partner for international distributors, architects, designers, and contractors worldwide. 
 
@@ -18,7 +18,7 @@ Based in Xuancheng, Anhui, China, our strategically located facility operates at
 
 We don't just harvest nature—we re-engineer it for modern architecture. Through our integrated supply chain, from the raw forest management to the final high-precision micro-beveling, Bothbest guarantees full traceability, structural stability, and unmatched aesthetic refinement for global commercial and residential markets.
 
-!['Bothbest Factory Show: Coating Line'](/assets/images/blog/bothbest-bamboo-2.jpg)
+![Bothbest Factory Show: Coating Line](src/assets/images/blog/bothbest-bamboo-2.jpg)
 
 ### 🛠️ Our Core Expertise: Engineering the Finest Bamboo Solutions
 
@@ -33,7 +33,7 @@ Our comprehensive, internationally certified product portfolio includes:
 *   **Click System & Tongue-and-Groove (T&G) Flooring:** To facilitate seamless, rapid onsite installation, we provide precision-milled profiles. Our advanced profiling systems guarantee micro-metric accuracy across every tongue, groove, and interlocking click mechanism, significantly reducing installation labor and preventing gapping over decades of active use.
 *   **Pre-finished Architectural Coatings:** Our surface finishes feature multi-layer, UV-cured polyurethane or natural oil coatings sourced from globally recognized brands. This ensures superior abrasion resistance, anti-scratch longevity, and effortless maintenance while maintaining strict compliance with international low-VOC and zero-formaldehyde emission standards.
 
-!['Bothbest Factory Show: Coating Line'](/assets/images/blog/bothbest-bamboo-3.jpg)
+![Bothbest Factory Show: Coating Line](src/assets/images/blog/bothbest-bamboo-3.jpg)
 
 ### 🏭 Manufacturing Excellence & Automated Infrastructure
 
@@ -51,7 +51,7 @@ The structural stability of bamboo flooring is heavily dependent on moisture equ
 #### Advanced Boiling & Carbonization Autoclaves
 Before pressing, raw bamboo strips undergo strict thermal treatment. Our high-pressure carbonization autoclaves steam the bamboo at precise temperatures to caramelize natural sugars. This not only achieves rich, elegant color tones (such as carbonized and espresso shades) completely through the board, but also strips the nutrients that insects and mold require, ensuring lifetime durability without the use of toxic chemicals.
 
-!['Bothbest Factory Show: Tongue&Groove Manufacturing'](/assets/images/blog/bothbest-bamboo-4.jpg)
+![Bothbest Factory Show: Tongue&Groove Manufacturing](src/assets/images/blog/bothbest-bamboo-4.jpg)
 
 ### 🌍 Sustainability as Our Driving Principle
 
@@ -60,7 +60,7 @@ Sustainability is not a marketing buzzword at Bothbest; it is our foundational b
 *   **Zero-Waste Circular Manufacturing Strategy:** We practice a strict circular manufacturing economy. Bamboo trimmings, sawdust, and residual fiber generated during the profiling and milling processes are collected through centralized dust extraction pipelines and repurposed to fuel our thermal energy plants or compressed into industrial sub-products, achieving nearly 100% biomass utilization.
 *   **Eco-Friendly Adhesives:** We strictly utilize premium, low-emission or completely formaldehyde-free structural adhesives. Our finished products consistently satisfy and exceed rigid international environmental benchmarks, including European E1/E0 standards, Japanese JAS four-star specifications, and North American CARB Phase 2 / EPA TSCA Title VI certifications, ensuring absolute safety for indoor air quality.
 
-!['Bothbest Factory Show: Homag Machine'](/assets/images/blog/bothbest-bamboo-5.jpg)
+![Bothbest Factory Show: Homag Machine](src/assets/images/blog/bothbest-bamboo-5.jpg)
 
 ### 🤝 Why Global Partners Choose Bothbest
 
@@ -70,7 +70,7 @@ Operating as a direct, large-scale manufacturing factory allows Bothbest to offe
 2.  **Rigorous Quality Assurance (QA) Protocol:** Our internal quality control protocol tracks the product lifecycle from raw timber selection, strip boiling, carbonization, and kiln drying, to final pressing, profiling, and packaging. No single board leaves our facility without passing mechanical tolerance testing, moisture checks, and coating adhesion validation.
 3.  **Comprehensive OEM/ODM Capabilities:** We understand that different global markets demand distinct aesthetics. Our engineering team provides robust custom development options—ranging from custom dimensions, specific gloss levels, distressed/wire-brushed textures, to tailor-made architectural staining and specialized packaging layouts for direct brand integration.
 
-!['Bothbest Factory Show: Big Stock'](src/assets/images/blog/bothbest-bamboo-6.jpg)
+![Bothbest Factory Show: Big Stock](src/assets/images/blog/bothbest-bamboo-6.jpg)
 
 ### 📞 Connect with Bothbest Today
 
