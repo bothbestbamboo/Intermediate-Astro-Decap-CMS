@@ -30,7 +30,7 @@ auth:
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Add site links in Decap CMS (optional)
-site_url: https://www.bambooflooring.net
+site_url: https://www.bambooindustry.com
 
 media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
 public_folder: "@assets/images/blog" # Same folder as above, but using a path alias for easier referencing in the markdown files.
