@@ -10,7 +10,7 @@ isFeatured: true
 
 # Welcome to Bothbest
 
-!['Bothbest Factory Show: Office Building'](/assets/images/blog/bothbest-bamboo-1.jpg)
+!['Bothbest Factory Show: Office Building'](src/assets/images/blog/bothbest-bamboo-1.jpg)
 
 Welcome to Bothbest, a world-class manufacturing facility and a global leader dedicated to the research, development, and large-scale production of premium bamboo products. Founded with a vision to bridge industrial excellence with ecological responsibility, Bothbest has grown into a highly trusted partner for international distributors, architects, designers, and contractors worldwide. 
 
@@ -70,7 +70,7 @@ Operating as a direct, large-scale manufacturing factory allows Bothbest to offe
 2.  **Rigorous Quality Assurance (QA) Protocol:** Our internal quality control protocol tracks the product lifecycle from raw timber selection, strip boiling, carbonization, and kiln drying, to final pressing, profiling, and packaging. No single board leaves our facility without passing mechanical tolerance testing, moisture checks, and coating adhesion validation.
 3.  **Comprehensive OEM/ODM Capabilities:** We understand that different global markets demand distinct aesthetics. Our engineering team provides robust custom development options—ranging from custom dimensions, specific gloss levels, distressed/wire-brushed textures, to tailor-made architectural staining and specialized packaging layouts for direct brand integration.
 
-!['Bothbest Factory Show: Big Stock'](/assets/images/blog/bothbest-bamboo-6.jpg)
+!['Bothbest Factory Show: Big Stock'](src/assets/images/blog/bothbest-bamboo-6.jpg)
 
 ### 📞 Connect with Bothbest Today
 
