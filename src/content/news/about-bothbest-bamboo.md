@@ -14,7 +14,7 @@ isFeatured: true
 
 Welcome to Bothbest, a world-class manufacturing facility and a global leader dedicated to the research, development, and large-scale production of premium bamboo products. Founded with a vision to bridge industrial excellence with ecological responsibility, Bothbest has grown into a highly trusted partner for international distributors, architects, designers, and contractors worldwide. 
 
-Based in Xuancheng, Anhui, China, our strategically located facility operates at the heart of premium raw bamboo resources, ensuring an uninterrupted supply chain of mature, high-density Mao Bamboo. We specialize in engineering high-performance bamboo flooring, vertical and horizontal architectural panels, heavy-duty outdoor bamboo decking, and custom bamboo industrial components. With decades of industrial expertise, cutting-edge automated infrastructure, and an unyielding commitment to precision, we transform raw, sustainable bamboo into sophisticated architectural assets that stand the test of time.
+Based in Xuancheng, Anhui, China, our strategically located facility operates at the heart of premium raw bamboo resources, ensuring an uninterrupted supply chain of mature, high-density Mao Bamboo. We specialize in engineering high-performance bamboo flooring, vertical and horizontal architectural panels, strand woven outdoor bamboo decking, and custom bamboo industrial components. With decades of industrial expertise, cutting-edge automated infrastructure, and an unyielding commitment to precision, we transform raw, sustainable bamboo into sophisticated architectural assets that stand the test of time.
 
 We don't just harvest nature—we re-engineer it for modern architecture. Through our integrated supply chain, from the raw forest management to the final high-precision micro-beveling, Bothbest guarantees full traceability, structural stability, and unmatched aesthetic refinement for global commercial and residential markets.
 
@@ -28,7 +28,7 @@ Our comprehensive, internationally certified product portfolio includes:
 
 *   **Strand Woven Bamboo Flooring:** Engineered through high-density thermo-compression technology, our strand-woven flooring delivers a Janka hardness rating that surpasses traditional dense hardwoods like Oak, Maple, and Brazilian Cherry. It is specifically designed to withstand high-traffic commercial environments and heavy residential use, offering unparalleled resistance to scratching, denting, and long-term deformation.
 *   **Solid Bamboo Flooring (Horizontal & Vertical):** For projects requiring a classic, linear organic aesthetic, our solid structures showcase the natural nodes and distinctive growth rings of bamboo. Vertical integration offers a sleek, modern, minimalist look, while horizontal integration preserves the traditional, authentic appearance of oriental bamboo engineering.
-*   **Heavy-Duty Outdoor Bamboo Decking:** Engineered to survive extreme exterior climates, our outdoor architectural cladding and decking profiles undergo specialized thermo-density modifications. This process alters the sugar molecules inside the bamboo fiber, rendering it completely immune to fungal decay, rot, termites, and severe moisture fluctuations while maintaining optimal anti-slip ratings.
+*   **Strand Woven Outdoor Bamboo Decking:** Engineered to survive extreme exterior climates, our outdoor architectural cladding and decking profiles undergo specialized thermo-density modifications. This process alters the sugar molecules inside the bamboo fiber, rendering it completely immune to fungal decay, rot, termites, and severe moisture fluctuations while maintaining optimal anti-slip ratings.
 *   **Architectural Bamboo Panels & Countertops:** We manufacture multi-layer cross-laminated bamboo sheets, furniture boards, and durable kitchen tabletops. These products provide superior dimensional stability compared to solid hardwood planks, preventing warping or splitting when exposed to varying indoor humidity zones.
 *   **Click System & Tongue-and-Groove (T&G) Flooring:** To facilitate seamless, rapid onsite installation, we provide precision-milled profiles. Our advanced profiling systems guarantee micro-metric accuracy across every tongue, groove, and interlocking click mechanism, significantly reducing installation labor and preventing gapping over decades of active use.
 *   **Pre-finished Architectural Coatings:** Our surface finishes feature multi-layer, UV-cured polyurethane or natural oil coatings sourced from globally recognized brands. This ensures superior abrasion resistance, anti-scratch longevity, and effortless maintenance while maintaining strict compliance with international low-VOC and zero-formaldehyde emission standards.
@@ -78,8 +78,8 @@ As the global architectural landscape permanently shifts towards sustainable, hi
 
 Whether you are looking to place a bulk commercial container order, source reliable OEM manufacturing, or join our global network of authorized regional distributors, the Bothbest team is ready to provide elite technical consulting, comprehensive material samples, and optimized supply-chain logistics.
 
-*   **Corporate Headquarters & Factory:** Xuancheng, Anhui, China
-*   **Core Portfolio:** Strand Woven Bamboo Flooring, Architectural Veneers, Engineered Panels, Heavy-Duty Outdoor Decking & Countertops.
+*   **Corporate Headquarters & Factory:** Anji, Zhejiang, China
+*   **Core Portfolio:** Strand Woven Bamboo Flooring, Architectural Veneers, Engineered Panels, Fused Outdoor Decking & Countertops.
 *   **Whatsapp:** 📱 0086.150.0582.0528
 
 Let us collaborate to build a greener, more resilient future with premium bamboo engineering. Partner with Bothbest—where sustainability meets structural perfection.
