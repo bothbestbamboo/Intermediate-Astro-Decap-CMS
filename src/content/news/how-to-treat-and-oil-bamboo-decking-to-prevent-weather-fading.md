@@ -8,7 +8,7 @@ imageAlt: "Oil Your Bamboo Decking"
 isFeatured: false
 ---
 
-An outdoor bamboo deck is one of the most striking architectural additions you can make to a property. It combines the dense, heavy feel of luxury hardwood with an exceptionally stable engineered structure. However, because outdoor bamboo is a natural composite material exposed to constant rain, frost, heat, and ultraviolet light, it requires consistent maintenance to retain its rich tones and structural integrity. 
+An outdoor bamboo decking is one of the most striking architectural additions you can make to a property. It combines the dense, heavy feel of luxury hardwood with an exceptionally stable engineered structure. However, because outdoor bamboo is a natural composite material exposed to constant rain, frost, heat, and ultraviolet light, it requires consistent maintenance to retain its rich tones and structural integrity. 
 
 Unprotected outdoor decking eventually succumbs to UV radiation and moisture absorption. When left untreated, the surface wood fibers break down, leading to graying, surface checking, micro-cracking, and localized discoloration. Fortunately, a properly executed oiling routine completely seals the surface, locks in the natural amber or dark brown finish, and prevents weather-induced aging.
 
