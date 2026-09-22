@@ -33,6 +33,8 @@ const getBadgeClass = (tag: string) => {
 			return "badge-flooring";
 		case "decking":
 			return "badge-decking";
+		case "bamboo":
+			return "badge-bamboo";
 		default:
 			return "badge-default";
 	}
@@ -65,6 +67,7 @@ const getBadgeClass = (tag: string) => {
 		<button class="filter-btn" data-filter="flooring">Flooring</button>
 		<button class="filter-btn" data-filter="decking">Decking</button>
 		<button class="filter-btn" data-filter="plywood">Plywood</button>
+		<button class="filter-btn" data-filter="bamboo">Bamboo</button>
 	</div>
 
 	<!-- 📦 图片框卡片网格区域 (自动生成并指向内页) -->
@@ -349,6 +352,10 @@ const getBadgeClass = (tag: string) => {
 	}
 	.badge-decking {
 		background-color: #b45309; /* 户外木质棕 */
+		color: #ffffff;
+	}
+	.badge-bamboo {
+		background-color: #16a34a; /* 竹子绿色 */
 		color: #ffffff;
 	}
 	.badge-default {
