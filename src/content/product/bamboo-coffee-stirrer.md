@@ -1,8 +1,8 @@
 ---
 title: "Bamboo Coffee Stirrers & Drink Swizzles"
 description: "Bamboo Coffee Stirrers are thoughtfully crafted from 100% natural, rapidly renewable Moso bamboo. Designed as an elegant, sustainable alternative to single-use plastic stirrers"
-date: 2026-07-13
-image: "@assets/images/products/bamboo-coffee-stirrer-5.jpg"
+date: 2026-09-22
+image: "@assets/images/products/bamboo-coffee-stirrer-5.jpeg"
 imageAlt: "Bamboo Coffee Stirrer"
 tags: ["Bamboo"]
 ---
