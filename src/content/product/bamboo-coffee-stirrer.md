@@ -1,7 +1,7 @@
 ---
 title: "Bamboo Coffee Stirrers & Drink Swizzles"
 description: "Bamboo Coffee Stirrers are thoughtfully crafted from 100% natural, rapidly renewable Moso bamboo. Designed as an elegant, sustainable alternative to single-use plastic stirrers"
-date: 2026-09-22
+date: 2026-07-10
 image: "@assets/images/products/bamboo-coffee-stirrer-5.jpeg"
 imageAlt: "Bamboo Coffee Stirrer"
 tags: ["Bamboo"]
@@ -22,8 +22,8 @@ Finely polished with a natural food-safe finish, they add a charming, eco-chic t
 | **Product Category** | Bamboo Coffee Stirrers / Swizzle Sticks |
 | **Material Composition** | 100% Natural Moso Bamboo |
 | **Color & Finish** | Natural Light Bamboo / Smooth Polished Surface |
-| **Top Profile Options** | Custom Shapes (Pineapple, Guitar, Round Paddle, Star, Custom Logo Engraving) |
-| **Standard Lengths** | 150 mm, 180 mm, 200 mm (Customizable) |
+| **Top Profile Options** | Custom Shapes (Pineapple, Guitar, Round Paddle, Star, Custom Logo) |
+| **Standard Lengths** | 110 mm, 120 mm, 150 mm, 180 mm (Customizable) |
 | **Safety Standard** | Food-Grade Safe, BPA-Free, Plastic-Free, Non-Toxic |
 | **Usage Type** | Disposable / Compostable / Single-Use Eco Tableware |
 

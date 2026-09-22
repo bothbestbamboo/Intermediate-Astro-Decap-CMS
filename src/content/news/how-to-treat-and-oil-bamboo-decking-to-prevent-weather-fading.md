@@ -14,7 +14,7 @@ Unprotected outdoor decking eventually succumbs to UV radiation and moisture abs
 
 This guide outlines the exact preparation steps, oil application techniques, and seasonal maintenance schedules required to keep your bamboo decking looking pristine for decades.
 
-![How to Oil Bamboo Decking](src/assets/images/blog/20260921-oil-bamboo-decking-1.JPG)
+![How to Oil Bamboo Decking](@assets/images/blog/20260921-oil-bamboo-decking-1.JPG)
 
 ---
 
@@ -43,7 +43,7 @@ Solvent-based penetrating oils use fine synthetic oils to carry pigments deep in
 ### Pigmentation Matters
 Always select an oil that contains transparent or semi-transparent color pigments. Clear oils without pigment offer virtually no protection against UV rays; they prevent moisture absorption but will still allow the sun to turn your deck gray within a few months. Pigmentation acts as sunscreen for your decking, reflecting UV radiation while enhancing the natural wood grain. Match the pigment to the original shade of your boards, whether that is a light warm caramel or a deep espresso espresso tone.
 
-![How to Oil Bamboo Decking](src/assets/images/blog/20260921-oil-bamboo-decking-2.JPG)
+![How to Oil Bamboo Decking](@assets/images/blog/20260921-oil-bamboo-decking-2.JPG)
 
 ---
 
@@ -95,7 +95,7 @@ Once the deck is clean, brightened, and bone-dry, you are ready to oil. The goal
 
 6. **Allow Cure Time and Apply a Second Thin Coat**: Depending on the specific product instructions and outdoor temperatures, allow the first coat to dry for four to twelve hours. If the bamboo appears thirsty or has not been oiled in a long time, apply a second ultra-thin coat using the exact same process, again remembering to wipe off any unabsorbed excess after twenty minutes.
 
-![How to Oil Bamboo Decking](src/assets/images/blog/20260921-oil-bamboo-decking-3.JPG)
+![How to Oil Bamboo Decking](@assets/images/blog/20260921-oil-bamboo-decking-3.JPG)
 ---
 
 ## Post-Oiling Care and Curing Times
