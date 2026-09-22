@@ -23,15 +23,17 @@ const blogsCollection = defineCollection({
 
 // 2. 新增定义 products 数据集 (对齐 src/content/product 文件夹)
 const productsCollection = defineCollection({
-    // 修改 base 路径为 ./src/content/product (单数)
     loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/product" }),
     schema: ({ image }) =>
         z.object({
             title: z.string(),
             description: z.string(),
+            author: z.string().optional(),                          // ← 新增
             date: z.date().optional(),
-            image: image().optional().or(z.string()), 
-            tags: z.array(z.string()).optional(),      
+            image: image().optional().or(z.string()),
+            imageAlt: z.string().optional(),                        // ← 新增（你 md 里有）
+            tags: z.array(z.string()).optional(),
+            isFeatured: z.boolean().optional().default(false),      // ← 关键！新增
         }),
 });
 
