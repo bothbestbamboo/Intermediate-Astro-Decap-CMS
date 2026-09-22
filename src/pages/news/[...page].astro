@@ -43,22 +43,21 @@ const { page } = Astro.props;
     <!-- 传入当前页的文章列表 page.data -->
     <BlogRecentArticlesWithSidebar posts={page.data} />
 
-    <!-- 3. 添加分页导航按钮 UI -->
+    <!-- 3. 分页导航按钮 UI -->
     <nav class="pagination-container" aria-label="Blog pagination">
         <div class="pagination">
             <!-- 上一页按钮 -->
             {page.url.prev ? (
                 <a href={page.url.prev} class="pagination-btn">
-                    &laquo; 上一页
+                    &laquo; Previous
                 </a>
             ) : (
-                <span class="pagination-btn disabled">&laquo; 上一页</span>
+                <span class="pagination-btn disabled">&laquo; Previous</span>
             )}
 
-            <!-- 页码数字列表 (例如 1, 2, 3...) -->
+            <!-- 页码数字列表 -->
             <div class="pagination-numbers">
                 {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((pageNum) => {
-                    // 第一页的链接为 /news，其余页码为 /news/2, /news/3 ...
                     const href = pageNum === 1 ? "/news" : `/news/${pageNum}`;
                     const isCurrent = page.currentPage === pageNum;
                     return (
@@ -76,10 +75,10 @@ const { page } = Astro.props;
             <!-- 下一页按钮 -->
             {page.url.next ? (
                 <a href={page.url.next} class="pagination-btn">
-                    下一页 &raquo;
+                    Next &raquo;
                 </a>
             ) : (
-                <span class="pagination-btn disabled">下一页 &raquo;</span>
+                <span class="pagination-btn disabled">Next &raquo;</span>
             )}
         </div>
     </nav>
@@ -88,7 +87,6 @@ const { page } = Astro.props;
 </BaseLayout>
 
 <style>
-  /* 分页样式（可根据你的网站主题调亮/调整颜色） */
   .pagination-container {
       display: flex;
       justify-content: center;
@@ -98,14 +96,21 @@ const { page } = Astro.props;
   .pagination {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem; /* 上一页、页码组、下一页之间的整体间距 */
+  }
+
+  /* 1和2等数字页码之间的专属间距 */
+  .pagination-numbers {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; /* 拉开 1 和 2 之间的距离 */
   }
 
   .pagination-btn, .pagination-number {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.85rem;
       border: 1px solid #e2e8f0;
       border-radius: 6px;
       color: #334155;
@@ -118,19 +123,20 @@ const { page } = Astro.props;
 
   .pagination-btn:hover:not(.disabled),
   .pagination-number:hover:not(.active) {
-      border-color: #a3e635; /* 搭配你网站的嫩绿色主题 */
-      color: #15803d;
+      border-color: #91C81E;
+      color: #000;
       background-color: #f7fee7;
   }
 
-  /* 当前激活的页码样式 */
+  /* 当前激活页码：完美匹配 Continue Reading 按钮的颜色与黑字 */
   .pagination-number.active {
-      background-color: #84cc16; /* 主题绿色 */
-      color: #ffffff;
-      border-color: #84cc16;
+      background-color: #91C81E; /* 完美匹配图中的绿色 */
+      color: #000000;            /* 对应 Continue Reading 的黑字 */
+      border-color: #91C81E;
+      font-weight: 600;
   }
 
-  /* 禁用状态（没有上一页/下一页时） */
+  /* 禁用状态 */
   .pagination-btn.disabled {
       color: #cbd5e1;
       border-color: #f1f5f9;
