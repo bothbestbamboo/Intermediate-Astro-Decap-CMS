@@ -1,15 +1,15 @@
 ---
 /**
- * * Product index page with clean URL routing for pagination and categories:
- * * /product -> All page 1
- * * /product/2 -> All page 2
- * * /product/bamboo -> Bamboo page 1
- * * /product/bamboo/2 -> Bamboo page 2
+ * Product index page with clean URL routing for pagination and categories:
+ * /product -> All page 1 (24 products/page)
+ * /product/2 -> All page 2
+ * /product/bamboo -> Bamboo page 1 (100 products/page)
+ * /product/bamboo/2 -> Bamboo page 2
  **/
 
 // Utils
-import { getCollection } from "astro:content";
-import { Image, getImage } from "astro:assets";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { getImage } from "astro:assets";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -18,9 +18,11 @@ import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
 import placeholderImage from "@assets/images/gallery/bannerproduct2.jpg";
+
+// 预先优化图片
 const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
 
-// 定义支持的分类列表（与你的 Tag 一致）
+// 定义支持的分类列表（与 Tag 一致）
 const CATEGORIES = [
   { name: "All Series", slug: "all" },
   { name: "Flooring", slug: "flooring" },
@@ -31,7 +33,7 @@ const CATEGORIES = [
 
 export async function getStaticPaths() {
   const allProducts = await getCollection("products");
-  
+
   // 按时间倒序排序
   allProducts.sort((a, b) => {
     const dateA = a.data.date ? new Date(a.data.date).valueOf() : 0;
@@ -40,15 +42,17 @@ export async function getStaticPaths() {
   });
 
   const categories = ["all", "flooring", "decking", "plywood", "bamboo"];
-  const pageSize = 24;
   const paths = [];
 
   for (const category of categories) {
+    // 根据分类动态指定每页数量：全部分类 24 个，其他标签分类 100 个
+    const pageSize = category === "all" ? 24 : 100;
+
     // 筛选当前分类的产品
     const filteredProducts = category === "all"
       ? allProducts
       : allProducts.filter((product) => {
-          const tags = product.data.tags ? product.data.tags.map((t) => t.toLowerCase()) : [];
+          const tags = product.data.tags ? product.data.tags.map((t: string) => t.toLowerCase()) : [];
           return tags.includes(category);
         });
 
@@ -59,8 +63,7 @@ export async function getStaticPaths() {
       const pageProducts = filteredProducts.slice(startIndex, startIndex + pageSize);
 
       // 构建干净的 URL 路径 (slug)
-      // 例如: undefined(首页), "2", "bamboo", "bamboo/2"
-      let slug = undefined;
+      let slug: string | undefined = undefined;
       if (category === "all") {
         slug = pageNum === 1 ? undefined : `${pageNum}`;
       } else {
@@ -82,6 +85,14 @@ export async function getStaticPaths() {
   return paths;
 }
 
+// 定义 Astro.props 类型以消除红色波浪线警告
+interface Props {
+  products: CollectionEntry<"products">[];
+  currentPage: number;
+  totalPages: number;
+  currentCategory: string;
+}
+
 // 获取从 getStaticPaths 传入的 props
 const { products, currentPage, totalPages, currentCategory } = Astro.props;
 
@@ -94,7 +105,7 @@ const getCleanUrl = (category: string, pageNum: number) => {
 };
 
 // 动态 Badge 样式
-const getBadgeClass = (tag: string) => {
+const getBadgeClass = (tag?: string) => {
   switch (tag?.toLowerCase()) {
     case "plywood":
       return "badge-plywood";
@@ -145,33 +156,35 @@ const getBadgeClass = (tag: string) => {
     <!-- 📦 产品网格 -->
     <section class="projects-section">
         <div class="ProjectsContent">
-            {products.map((product) => (
-                <a href={`/product/${product.id}`} class="project-card-link">
-                    <div class="project-card">
-                        <div class="banner-box">
-                            {typeof product.data.image === 'string' ? (
-                                <div class="banner-img" style={`background-image: url(${product.data.image})`}></div>
-                            ) : (
-                                <div class="banner-img" style={`background-image: url(${product.data.image?.src || placeholderImage.src})`}></div>
-                            )}
-                        </div>
-                        
-                        <div class="text-content">
-                            <div class="title-row">
-                                <h2 class="product-title">{product.data.title}</h2>
-                                {product.data.tags && product.data.tags[0] && (
-                                    <span class={`badge ${getBadgeClass(product.data.tags[0])}`}>
-                                        {product.data.tags[0]}
-                                    </span>
-                                )}
+            {products.map((product) => {
+                const imgUrl = typeof product.data.image === 'string' 
+                    ? product.data.image 
+                    : (product.data.image?.src || placeholderImage.src);
+
+                return (
+                    <a href={`/product/${product.id}`} class="project-card-link">
+                        <div class="project-card">
+                            <div class="banner-box">
+                                <div class="banner-img" style={`background-image: url(${imgUrl})`}></div>
                             </div>
-                            <p class="product-description">
-                                {product.data.description}
-                            </p>
+                            
+                            <div class="text-content">
+                                <div class="title-row">
+                                    <h2 class="product-title">{product.data.title}</h2>
+                                    {product.data.tags && product.data.tags[0] && (
+                                        <span class={`badge ${getBadgeClass(product.data.tags[0])}`}>
+                                            {product.data.tags[0]}
+                                        </span>
+                                    )}
+                                </div>
+                                <p class="product-description">
+                                    {product.data.description}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            ))}
+                    </a>
+                );
+            })}
         </div>
     </section>
 
@@ -220,7 +233,7 @@ const getBadgeClass = (tag: string) => {
 </BaseLayout>
 
 <style lang="less">
-    /* 🎯 样式保持不变 */
+    /* 🎯 样式保留 */
     .pagination-container {
         display: flex;
         justify-content: center;
