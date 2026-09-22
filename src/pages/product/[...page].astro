@@ -1,0 +1,453 @@
+---
+/**
+ * * This page is the products index and displays all articles as image-box cards with pagination
+ **/
+
+// Utils
+import { getCollection } from "astro:content";
+import { Image, getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import placeholderImage from "@assets/images/gallery/bannerproduct2.jpg";
+const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
+
+// 1. 定义动态路由生成函数，设置每页 45 个产品
+export async function getStaticPaths({ paginate }) {
+  const products = await getCollection("products");
+  products.sort((a, b) => {
+    const dateA = a.data.date ? new Date(a.data.date).valueOf() : 0;
+    const dateB = b.data.date ? new Date(b.data.date).valueOf() : 0;
+    return dateB - dateA;
+  });
+
+  // 设置每页 45 条
+  return paginate(products, { pageSize: 45 });
+}
+
+// 2. 从 Astro.props 获取当前页面的分页数据
+const { page } = Astro.props;
+const products = page.data; // 当前页的 45 个产品列表
+
+// 模拟 Vue 的 littleBadgeColor 动态配色逻辑
+const getBadgeClass = (tag: string) => {
+  switch (tag?.toLowerCase()) {
+    case "plywood":
+      return "badge-plywood";
+    case "flooring":
+      return "badge-flooring";
+    case "decking":
+      return "badge-decking";
+    case "bamboo":
+      return "badge-bamboo";
+    default:
+      return "badge-default";
+  }
+};
+---
+
+<BaseLayout 
+    title="Products" 
+    description="All kinds of premium bamboo products, including bamboo flooring, bamboo decking, bamboo plywood, bamboo veneer, bamboo panels." 
+    heroImage={placeholderOptimizedImage}
+    imageAlt="Bothbest bamboo products banner"
+>
+    <Banner 
+        title="Premium Bamboo Solutions" 
+        subtitle="High-performance, eco-friendly bamboo products manufactured to global standards." 
+        image={placeholderOptimizedImage} 
+        alt="Bothbest bamboo products banner" 
+        imageAlt="Bothbest bamboo products banner" 
+    />
+
+    <!-- 🎯 产品首页大标题区域 -->
+    <div class="vp-page-title">
+        <h1 class="title">🌿 Eco-Building Solutions ✨</h1>
+        <p class="lead">All kinds of premium bamboo flooring, durable bamboo decking & architectural bamboo plywood.</p>
+    </div>
+
+    <!-- 🎯 1. 顶部切换过滤标签控制台 -->
+    <div class="filter-tab-container">
+        <button class="filter-btn active" data-filter="all">All Series</button>
+        <button class="filter-btn" data-filter="flooring">Flooring</button>
+        <button class="filter-btn" data-filter="decking">Decking</button>
+        <button class="filter-btn" data-filter="plywood">Plywood</button>
+        <button class="filter-btn" data-filter="bamboo">Bamboo</button>
+    </div>
+
+    <!-- 📦 图片框卡片网格区域 -->
+    <section class="projects-section">
+        <div class="ProjectsContent">
+            {products.map((product) => (
+                <a 
+                    href={`/product/${product.id}`} 
+                    class="project-card-link filterable-product-card"
+                    data-tags={`all,${product.data.tags ? product.data.tags.map(t => t.toLowerCase()).join(',') : ''}`}
+                >
+                    <div class="project-card">
+                        <!-- banner 图片框 -->
+                        <div class="banner-box">
+                            {typeof product.data.image === 'string' ? (
+                                <div class="banner-img" style={`background-image: url(${product.data.image})`}></div>
+                            ) : (
+                                <div class="banner-img" style={`background-image: url(${product.data.image?.src || placeholderImage.src})`}></div>
+                            )}
+                        </div>
+                        
+                        <!-- 文字与标签内容 -->
+                        <div class="text-content">
+                            <div class="title-row">
+                                <h2 class="product-title">{product.data.title}</h2>
+                                {product.data.tags && product.data.tags[0] && (
+                                    <span class={`badge ${getBadgeClass(product.data.tags[0])} filter-badge-click`} data-filter={product.data.tags[0].toLowerCase()}>
+                                        {product.data.tags[0]}
+                                    </span>
+                                )}
+                            </div>
+                            <p class="product-description">
+                                {product.data.description}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </section>
+
+    <!-- 🎯 2. 分页导航按钮 UI -->
+    <nav class="pagination-container" aria-label="Product pagination">
+        <div class="pagination">
+            <!-- 上一页按钮 -->
+            {page.url.prev ? (
+                <a href={page.url.prev} class="pagination-btn">
+                    &laquo; Previous
+                </a>
+            ) : (
+                <span class="pagination-btn disabled">&laquo; Previous</span>
+            )}
+
+            <!-- 页码数字列表 -->
+            <div class="pagination-numbers">
+                {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((pageNum) => {
+                    const href = pageNum === 1 ? "/product" : `/product/${pageNum}`;
+                    const isCurrent = page.currentPage === pageNum;
+                    return (
+                        <a 
+                            href={href} 
+                            class={`pagination-number ${isCurrent ? "active" : ""}`}
+                            aria-current={isCurrent ? "page" : undefined}
+                        >
+                            {pageNum}
+                        </a>
+                    );
+                })}
+            </div>
+
+            <!-- 下一页按钮 -->
+            {page.url.next ? (
+                <a href={page.url.next} class="pagination-btn">
+                    Next &raquo;
+                </a>
+            ) : (
+                <span class="pagination-btn disabled">Next &raquo;</span>
+            )}
+        </div>
+    </nav>
+
+    <CTA />
+</BaseLayout>
+
+<!-- 🎯 3. 轻量高效的客户端分类筛选脚本 -->
+<script>
+    function initFilters() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.filterable-product-card');
+        const badgeClicks = document.querySelectorAll('.filter-badge-click');
+
+        function applyFilter(targetTag: string) {
+            filterButtons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === targetTag) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            productCards.forEach(card => {
+                const tagsAttr = card.getAttribute('data-tags') || '';
+                const tagsArray = tagsAttr.split(',');
+                
+                if (tagsArray.includes(targetTag)) {
+                    (card as HTMLElement).style.display = 'block';
+                } else {
+                    (card as HTMLElement).style.display = 'none';
+                }
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tag = button.getAttribute('data-filter') || 'all';
+                applyFilter(tag);
+            });
+        });
+
+        badgeClicks.forEach(badge => {
+            badge.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const tag = badge.getAttribute('data-filter') || 'all';
+                applyFilter(tag);
+            });
+        });
+    }
+
+    initFilters();
+    document.addEventListener('astro:after-swap', initFilters);
+</script>
+
+<style lang="less">
+    /* 🎯 4. 分页控制按钮面板样式 (#9cc813) */
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+    }
+
+    .pagination {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem; /* 上一页、页码组、下一页之间的整体间距 */
+    }
+
+    .pagination-numbers {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; /* 数字页码 1 和 2 之间的独立间距 */
+    }
+
+    .pagination-btn, .pagination-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.85rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        color: #334155;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        background-color: #fff;
+    }
+
+    .pagination-btn:hover:not(.disabled),
+    .pagination-number:hover:not(.active) {
+        border-color: #9cc813;
+        color: #000;
+        background-color: #f7fee7;
+    }
+
+    /* 当前激活页码：使用标准的绿色 #9cc813 */
+    .pagination-number.active {
+        background-color: #9cc813;
+        color: #000000;
+        border-color: #9cc813;
+        font-weight: 600;
+    }
+
+    /* 禁用状态 */
+    .pagination-btn.disabled {
+        color: #cbd5e1;
+        border-color: #f1f5f9;
+        cursor: not-allowed;
+        background-color: #f8fafc;
+    }
+
+    /* 🎯 分类页控制台样式 */
+    .filter-tab-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin: 1.5rem auto 1rem auto;
+        max-width: 1152px;
+        padding: 0 1.5rem;
+        flex-wrap: wrap;
+
+        .filter-btn {
+            border: 1px solid #cbd5e1;
+            background-color: #ffffff;
+            color: #475569;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+            &:hover {
+                border-color: #334155;
+                color: #0f172a;
+                transform: translateY(-1px);
+            }
+
+            &.active {
+                background-color: #0369a1;
+                color: #ffffff;
+                border-color: #0369a1;
+                box-shadow: 0 4px 6px -1px rgba(3, 105, 161, 0.2);
+            }
+        }
+    }
+
+    .filter-badge-click {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        &:hover {
+            transform: scale(1.08);
+        }
+    }
+
+    .vp-page-title {
+        text-align: center;
+        padding: 3.5rem 1rem 1rem 1rem;
+        
+        .title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 0.5rem 0;
+        }
+        .lead {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin: 0;
+        }
+    }
+
+    .projects-section {
+        padding: 1rem 1.5rem 2rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .ProjectsContent {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+        max-width: 1152px;
+        gap: 24px;
+        margin: 0 auto;
+    }
+
+    .project-card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .project-card {
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        background-color: #f8fafc;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        &:hover {
+            border-color: #3730a3; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+
+            .product-description {
+                color: #1e293b;
+            }
+        }
+    }
+
+    .banner-box {
+        width: 100%;
+        height: 10rem;
+        overflow: hidden;
+        
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: transform 0.5s ease;
+        }
+    }
+
+    .text-content {
+        padding: 1rem;
+        padding-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+
+        .product-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0;
+            line-height: 1.3;
+        }
+    }
+
+    .product-description {
+        margin: 0.5rem 0 0 0;
+        font-size: 0.875rem;
+        color: #94a3b8;
+        line-height: 1.5;
+        transition: all 0.3s ease;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        white-space: nowrap;
+        font-weight: 500;
+    }
+    .badge-plywood {
+        background-color: #115e59;
+        color: #ffffff;
+    }
+    .badge-flooring {
+        background-color: #0369a1;
+        color: #ffffff;
+    }
+    .badge-decking {
+        background-color: #b45309;
+        color: #ffffff;
+    }
+    .badge-bamboo {
+        background-color: #16a34a;
+        color: #ffffff;
+    }
+    .badge-default {
+        border: 1px solid #cbd5e1;
+        color: #64748b;
+    }
+</style>
