@@ -5,6 +5,7 @@ date: 2026-07-13
 image: "@assets/images/products/strand-ck-ca.jpg"
 imageAlt: "Caramel Solid Click Strand Woven Bamboo Flooring"
 tags: ["Flooring"]
+isFeatured: true
 ---
 
 ## 📝 Product Overview

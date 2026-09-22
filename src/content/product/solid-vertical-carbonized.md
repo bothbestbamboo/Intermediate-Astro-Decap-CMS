@@ -5,6 +5,7 @@ date: 2026-07-13
 image: "@assets/images/products/solid-vc.jpg"
 imageAlt: "Vertical Carbonized Solid Bamboo Flooring"
 tags: ["Flooring"]
+isFeatured: true
 ---
 
 ## 📝 Product Overview

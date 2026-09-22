@@ -5,6 +5,7 @@ date: 2026-07-13
 image: "@assets/images/products/strand-w-na.jpg"
 imageAlt: "Stranded Bamboo Flooring Natural in 130mm"
 tags: ["Flooring"]
+isFeatured: true
 ---
 
 ## 📝 Product Overview
