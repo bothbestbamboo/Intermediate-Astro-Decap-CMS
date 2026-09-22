@@ -6,7 +6,6 @@ date: 2026-07-12
 image: "@assets/images/products/deck-brown-flat.jpg"
 imageAlt: "Flat Side Brown Strand Woven Bamboo Composite Decking"
 tags: ["Decking"]
-isFeatured: true
 ---
 
 ## 📝 Product Overview
