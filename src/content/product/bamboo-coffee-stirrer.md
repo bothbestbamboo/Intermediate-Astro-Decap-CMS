@@ -5,6 +5,7 @@ date: 2026-07-10
 image: "@assets/images/products/bamboo-coffee-stirrer-5.jpeg"
 imageAlt: "Bamboo Coffee Stirrer"
 tags: ["Bamboo"]
+isFeatured: true
 ---
 
 ## 📝 Product Overview

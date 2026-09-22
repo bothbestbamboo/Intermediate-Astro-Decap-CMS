@@ -4,7 +4,7 @@
  **/
 
 import { getCollection, render } from "astro:content";
-import BlogPostLayout from "@layouts/BlogPostLayout.astro";
+import ProductPostLayout from "@layouts/ProductPostLayout.astro";
 
 export async function getStaticPaths() {
 	const products = await getCollection("products");
@@ -17,23 +17,24 @@ export async function getStaticPaths() {
 const { product } = Astro.props;
 
 // 全方位图片描述防御体系
-const safeAltText = product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
+const safeAltText =
+	product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
 
 const formattedProduct = {
 	...product,
 	data: {
 		...product.data,
-		author: "bothbest", 
+		author: "bothbest",
 		image: product.data.image,
-		imageAlt: safeAltText, 
-		alt: safeAltText,      
+		imageAlt: safeAltText,
+		alt: safeAltText,
 		title: product.data.title,
-		// 🌟 核心点：确保这里带有 "Products" 标签，以便核心布局识别并完成标题置顶与询盘盒子的注入
-		tags: product.data.tags || ["Products"], 
-	}
+		// 🌟 确保带有产品标签，让 ProductPostLayout 识别
+		tags: product.data.tags || ["Products"],
+	},
 };
 
 const { headings } = await render(product);
 ---
 
-<BlogPostLayout post={formattedProduct} headings={headings} />
+<ProductPostLayout post={formattedProduct} headings={headings} />

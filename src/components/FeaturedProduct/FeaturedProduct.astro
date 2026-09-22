@@ -1,0 +1,41 @@
+---
+// Utils
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { formatDate } from "@js/utils";
+import "@styles/sidebar.less";
+
+// Data
+const products = await getCollection("products");
+
+// 1. 筛选推荐产品 2. 按日期从新到旧排序
+const featuredProducts = products
+  .filter((product) => product.data.isFeatured === true)
+  .sort(
+    (a, b) =>
+      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  );
+---
+
+<h3 class="blog-sidebar_widget-header">Featured Products</h3>
+{
+  featuredProducts.map((product) => (
+    <a class="blog-sidebar_widget-link" href={`/product/${product.id}`}>
+      <picture class="blog-sidebar_widget-image">
+        <Image
+          src={product.data.image}
+          alt={product.data.imageAlt || product.data.title}
+          width="60"
+          height="60"
+          decoding="async"
+        />
+      </picture>
+      <div class="content-group">
+        <h4 class="blog-sidebar_widget-h4">{product.data.title}</h4>
+        <span class="blog-sidebar_widget-date">
+          {formatDate(product.data.date)}
+        </span>
+      </div>
+    </a>
+  ))
+}
