@@ -26,7 +26,7 @@ export async function getStaticPaths({ paginate }) {
   });
 
   // 设置每页 45 条
-  return paginate(products, { pageSize: 45 });
+  return paginate(products, { pageSize: 24 });
 }
 
 // 2. 从 Astro.props 获取当前页面的分页数据
