@@ -41,22 +41,6 @@ Daily home office use subjects a desktop to constant friction, accidental spills
 
 Every home office space presents unique spatial limitations and functional requirements. A custom approach ensures your desk fits the room naturally rather than overwhelming the floor plan.
 
-+-----------------------------------------------------------------+
-|                       CUSTOM DESK LAYOUT                        |
-|                                                                 |
-|   +---------------------------------------------------------+   |
-|   |                   Monitor Mount Zone                    |   |
-|   |  [ Monitor 1 ]                  [ Monitor 2 ]           |   |
-|   |                                                         |   |
-|   |                                                         |   |
-|   |               [ Smooth Workspace Surface ]               |   |
-|   |                                                         |   |
-|   |     [ Keyboard ]                        [ Mouse ]       |   |
-|   +---------------------------------------------------------+   |
-|                                                                 |
-|   Custom Rounded Edges | Integrated Cable Pass | Solid Feel |
-+-----------------------------------------------------------------+
-
 ### Matching Surface Dimensions to Your Workflow
 Selecting the depth and width of your panel depends heavily on your daily tasks:
 
