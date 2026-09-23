@@ -2,7 +2,7 @@
 title: "Fused  Bamboo Decking Small Groove Brown Strand Woven"
 description: "High-density (1250kg/m³) outdoor strand woven fused bamboo decking featuring an elegant small groove texture and a rich brown finish. Available pre-oiled or non-oiled for superior weather, water, and mold resistance."
 author: bothbest
-date: 2026-07-12
+date: 2026-08-12
 image: "@assets/images/products/deck-brown-deep.jpg"
 imageAlt: "Small Groove Brown Strand Woven Fused Bamboo Decking"
 tags: ["Decking"]

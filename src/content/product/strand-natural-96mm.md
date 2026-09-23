@@ -1,7 +1,7 @@
 ---
 title: "Natural Strand Woven Bamboo Flooring 96mm"
 description: "High-density (1050kg/m³) eco-elegant indoor strand woven bamboo flooring featuring a bright, natural grain pattern and superior indentation resistance. Available in 920mm and 1850mm lengths."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/strand-tg-na.jpg"
 imageAlt: "Solid Strand Woven Bamboo Flooring Natural"
 tags: ["Flooring"]

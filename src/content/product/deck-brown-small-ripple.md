@@ -2,7 +2,7 @@
 title: "Small Ripple Brown Strand Woven Bamboo Decking"
 description: "High-density (1250kg/m³) outdoor strand woven bamboo decking featuring an elegant small ripple texture and a rich brown finish. Pre-oiled for superior weather, water, and mold resistance."
 author: bothbest
-date: 2026-07-12
+date: 2026-08-12
 image: "@assets/images/products/deck-brown-small.jpg"
 imageAlt: "Small Ripple Brown Strand Woven Bamboo Decking"
 tags: ["Decking"]

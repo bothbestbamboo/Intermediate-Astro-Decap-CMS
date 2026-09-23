@@ -1,7 +1,7 @@
 ---
 title: "Blonde Fossilized Strand Woven Bamboo Flooring 130mm"
 description: "Premium wide-plank (130mm) fossilized strand woven bamboo flooring in a bright blonde natural finish. Engineered to a density of 1050kg/m³ for exceptional structural strength and indentation resistance."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/strand-w-na.jpg"
 imageAlt: "Stranded Bamboo Flooring Natural in 130mm"
 tags: ["Flooring"]

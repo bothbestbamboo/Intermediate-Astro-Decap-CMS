@@ -1,7 +1,7 @@
 ---
 title: "Carbonized Strand Woven Bamboo Flooring 96mm"
 description: "High-density (1050kg/m³) eco-friendly indoor strand woven bamboo flooring with a warm carbonized caramel tone. Features exceptional indentation resistance and structural stability across 920mm and 1850mm options."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/strand-tg-ca.jpg"
 imageAlt: "Carbonized Solid Strand Woven Bamboo Flooring"
 tags: ["Flooring"]

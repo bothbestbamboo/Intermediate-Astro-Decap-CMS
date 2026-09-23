@@ -1,7 +1,7 @@
 ---
 title: "Carbonized Click Lock Strand Woven Bamboo Flooring"
 description: "High-density (1050kg/m³) carbonized strand woven bamboo flooring featuring a warm caramel finish and a glueless Unilin click system. Engineered for high-traffic environments and seamless floating installation."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/strand-ck-ca.jpg"
 imageAlt: "Caramel Solid Click Strand Woven Bamboo Flooring"
 tags: ["Flooring"]

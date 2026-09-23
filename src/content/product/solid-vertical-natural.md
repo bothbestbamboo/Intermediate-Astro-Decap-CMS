@@ -1,7 +1,7 @@
 ---
 title: "Vertical Natural Solid Bamboo Flooring"
 description: "Features sleek, flowing linear grain patterns and a bright, natural blonde finish. BB-SZ-0504 delivers modern eco-elegant aesthetics and robust wear resistance with a cleaner, seamless appearance."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/solid-vn.jpg"
 imageAlt: "Natural Vertical Solid Bamboo Flooring"
 tags: ["Flooring"]

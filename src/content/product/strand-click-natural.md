@@ -1,7 +1,7 @@
 ---
 title: "Natural Click Lock Strand Woven Bamboo Flooring"
 description: "High-density (1050kg/m³) strand woven bamboo flooring in a bright natural finish featuring a glueless Unilin click lock system. Offers superior indentation resistance and seamless floating installation."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/strand-ck-na.jpg"
 imageAlt: "Floating Strand Woven Bamboo Flooring Natural"
 tags: ["Flooring"]

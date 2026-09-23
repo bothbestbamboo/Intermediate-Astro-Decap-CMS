@@ -1,7 +1,7 @@
 ---
 title: "Caramel Fossilized Strand Woven Bamboo Flooring 130mm"
 description: "High-density (1050kg/m³) wide-plank (130mm) fossilized strand woven bamboo flooring in a warm caramel honey finish. Features superior Janka hardness and outstanding dimensional stability."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/strand-w-ca.jpg"
 imageAlt: "Compressed Bamboo Flooring Carbonized in 130mm"
 tags: ["Flooring"]

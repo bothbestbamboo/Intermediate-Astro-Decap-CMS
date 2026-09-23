@@ -2,7 +2,7 @@
 title: "Small Ripple Dark Carbonized Strand Woven Bamboo Decking"
 description: "High-density (1250kg/m³) outdoor strand woven bamboo decking featuring an architectural small ripple texture and a premium dark carbonized finish. Pre-oiled for superior weather, water, and mold resistance."
 author: bothbest
-date: 2026-07-12
+date: 2026-08-12
 image: "@assets/images/products/deck-black-small.jpg"
 imageAlt: "Small Ripple Dark Carbonized Strand Woven Bamboo Decking in 2200mm"
 tags: ["Decking"]

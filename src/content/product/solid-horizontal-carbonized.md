@@ -1,7 +1,7 @@
 ---
 title: "Horizontal Carbonized Solid Bamboo Flooring"
 description: "Features wide, traditional bamboo nodes and a warm, carbonized caramel grain pattern. BB-SZ-0501 delivers classic eco-elegant aesthetics and robust wear resistance for contemporary spaces."
-date: 2026-07-13
+date: 2026-08-13
 image: "@assets/images/products/solid-hc.jpg"
 imageAlt: "Carbonized Horizontal Solid Bamboo Flooring"
 tags: ["Flooring"]
