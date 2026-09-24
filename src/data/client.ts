@@ -17,7 +17,7 @@ export const BUSINESS = {
     // 🌟 新增 WhatsApp 全局配置
     whatsAppForLink: "008615005820528", // 纯数字，方便后续拼接 api.whatsapp.com 链接
     whatsAppFormatted: "+86 150 0582 0528", // 格式化显示，国际买家看起来更专业清晰
-    logo: "https://img.bambooflooring.net/file/1782802571919.png",
+    logo: "@assets/images/blog/logo2026.png",
     address: {
         lineOne: "Bamboo Industry Zone",
         lineTwo: "Xiaofeng",
