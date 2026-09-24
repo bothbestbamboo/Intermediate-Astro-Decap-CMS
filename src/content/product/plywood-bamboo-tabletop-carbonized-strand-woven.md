@@ -32,15 +32,7 @@ Finely finished with smoothly rounded, splinter-free edges and protective surfac
 
 ## 📊 Material Performance Comparison
 
-| No. | Wood Species | Moisture Content % | Density g/cm³ | 24h Water Absorption Swelling Rate % | Hardness GPa |
-| :---: | :--- | :---: | :---: | :---: | :---: |
-| **1** | **Heavy Bamboo Board** | **4.7** ★★★★★ | **1.23** ★★★★★ | **0.35** ★★★★★ | **70.4** ★★★★★ |
-| 2 | Teak | 9 ★★☆☆☆ | 0.7 ★★☆☆☆ | 0.4 ★★☆☆☆ | 55.8 ★★☆☆☆ |
-| 3 | Pineapple Wood | 14 ★☆☆☆☆ | 0.8 ★★☆☆☆ | 0.41 ★★☆☆☆ | 61.7 ★★★★☆ |
-| 4 | Red Cedar | 12 ★★☆☆☆ | 0.35 ★☆☆☆☆ | 0.6 ★★★☆☆ | 44.1 ★★☆☆☆ |
-| 5 | Red Willow Eucalyptus | 17 ★☆☆☆☆ | 0.57 ★☆☆☆☆ | 0.6 ★☆☆☆☆ | 47.1 ★★★☆☆ |
-| 6 | Carbonized Cedar | 12 ★★☆☆☆ | 0.43 ★★☆☆☆ | 1 ★★☆☆☆ | 44.3 ★★☆☆☆ |
-| 7 | Cedar CCA | 12 ★★☆☆☆ | 0.46 ★★☆☆☆ | 1.3 ★☆☆☆☆ | 43.1 ★☆☆☆☆ |
+![Material Performance Comparison](@assets/images/products/data-comparison.jpg)
 
 ---
 
