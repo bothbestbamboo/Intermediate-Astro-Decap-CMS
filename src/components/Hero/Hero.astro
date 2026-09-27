@@ -25,8 +25,8 @@ const { image } = Astro.props as Props;
 				This exclusive collection features a fully sustainable bamboo flooring solution, which allows for superior durability, natural elegance and exceptional stability to enhance any residential or commercial space. Bothbest has been integrated to manufacture excellence.
 			</p>
 			<a href="/projects/bamboo-flooring/" class="cs-button-solid">Explore More</a>
-			<a href="/contact/" class="cs-button-transparent">
-				<img src="/assets/favicons/play.svg" alt="play icon" width="16" height="16" class="cs-img" aria-hidden="true">
+			<a href="/contact/" class="cs-button-transparent" aria-label="Get in touch with Bothbest">
+				<img src="/assets/favicons/play.svg" alt="" width="16" height="16" class="cs-img" aria-hidden="true">
 				Get in Touch
 			</a>
 		</div>
@@ -34,10 +34,10 @@ const { image } = Astro.props as Props;
 
 	<!-- Using the preloaded image from the props -->
 	<Picture
-		src={image.src}
-		alt="new home"
-		width={image.attributes.width}
-		height={image.attributes.height}
+		src={image}
+		alt="Strand woven bamboo flooring in a modern interior"
+		widths={[640, 750, 828, 1080, 1280, 1668, 2000, 2560]}
+		sizes="100vw"
 		formats={["avif", "webp"]}
 		priority
 		pictureAttributes={{ class: "cs-picture" }}
@@ -108,28 +108,6 @@ const { image } = Astro.props as Props;
 				/* changes on tablet */
 				padding: clamp(9em, 25.95vw, 17.5em) 0;
 				position: relative;
-
-				&:before {
-					/* Left Line */
-					content: "";
-					width: 1px;
-					height: 100%;
-					background: -moz-linear-gradient(
-						top,
-						rgba(250, 251, 252, 0.5) 0%,
-						rgba(250, 251, 252, 0) 100%
-					); /* FF3.6-15 */
-					background: -webkit-linear-gradient(
-						top,
-						rgba(250, 251, 252, 0.5) 0%,
-						rgba(250, 251, 252, 0) 100%
-					); /* Chrome10-25,Safari5.1-6 */
-					opacity: 1;
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
 			}
 
 			.cs-flex-group {
@@ -235,21 +213,17 @@ const { image } = Astro.props as Props;
 			.cs-container {
 				padding: clamp(7em, 27.95vw, 17.5em) 0
 					clamp(9em, 30.95vw, 23.5em) 0;
+
 				&:after {
 					/* Right Line */
 					content: "";
 					width: 1px;
 					height: 100%;
-					background: -moz-linear-gradient(
-						top,
+					background: linear-gradient(
+						to bottom,
 						rgba(250, 251, 252, 0) 0%,
 						rgba(250, 251, 252, 0.5) 100%
-					); /* FF3.6-15 */
-					background: -webkit-linear-gradient(
-						top,
-						rgba(250, 251, 252, 0) 0%,
-						rgba(250, 251, 252, 0.5) 100%
-					); /* Chrome10-25,Safari5.1-6 */
+					);
 					opacity: 1;
 					display: block;
 					position: absolute;
@@ -266,29 +240,9 @@ const { image } = Astro.props as Props;
 	}
 
 	/* Desktop Parallax Effect - 1300px */
-	/* Note: Parallax effect removed as Picture component handles responsive images */
 	@media only screen and (min-width: 81.25em) {
 		#hero {
 			/* Picture component provides optimized images */
 		}
 	}
-
-	/* Dark Mode */
-	@media only screen and (min-width: 0em) {
-		body.dark-mode {
-			#hero {
-				.cs-background {
-					&:before {
-						opacity: 0.8;
-					}
-				}
-			}
-		}
-	}
-	/* 追加到样式表的最后，强制关闭这两条分隔线 */
-#hero .cs-container {
-    &:before, &:after {
-        display: none !important;
-    }
-}
 </style>
