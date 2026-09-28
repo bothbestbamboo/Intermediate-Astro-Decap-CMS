@@ -3,7 +3,7 @@
 title: "Bamboo Post and Beam Structural Material"
 description: "High-density strand woven bamboo posts and beams offer extraordinary load-bearing strength, custom lengths up to 4 meters, and exceptional durability for structural and architectural frameworks."
 date: 2026-09-27
-image: "@assets/images/products/bamboo-post-beam-2.jpg"
+image: "@assets/images/products/bamboo-post-beam-3.jpg"
 imageAlt: "Bamboo Post and Beam Structural Material"
 tags: ["Plywood"]
 isFeatured: true
