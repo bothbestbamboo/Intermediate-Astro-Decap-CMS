@@ -38,7 +38,7 @@ Designing functional storage requires balancing structural layout with visual wa
 
 Combining these tones allows craftsmen to create striking contrast within a single run of casework. Designers might specify natural vertical panels for tall pantry doors and pair them with carbonized drawer fronts or open shelving units. Because the material sands and finishes uniformly, subtle shading variations can be blended or accentuated depending on the desired visual outcome. The absence of heavy natural knots creates a clean, architectural canvas that integrates smoothly with metal hardware, stone countertops, and matte painted surfaces.
 
-![Bamboo Plywood for Eco-Friendly Cabinetry](@assets/images/blog/20260928-bamboo-plywood-for-cabinetry-5.jpg)
+![Bamboo Plywood for Eco-Friendly Cabinetry](@assets/images/blog/20260928-bamboo-plywood-for-cabinetry-5.webp)
 
 ## Workshop Best Practices for Fabrication
 
@@ -62,7 +62,7 @@ While kitchen cabinetry remains the primary application for sheet goods, natural
 
 Living room media centers, built-in library bookcases, and office credenzas also gain refinement through coordinated casework. By maintaining a consistent material language across multiple rooms, interior designers establish visual cohesion that ties an entire floor plan together. The subtle linear patterns of vertical grain panels draw the eye upward, enhancing the perceived height of ceilings and making compact living areas feel intentional and uncluttered.
 
-![Bamboo Plywood for Eco-Friendly Cabinetry](@assets/images/blog/20260928-bamboo-plywood-for-cabinetry-2.jpg)
+![Bamboo Plywood for Eco-Friendly Cabinetry](@assets/images/blog/20260928-bamboo-plywood-for-cabinetry-2.JPG)
 
 ## Sourcing and Quality Control
 
