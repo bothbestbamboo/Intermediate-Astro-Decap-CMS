@@ -31,6 +31,30 @@ const CATEGORIES = [
   { name: "Bamboo", slug: "bamboo" },
 ];
 
+// 🎯 为不同的分类自定义单独的 SEO 元数据（可在此处自由修改文字）
+const SEO_CONFIG: Record<string, { title: string; description: string }> = {
+  all: {
+    title: "All Bamboo Products",
+    description: "Browse our complete range of premium bamboo products including bamboo flooring, outdoor decking, architectural bamboo plywood, and poles."
+  },
+  flooring: {
+    title: "Premium Bamboo Flooring | Strand Woven & Solid Bamboo Floors",
+    description: "Explore high-density strand woven bamboo flooring and solid bamboo floors. Durable, eco-friendly, and stylish flooring solutions for residential and commercial use."
+  },
+  decking: {
+    title: "High-Durability Outdoor Bamboo Decking",
+    description: "Discover premium outdoor strand woven bamboo decking. Excellent weather resistance, anti-corrosion, and stability for patio and outdoor projects."
+  },
+  plywood: {
+    title: "Architectural Bamboo Plywood & Sheet Panels",
+    description: "High-quality architectural bamboo plywood sheets and panels. Ideal for furniture, cabinetry, wall panels, and interior architectural design."
+  },
+  bamboo: {
+    title: "Natural Bamboo Products & Structural Materials",
+    description: "Explore versatile natural bamboo products, raw materials, poles, and structural elements designed for sustainable building projects."
+  }
+};
+
 export async function getStaticPaths() {
   const allProducts = await getCollection("products");
 
@@ -96,6 +120,14 @@ interface Props {
 // 获取从 getStaticPaths 传入的 props
 const { products, currentPage, totalPages, currentCategory } = Astro.props;
 
+// 🎯 动态匹配当前分类对应的 SEO 信息
+const currentSeo = SEO_CONFIG[currentCategory] || SEO_CONFIG.all;
+
+// 如果翻到了第 2 页及以上，自动在 Title 后面加上页码（对 SEO 更友好，避免重复 title）
+const pageSuffix = currentPage > 1 ? ` - Page ${currentPage}` : "";
+const pageTitle = `${currentSeo.title}${pageSuffix}`;
+const pageDescription = currentSeo.description;
+
 // 辅助函数：生成极简无问号链接
 const getCleanUrl = (category: string, pageNum: number) => {
   if (category === "all") {
@@ -122,8 +154,8 @@ const getBadgeClass = (tag?: string) => {
 ---
 
 <BaseLayout 
-    title="Products" 
-    description="All kinds of premium bamboo products, including bamboo flooring, bamboo decking, bamboo plywood, bamboo veneer, bamboo panels." 
+    title={pageTitle} 
+    description={pageDescription} 
     heroImage={placeholderOptimizedImage}
     imageAlt="Bothbest bamboo products banner"
 >
@@ -158,8 +190,8 @@ const getBadgeClass = (tag?: string) => {
         <div class="ProjectsContent">
             {products.map((product) => {
                 const imgUrl = typeof product.data.image === 'string' 
-                    ? product.data.image 
-                    : (product.data.image?.src || placeholderImage.src);
+                  ? product.data.image 
+                  : (product.data.image?.src || placeholderImage.src);
 
                 return (
                     <a href={`/product/${product.id}`} class="project-card-link">
