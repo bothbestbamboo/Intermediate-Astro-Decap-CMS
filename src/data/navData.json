@@ -12,20 +12,7 @@
   {
     "key": "Projects",
     "url": "/projects/",
-    "children": [
-      {
-        "key": "Bamboo Flooring",
-        "url": "/projects/bamboo-flooring/"
-      },
-      {
-        "key": "Bamboo Decking",
-        "url": "/projects/bamboo-decking/"
-      },
-      {
-        "key": "Bamboo Plywood",
-        "url": "/projects/bamboo-plywood/"
-      }
-    ]
+    "children": []
   },
   {
     "key": "Reviews",
