@@ -1,238 +1,200 @@
 <header id="cs-navigation">
-	<div class="cs-container">
-		<!--Nav Logo-->
-		<a
-			href="/"
-			class="cs-logo"
-			aria-label="Return to [Company Name] Home page"
-		>
-			<img src="/assets/favicons/logo-black.svg" alt="Bothbest Bamboo" width="235" height="50" />
-		</a>
-		<!--Navigation List-->
-		<nav class="cs-nav" aria-label="main navigation">
-			<!--Mobile Nav Toggle-->
-			<button
-				class="cs-toggle"
-				id="cs-toggle"
-				aria-expanded="false"
-				aria-controls="cs-ul-wrapper"
-				aria-haspopup="menu"
-				aria-label="mobile menu toggle"
-			>
-				<span class="cs-box" aria-hidden="true">
-					<span class="cs-line cs-line1" aria-hidden="true"></span>
-					<span class="cs-line cs-line2" aria-hidden="true"></span>
-					<span class="cs-line cs-line3" aria-hidden="true"></span>
-				</span>
-			</button>
-			<!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. -->
-			<div class="cs-ul-wrapper" id="cs-ul-wrapper">
-				<ul id="cs-expanded" class="cs-ul">
-					<!-- Home -->
-					<li class="cs-li">
-						<a
-							href="/"
-							class:list={[
-								"cs-li-link",
-								{ "cs-active": Astro.url.pathname === "/" },
-							]}
-							aria-current={Astro.url.pathname === "/"
-								? "page"
-								: undefined}
-						>
-							Home
-						</a>
-					</li>
-					<!-- About Us -->
-					<li class="cs-li">
-						<a
-							href="/about/"
-							class:list={[
-								"cs-li-link",
-								{
-									"cs-active":
-										Astro.url.pathname === "/about/",
-								},
-							]}
-							aria-current={Astro.url.pathname === "/about/"
-								? "page"
-								: undefined}
-						>
-							About Us
-						</a>
-					</li>
+    <div class="cs-container">
+        <!--Nav Logo-->
+        <a
+            href="/"
+            class="cs-logo"
+            aria-label="Return to [Company Name] Home page"
+        >
+            <img src="/assets/favicons/logo-black.svg" alt="Bothbest Bamboo" width="235" height="50" />
+        </a>
+        <!--Navigation List-->
+        <nav class="cs-nav" aria-label="main navigation">
+            <!--Mobile Nav Toggle-->
+            <button
+                class="cs-toggle"
+                id="cs-toggle"
+                aria-expanded="false"
+                aria-controls="cs-ul-wrapper"
+                aria-haspopup="menu"
+                aria-label="mobile menu toggle"
+            >
+                <span class="cs-box" aria-hidden="true">
+                    <span class="cs-line cs-line1" aria-hidden="true"></span>
+                    <span class="cs-line cs-line2" aria-hidden="true"></span>
+                    <span class="cs-line cs-line3" aria-hidden="true"></span>
+                </span>
+            </button>
+            <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. -->
+            <div class="cs-ul-wrapper" id="cs-ul-wrapper">
+                <ul id="cs-expanded" class="cs-ul">
+                    <!-- Home -->
+                    <li class="cs-li">
+                        <a
+                            href="/"
+                            class:list={[
+                                "cs-li-link",
+                                { "cs-active": Astro.url.pathname === "/" },
+                            ]}
+                            aria-current={Astro.url.pathname === "/"
+                                ? "page"
+                                : undefined}
+                        >
+                            Home
+                        </a>
+                    </li>
+                    <!-- About Us -->
+                    <li class="cs-li">
+                        <a
+                            href="/about/"
+                            class:list={[
+                                "cs-li-link",
+                                {
+                                    "cs-active":
+                                        Astro.url.pathname === "/about/",
+                                },
+                            ]}
+                            aria-current={Astro.url.pathname === "/about/"
+                                ? "page"
+                                : undefined}
+                        >
+                            About Us
+                        </a>
+                    </li>
 
-					<!-- 🎯 1. 全新添加的 Products 下拉菜单（指向您刚刚搭建完美的 /products 架构） -->
-					<li class="cs-li cs-dropdown">
-						<button
-							class:list={[
-								"cs-li-link cs-dropdown-toggle",
-								{
-									"cs-active":
-										Astro.url.pathname.includes(
-											"/product/",
-										),
-								},
-							]}
-							aria-haspopup="menu"
-							aria-expanded="false"
-							id="products-dropdown-toggle"
-						>
-							Products
-							<img src="/assets/favicons/caret.svg" alt="dropdown icon" width="16" height="16" class="cs-drop-icon" aria-hidden="true">
-						</button>
-						<ul
-							class="cs-drop-ul"
-							aria-labelledby="products-dropdown-toggle"
-						>
-							<!-- 建议添加一个“查看全部产品”的入口，对应我们做好的精美卡片首页 -->
-							<li class="cs-drop-li">
-								<a
-									href="/product/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/product/"
-										? "page"
-										: undefined}>All Products</a
-								>
-							</li>
-							<!-- 后续您可以根据自己在 content/products/ 里建的文件路径，在这里随时增减子产品 -->
-							<li class="cs-drop-li">
-								<a
-									href="/product/solid-horizontal-natural/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/product/solid-horizontal-natural/"
-										? "page"
-										: undefined}>Horizontal Natural</a
-								>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/product/solid-vertical-carbonized/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/product/solid-vertical-carbonized/"
-										? "page"
-										: undefined}>Vertical Carbonized</a
-								>
-							</li>
-						</ul>
-					</li>
+                    <!-- Products 下拉菜单 -->
+                    <li class="cs-li cs-dropdown">
+                        <button
+                            class:list={[
+                                "cs-li-link cs-dropdown-toggle",
+                                {
+                                    "cs-active":
+                                        Astro.url.pathname.includes(
+                                            "/product/",
+                                        ),
+                                },
+                            ]}
+                            aria-haspopup="menu"
+                            aria-expanded="false"
+                            id="products-dropdown-toggle"
+                        >
+                            Products
+                            <img src="/assets/favicons/caret.svg" alt="dropdown icon" width="16" height="16" class="cs-drop-icon" aria-hidden="true">
+                        </button>
+                        <ul
+                            class="cs-drop-ul"
+                            aria-labelledby="products-dropdown-toggle"
+                        >
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/flooring/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/flooring/"
+                                        ? "page"
+                                        : undefined}>Bamboo Flooring</a
+                                >
+                            </li>
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/decking/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/decking/"
+                                        ? "page"
+                                        : undefined}>Bamboo Decking</a
+                                >
+                            </li>
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/plywood/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/plywood/"
+                                        ? "page"
+                                        : undefined}>Bamboo Plywood</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
 
-					<li class="cs-li cs-dropdown">
-						<button
-							class:list={[
-								"cs-li-link cs-dropdown-toggle",
-								{
-									"cs-active":
-										Astro.url.pathname.includes(
-											"/projects/",
-										),
-								},
-							]}
-							aria-haspopup="menu"
-							aria-expanded="false"
-							id="projects-dropdown-toggle"
-						>
-							Projects
-							<img src="/assets/favicons/caret.svg" alt="project icon" width="16" height="16" class="cs-drop-icon" aria-hidden="true">
-						</button>
-						<ul
-							class="cs-drop-ul"
-							aria-labelledby="projects-dropdown-toggle"
-						>
-							<li class="cs-drop-li">
-								<a
-									href="/projects/bamboo-flooring/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/projects/bamboo-flooring/"
-										? "page"
-										: undefined}>Bamboo Flooring</a
-								>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/projects/bamboo-decking/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/projects/bamboo-decking/"
-										? "page"
-										: undefined}>Bamboo Decking</a
-								>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/projects/bamboo-plywood/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/projects/bamboo-plywood/"
-										? "page"
-										: undefined}>Bamboo Plywood</a
-								>
-							</li>
-						</ul>
-					</li>
+                    <!-- Projects (普通单链接，已移除下拉菜单) -->
+                    <li class="cs-li">
+                        <a
+                            href="/projects/"
+                            class:list={[
+                                "cs-li-link",
+                                {
+                                    "cs-active":
+                                        Astro.url.pathname === "/projects/",
+                                },
+                            ]}
+                            aria-current={Astro.url.pathname === "/projects/"
+                                ? "page"
+                                : undefined}
+                        >
+                            Projects
+                        </a>
+                    </li>
 
-					<!-- Reviews -->
-					<li class="cs-li">
-						<a
-							href="/reviews/"
-							class:list={[
-								"cs-li-link",
-								{
-									"cs-active":
-										Astro.url.pathname === "/reviews/",
-								},
-							]}
-							aria-current={Astro.url.pathname === "/reviews/"
-								? "page"
-								: undefined}
-						>
-							Reviews
-						</a>
-					</li>
-					<!-- Blog -->
-					<li class="cs-li">
-						<a
-							href="/news/"
-							class:list={[
-								"cs-li-link",
-								{
-									"cs-active":
-										Astro.url.pathname === "/news/",
-								},
-							]}
-							aria-current={Astro.url.pathname === "/news/"
-								? "page"
-								: undefined}
-						>
-							Blog
-						</a>
-					</li>
-					<!-- Contact (Mobile Only) -->
-					<li class="cs-li cs-hide-on-desktop">
-						<a
-							href="/contact/"
-							class:list={[
-								"cs-li-link",
-								{
-									"cs-active":
-										Astro.url.pathname === "/contact/",
-								},
-							]}
-							aria-current={Astro.url.pathname === "/contact/"
-								? "page"
-								: undefined}
-						>
-							Contact
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-		<a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
-		<!--Dark Mode toggle-->
-		<DarkModeToggle />
-	</div>
+                    <!-- Reviews -->
+                    <li class="cs-li">
+                        <a
+                            href="/reviews/"
+                            class:list={[
+                                "cs-li-link",
+                                {
+                                    "cs-active":
+                                        Astro.url.pathname === "/reviews/",
+                                },
+                            ]}
+                            aria-current={Astro.url.pathname === "/reviews/"
+                                ? "page"
+                                : undefined}
+                        >
+                            Reviews
+                        </a>
+                    </li>
+                    <!-- Blog -->
+                    <li class="cs-li">
+                        <a
+                            href="/news/"
+                            class:list={[
+                                "cs-li-link",
+                                {
+                                    "cs-active":
+                                        Astro.url.pathname === "/news/",
+                                },
+                            ]}
+                            aria-current={Astro.url.pathname === "/news/"
+                                ? "page"
+                                : undefined}
+                        >
+                            Blog
+                        </a>
+                    </li>
+                    <!-- Contact (Mobile Only) -->
+                    <li class="cs-li cs-hide-on-desktop">
+                        <a
+                            href="/contact/"
+                            class:list={[
+                                "cs-li-link",
+                                {
+                                    "cs-active":
+                                        Astro.url.pathname === "/contact/",
+                                },
+                            ]}
+                            aria-current={Astro.url.pathname === "/contact/"
+                                ? "page"
+                                : undefined}
+                        >
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
+        <!--Dark Mode toggle-->
+        <DarkModeToggle />
+    </div>
 </header>
 
 <style lang="less">
