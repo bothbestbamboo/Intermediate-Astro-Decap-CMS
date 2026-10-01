@@ -62,18 +62,44 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						</a>
 					</li>
 
-					<li class="cs-li">
-                        <a
-                            href="/product/"
+					<!-- Products 下拉菜单 -->
+                    <li class="cs-li cs-dropdown">
+                        <button
                             class:list={[
-                                "cs-li-link",
-                                { "cs-active": Astro.url.pathname === "/product/" },
-							]}
-							aria-current={Astro.url.pathname === "/product/" ? "page" : undefined}
-						>
-							Products
-						</a>
-					</li>
+                                "cs-li-link cs-dropdown-toggle",
+                                { "cs-active": Astro.url.pathname.includes("/product/") },
+                            ]}
+                            aria-haspopup="menu"
+                            aria-expanded="false"
+                            id="products-dropdown-toggle"
+                        >
+                            Products
+                            <Icon name="mdi--caret" class="cs-drop-icon" />
+                        </button>
+                        <ul class="cs-drop-ul" aria-labelledby="products-dropdown-toggle">
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/flooring/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/flooring/" ? "page" : undefined}
+                                >Bamboo Flooring</a>
+                            </li>
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/decking/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/decking/" ? "page" : undefined}
+                                >Bamboo Decking</a>
+                            </li>
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/plywood/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/plywood/" ? "page" : undefined}
+                                >Bamboo Plywood</a>
+                            </li>
+                        </ul>
+                    </li>
 
 					<li class="cs-li cs-dropdown">
 						<button

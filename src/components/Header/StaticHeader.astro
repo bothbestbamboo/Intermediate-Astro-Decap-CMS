@@ -62,60 +62,58 @@
 						</a>
 					</li>
 
-					<!-- 🎯 1. 全新添加的 Products 下拉菜单（指向您刚刚搭建完美的 /products 架构） -->
-					<li class="cs-li cs-dropdown">
-						<button
-							class:list={[
-								"cs-li-link cs-dropdown-toggle",
-								{
-									"cs-active":
-										Astro.url.pathname.includes(
-											"/product/",
-										),
-								},
-							]}
-							aria-haspopup="menu"
-							aria-expanded="false"
-							id="products-dropdown-toggle"
-						>
-							Products
-							<img src="/assets/favicons/caret.svg" alt="dropdown icon" width="16" height="16" class="cs-drop-icon" aria-hidden="true">
-						</button>
-						<ul
-							class="cs-drop-ul"
-							aria-labelledby="products-dropdown-toggle"
-						>
-							<!-- 建议添加一个“查看全部产品”的入口，对应我们做好的精美卡片首页 -->
-							<li class="cs-drop-li">
-								<a
-									href="/product/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/product/"
-										? "page"
-										: undefined}>All Products</a
-								>
-							</li>
-							<!-- 后续您可以根据自己在 content/products/ 里建的文件路径，在这里随时增减子产品 -->
-							<li class="cs-drop-li">
-								<a
-									href="/product/solid-horizontal-natural/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/product/solid-horizontal-natural/"
-										? "page"
-										: undefined}>Horizontal Natural</a
-								>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/product/solid-vertical-carbonized/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname === "/product/solid-vertical-carbonized/"
-										? "page"
-										: undefined}>Vertical Carbonized</a
-								>
-							</li>
-						</ul>
-					</li>
+					<!-- Products 下拉菜单 -->
+                    <li class="cs-li cs-dropdown">
+                        <button
+                            class:list={[
+                                "cs-li-link cs-dropdown-toggle",
+                                {
+                                    "cs-active":
+                                        Astro.url.pathname.includes(
+                                            "/product/",
+                                        ),
+                                },
+                            ]}
+                            aria-haspopup="menu"
+                            aria-expanded="false"
+                            id="products-dropdown-toggle"
+                        >
+                            Products
+                            <img src="/assets/favicons/caret.svg" alt="dropdown icon" width="16" height="16" class="cs-drop-icon" aria-hidden="true">
+                        </button>
+                        <ul
+                            class="cs-drop-ul"
+                            aria-labelledby="products-dropdown-toggle"
+                        >
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/flooring/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/flooring/"
+                                        ? "page"
+                                        : undefined}>Bamboo Flooring</a
+                                >
+                            </li>
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/decking/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/decking/"
+                                        ? "page"
+                                        : undefined}>Bamboo Decking</a
+                                >
+                            </li>
+                            <li class="cs-drop-li">
+                                <a
+                                    href="/product/plywood/"
+                                    class="cs-li-link cs-drop-link"
+                                    aria-current={Astro.url.pathname === "/product/plywood/"
+                                        ? "page"
+                                        : undefined}>Bamboo Plywood</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
 
 					<li class="cs-li cs-dropdown">
 						<button
