@@ -13,175 +13,260 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 ---
 
 <header id="cs-navigation">
-    <div class="cs-container">
-        <a href="/" class="cs-logo" aria-label="Return to Home page">
-            <img src="/assets/favicons/logo-black.svg" alt="Bothbest Bamboo" width="235" height="50" />
-        </a>
+	<div class="cs-container">
+		<a href="/" class="cs-logo" aria-label="Return to Home page">
+			<img
+				src="/assets/favicons/logo-black.svg"
+				alt="Bothbest Bamboo"
+				width="235"
+				height="50"
+			/>
+		</a>
 
-        <nav class="cs-nav" aria-label="main navigation">
-            <button
-                class="cs-toggle"
-                id="cs-toggle"
-                aria-expanded="false"
-                aria-controls="cs-ul-wrapper"
-                aria-haspopup="menu"
-                aria-label="mobile menu toggle"
-            >
-                <span class="cs-box" aria-hidden="true">
-                    <span class="cs-line cs-line1" aria-hidden="true"></span>
-                    <span class="cs-line cs-line2" aria-hidden="true"></span>
-                    <span class="cs-line cs-line3" aria-hidden="true"></span>
-                </span>
-            </button>
+		<nav class="cs-nav" aria-label="main navigation">
+			<button
+				class="cs-toggle"
+				id="cs-toggle"
+				aria-expanded="false"
+				aria-controls="cs-ul-wrapper"
+				aria-haspopup="menu"
+				aria-label="mobile menu toggle"
+			>
+				<span class="cs-box" aria-hidden="true">
+					<span class="cs-line cs-line1" aria-hidden="true"></span>
+					<span class="cs-line cs-line2" aria-hidden="true"></span>
+					<span class="cs-line cs-line3" aria-hidden="true"></span>
+				</span>
+			</button>
 
-            <div class="cs-ul-wrapper" id="cs-ul-wrapper">
-                <ul id="cs-expanded" class="cs-ul">
-                    <li class="cs-li">
-                        <a
-                            href="/"
-                            class:list={[
-                                "cs-li-link",
-                                { "cs-active": Astro.url.pathname === "/" },
-                            ]}
-                            aria-current={Astro.url.pathname === "/" ? "page" : undefined}
-                        >
-                            Home
-                        </a>
-                    </li>
+			<div class="cs-ul-wrapper" id="cs-ul-wrapper">
+				<ul id="cs-expanded" class="cs-ul">
+					<li class="cs-li">
+						<a
+							href="/"
+							class:list={[
+								"cs-li-link",
+								{ "cs-active": Astro.url.pathname === "/" },
+							]}
+							aria-current={Astro.url.pathname === "/"
+								? "page"
+								: undefined}
+						>
+							Home
+						</a>
+					</li>
 
-                    <li class="cs-li">
-                        <a
-                            href="/about/"
-                            class:list={[
-                                "cs-li-link",
-                                { "cs-active": Astro.url.pathname === "/about/" },
-                            ]}
-                            aria-current={Astro.url.pathname === "/about/" ? "page" : undefined}
-                        >
-                            About
-                        </a>
-                    </li>
+					<li class="cs-li">
+						<a
+							href="/about/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/about/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/about/"
+								? "page"
+								: undefined}
+						>
+							About
+						</a>
+					</li>
 
-                    <!-- Products 下拉菜单（支持直接点击跳转至 /product/） -->
-                    <li class="cs-li cs-dropdown">
-                        <a
-                            href="/product/"
-                            class:list={[
-                                "cs-li-link cs-dropdown-toggle",
-                                { "cs-active": Astro.url.pathname.includes("/product/") },
-                            ]}
-                            aria-haspopup="menu"
-                            aria-expanded="false"
-                            id="products-dropdown-toggle"
-                        >
-                            Products
-                            <Icon name="mdi--caret" class="cs-drop-icon" />
-                        </a>
-                        <ul class="cs-drop-ul cs-drop-products" aria-labelledby="products-dropdown-toggle">
-                            <li class="cs-drop-li">
-                                <a
-                                    href="/product/flooring/"
-                                    class="cs-li-link cs-drop-link"
-                                    aria-current={Astro.url.pathname === "/product/flooring/" ? "page" : undefined}
-                                >
-                                    <span class="cs-drop-title">Bamboo Flooring</span>
-                                    <span class="cs-drop-desc">Indoor Solid & Strand Woven</span>
-                                </a>
-                            </li>
-                            <li class="cs-drop-li">
-                                <a
-                                    href="/product/decking/"
-                                    class="cs-li-link cs-drop-link"
-                                    aria-current={Astro.url.pathname === "/product/decking/" ? "page" : undefined}
-                                >
-                                    <span class="cs-drop-title">Bamboo Decking</span>
-                                    <span class="cs-drop-desc">Outdoor High Density Decking</span>
-                                </a>
-                            </li>
-                            <li class="cs-drop-li">
-                                <a
-                                    href="/product/plywood/"
-                                    class="cs-li-link cs-drop-link"
-                                    aria-current={Astro.url.pathname === "/product/plywood/" ? "page" : undefined}
-                                >
-                                    <span class="cs-drop-title">Bamboo Plywood</span>
-                                    <span class="cs-drop-desc">Panels & Furniture Veneer</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+					<!-- Products 下拉菜单（支持直接点击跳转至 /product/） -->
+					<li class="cs-li cs-dropdown">
+						<a
+							href="/product/"
+							class:list={[
+								"cs-li-link cs-dropdown-toggle",
+								{
+									"cs-active":
+										Astro.url.pathname.includes(
+											"/product/",
+										),
+								},
+							]}
+							aria-haspopup="menu"
+							aria-expanded="false"
+							id="products-dropdown-toggle"
+						>
+							Products
+							<Icon name="mdi--caret" class="cs-drop-icon" />
+						</a>
+						<ul
+							class="cs-drop-ul cs-drop-products"
+							aria-labelledby="products-dropdown-toggle"
+						>
+							<li class="cs-drop-li">
+								<a
+									href="/product/flooring/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/product/flooring/"
+										? "page"
+										: undefined}
+								>
+									<span class="cs-drop-title"
+										>Bamboo Flooring</span
+									>
+									<span class="cs-drop-desc"
+										>Indoor Solid & Strand Woven</span
+									>
+								</a>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/product/decking/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/product/decking/"
+										? "page"
+										: undefined}
+								>
+									<span class="cs-drop-title"
+										>Bamboo Decking</span
+									>
+									<span class="cs-drop-desc"
+										>Outdoor High Density Decking</span
+									>
+								</a>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/product/plywood/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/product/plywood/"
+										? "page"
+										: undefined}
+								>
+									<span class="cs-drop-title"
+										>Bamboo Plywood</span
+									>
+									<span class="cs-drop-desc"
+										>Panels & Furniture Veneer</span
+									>
+								</a>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/product/bamboo/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/product/bamboo/"
+										? "page"
+										: undefined}
+								>
+									<span class="cs-drop-title"
+										>Bamboo Concepts</span
+									>
+									<span class="cs-drop-desc"
+										>Inspired Sustainable Home Goods</span
+									>
+								</a>
+							</li>
+						</ul>
+					</li>
 
-                    <!-- Projects 下拉菜单 -->
-                    <li class="cs-li cs-dropdown">
-                        <button
-                            class:list={[
-                                "cs-li-link cs-dropdown-toggle",
-                                { "cs-active": Astro.url.pathname.includes("/projects/") },
-                            ]}
-                            aria-haspopup="menu"
-                            aria-expanded="false"
-                            id="projects-dropdown-toggle"
-                        >
-                            Projects
-                            <Icon name="mdi--caret" class="cs-drop-icon" />
-                        </button>
-                        <ul class="cs-drop-ul cs-drop-projects" aria-labelledby="projects-dropdown-toggle">
-                            <li class="cs-drop-li">
-                                <a
-                                    href="/projects/bamboo-flooring/"
-                                    class="cs-li-link cs-drop-link"
-                                    aria-current={Astro.url.pathname === "/projects/bamboo-flooring/" ? "page" : undefined}
-                                >Flooring Cases</a>
-                            </li>
-                            <li class="cs-drop-li">
-                                <a
-                                    href="/projects/bamboo-decking/"
-                                    class="cs-li-link cs-drop-link"
-                                    aria-current={Astro.url.pathname === "/projects/bamboo-decking/" ? "page" : undefined}
-                                >Decking Cases</a>
-                            </li>
-                            <li class="cs-drop-li">
-                                <a
-                                    href="/projects/bamboo-plywood/"
-                                    class="cs-li-link cs-drop-link"
-                                    aria-current={Astro.url.pathname === "/projects/bamboo-plywood/" ? "page" : undefined}
-                                >Plywood Cases</a>
-                            </li>
-                        </ul>
-                    </li>
+					<!-- Projects 下拉菜单 -->
+					<li class="cs-li cs-dropdown">
+						<button
+							class:list={[
+								"cs-li-link cs-dropdown-toggle",
+								{
+									"cs-active":
+										Astro.url.pathname.includes(
+											"/projects/",
+										),
+								},
+							]}
+							aria-haspopup="menu"
+							aria-expanded="false"
+							id="projects-dropdown-toggle"
+						>
+							Projects
+							<Icon name="mdi--caret" class="cs-drop-icon" />
+						</button>
+						<ul
+							class="cs-drop-ul cs-drop-projects"
+							aria-labelledby="projects-dropdown-toggle"
+						>
+							<li class="cs-drop-li">
+								<a
+									href="/projects/bamboo-flooring/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/bamboo-flooring/"
+										? "page"
+										: undefined}>Flooring Cases</a
+								>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/projects/bamboo-decking/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/bamboo-decking/"
+										? "page"
+										: undefined}>Decking Cases</a
+								>
+							</li>
+							<li class="cs-drop-li">
+								<a
+									href="/projects/bamboo-plywood/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/bamboo-plywood/"
+										? "page"
+										: undefined}>Plywood Cases</a
+								>
+							</li>
+						</ul>
+					</li>
 
-                    <li class="cs-li">
-                        <a
-                            href="/news/"
-                            class:list={[
-                                "cs-li-link",
-                                { "cs-active": Astro.url.pathname === "/news/" },
-                            ]}
-                            aria-current={Astro.url.pathname === "/news/" ? "page" : undefined}
-                        >
-                            Blog
-                        </a>
-                    </li>
+					<li class="cs-li">
+						<a
+							href="/news/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/news/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/news/"
+								? "page"
+								: undefined}
+						>
+							Blog
+						</a>
+					</li>
 
-                    <li class="cs-li cs-hide-on-desktop">
-                        <a
-                            href="/contact/"
-                            class:list={[
-                                "cs-li-link",
-                                { "cs-active": Astro.url.pathname === "/contact/" },
-                            ]}
-                            aria-current={Astro.url.pathname === "/contact/" ? "page" : undefined}
-                        >
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+					<li class="cs-li cs-hide-on-desktop">
+						<a
+							href="/contact/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/contact/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/contact/"
+								? "page"
+								: undefined}
+						>
+							Contact
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
-        <a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
-        <DarkModeToggle />
-    </div>
+		<a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
+		<DarkModeToggle />
+	</div>
 </header>
 
 <style lang="less">
@@ -218,7 +303,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				top: 100%;
 				right: 0;
 				z-index: -11;
-				transition: width 0.5s, opacity 0.3s;
+				transition:
+					width 0.5s,
+					opacity 0.3s;
 				-webkit-backdrop-filter: blur(10px);
 				backdrop-filter: blur(10px);
 			}
@@ -288,7 +375,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				}
 				.cs-line2 {
 					top: 50%;
-					transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+					transform: translate(-50%, -50%) translateY(0)
+						rotate(-225deg);
 					transform-origin: center;
 				}
 				.cs-line3 {
@@ -315,7 +403,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-line1 {
 				top: 0;
-				transition: transform 0.5s, top 0.3s, left 0.3s;
+				transition:
+					transform 0.5s,
+					top 0.3s,
+					left 0.3s;
 				animation-duration: 0.7s;
 				animation-timing-function: ease;
 				animation-direction: normal;
@@ -326,7 +417,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-line2 {
 				top: 50%;
 				transform: translateX(-50%) translateY(-50%);
-				transition: top 0.3s, left 0.3s, transform 0.5s;
+				transition:
+					top 0.3s,
+					left 0.3s,
+					transform 0.5s;
 				animation-duration: 0.7s;
 				animation-timing-function: ease;
 				animation-direction: normal;
@@ -335,7 +429,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-line3 {
 				bottom: 0;
-				transition: bottom 0.3s, opacity 0.3s;
+				transition:
+					bottom 0.3s,
+					opacity 0.3s;
 			}
 
 			.cs-ul-wrapper {
@@ -351,7 +447,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				z-index: -1;
 				overflow: hidden;
 				transform: scaleX(0);
-				transition: transform 0.4s, opacity 0.3s;
+				transition:
+					transform 0.4s,
+					opacity 0.3s;
 				transform-origin: top right;
 			}
 
@@ -360,7 +458,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				min-width: 40%;
 				height: 65vh;
 				margin: 0;
-				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
+				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem)
+					(70/16rem);
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
@@ -376,17 +475,37 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin-right: 0;
 				opacity: 0;
 				transform: translateX(-40/16rem);
-				transition: transform 0.6s, opacity 0.9s;
+				transition:
+					transform 0.6s,
+					opacity 0.9s;
 
-				&:nth-of-type(1) { transition-delay: 0.05s; }
-				&:nth-of-type(2) { transition-delay: 0.1s; }
-				&:nth-of-type(3) { transition-delay: 0.15s; }
-				&:nth-of-type(4) { transition-delay: 0.2s; }
-				&:nth-of-type(5) { transition-delay: 0.25s; }
-				&:nth-of-type(6) { transition-delay: 0.3s; }
-				&:nth-of-type(7) { transition-delay: 0.35s; }
-				&:nth-of-type(8) { transition-delay: 0.4s; }
-				&:nth-of-type(9) { transition-delay: 0.45s; }
+				&:nth-of-type(1) {
+					transition-delay: 0.05s;
+				}
+				&:nth-of-type(2) {
+					transition-delay: 0.1s;
+				}
+				&:nth-of-type(3) {
+					transition-delay: 0.15s;
+				}
+				&:nth-of-type(4) {
+					transition-delay: 0.2s;
+				}
+				&:nth-of-type(5) {
+					transition-delay: 0.25s;
+				}
+				&:nth-of-type(6) {
+					transition-delay: 0.3s;
+				}
+				&:nth-of-type(7) {
+					transition-delay: 0.35s;
+				}
+				&:nth-of-type(8) {
+					transition-delay: 0.4s;
+				}
+				&:nth-of-type(9) {
+					transition-delay: 0.45s;
+				}
 			}
 
 			.cs-li-link {
@@ -428,10 +547,18 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		body.dark-mode {
 			#cs-navigation {
 				background-color: var(--dark);
-				.cs-logo { filter: grayscale(1) brightness(1000%); }
-				.cs-line { background-color: #fff; }
-				.cs-ul-wrapper { background-color: var(--medium); }
-				.cs-li-link { color: var(--bodyTextColorWhite); }
+				.cs-logo {
+					filter: grayscale(1) brightness(1000%);
+				}
+				.cs-line {
+					background-color: #fff;
+				}
+				.cs-ul-wrapper {
+					background-color: var(--medium);
+				}
+				.cs-li-link {
+					color: var(--bodyTextColorWhite);
+				}
 			}
 		}
 	}
@@ -456,8 +583,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						visibility: visible;
 						transform: scale(1);
 					}
-					.cs-drop-link { opacity: 1; }
-					.cs-drop-icon { transform: rotate(0); }
+					.cs-drop-link {
+						opacity: 1;
+					}
+					.cs-drop-icon {
+						transform: rotate(0);
+					}
 				}
 				.cs-li-link {
 					position: relative;
@@ -490,7 +621,13 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				gap: (12/16rem);
 				overflow: hidden;
 				transform: scale(0);
-				transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, transform 0.3s, visibility 0.3s;
+				transition:
+					padding 0.3s,
+					margin 0.3s,
+					height 0.3s,
+					opacity 0.3s,
+					transform 0.3s,
+					visibility 0.3s;
 				transform-origin: top right;
 			}
 
@@ -549,7 +686,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: flex;
 				align-items: center;
 				&:hover {
-					.cs-drop-icon { transform: rotate(0); }
+					.cs-drop-icon {
+						transform: rotate(0);
+					}
 				}
 			}
 
@@ -574,7 +713,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				z-index: -100;
 				overflow: hidden;
 				transform: scaleY(0);
-				transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
+				transition:
+					transform 0.3s,
+					visibility 0.3s,
+					opacity 0.3s;
 				transform-origin: top;
 				border-radius: 0 0 8px 8px;
 			}
@@ -587,7 +729,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 				.cs-drop-li {
 					margin-bottom: (6/16rem);
-					&:last-child { margin-bottom: 0; }
+					&:last-child {
+						margin-bottom: 0;
+					}
 				}
 
 				.cs-drop-link {
@@ -642,11 +786,19 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				opacity: 0;
 				display: block;
 				transform: translateY(-10/16rem);
-				transition: opacity 0.4s, transform 0.4s;
+				transition:
+					opacity 0.4s,
+					transform 0.4s;
 
-				&:nth-of-type(1) { transition-delay: 0.03s; }
-				&:nth-of-type(2) { transition-delay: 0.06s; }
-				&:nth-of-type(3) { transition-delay: 0.09s; }
+				&:nth-of-type(1) {
+					transition-delay: 0.03s;
+				}
+				&:nth-of-type(2) {
+					transition-delay: 0.06s;
+				}
+				&:nth-of-type(3) {
+					transition-delay: 0.09s;
+				}
 			}
 
 			.cs-li-link {
@@ -659,13 +811,18 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					box-sizing: border-box;
 					color: var(--bodyTextColor);
 					display: block;
-					transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+					transition:
+						color 0.2s,
+						background-color 0.2s,
+						border-color 0.2s;
 
 					&:focus-within {
 						outline: 2px solid currentColor;
 						outline-offset: -2px;
 					}
-					&:before { display: none; }
+					&:before {
+						display: none;
+					}
 				}
 			}
 
@@ -684,14 +841,22 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				.cs-drop-ul {
 					background-color: var(--dark);
 				}
-				.cs-drop-title { color: #fff; }
-				.cs-drop-desc { color: #aaa; }
+				.cs-drop-title {
+					color: #fff;
+				}
+				.cs-drop-desc {
+					color: #aaa;
+				}
 				.cs-li-link {
 					&.cs-drop-link {
-						&:hover { background-color: var(--medium); }
+						&:hover {
+							background-color: var(--medium);
+						}
 					}
 				}
-				.cs-drop-icon { filter: grayscale(1) brightness(1000%); }
+				.cs-drop-icon {
+					filter: grayscale(1) brightness(1000%);
+				}
 			}
 		}
 	}
@@ -721,7 +886,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				gap: (24/16rem);
 			}
 
-			.cs-toggle { display: none; }
+			.cs-toggle {
+				display: none;
+			}
 
 			.cs-logo {
 				width: 18.4%;
@@ -767,10 +934,14 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				position: relative;
 
 				&:hover {
-					&:before { width: 100%; }
+					&:before {
+						width: 100%;
+					}
 				}
 				&.cs-active {
-					&:before { width: 100%; }
+					&:before {
+						width: 100%;
+					}
 				}
 
 				&:before {
@@ -794,10 +965,14 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		body.dark-mode {
 			#cs-navigation {
 				background-color: var(--dark);
-				.cs-logo { filter: grayscale(1) brightness(1000%); }
+				.cs-logo {
+					filter: grayscale(1) brightness(1000%);
+				}
 				.cs-li-link {
 					color: var(--bodyTextColorWhite);
-					&:before { background-color: var(--primaryLight); }
+					&:before {
+						background-color: var(--primaryLight);
+					}
 				}
 			}
 		}
