@@ -443,12 +443,13 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
 		#cs-map {
-			/* 紧贴表单底部 */
+			/* 🌟 核心修改 1：底部增加内边距，给红框区域留出适宜的空白，不贴底 */
 			padding: 0 0 var(--sectionPadding) 0;
 
 			.cs-map-container {
 				width: 100%;
-				max-width: (1280/16rem);
+				/* 🌟 核心修改 2：整体缩小地图容器的最大宽度（原为 1280px，现设为 960px） */
+				max-width: (960/16rem);
 				margin: auto;
 				padding: 0 (16/16rem);
 				box-sizing: border-box;
@@ -457,8 +458,8 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 			.cs-map-link {
 				display: block;
 				width: 100%;
-				/* 🌟 核心修改：移除固定 height，使用原图比例 1278x832 自动撑开高度 */
 				height: auto;
+				/* 保持原图 1278*832 比例 */
 				aspect-ratio: 1278 / 832; 
 				border-radius: (12/16rem);
 				overflow: hidden;
@@ -486,7 +487,6 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				img {
 					width: 100%;
 					height: 100%;
-					/* 🌟 核心修改：确保完整呈现 1278*832 的原图路线不被裁剪 */
 					object-fit: contain; 
 					display: block;
 					transition: transform 0.5s ease;
@@ -544,12 +544,11 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				padding: 0 (24/16rem);
 			}
 
-			/* 移除之前写死的高度的 media query 限制，保持比例即可 */
 			.cs-map-overlay {
-				bottom: (24/16rem);
-				left: (24/16rem);
-				max-width: (320/16rem);
-				padding: (16/16rem) (20/16rem);
+				bottom: (20/16rem);
+				left: (20/16rem);
+				max-width: (300/16rem);
+				padding: (14/16rem) (18/16rem);
 			}
 		}
 	}
