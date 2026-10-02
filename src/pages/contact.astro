@@ -427,12 +427,23 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 		}
 	}
 	/*-- -------------------------- -->
+	<---          Contact           -->
+	<--- -------------------------- -*/
+
+	/* 1. 缩小表单区域与地图之间的间距 */
+	#cs-contact {
+		/* 将原本的底部内边距缩小，减少红框区域的留白 */
+		padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+	}
+
+	/*-- -------------------------- -->
 	<---        Static Map          -->
 	<--- -------------------------- -*/
 
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
 		#cs-map {
+			/* 紧贴表单底部 */
 			padding: 0 0 var(--sectionPadding) 0;
 
 			.cs-map-container {
@@ -446,7 +457,9 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 			.cs-map-link {
 				display: block;
 				width: 100%;
-				height: (350/16rem);
+				/* 🌟 核心修改：移除固定 height，使用原图比例 1278x832 自动撑开高度 */
+				height: auto;
+				aspect-ratio: 1278 / 832; 
 				border-radius: (12/16rem);
 				overflow: hidden;
 				position: relative;
@@ -455,7 +468,7 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 
 				&:hover {
 					.cs-map-picture img {
-						transform: scale(1.03);
+						transform: scale(1.02);
 					}
 
 					.cs-map-btn {
@@ -473,8 +486,8 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				img {
 					width: 100%;
 					height: 100%;
-					object-fit: cover;
-					object-position: center;
+					/* 🌟 核心修改：确保完整呈现 1278*832 的原图路线不被裁剪 */
+					object-fit: contain; 
 					display: block;
 					transition: transform 0.5s ease;
 				}
@@ -487,7 +500,7 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				z-index: 2;
 				background: rgba(255, 255, 255, 0.92);
 				backdrop-filter: blur(8px);
-				padding: (16/16rem) (20/16rem);
+				padding: (12/16rem) (16/16rem);
 				border-radius: (8/16rem);
 				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 				max-width: (280/16rem);
@@ -507,7 +520,7 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				font-size: (14/16rem);
 				font-weight: 600;
 				color: var(--headerColor);
-				margin: 0 0 (12/16rem) 0;
+				margin: 0 0 (10/16rem) 0;
 				line-height: 1.3em;
 			}
 
@@ -531,14 +544,12 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				padding: 0 (24/16rem);
 			}
 
-			.cs-map-link {
-				height: (450/16rem);
-			}
-
+			/* 移除之前写死的高度的 media query 限制，保持比例即可 */
 			.cs-map-overlay {
 				bottom: (24/16rem);
 				left: (24/16rem);
 				max-width: (320/16rem);
+				padding: (16/16rem) (20/16rem);
 			}
 		}
 	}
