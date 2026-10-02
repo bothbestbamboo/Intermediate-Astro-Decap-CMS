@@ -15,7 +15,7 @@ import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 // 在 Frontmatter (---) 头部引入你的静态地图图片
-import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替换为你准备好的地图图片路径
+import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // 
 ---
 
 <BaseLayout
@@ -138,18 +138,14 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 		</div>
 	</section>
 
-	<!-- 静态地图 & 交通物流指南 Section -->
 	<section id="cs-location">
 		<div class="cs-location-container">
-			<!-- 顶部标题：分成 2 行 -->
 			<div class="cs-location-header">
 				<span class="cs-topper">Location</span>
-				<h2 class="cs-title">Find Us Here</h2>
+				<h2 class="cs-title">Our Global Presence</h2>
 			</div>
 
-			<!-- 内容主体：左侧地图，右侧交通/物流提示 -->
 			<div class="cs-location-content">
-				<!-- 左侧圈中位置：地图 -->
 				<div class="cs-map-wrapper">
 					<a
 						href={factoryMapImage.src}
@@ -181,9 +177,7 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 					</a>
 				</div>
 
-				<!-- 右侧圈中位置：2 组英文文案 -->
 				<div class="cs-info-wrapper">
-					<!-- 第一组：飞机图标（工厂参观 / 杭州机场） -->
 					<div class="cs-info-card">
 						<div class="cs-icon-wrapper">
 							<svg
@@ -213,7 +207,6 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 						</div>
 					</div>
 
-					<!-- 第二组：轮船图标（发货港口 / 上海港） -->
 					<div class="cs-info-card">
 						<div class="cs-icon-wrapper">
 							<svg
