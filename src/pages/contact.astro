@@ -83,13 +83,13 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 	<section id="cs-map">
 		<div class="cs-map-container">
 			<a 
-				href={BUSINESS.address.mapLink} 
+				href={factoryMapImage.src} 
 				target="_blank" 
 				rel="noopener noreferrer" 
 				class="cs-map-link"
-				aria-label="Open factory location in Google Maps"
+				aria-label="View full size map image"
 			>
-				<!-- 静态地图图片，使用 Astro Picture 组件自动优化格式 -->
+				<!-- 静态地图图片 -->
 				<Picture 
 					src={factoryMapImage} 
 					alt="Bothbest Bamboo Factory Location Map" 
@@ -104,7 +104,7 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 					<span class="cs-map-badge">Factory Location</span>
 					<p class="cs-map-address">{BUSINESS.address.lineOne}, {BUSINESS.address.city}</p>
 					<span class="cs-map-btn">
-						Click to Open Map ↗
+						Click to View Map ↗
 					</span>
 				</div>
 			</a>
