@@ -430,10 +430,10 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 	<---          Contact           -->
 	<--- -------------------------- -*/
 
-	/* 1. 缩小表单区域与地图之间的间距 */
+	/* 1. 彻底移除表单区域底部的多余留白 */
 	#cs-contact {
-		/* 将原本的底部内边距缩小，减少红框区域的留白 */
-		padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+		padding-bottom: 0 !important;
+		margin-bottom: 0 !important;
 	}
 
 	/*-- -------------------------- -->
@@ -443,12 +443,15 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
 		#cs-map {
-			/* 🌟 核心修改 1：底部增加内边距，给红框区域留出适宜的空白，不贴底 */
-			padding: 0 0 var(--sectionPadding) 0;
+			/* 🌟 核心调整：
+			   1. padding-top: 1.5rem (24px)，让地图距离表单按钮更紧凑（缩小上边距）
+			   2. padding-bottom: 5rem (80px)，彻底拉开地图与底部 Footer 的距离（加大下边距）
+			*/
+			padding-top: (24/16rem);
+			padding-bottom: (80/16rem);
 
 			.cs-map-container {
 				width: 100%;
-				/* 🌟 核心修改 2：整体缩小地图容器的最大宽度（原为 1280px，现设为 960px） */
 				max-width: (960/16rem);
 				margin: auto;
 				padding: 0 (16/16rem);
@@ -459,7 +462,6 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				display: block;
 				width: 100%;
 				height: auto;
-				/* 保持原图 1278*832 比例 */
 				aspect-ratio: 1278 / 832; 
 				border-radius: (12/16rem);
 				overflow: hidden;
@@ -540,6 +542,10 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 	/* Tablet & Desktop - 768px 以上 */
 	@media only screen and (min-width: 48em) {
 		#cs-map {
+			/* 桌面端同步调整上、下边距 */
+			padding-top: (24/16rem);
+			padding-bottom: (96/16rem);
+
 			.cs-map-container {
 				padding: 0 (24/16rem);
 			}
