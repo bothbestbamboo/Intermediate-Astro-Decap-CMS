@@ -13,6 +13,9 @@ import { BUSINESS } from "@data/client";
 import landingImage from "@assets/images/gallery/bannercontact.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// 在 Frontmatter (---) 头部引入你的静态地图图片
+import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替换为你准备好的地图图片路径
 ---
 
 <BaseLayout title="Contact" description="Bothbest company supplies high-quality, durable, and eco-friendly bamboo products to international markets" heroImage={optimizedImage}>
@@ -74,6 +77,37 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 				<!-- Background Image-->
 				<Picture src={skyscraperImage} alt="building" width={2500} height={1667} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-bg-picture" }} />
 			</div>
+		</div>
+	</section>
+	<!-- 新增 静态地图 Section -->
+	<section id="cs-map">
+		<div class="cs-map-container">
+			<a 
+				href={BUSINESS.address.mapLink} 
+				target="_blank" 
+				rel="noopener noreferrer" 
+				class="cs-map-link"
+				aria-label="Open factory location in Google Maps"
+			>
+				<!-- 静态地图图片，使用 Astro Picture 组件自动优化格式 -->
+				<Picture 
+					src={factoryMapImage} 
+					alt="Bothbest Bamboo Factory Location Map" 
+					widths={[400, 800, 1280]}
+					sizes="(max-width: 1280px) 100vw, 1280px"
+					formats={["avif", "webp"]} 
+					pictureAttributes={{ class: "cs-map-picture" }} 
+				/>
+				
+				<!-- 悬浮点击提示卡片 -->
+				<div class="cs-map-overlay">
+					<span class="cs-map-badge">Factory Location</span>
+					<p class="cs-map-address">{BUSINESS.address.lineOne}, {BUSINESS.address.city}</p>
+					<span class="cs-map-btn">
+						Click to Open Map ↗
+					</span>
+				</div>
+			</a>
 		</div>
 	</section>
 </BaseLayout>
@@ -388,6 +422,142 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 						/* lets parent background-color bleed through and darken it */
 						opacity: 0.5;
 					}
+				}
+			}
+		}
+	}
+	/*-- -------------------------- -->
+	<---        Static Map          -->
+	<--- -------------------------- -*/
+
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0em) {
+		#cs-map {
+			padding: 0 0 var(--sectionPadding) 0;
+
+			.cs-map-container {
+				width: 100%;
+				max-width: (1280/16rem);
+				margin: auto;
+				padding: 0 (16/16rem);
+				box-sizing: border-box;
+			}
+
+			.cs-map-link {
+				display: block;
+				width: 100%;
+				height: (350/16rem);
+				border-radius: (12/16rem);
+				overflow: hidden;
+				position: relative;
+				box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
+				text-decoration: none;
+
+				&:hover {
+					.cs-map-picture img {
+						transform: scale(1.03);
+					}
+
+					.cs-map-btn {
+						background-color: var(--primary);
+						color: #fff;
+					}
+				}
+			}
+
+			.cs-map-picture {
+				width: 100%;
+				height: 100%;
+				display: block;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					object-position: center;
+					display: block;
+					transition: transform 0.5s ease;
+				}
+			}
+
+			.cs-map-overlay {
+				position: absolute;
+				bottom: (16/16rem);
+				left: (16/16rem);
+				z-index: 2;
+				background: rgba(255, 255, 255, 0.92);
+				backdrop-filter: blur(8px);
+				padding: (16/16rem) (20/16rem);
+				border-radius: (8/16rem);
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+				max-width: (280/16rem);
+			}
+
+			.cs-map-badge {
+				font-size: (12/16rem);
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: var(--primary);
+				display: block;
+				margin-bottom: (4/16rem);
+			}
+
+			.cs-map-address {
+				font-size: (14/16rem);
+				font-weight: 600;
+				color: var(--headerColor);
+				margin: 0 0 (12/16rem) 0;
+				line-height: 1.3em;
+			}
+
+			.cs-map-btn {
+				display: inline-block;
+				font-size: (13/16rem);
+				font-weight: 700;
+				color: var(--headerColor);
+				padding: (6/16rem) (12/16rem);
+				border: 1px solid var(--primary);
+				border-radius: (4/16rem);
+				transition: background-color 0.3s, color 0.3s;
+			}
+		}
+	}
+
+	/* Tablet & Desktop - 768px 以上 */
+	@media only screen and (min-width: 48em) {
+		#cs-map {
+			.cs-map-container {
+				padding: 0 (24/16rem);
+			}
+
+			.cs-map-link {
+				height: (450/16rem);
+			}
+
+			.cs-map-overlay {
+				bottom: (24/16rem);
+				left: (24/16rem);
+				max-width: (320/16rem);
+			}
+		}
+	}
+
+	/* Dark Mode 支持 */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#cs-map {
+				.cs-map-overlay {
+					background: rgba(26, 26, 26, 0.92);
+				}
+
+				.cs-map-address {
+					color: var(--bodyTextColorWhite);
+				}
+
+				.cs-map-btn {
+					color: var(--bodyTextColorWhite);
+					border-color: var(--primaryLight);
 				}
 			}
 		}
