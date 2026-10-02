@@ -20,10 +20,10 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 
 <BaseLayout title="Contact" description="Bothbest company supplies high-quality, durable, and eco-friendly bamboo products to international markets" heroImage={optimizedImage}>
 	<Banner 
-    title="Partner with Us" 
-    subtitle="Connect with our specialists for global commercial supply, factory-direct wholesale, and custom OEM bamboo solutions." 
-    image={optimizedImage} 
-/>
+		title="Partner with Us" 
+		subtitle="Connect with our specialists for global commercial supply, factory-direct wholesale, and custom OEM bamboo solutions." 
+		image={optimizedImage} 
+	/>
 
 	<section id="cs-contact">
 		<div class="cs-container">
@@ -79,35 +79,79 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 			</div>
 		</div>
 	</section>
-	<!-- 新增 静态地图 Section -->
-	<section id="cs-map">
-		<div class="cs-map-container">
-			<a 
-				href={factoryMapImage.src} 
-				target="_blank" 
-				rel="noopener noreferrer" 
-				class="cs-map-link"
-				aria-label="View full size map image"
-			>
-				<!-- 静态地图图片 -->
-				<Picture 
-					src={factoryMapImage} 
-					alt="Bothbest Bamboo Factory Location Map" 
-					widths={[400, 800, 1280]}
-					sizes="(max-width: 1280px) 100vw, 1280px"
-					formats={["avif", "webp"]} 
-					pictureAttributes={{ class: "cs-map-picture" }} 
-				/>
-				
-				<!-- 悬浮点击提示卡片 -->
-				<div class="cs-map-overlay">
-					<span class="cs-map-badge">Factory Location</span>
-					<p class="cs-map-address">{BUSINESS.address.lineOne}, {BUSINESS.address.city}</p>
-					<span class="cs-map-btn">
-						Click to View Map ↗
-					</span>
+
+	<!-- 静态地图 & 交通物流指南 Section -->
+	<section id="cs-location">
+		<div class="cs-location-container">
+			<!-- 顶部标题：分成 2 行 -->
+			<div class="cs-location-header">
+				<span class="cs-topper">Location</span>
+				<h2 class="cs-title">Find Us Here</h2>
+			</div>
+
+			<!-- 内容主体：左侧地图，右侧交通/物流提示 -->
+			<div class="cs-location-content">
+				<!-- 左侧圈中位置：地图 -->
+				<div class="cs-map-wrapper">
+					<a 
+						href={factoryMapImage.src} 
+						target="_blank" 
+						rel="noopener noreferrer" 
+						class="cs-map-link"
+						aria-label="View full size map image"
+					>
+						<Picture 
+							src={factoryMapImage} 
+							alt="Bothbest Bamboo Factory Location Map" 
+							widths={[400, 800, 1280]}
+							sizes="(max-width: 1280px) 100vw, 1280px"
+							formats={["avif", "webp"]} 
+							pictureAttributes={{ class: "cs-map-picture" }} 
+						/>
+						
+						<div class="cs-map-overlay">
+							<span class="cs-map-badge">Factory Location</span>
+							<p class="cs-map-address">{BUSINESS.address.lineOne}, {BUSINESS.address.city}</p>
+							<span class="cs-map-btn">
+								Click to View Map ↗
+							</span>
+						</div>
+					</a>
 				</div>
-			</a>
+
+				<!-- 右侧圈中位置：2 组英文文案 -->
+				<div class="cs-info-wrapper">
+					<!-- 第一组：飞机图标（工厂参观 / 杭州机场） -->
+					<div class="cs-info-card">
+						<div class="cs-icon-wrapper">
+							<svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M22 16v-2l-8.5-5V3.5C13.5 2.67 12.83 2 12 2s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13.5 19v-5.5L22 16z"/>
+							</svg>
+						</div>
+						<div class="cs-info-text">
+							<h3 class="cs-info-title">Factory Visits & Airport Access</h3>
+							<p class="cs-info-desc">
+								Planning to visit our bamboo manufacturing facility? The most convenient airport is <strong>Hangzhou Xiaoshan International Airport (HGH)</strong>, located approximately 80 km (a 1-hour drive) from our factory. We can arrange airport pick-up services upon request.
+							</p>
+						</div>
+					</div>
+
+					<!-- 第二组：轮船图标（发货港口 / 上海港） -->
+					<div class="cs-info-card">
+						<div class="cs-icon-wrapper">
+							<svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.64 2.62.99 4 .99h2v-2h-2zM3.95 12l.71-2h14.68l.71 2H3.95zm16.05 2H4c-1.1 0-2 .9-2 2v2c1.39 0 2.78-.47 4-1.32 2.44 1.71 5.56 1.71-8 0 1.22.85 2.61 1.32 4 1.32h12v-2c0-1.1-.9-2-2-2zM13 4h-2v3H8l4 4 4-4h-3V4z"/>
+							</svg>
+						</div>
+						<div class="cs-info-text">
+							<h3 class="cs-info-title">Global Shipping & Logistics</h3>
+							<p class="cs-info-desc">
+								Our factory is strategically located with convenient port access. We typically export and ship ocean freight from <strong>Shanghai Port</strong> (approx. 230 km away), which offers the most efficient routes, frequent vessel schedules, and competitive shipping rates.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </BaseLayout>
@@ -116,8 +160,8 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 	/* PAGE-SPECIFIC STYLES FOR THE CONTACT PAGE */
 
 	/*-- -------------------------- -->
-<---          Contact           -->
-<--- -------------------------- -*/
+	<---          Contact           -->
+	<--- -------------------------- -*/
 
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
@@ -426,36 +470,54 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 			}
 		}
 	}
-	/*-- -------------------------- -->
-	<---          Contact           -->
-	<--- -------------------------- -*/
 
-	/* 1. 彻底移除表单区域底部的多余留白 */
+	/* 移除表单区域底部的多余留白 */
 	#cs-contact {
 		padding-bottom: 0 !important;
 		margin-bottom: 0 !important;
 	}
 
 	/*-- -------------------------- -->
-	<---        Static Map          -->
+	<---     Location & Map Section -->
 	<--- -------------------------- -*/
 
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
-		#cs-map {
-			/* 🌟 核心调整：
-			   1. padding-top: 1.5rem (24px)，让地图距离表单按钮更紧凑（缩小上边距）
-			   2. padding-bottom: 5rem (80px)，彻底拉开地图与底部 Footer 的距离（加大下边距）
-			*/
-			padding-top: (15/16rem);
-			padding-bottom: (40/16rem);
+		#cs-location {
+			padding-top: (32/16rem);
+			padding-bottom: (80/16rem);
 
-			.cs-map-container {
+			.cs-location-container {
 				width: 100%;
-				max-width: (960/16rem);
+				max-width: (1280/16rem);
 				margin: auto;
 				padding: 0 (16/16rem);
 				box-sizing: border-box;
+			}
+
+			.cs-location-header {
+				text-align: center;
+				margin-bottom: clamp(2rem, 5vw, 3rem);
+
+				.cs-topper {
+					display: block;
+					margin-bottom: (8/16rem);
+				}
+
+				.cs-title {
+					margin: 0;
+				}
+			}
+
+			.cs-location-content {
+				display: flex;
+				flex-direction: column;
+				gap: (32/16rem);
+			}
+
+			/* 左侧地图 */
+			.cs-map-wrapper {
+				width: 100%;
 			}
 
 			.cs-map-link {
@@ -489,7 +551,7 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				img {
 					width: 100%;
 					height: 100%;
-					object-fit: contain; 
+					object-fit: cover; 
 					display: block;
 					transition: transform 0.5s ease;
 				}
@@ -536,25 +598,100 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				border-radius: (4/16rem);
 				transition: background-color 0.3s, color 0.3s;
 			}
+
+			/* 右侧交通文案 */
+			.cs-info-wrapper {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				gap: (24/16rem);
+				justify-content: center;
+			}
+
+			.cs-info-card {
+				display: flex;
+				gap: (16/16rem);
+				padding: (24/16rem);
+				background-color: #f7f8f9;
+				border-radius: (12/16rem);
+				border: 1px solid #e8e8e8;
+				transition: transform 0.3s, box-shadow 0.3s;
+
+				&:hover {
+					transform: translateY(-2px);
+					box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+				}
+			}
+
+			.cs-icon-wrapper {
+				width: (48/16rem);
+				height: (48/16rem);
+				background-color: rgba(0, 0, 0, 0.04);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+			}
+
+			.cs-icon {
+				width: (24/16rem);
+				height: (24/16rem);
+				fill: var(--primary);
+			}
+
+			.cs-info-title {
+				font-size: (18/16rem);
+				font-weight: 700;
+				color: var(--headerColor);
+				margin: 0 0 (8/16rem) 0;
+				line-height: 1.3em;
+			}
+
+			.cs-info-desc {
+				font-size: (15/16rem);
+				line-height: 1.5em;
+				color: var(--bodyTextColor);
+				margin: 0;
+
+				strong {
+					color: var(--headerColor);
+				}
+			}
 		}
 	}
 
-	/* Tablet & Desktop - 768px 以上 */
-	@media only screen and (min-width: 48em) {
-		#cs-map {
-			/* 桌面端同步调整上、下边距 */
-			padding-top: (15/16rem);
-			padding-bottom: (40/16rem);
+	/* Tablet & Desktop - 1024px 以上 */
+	@media only screen and (min-width: 64em) {
+		#cs-location {
+			padding-top: (48/16rem);
+			padding-bottom: (100/16rem);
 
-			.cs-map-container {
+			.cs-location-container {
 				padding: 0 (24/16rem);
 			}
 
-			.cs-map-overlay {
-				bottom: (20/16rem);
-				left: (20/16rem);
-				max-width: (300/16rem);
-				padding: (14/16rem) (18/16rem);
+			.cs-location-content {
+				flex-direction: row;
+				align-items: stretch;
+				gap: (40/16rem);
+			}
+
+			.cs-map-wrapper {
+				width: 55%;
+				flex-shrink: 0;
+			}
+
+			.cs-map-link {
+				height: 100%;
+			}
+
+			.cs-info-wrapper {
+				width: 45%;
+			}
+
+			.cs-info-card {
+				padding: (28/16rem);
 			}
 		}
 	}
@@ -562,7 +699,16 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 	/* Dark Mode 支持 */
 	@media only screen and (min-width: 0em) {
 		body.dark-mode {
-			#cs-map {
+			#cs-location {
+				.cs-location-header {
+					.cs-title {
+						color: var(--bodyTextColorWhite);
+					}
+					.cs-topper {
+						color: var(--primaryLight);
+					}
+				}
+
 				.cs-map-overlay {
 					background: rgba(26, 26, 26, 0.92);
 				}
@@ -574,6 +720,32 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				.cs-map-btn {
 					color: var(--bodyTextColorWhite);
 					border-color: var(--primaryLight);
+				}
+
+				.cs-info-card {
+					background-color: rgba(255, 255, 255, 0.05);
+					border-color: rgba(255, 255, 255, 0.1);
+				}
+
+				.cs-icon-wrapper {
+					background-color: rgba(255, 255, 255, 0.1);
+				}
+
+				.cs-icon {
+					fill: var(--primaryLight);
+				}
+
+				.cs-info-title {
+					color: var(--bodyTextColorWhite);
+				}
+
+				.cs-info-desc {
+					color: var(--bodyTextColorWhite);
+					opacity: 0.85;
+
+					strong {
+						color: var(--bodyTextColorWhite);
+					}
 				}
 			}
 		}
