@@ -18,50 +18,100 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替换为你准备好的地图图片路径
 ---
 
-<BaseLayout title="Contact" description="Bothbest company supplies high-quality, durable, and eco-friendly bamboo products to international markets" heroImage={optimizedImage}>
-	<Banner 
-		title="Partner with Us" 
-		subtitle="Connect with our specialists for global commercial supply, factory-direct wholesale, and custom OEM bamboo solutions." 
-		image={optimizedImage} 
+<BaseLayout
+	title="Contact"
+	description="Bothbest company supplies high-quality, durable, and eco-friendly bamboo products to international markets"
+	heroImage={optimizedImage}
+>
+	<Banner
+		title="Partner with Us"
+		subtitle="Connect with our specialists for global commercial supply, factory-direct wholesale, and custom OEM bamboo solutions."
+		image={optimizedImage}
 	/>
 
 	<section id="cs-contact">
 		<div class="cs-container">
-			<form id="cs-form" name="Contact Form" action="https://forminit.com/f/5jndokb8gr1" method="POST">
+			<form
+				id="cs-form"
+				name="Contact Form"
+				action="https://forminit.com/f/5jndokb8gr1"
+				method="POST"
+			>
 				<div class="cs-content">
 					<span class="cs-topper">Contact</span>
 					<h2 class="cs-title">Get in Touch</h2>
-					<p class="cs-text">Have a project in mind or looking for a reliable bamboo manufacturing partner? As a leading bamboo factory, Bothbest specializes in premium bamboo flooring, custom panels, and innovative bamboo solutions. Drop us a message with your specifications, volume requirements, or questions, and our team will get back to you with an expert quote within 24 hours.</p>
+					<p class="cs-text">
+						Have a project in mind or looking for a reliable bamboo
+						manufacturing partner? As a leading bamboo factory,
+						Bothbest specializes in premium bamboo flooring, custom
+						panels, and innovative bamboo solutions. Drop us a
+						message with your specifications, volume requirements,
+						or questions, and our team will get back to you with an
+						expert quote within 24 hours.
+					</p>
 				</div>
 				<label>
 					Name
-					<input required type="text" id="name" name="fi-sender-fullName" placeholder="Name" />
+					<input
+						required
+						type="text"
+						id="name"
+						name="fi-sender-fullName"
+						placeholder="Name"
+					/>
 				</label>
 				<label>
 					Email
-					<input required type="email" id="email" name="fi-sender-email" placeholder="Email" />
+					<input
+						required
+						type="email"
+						id="email"
+						name="fi-sender-email"
+						placeholder="Email"
+					/>
 				</label>
 				<label>
 					Phone
-					<input required type="text" id="phone" name="fi-text-phone" placeholder="Phone" />
+					<input
+						required
+						type="text"
+						id="phone"
+						name="fi-text-phone"
+						placeholder="Phone"
+					/>
 				</label>
 				<label>
 					Product
-					<input type="text" id="find" name="fi-text-findUs" placeholder="Products of Interest?" />
+					<input
+						type="text"
+						id="find"
+						name="fi-text-findUs"
+						placeholder="Products of Interest?"
+					/>
 				</label>
 				<label class="cs-label-message">
 					Message
-					<textarea required name="fi-text-message" id="message" placeholder="Write message..."></textarea>
+					<textarea
+						required
+						name="fi-text-message"
+						id="message"
+						placeholder="Write message..."></textarea>
 				</label>
-				<button class="cs-button-solid" type="submit">Submit Message</button>
+				<button class="cs-button-solid" type="submit"
+					>Submit Message</button
+				>
 			</form>
 			<div class="cs-right-section">
 				<!--Email-->
 				<span class="cs-header">Email</span>
-				<a class="cs-link" href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+				<a class="cs-link" href={`mailto:${BUSINESS.email}`}
+					>{BUSINESS.email}</a
+				>
 				<!--Phone-->
 				<span class="cs-header">Phone</span>
-				<a class="cs-link" href={`tel:${BUSINESS.phoneForTel}`}>{BUSINESS.phoneFormatted}</a>
+				<a class="cs-link" href={`tel:${BUSINESS.phoneForTel}`}
+					>{BUSINESS.phoneFormatted}</a
+				>
 				<!--Address-->
 				<span class="cs-header">Address</span>
 				<a class="cs-link" href={BUSINESS.address.mapLink}>
@@ -70,12 +120,20 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 					{BUSINESS.address.lineTwo},
 					<br />
 					<span class="cs-block">
-						{BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
+						{BUSINESS.address.city}, {BUSINESS.address.state}
+						{BUSINESS.address.zip}
 					</span>
 				</a>
 
 				<!-- Background Image-->
-				<Picture src={skyscraperImage} alt="building" width={2500} height={1667} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-bg-picture" }} />
+				<Picture
+					src={skyscraperImage}
+					alt="building"
+					width={2500}
+					height={1667}
+					formats={["avif", "webp"]}
+					pictureAttributes={{ class: "cs-bg-picture" }}
+				/>
 			</div>
 		</div>
 	</section>
@@ -93,25 +151,29 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 			<div class="cs-location-content">
 				<!-- 左侧圈中位置：地图 -->
 				<div class="cs-map-wrapper">
-					<a 
-						href={factoryMapImage.src} 
-						target="_blank" 
-						rel="noopener noreferrer" 
+					<a
+						href={factoryMapImage.src}
+						target="_blank"
+						rel="noopener noreferrer"
 						class="cs-map-link"
 						aria-label="View full size map image"
 					>
-						<Picture 
-							src={factoryMapImage} 
-							alt="Bothbest Bamboo Factory Location Map" 
+						<Picture
+							src={factoryMapImage}
+							alt="Bothbest Bamboo Factory Location Map"
 							widths={[400, 800, 1280]}
 							sizes="(max-width: 1280px) 100vw, 1280px"
-							formats={["avif", "webp"]} 
-							pictureAttributes={{ class: "cs-map-picture" }} 
+							formats={["avif", "webp"]}
+							pictureAttributes={{ class: "cs-map-picture" }}
 						/>
-						
+
 						<div class="cs-map-overlay">
 							<span class="cs-map-badge">Factory Location</span>
-							<p class="cs-map-address">{BUSINESS.address.lineOne}, {BUSINESS.address.city}</p>
+							<p class="cs-map-address">
+								{BUSINESS.address.lineOne}, {
+									BUSINESS.address.city
+								}
+							</p>
 							<span class="cs-map-btn">
 								Click to View Map ↗
 							</span>
@@ -124,14 +186,29 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 					<!-- 第一组：飞机图标（工厂参观 / 杭州机场） -->
 					<div class="cs-info-card">
 						<div class="cs-icon-wrapper">
-							<svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-								<path d="M22 16v-2l-8.5-5V3.5C13.5 2.67 12.83 2 12 2s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13.5 19v-5.5L22 16z"/>
+							<svg
+								class="cs-icon"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M22 16v-2l-8.5-5V3.5C13.5 2.67 12.83 2 12 2s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13.5 19v-5.5L22 16z"
+								></path>
 							</svg>
 						</div>
 						<div class="cs-info-text">
-							<h3 class="cs-info-title">Factory Visits & Airport Access</h3>
+							<h3 class="cs-info-title">
+								Factory Visits & Airport Access
+							</h3>
 							<p class="cs-info-desc">
-								Planning to visit our bamboo manufacturing facility? The most convenient airport is <strong>Hangzhou Xiaoshan International Airport (HGH)</strong>, located approximately 80 km (a 1-hour drive) from our factory. We can arrange airport pick-up services upon request.
+								Planning to visit our bamboo manufacturing
+								facility? The most convenient airport is <strong
+									>Hangzhou Xiaoshan International Airport
+									(HGH)</strong
+								>, located approximately 80 km (a 1-hour drive)
+								from our factory. We can arrange airport pick-up
+								services upon request.
 							</p>
 						</div>
 					</div>
@@ -139,14 +216,29 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 					<!-- 第二组：轮船图标（发货港口 / 上海港） -->
 					<div class="cs-info-card">
 						<div class="cs-icon-wrapper">
-							<svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-								<path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.64 2.62.99 4 .99h2v-2h-2zM3.95 12l.71-2h14.68l.71 2H3.95zm16.05 2H4c-1.1 0-2 .9-2 2v2c1.39 0 2.78-.47 4-1.32 2.44 1.71 5.56 1.71-8 0 1.22.85 2.61 1.32 4 1.32h12v-2c0-1.1-.9-2-2-2zM13 4h-2v3H8l4 4 4-4h-3V4z"/>
+							<svg
+								class="cs-icon"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.64 2.62.99 4 .99h2v-2h-2zM3.95 12l.71-2h14.68l.71 2H3.95zm16.05 2H4c-1.1 0-2 .9-2 2v2c1.39 0 2.78-.47 4-1.32 2.44 1.71 5.56 1.71-8 0 1.22.85 2.61 1.32 4 1.32h12v-2c0-1.1-.9-2-2-2zM13 4h-2v3H8l4 4 4-4h-3V4z"
+								></path>
 							</svg>
 						</div>
 						<div class="cs-info-text">
-							<h3 class="cs-info-title">Global Shipping & Logistics</h3>
+							<h3 class="cs-info-title">
+								Global Shipping & Logistics
+							</h3>
 							<p class="cs-info-desc">
-								Our factory is strategically located with convenient port access. We typically export and ship ocean freight from <strong>Shanghai Port</strong> (approx. 230 km away), which offers the most efficient routes, frequent vessel schedules, and competitive shipping rates.
+								Our factory is strategically located with
+								convenient port access. We typically export and
+								ship ocean freight from <strong
+									>Shanghai Port</strong
+								> (approx. 230 km away), which offers the most efficient
+								routes, frequent vessel schedules, and competitive
+								shipping rates.
 							</p>
 						</div>
 					</div>
@@ -330,7 +422,11 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 					content: "";
 					width: 100%;
 					height: 100%;
-					background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+					background: linear-gradient(
+						180deg,
+						rgba(0, 0, 0, 0) 0%,
+						rgba(0, 0, 0, 0.8) 100%
+					);
 					display: block;
 					position: absolute;
 					top: 0;
@@ -557,10 +653,12 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				}
 			}
 
+			/* 🌟 悬浮卡片：移至右下角 */
 			.cs-map-overlay {
 				position: absolute;
 				bottom: (16/16rem);
-				left: (16/16rem);
+				right: (24/16rem); /* 移到右侧，留出适度边距 */
+				left: auto;
 				z-index: 2;
 				background: rgba(255, 255, 255, 0.92);
 				backdrop-filter: blur(8px);
@@ -686,67 +784,21 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // <-- 替
 				height: 100%;
 			}
 
+			/* 🌟 桌面端定位调整 */
+			.cs-map-overlay {
+				bottom: (20/16rem);
+				right: (24/16rem);
+				left: auto;
+				max-width: (300/16rem);
+				padding: (14/16rem) (18/16rem);
+			}
+
 			.cs-info-wrapper {
 				width: 45%;
 			}
 
 			.cs-info-card {
 				padding: (28/16rem);
-			}
-		}
-	}
-
-	/* Dark Mode 支持 */
-	@media only screen and (min-width: 0em) {
-		body.dark-mode {
-			#cs-location {
-				.cs-location-header {
-					.cs-title {
-						color: var(--bodyTextColorWhite);
-					}
-					.cs-topper {
-						color: var(--primaryLight);
-					}
-				}
-
-				.cs-map-overlay {
-					background: rgba(26, 26, 26, 0.92);
-				}
-
-				.cs-map-address {
-					color: var(--bodyTextColorWhite);
-				}
-
-				.cs-map-btn {
-					color: var(--bodyTextColorWhite);
-					border-color: var(--primaryLight);
-				}
-
-				.cs-info-card {
-					background-color: rgba(255, 255, 255, 0.05);
-					border-color: rgba(255, 255, 255, 0.1);
-				}
-
-				.cs-icon-wrapper {
-					background-color: rgba(255, 255, 255, 0.1);
-				}
-
-				.cs-icon {
-					fill: var(--primaryLight);
-				}
-
-				.cs-info-title {
-					color: var(--bodyTextColorWhite);
-				}
-
-				.cs-info-desc {
-					color: var(--bodyTextColorWhite);
-					opacity: 0.85;
-
-					strong {
-						color: var(--bodyTextColorWhite);
-					}
-				}
 			}
 		}
 	}
