@@ -1,5 +1,5 @@
 ---
-title: "Bamboo Sleeve for Office Tumbler Multi-Layer Rolled Veneer"
+title: "Bamboo Sleeve for Office Tumbler"
 description: "Precision-engineered multi-layer rolled bamboo sleeves for thermal office tumblers, offering anti-cracking durability, superior D4 waterproof bonding, and high-volume consistency."
 date: 2026-10-02
 image: "@assets/images/products/bamboo-tumbler-sleeve-1.jpg"
