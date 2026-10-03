@@ -2,7 +2,7 @@
 // No utils nor props for this component
 ---
 
-<section id="faq-1741">
+<section class="cs-faq-section">
 	<div class="cs-container">
 		<div class="cs-content">
 			<span class="cs-topper">Frequently Asked Questions</span>
@@ -10,9 +10,8 @@
 		</div>
 		<div class="cs-flex-group">
 			<ul class="cs-faq-group">
-				<!-- Active class added as default -->
 				<li class="cs-faq-item active">
-					<button class="cs-button">
+					<button type="button" class="cs-button" aria-expanded="true">
 						<span class="cs-button-text"> Question: What is the difference between solid bamboo and strand woven bamboo flooring? </span>
 					</button>
 					<p class="cs-item-text">
@@ -20,13 +19,13 @@
 					</p>
 				</li>
 				<li class="cs-faq-item">
-					<button class="cs-button">
+					<button type="button" class="cs-button" aria-expanded="false">
 						<span class="cs-button-text"> Question: How does bamboo decking perform outdoors compared to traditional timber? </span>
 					</button>
 					<p class="cs-item-text">Answer: Bothbest exterior bamboo decking is engineered to outperform most traditional hardwoods and timber. Through a specialized thermo-density treatment, the bamboo fibers are deeply carbonized to resist mold, rot, termites, and harsh weather elements. It features incredibly high stability, meaning it experiences minimal warping, twisting, or shrinking over years of outdoor exposure.</p>
 				</li>
 				<li class="cs-faq-item">
-					<button class="cs-button">
+					<button type="button" class="cs-button" aria-expanded="false">
 						<span class="cs-button-text"> Question: Can bamboo flooring be installed over radiant heating systems? </span>
 					</button>
 					<p class="cs-item-text">
@@ -34,7 +33,7 @@
 					</p>
 				</li>
 				<li class="cs-faq-item">
-					<button class="cs-button">
+					<button type="button" class="cs-button" aria-expanded="false">
 						<span class="cs-button-text"> Question: What are the basic maintenance requirements for outdoor bamboo decking? </span>
 					</button>
 					<p class="cs-item-text">
@@ -49,29 +48,25 @@
 <style lang="less">
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0rem) {
-		#faq-1741 {
+		.cs-faq-section {
 			padding: var(--sectionPadding);
 			position: relative;
 
 			.cs-container {
 				width: 100%;
-				/* changes to 1280px at desktop */
 				max-width: (584/16rem);
-				margin: 2em auto;
+				margin: 1em auto;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				/* 48px - 64px */
 				gap: clamp(3rem, 6vw, 4rem);
 			}
 
 			.cs-content {
-				/* set text align to left if content needs to be left aligned */
 				text-align: center;
 				width: 100%;
 				display: flex;
 				flex-direction: column;
-				/* centers content horizontally, set to flex-start to left align */
 				align-items: center;
 			}
 
@@ -94,7 +89,6 @@
 			.cs-faq-item {
 				list-style: none;
 				width: 100%;
-				/* clips all corners of the button that overlap the rounded border */
 				overflow: hidden;
 				transition: border-bottom 0.3s;
 
@@ -116,7 +110,6 @@
 
 					.cs-item-text {
 						height: auto;
-						/* 16px - 24px */
 						padding: (16/16rem) clamp(1rem, 2vw, 1.5rem);
 						opacity: 1;
 						border: 1px solid #e8e8e8;
@@ -125,7 +118,6 @@
 			}
 
 			.cs-button {
-				/* 16px - 20px */
 				font-size: clamp(1rem, 2.5vw, 1.25rem);
 				font-weight: bold;
 				line-height: 1.2em;
@@ -147,7 +139,6 @@
 				}
 
 				&:before {
-					/* left line */
 					content: "";
 					width: (8/16rem);
 					height: (2/16rem);
@@ -159,12 +150,10 @@
 					left: (18/16rem);
 					transform: rotate(45deg);
 					transition: transform 0.5s;
-					/* animate the transform from the left side of the x axis, and the center of the y */
 					transform-origin: left center;
 				}
 
 				&:after {
-					/* right line */
 					content: "";
 					width: (8/16rem);
 					height: (2/16rem);
@@ -176,18 +165,15 @@
 					left: (21/16rem);
 					transform: rotate(-45deg);
 					transition: transform 0.5s;
-					/* animate the transform from the right side of the x axis, and the center of the y */
 					transform-origin: right center;
 				}
 			}
 
 			.cs-item-text {
-				/* 14px - 16px */
 				font-size: clamp(0.875rem, 1.5vw, 1rem);
 				line-height: 1.5em;
 				height: 0;
 				margin: 0;
-				/* clips the text so it doesn't show up */
 				overflow: hidden;
 				color: var(--bodyTextColor);
 				opacity: 0;
@@ -198,22 +184,9 @@
 		}
 	}
 
-	/* Tablet - 768px */
-	@media only screen and (min-width: 48rem) {
-		#faq-1741 {
-			.cs-gallery {
-				max-width: (1720/16rem);
-			}
-
-			.cs-picture {
-				grid-column: span 1;
-			}
-		}
-	}
-
 	/* Desktop - 1024px */
 	@media only screen and (min-width: 64rem) {
-		#faq-1741 {
+		.cs-faq-section {
 			.cs-container {
 				max-width: (1280/16rem);
 				flex-direction: row;
@@ -225,7 +198,6 @@
 				text-align: left;
 				width: 40%;
 				align-items: flex-start;
-				/* prevents flexbox from squishing it */
 				flex: none;
 			}
 		}
@@ -234,7 +206,7 @@
 	/* Dark Mode */
 	@media only screen and (min-width: 0rem) {
 		body.dark-mode {
-			#faq-1741 {
+			.cs-faq-section {
 				.cs-title,
 				.cs-item-text {
 					color: var(--bodyTextColorWhite);
@@ -257,7 +229,6 @@
 						}
 
 						.cs-item-text {
-							/* 20px - 24px */
 							padding-top: clamp(1.25rem, 1.3vw, 1.5rem);
 							border-color: var(--accent);
 						}
@@ -279,14 +250,19 @@
 </style>
 
 <script>
-	// Paste the JS inside Astro:page-load wrapper for View Transitions purposes
 	document.addEventListener("astro:page-load", () => {
-		const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
-		for (const item of faqItems) {
-			const onClick = () => {
-				item.classList.toggle("active");
-			};
-			item.addEventListener("click", onClick);
-		}
+		const faqSections = document.querySelectorAll(".cs-faq-section");
+		faqSections.forEach((section) => {
+			const faqItems = section.querySelectorAll(".cs-faq-item");
+			faqItems.forEach((item) => {
+				const button = item.querySelector(".cs-button");
+				if (!button) return;
+				
+				button.addEventListener("click", () => {
+					const isActive = item.classList.toggle("active");
+					button.setAttribute("aria-expanded", isActive ? "true" : "false");
+				});
+			});
+		});
 	});
 </script>
