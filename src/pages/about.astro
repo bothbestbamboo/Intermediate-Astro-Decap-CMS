@@ -1,7 +1,7 @@
 ---
 // Utils
 import { getImage } from "astro:assets";
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content"; // 🌟 引入 render
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -14,10 +14,11 @@ import CTA from "@components/CTA/CTASimple.astro";
 import landingImage from "@assets/images/landing.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// 读取 about-bothbest-bamboo.md 内容 (在 src/content/news/下)
-// 如果使用 Content Collections，需确保 config.ts 中已配置，或通过 relative import 渲染
+// 获取条目
 const aboutContent = await getEntry("blog", "about-bothbest-bamboo"); 
-const { Content } = aboutContent ? await aboutContent.render() : { Content: null };
+
+// 🌟 使用 render(entry) 替代 entry.render()
+const { Content } = aboutContent ? await render(aboutContent) : { Content: null };
 ---
 
 <BaseLayout title="About Bothbest Bamboo" description="Bothbest is a leading factory of bamboo flooring, bamboo decking, and bamboo plywood based in China." heroImage={optimizedImage}>
