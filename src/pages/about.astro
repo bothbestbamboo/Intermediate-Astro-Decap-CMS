@@ -18,7 +18,12 @@ import factory2 from "@assets/images/blog/bothbest-bamboo-2.jpg";
 import factory3 from "@assets/images/blog/bothbest-bamboo-3.jpg";
 import factory4 from "@assets/images/blog/bothbest-bamboo-4.jpg";
 import factory5 from "@assets/images/blog/bothbest-bamboo-5.jpg";
-import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
+
+// New Factory Capability Images
+import factory7 from "@assets/images/blog/bothbest-bamboo-7.jpg"; // Homag Milling Line
+import factory8 from "@assets/images/blog/bothbest-bamboo-8.jpg"; // 5400T Pressing Machine
+import factory9 from "@assets/images/blog/bothbest-bamboo-9.jpg"; // Material Stock
+import factory10 from "@assets/images/blog/bothbest-bamboo-10.jpg"; // Coating Line
 ---
 
 <BaseLayout
@@ -46,10 +51,10 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 				</div>
 				<div class="cs-stat-card">
 					<span class="cs-stat-number">100%</span>
-					<span class="cs-stat-label">Sustainable Mao Bamboo</span>
+					<span class="cs-stat-label">Sustainable Moso Bamboo</span>
 				</div>
 				<div class="cs-stat-card">
-					<span class="cs-stat-number">50+</span>
+					<span class="cs-stat-number">90+</span>
 					<span class="cs-stat-label">Global Export Markets</span>
 				</div>
 			</div>
@@ -71,55 +76,103 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 				</div>
 			</div>
 
-			<!-- Section 3: Core Manufacturing Infrastructure -->
+			<!-- Section 3: Core Manufacturing Infrastructure (Updated with 7, 8, 10, 9) -->
 			<div class="cs-section-header">
 				<span class="cs-topper">FACTORY CAPABILITIES</span>
-				<h2 class="cs-title">Automated Production & Advanced Infrastructure</h2>
+				<h2 class="cs-title">Advanced Machinery & Industrial Capacity</h2>
 			</div>
 
 			<div class="cs-grid-4">
 				<div class="cs-card">
 					<div class="cs-card-img">
-						<Image src={factory3} alt="Automated Hot Pressing Line" />
+						<Image src={factory8} alt="5400-Ton Heavy Duty Bamboo Hot Pressing Line" />
 					</div>
-					<h3>Heavy-Duty Pressing Lines</h3>
+					<h3>5,400-Ton Heavy Pressing</h3>
 					<p>
-						Multi-thousand-ton automated hot/cold presses fuse raw strands into ultra-dense blocks, ensuring high Janka hardness and zero internal stress.
+						Equipped with two 20-layer 5,400-ton presses capable of producing twenty 2440x1220x16mm structural panels per cycle for maximum density and stability.
 					</p>
 				</div>
 
 				<div class="cs-card">
 					<div class="cs-card-img">
-						<Image src={factory5} alt="Computerized CNC Machining" />
+						<Image src={factory7} alt="German Imported HOMAG Click & T&G Milling Machine" />
 					</div>
-					<h3>Precision CNC Processing</h3>
+					<h3>German HOMAG Profiling</h3>
 					<p>
-						High-speed automated CNC lines from Nanxing & Shunda execute micro-bevels, precise profiling, and custom geometric cuts with zero chipping.
+						State-of-the-art imported HOMAG milling lines guarantee micrometric precision across Click interlocking and Tongue & Groove (T&G) profiles.
 					</p>
 				</div>
 
 				<div class="cs-card">
 					<div class="cs-card-img">
-						<Image src={factory2} alt="Kiln Drying & Carbonization" />
+						<Image src={factory10} alt="Automated UV Coating Production Line" />
 					</div>
-					<h3>Thermal Carbonization & Drying</h3>
+					<h3>1,600 m²/Day Coating Lines</h3>
 					<p>
-						High-pressure autoclaves and sensor-controlled kilns stabilize equilibrium moisture content (EMC) and protect against rot, mold, and termites.
+						Two fully automated coating lines deliver a daily output of 1,600 m², applying multi-layer UV-cured anti-scratch finishes with low-VOC compliance.
 					</p>
 				</div>
 
 				<div class="cs-card">
 					<div class="cs-card-img">
-						<Image src={factory4} alt="Tongue and Groove Profiling" />
+						<Image src={factory9} alt="Extensive Raw Material and Finished Inventory" />
 					</div>
-					<h3>Precision Profiling & Finish</h3>
+					<h3>Abundant Material Stock</h3>
 					<p>
-						Precision T&G and Click interlocking milling paired with UV-cured low-VOC surface coatings deliver long-lasting durability and easy installation.
+						Extensive indoor inventory of seasoned raw materials and standard panels ensures uninterrupted supply chains and rapid fulfillment for volume orders.
 					</p>
 				</div>
 			</div>
 
-			<!-- Section 4: Why Partner With Us -->
+			<!-- Section 4: Production Process & Craftsmanship (Integrated factory2 ~ factory5) -->
+			<div class="cs-section-header">
+				<span class="cs-topper">END-TO-END QUALITY CONTROL</span>
+				<h2 class="cs-title">Precision Manufacturing Workflow</h2>
+			</div>
+
+			<div class="cs-grid-4">
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image src={factory3} alt="Raw Bamboo Fiber Processing Line" />
+					</div>
+					<h3>Raw Material Selection</h3>
+					<p>
+						Rigorous sorting of 4 to 6-year-old mature Mao Bamboo ensures maximum tensile strength, natural grain clarity, and fiber integrity.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image src={factory2} alt="Thermal Carbonization Autoclave and Kiln Drying" />
+					</div>
+					<h3>Thermal Carbonization</h3>
+					<p>
+						High-pressure steaming caramelizes natural sugars to prevent mold and insect attack while achieving rich, color-fast caramelized tones.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image src={factory5} alt="Computerized Nanxing & Shunda CNC Machining" />
+					</div>
+					<h3>Automated CNC Shaping</h3>
+					<p>
+						High-speed automated CNC centers execute custom beveling, geometric cuts, and complex tabletop designs with micro-metric repeatability.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image src={factory4} alt="Precision Micro-Milling and Quality Inspection" />
+					</div>
+					<h3>Micrometric Quality Check</h3>
+					<p>
+						Every board undergoes strict mechanical tolerance testing, moisture equilibrium checks, and finish adhesion validation before packing.
+					</p>
+				</div>
+			</div>
+
+			<!-- Section 5: Why Partner With Us -->
 			<div class="cs-section-header">
 				<span class="cs-topper">THE BOTHBEST ADVANTAGE</span>
 				<h2 class="cs-title">Why Global B2B Partners Choose Us</h2>
@@ -145,10 +198,10 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 				</div>
 			</div>
 
-			<!-- Section 5: Warehouse & Contact Callout -->
+			<!-- Section 6: Warehouse & Contact Callout -->
 			<div class="cs-contact-banner">
 				<div class="cs-banner-img">
-					<Image src={factory6} alt="Bothbest Warehouse and Supply Logistics" />
+					<Image src={factory9} alt="Bothbest Stock Inventory & Supply Logistics" />
 				</div>
 				<div class="cs-banner-info">
 					<h3>Ready to Scale Your Bamboo Supply Chain?</h3>
