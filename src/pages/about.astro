@@ -1,6 +1,6 @@
 ---
 // Utils
-import { Image, getImage } from "astro:assets";
+import { Image } from "astro:assets";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -11,7 +11,6 @@ import CTA from "@components/CTA/CTASimple.astro";
 
 // Hero Image
 import landingImage from "@assets/images/landing.jpg";
-const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 // Factory Images
 import factory1 from "@assets/images/blog/bothbest-bamboo-1.jpg";
@@ -25,12 +24,12 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 <BaseLayout 
 	title="About Bothbest Bamboo" 
 	description="Bothbest is a leading factory of bamboo flooring, bamboo decking, and bamboo plywood based in China." 
-	heroImage={optimizedImage}
+	heroImage={landingImage}
 >
 	<Banner 
 		title="Built on Precision & Passion" 
 		subtitle="Inside our modern facilities: Where state-of-the-art CNC technology meets sustainable industrial manufacturing." 
-		image={optimizedImage} 
+		image={landingImage} 
 	/>
 
 	<section id="about-details">
@@ -164,7 +163,7 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 
 <style lang="less">
 	#about-details {
-		padding: clamp(3rem, 6vw, 5rem) 1rem;
+		padding: clamp(3rem, 6vw, 5rem) 1rem 1rem;
 		background-color: var(--bodyBg, #fff);
 
 		.cs-container {
@@ -191,15 +190,6 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			}
 		}
 
-		/* 主标题 & 副标题 */
-		.cs-section-title {
-			font-size: clamp(2rem, 4vw, 2.75rem);
-			font-weight: 800;
-			color: var(--headerColor, #1a1a1a);
-			margin-bottom: (24/16rem);
-			line-height: 1.2em;
-		}
-
 		.cs-sub-title {
 			font-size: clamp(1.35rem, 3vw, 1.75rem);
 			font-weight: 700;
@@ -211,7 +201,6 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			border-bottom: 2px solid var(--primary, #1a1a1a);
 		}
 
-		/* 图片排版优化 */
 		.cs-img-box {
 			width: 100%;
 			margin-bottom: (24/16rem);
@@ -227,7 +216,6 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			}
 		}
 
-		/* 无序列表与有序列表 */
 		.cs-list, .cs-numbered-list {
 			margin-bottom: (24/16rem);
 			padding-left: (20/16rem);
@@ -244,7 +232,6 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			}
 		}
 
-		/* 特性网格 */
 		.cs-feature-grid {
 			display: grid;
 			grid-template-columns: 1fr;
@@ -276,7 +263,6 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			}
 		}
 
-		/* 联系方式信息框 */
 		.cs-info-box {
 			background-color: #f4f6f8;
 			padding: (24/16rem);
@@ -286,7 +272,7 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			p {
 				margin-bottom: (8/16rem);
 
-				&:last-child {
+				&:last-of-type {
 					margin-bottom: 0;
 				}
 
@@ -302,14 +288,20 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			color: var(--headerColor, #1a1a1a);
 			margin-top: (16/16rem);
 		}
+
+		.cs-divider {
+			border: none;
+			border-top: 2px solid #9cc813;
+			margin: (16/16rem) 0 0;
+			width: 100%;
+		}
 	}
 
-	/* 暗黑模式适配 */
 	body.dark-mode {
 		#about-details {
 			background-color: transparent;
 
-			.cs-section-title, .cs-sub-title, .cs-closing-tag {
+			.cs-sub-title, .cs-closing-tag {
 				color: #fff;
 			}
 
@@ -338,18 +330,4 @@ import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 			}
 		}
 	}
-</style>
-<style>
-  /* 分割线样式 */
-  .cs-divider {
-    border: none;
-    border-top: 2px solid #9cc813;
-    margin: 1rem 0 0 0;          
-    width: 100%;
-  }
-
-  /* 顺便将页面底部的多余留白控制住 */
-  #about-details {
-    padding-bottom: 1rem;
-  }
 </style>
