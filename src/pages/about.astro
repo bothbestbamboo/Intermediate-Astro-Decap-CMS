@@ -1,6 +1,7 @@
 ---
 // Utils
 import { getImage } from "astro:assets";
+import { getEntry } from "astro:content";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -12,15 +13,131 @@ import CTA from "@components/CTA/CTASimple.astro";
 // Images
 import landingImage from "@assets/images/landing.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// 读取 about-bothbest-bamboo.md 内容 (在 src/content/news/下)
+// 如果使用 Content Collections，需确保 config.ts 中已配置，或通过 relative import 渲染
+const aboutContent = await getEntry("blog", "about-bothbest-bamboo"); 
+const { Content } = aboutContent ? await aboutContent.render() : { Content: null };
 ---
 
-<BaseLayout title="About" description="Bothbest is a leading factory of bamboo flooring, bamboo decking, and bamboo plywood based in China." heroImage={optimizedImage}>
+<BaseLayout title="About Bothbest Bamboo" description="Bothbest is a leading factory of bamboo flooring, bamboo decking, and bamboo plywood based in China." heroImage={optimizedImage}>
 	<Banner 
-    title="Built on Precision & Passion" 
-    subtitle="Inside our modern facilities: Where state-of-the-art CNC technology meets sustainable industrial manufacturing." 
-    image={optimizedImage} 
-/>
+		title="Built on Precision & Passion" 
+		subtitle="Inside our modern facilities: Where state-of-the-art CNC technology meets sustainable industrial manufacturing." 
+		image={optimizedImage} 
+	/>
+
+	<!-- 上半部分 SideBySide -->
 	<SideBySide />
+
+	<!-- 🌟 红色圈中区域：嵌入 Markdown 富文本内容 -->
+	<section id="about-details">
+		<div class="cs-container">
+			<article class="cs-content-body">
+				{Content ? <Content /> : <p>Loading about details...</p>}
+			</article>
+		</div>
+	</section>
+
+	<!-- FAQ 常见问题 -->
 	<FAQ />
+
+	<!-- CTA 底部行动呼吁 -->
 	<CTA />
 </BaseLayout>
+
+<style lang="less">
+	/* 红色圈中区域： Markdown 文章内容排版优化 */
+	#about-details {
+		padding: clamp(3.75rem, 7.8vw, 6.25rem) 1rem;
+		background-color: var(--bodyBg, #fff);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1080/16rem);
+			margin: 0 auto;
+		}
+
+		.cs-content-body {
+			font-size: (16/16rem);
+			line-height: 1.7em;
+			color: var(--bodyTextColor, #4e4b66);
+
+			/* 标题样式 */
+			h1 {
+				font-size: clamp(2rem, 4vw, 2.75rem);
+				font-weight: 800;
+				color: var(--headerColor, #1a1a1a);
+				margin-bottom: (24/16rem);
+				line-height: 1.2em;
+			}
+
+			h3 {
+				font-size: clamp(1.35rem, 3vw, 1.75rem);
+				font-weight: 700;
+				color: var(--headerColor, #1a1a1a);
+				margin-top: (40/16rem);
+				margin-bottom: (16/16rem);
+				line-height: 1.3em;
+				border-bottom: 2px solid var(--primary, #1a1a1a);
+				padding-bottom: (8/16rem);
+			}
+
+			h4 {
+				font-size: (20/16rem);
+				font-weight: 700;
+				color: var(--headerColor, #1a1a1a);
+				margin-top: (28/16rem);
+				margin-bottom: (12/16rem);
+			}
+
+			p {
+				margin-bottom: (20/16rem);
+			}
+
+			/* 列表样式 */
+			ul, ol {
+				margin-bottom: (24/16rem);
+				padding-left: (24/16rem);
+
+				li {
+					margin-bottom: (10/16rem);
+					line-height: 1.6em;
+
+					strong {
+						color: var(--headerColor, #1a1a1a);
+					}
+				}
+			}
+
+			/* 图片排版 */
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: (12/16rem);
+				margin: (32/16rem) 0;
+				box-shadow: 0 (8/16rem) (24/16rem) rgba(0, 0, 0, 0.08);
+				object-fit: cover;
+			}
+		}
+	}
+
+	/* 暗黑模式兼容 */
+	body.dark-mode {
+		#about-details {
+			background-color: transparent;
+
+			.cs-content-body {
+				color: var(--bodyTextColorWhite, #f7f7f7);
+
+				h1, h3, h4, strong {
+					color: var(--bodyTextColorWhite, #fff);
+				}
+
+				h3 {
+					border-bottom-color: var(--primaryLight, #70b340);
+				}
+			}
+		}
+	}
+</style>
