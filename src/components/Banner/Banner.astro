@@ -6,28 +6,26 @@
 
 // Utils
 import { Picture } from "astro:assets";
-import type { GetImageResult } from "astro";
+import type { ImageMetadata } from "astro";
 
 interface Props {
 	title: string; // heading text
 	subtitle?: string; // 新增：副标题文字（?表示可选）
-	image: GetImageResult; // pre-optimized image from getImage()
+	image: ImageMetadata; // 传原始 ImageMetadata 对象以更好适配 <Picture /> 组件
 }
 
-const { title, subtitle, image } = Astro.props; // 新增：在这里解构出 subtitle
+const { title, subtitle, image } = Astro.props;
 ---
 
-<section id="int-hero">
-	<h1 id="home-h">{title}</h1>
+<section class="int-hero-section">
+	<h1 class="int-hero-title">{title}</h1>
 
-	{subtitle && <p>{subtitle}</p>}
+	{subtitle && <p class="int-hero-subtitle">{subtitle}</p>}
 
 	<Picture
-		src={image.src}
-		width={image.attributes.width}
-		height={image.attributes.height}
+		src={image}
 		formats={["avif", "webp"]}
-		alt=""
+		alt={title}
 		priority
 	/>
 </section>
@@ -39,7 +37,7 @@ const { title, subtitle, image } = Astro.props; // 新增：在这里解构出 s
 
 	/* Mobile */
 	@media only screen and (min-width: 0em) {
-		#int-hero {
+		.int-hero-section {
 			min-height: 30vh;
 			padding-top: (50/16rem);
 			display: flex;
@@ -80,7 +78,7 @@ const { title, subtitle, image } = Astro.props; // 新增：在这里解构出 s
 				}
 			}
 
-			h1 {
+			h1.int-hero-title {
 				font-size: var(--headerFontSize);
 				text-align: center;
 				width: 96%;
@@ -96,7 +94,7 @@ const { title, subtitle, image } = Astro.props; // 新增：在这里解构出 s
 				word-wrap: break-word;
 			}
 
-			p {
+			p.int-hero-subtitle {
 				text-align: center;
 				width: 96%;
 				/* 移动端最大宽度 */
@@ -115,7 +113,7 @@ const { title, subtitle, image } = Astro.props; // 新增：在这里解构出 s
 
 	/* Small Desktop */
 	@media only screen and (min-width: 64em) {
-		#int-hero {
+		.int-hero-section {
 			height: auto;
 			min-height: (300/16rem);
 			padding-top: (180/16rem);
@@ -124,7 +122,7 @@ const { title, subtitle, image } = Astro.props; // 新增：在这里解构出 s
 		}
 
 		/* 修复这里：将电脑端的限制解除，改为大范围，防止长句被截断 */
-		#int-hero p {
+		.int-hero-section p.int-hero-subtitle {
 			max-width: (1100/16rem); /* 足够长，可以确保一整行拉开 */
 		}
 	}
