@@ -1,7 +1,6 @@
 ---
 // Utils
-import { getImage } from "astro:assets";
-import { getEntry, render } from "astro:content"; // 🌟 引入 render
+import { Image, getImage } from "astro:assets";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -10,133 +9,337 @@ import FAQ from "@components/FAQ/FAQ.astro";
 import SideBySide from "@components/SideBySide/SideBySide.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Images
+// Hero Image
 import landingImage from "@assets/images/landing.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// 获取条目
-const aboutContent = await getEntry("blog", "about-bothbest-bamboo"); 
-
-// 🌟 使用 render(entry) 替代 entry.render()
-const { Content } = aboutContent ? await render(aboutContent) : { Content: null };
+// Factory Images
+import factory1 from "@assets/images/blog/bothbest-bamboo-1.jpg";
+import factory2 from "@assets/images/blog/bothbest-bamboo-2.jpg";
+import factory3 from "@assets/images/blog/bothbest-bamboo-3.jpg";
+import factory4 from "@assets/images/blog/bothbest-bamboo-4.jpg";
+import factory5 from "@assets/images/blog/bothbest-bamboo-5.jpg";
+import factory6 from "@assets/images/blog/bothbest-bamboo-6.jpg";
 ---
 
-<BaseLayout title="About Bothbest Bamboo" description="Bothbest is a leading factory of bamboo flooring, bamboo decking, and bamboo plywood based in China." heroImage={optimizedImage}>
+<BaseLayout 
+	title="About Bothbest Bamboo" 
+	description="Bothbest is a leading factory of bamboo flooring, bamboo decking, and bamboo plywood based in China." 
+	heroImage={optimizedImage}
+>
 	<Banner 
 		title="Built on Precision & Passion" 
 		subtitle="Inside our modern facilities: Where state-of-the-art CNC technology meets sustainable industrial manufacturing." 
 		image={optimizedImage} 
 	/>
 
-	<!-- 上半部分 SideBySide -->
+	<!-- 上半部分 SideBySide (请记得去 SideBySide.astro 中删掉 MORE ABOUT US 按钮) -->
 	<SideBySide />
 
-	<!-- 🌟 红色圈中区域：嵌入 Markdown 富文本内容 -->
+	<!-- 🌟 整合后的工厂介绍富文本区域 -->
 	<section id="about-details">
 		<div class="cs-container">
-			<article class="cs-content-body">
-				{Content ? <Content /> : <p>Loading about details...</p>}
-			</article>
+			<div class="cs-content-wrapper">
+				
+				<!-- Welcome Block -->
+				<div class="cs-block">
+					<h2 class="cs-section-title">Welcome to Bothbest</h2>
+					
+					<div class="cs-img-box">
+						<Image src={factory1} alt="Bothbest Factory Show: Office Building" />
+					</div>
+
+					<p>Welcome to Bothbest, a world-class manufacturing facility and a global leader dedicated to the research, development, and large-scale production of premium bamboo products. Founded with a vision to bridge industrial excellence with ecological responsibility, Bothbest has grown into a highly trusted partner for international distributors, architects, designers, and contractors worldwide.</p>
+					
+					<p>Based in Xuancheng, Anhui, China, our strategically located facility operates at the heart of premium raw bamboo resources, ensuring an uninterrupted supply chain of mature, high-density Mao Bamboo. We specialize in engineering high-performance bamboo flooring, vertical and horizontal architectural panels, strand woven outdoor bamboo decking, and custom bamboo industrial components. With decades of industrial expertise, cutting-edge automated infrastructure, and an unyielding commitment to precision, we transform raw, sustainable bamboo into sophisticated architectural assets that stand the test of time.</p>
+					
+					<p>We don't just harvest nature—we re-engineer it for modern architecture. Through our integrated supply chain, from the raw forest management to the final high-precision micro-beveling, Bothbest guarantees full traceability, structural stability, and unmatched aesthetic refinement for global commercial and residential markets.</p>
+				</div>
+
+				<!-- Core Expertise Block -->
+				<div class="cs-block">
+					<div class="cs-img-box">
+						<Image src={factory2} alt="Bothbest Factory Show: Coating Line" />
+					</div>
+
+					<h3 class="cs-sub-title">🛠️ Our Core Expertise: Engineering the Finest Bamboo Solutions</h3>
+					<p>At Bothbest, we don't just manufacture flooring; we engineer sustainable performance. Bamboo is one of the earth's most resilient and rapidly renewable resources. By integrating state-of-the-art manufacturing technologies with meticulous quality control, we unleash the full structural potential of this incredible material.</p>
+					
+					<p>Our comprehensive, internationally certified product portfolio includes:</p>
+					
+					<ul class="cs-list">
+						<li><strong>Strand Woven Bamboo Flooring:</strong> Engineered through high-density thermo-compression technology, our strand-woven flooring delivers a Janka hardness rating that surpasses traditional dense hardwoods like Oak, Maple, and Brazilian Cherry. It is specifically designed to withstand high-traffic commercial environments and heavy residential use, offering unparalleled resistance to scratching, denting, and long-term deformation.</li>
+						<li><strong>Solid Bamboo Flooring (Horizontal & Vertical):</strong> For projects requiring a classic, linear organic aesthetic, our solid structures showcase the natural nodes and distinctive growth rings of bamboo. Vertical integration offers a sleek, modern, minimalist look, while horizontal integration preserves the traditional, authentic appearance of oriental bamboo engineering.</li>
+						<li><strong>Strand Woven Outdoor Bamboo Decking:</strong> Engineered to survive extreme exterior climates, our outdoor architectural cladding and decking profiles undergo specialized thermo-density modifications. This process alters the sugar molecules inside the bamboo fiber, rendering it completely immune to fungal decay, rot, termites, and severe moisture fluctuations while maintaining optimal anti-slip ratings.</li>
+						<li><strong>Architectural Bamboo Panels & Countertops:</strong> We manufacture multi-layer cross-laminated bamboo sheets, furniture boards, and durable kitchen tabletops. These products provide superior dimensional stability compared to solid hardwood planks, preventing warping or splitting when exposed to varying indoor humidity zones.</li>
+						<li><strong>Click System & Tongue-and-Groove (T&G) Flooring:</strong> To facilitate seamless, rapid onsite installation, we provide precision-milled profiles. Our advanced profiling systems guarantee micro-metric accuracy across every tongue, groove, and interlocking click mechanism, significantly reducing installation labor and preventing gapping over decades of active use.</li>
+						<li><strong>Pre-finished Architectural Coatings:</strong> Our surface finishes feature multi-layer, UV-cured polyurethane or natural oil coatings sourced from globally recognized brands. This ensures superior abrasion resistance, anti-scratch longevity, and effortless maintenance while maintaining strict compliance with international low-VOC and zero-formaldehyde emission standards.</li>
+					</ul>
+				</div>
+
+				<!-- Manufacturing Excellence Block -->
+				<div class="cs-block">
+					<div class="cs-img-box">
+						<Image src={factory3} alt="Bothbest Factory Show: Production Line" />
+					</div>
+
+					<h3 class="cs-sub-title">🏭 Manufacturing Excellence & Automated Infrastructure</h3>
+					<p>The foundation of Bothbest’s premium quality lies within our integrated, large-scale manufacturing plant based in China. Spanning tens of thousands of square meters, our factory functions as a synchronized ecosystem of precision technology, lean manufacturing protocols, and automated logistical efficiency.</p>
+
+					<div class="cs-feature-grid">
+						<div class="cs-feature-item">
+							<h4>Heavy-Duty Automated Pressing Lines</h4>
+							<p>To produce our flagship strand-woven series, we utilize massive, computerized hot-press and cold-press systems exerting thousands of tons of consistent pressure. This process fuses the refined bamboo strands into ultra-dense structural blocks with optimized internal density and minimal moisture variance, eliminating internal stress and microscopic air pockets.</p>
+						</div>
+
+						<div class="cs-feature-item">
+							<h4>Computerized CNC Machining Centers</h4>
+							<p>Precision finishing is executed via our upgraded, high-speed automated CNC processing lines. Equipped with heavy-duty industrial profiling machinery from elite manufacturers such as <strong>Nanxing</strong> and <strong>Shunda</strong>, our production lines execute complex geometric cuts, precise bevelling, and custom surface texturing with absolute repeatability and zero structural chipping.</p>
+						</div>
+
+						<div class="cs-feature-item">
+							<h4>Advanced Kiln Drying & Moisture Control</h4>
+							<p>The structural stability of bamboo flooring is heavily dependent on moisture equilibrium. Bothbest operates an extensive array of fully automated, sensor-controlled drying kilns. Every batch of raw bamboo material undergoes customized thermal conditioning profiles to match the specific climatic equilibrium moisture content (EMC) of its destination market, whether it be humid coastal regions or arid inland territories.</p>
+						</div>
+
+						<div class="cs-feature-item">
+							<h4>Advanced Boiling & Carbonization Autoclaves</h4>
+							<p>Before pressing, raw bamboo strips undergo strict thermal treatment. Our high-pressure carbonization autoclaves steam the bamboo at precise temperatures to caramelize natural sugars. This not only achieves rich, elegant color tones (such as carbonized and espresso shades) completely through the board, but also strips the nutrients that insects and mold require, ensuring lifetime durability without the use of toxic chemicals.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Sustainability Block -->
+				<div class="cs-block">
+					<div class="cs-img-box">
+						<Image src={factory4} alt="Bothbest Factory Show: Tongue & Groove Manufacturing" />
+					</div>
+
+					<h3 class="cs-sub-title">🌍 Sustainability as Our Driving Principle</h3>
+					<p>Sustainability is not a marketing buzzword at Bothbest; it is our foundational business blueprint. Unlike traditional hardwood forests which require 30 to 50 years to mature, the species of bamboo we harvest reaches its peak structural density in just 4 to 6 years. Selective harvesting allows the complex underground rhizome root system to remain fully intact, preventing soil erosion and ensuring continuous, natural regeneration without artificial replanting.</p>
+					
+					<ul class="cs-list">
+						<li><strong>Zero-Waste Circular Manufacturing Strategy:</strong> We practice a strict circular manufacturing economy. Bamboo trimmings, sawdust, and residual fiber generated during the profiling and milling processes are collected through centralized dust extraction pipelines and repurposed to fuel our thermal energy plants or compressed into industrial sub-products, achieving nearly 100% biomass utilization.</li>
+						<li><strong>Eco-Friendly Adhesives:</strong> We strictly utilize premium, low-emission or completely formaldehyde-free structural adhesives. Our finished products consistently satisfy and exceed rigid international environmental benchmarks, including European E1/E0 standards, Japanese JAS four-star specifications, and North American CARB Phase 2 / EPA TSCA Title VI certifications, ensuring absolute safety for indoor air quality.</li>
+					</ul>
+				</div>
+
+				<!-- Why Choose Bothbest Block -->
+				<div class="cs-block">
+					<div class="cs-img-box">
+						<Image src={factory5} alt="Bothbest Factory Show: Homag Machine" />
+					</div>
+
+					<h3 class="cs-sub-title">🤝 Why Global Partners Choose Bothbest</h3>
+					<p>Operating as a direct, large-scale manufacturing factory allows Bothbest to offer distinct, uncompromised competitive advantages to our global B2B clientele, including international distributors, wholesalers, procurement managers, and large-scale commercial developers:</p>
+					
+					<ol class="cs-numbered-list">
+						<li><strong>Direct Factory Pricing & Scalability:</strong> By eliminating intermediary trading companies, we pass direct structural cost-efficiencies down to our partners. Our massive monthly output capacity guarantees stable supply chains and on-time delivery for volume orders and large-scale contract developments.</li>
+						<li><strong>Rigorous Quality Assurance (QA) Protocol:</strong> Our internal quality control protocol tracks the product lifecycle from raw timber selection, strip boiling, carbonization, and kiln drying, to final pressing, profiling, and packaging. No single board leaves our facility without passing mechanical tolerance testing, moisture checks, and coating adhesion validation.</li>
+						<li><strong>Comprehensive OEM/ODM Capabilities:</strong> We understand that different global markets demand distinct aesthetics. Our engineering team provides robust custom development options—ranging from custom dimensions, specific gloss levels, distressed/wire-brushed textures, to tailor-made architectural staining and specialized packaging layouts for direct brand integration.</li>
+					</ol>
+				</div>
+
+				<!-- Connect Block -->
+				<div class="cs-block">
+					<div class="cs-img-box">
+						<Image src={factory6} alt="Bothbest Factory Show: Big Stock Warehouse" />
+					</div>
+
+					<h3 class="cs-sub-title">📞 Connect with Bothbest Today</h3>
+					<p>As the global architectural landscape permanently shifts towards sustainable, high-durability green materials, bamboo stands out as the premium choice for modern interior and exterior spaces. Bothbest remains dedicated to pioneering new manufacturing techniques, expanding our global logistics network, and supplying our partners with the finest bamboo solutions available on the market.</p>
+
+					<p>Whether you are looking to place a bulk commercial container order, source reliable OEM manufacturing, or join our global network of authorized regional distributors, the Bothbest team is ready to provide elite technical consulting, comprehensive material samples, and optimized supply-chain logistics.</p>
+
+					<div class="cs-info-box">
+						<p><strong>Corporate Headquarters & Factory:</strong> Anji, Zhejiang, China</p>
+						<p><strong>Core Portfolio:</strong> Strand Woven Bamboo Flooring, Architectural Veneers, Engineered Panels, Fused Outdoor Decking & Countertops.</p>
+						<p><strong>Whatsapp:</strong> 📱 0086.150.0582.0528</p>
+					</div>
+
+					<p class="cs-closing-tag">Let us collaborate to build a greener, more resilient future with premium bamboo engineering. Partner with Bothbest—where sustainability meets structural perfection.</p>
+				</div>
+
+			</div>
 		</div>
 	</section>
 
-	<!-- FAQ 常见问题 -->
 	<FAQ />
-
-	<!-- CTA 底部行动呼吁 -->
 	<CTA />
 </BaseLayout>
 
 <style lang="less">
-	/* 红色圈中区域： Markdown 文章内容排版优化 */
 	#about-details {
-		padding: clamp(3.75rem, 7.8vw, 6.25rem) 1rem;
+		padding: clamp(3rem, 6vw, 5rem) 1rem;
 		background-color: var(--bodyBg, #fff);
 
 		.cs-container {
 			width: 100%;
-			max-width: (1080/16rem);
+			max-width: (960/16rem);
 			margin: 0 auto;
 		}
 
-		.cs-content-body {
-			font-size: (16/16rem);
-			line-height: 1.7em;
-			color: var(--bodyTextColor, #4e4b66);
+		.cs-content-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: (48/16rem);
+		}
 
-			/* 标题样式 */
-			h1 {
-				font-size: clamp(2rem, 4vw, 2.75rem);
-				font-weight: 800;
-				color: var(--headerColor, #1a1a1a);
-				margin-bottom: (24/16rem);
-				line-height: 1.2em;
-			}
-
-			h3 {
-				font-size: clamp(1.35rem, 3vw, 1.75rem);
-				font-weight: 700;
-				color: var(--headerColor, #1a1a1a);
-				margin-top: (40/16rem);
-				margin-bottom: (16/16rem);
-				line-height: 1.3em;
-				border-bottom: 2px solid var(--primary, #1a1a1a);
-				padding-bottom: (8/16rem);
-			}
-
-			h4 {
-				font-size: (20/16rem);
-				font-weight: 700;
-				color: var(--headerColor, #1a1a1a);
-				margin-top: (28/16rem);
-				margin-bottom: (12/16rem);
-			}
+		.cs-block {
+			display: flex;
+			flex-direction: column;
 
 			p {
-				margin-bottom: (20/16rem);
+				font-size: (16/16rem);
+				line-height: 1.7em;
+				color: var(--bodyTextColor, #4e4b66);
+				margin-bottom: (16/16rem);
 			}
+		}
 
-			/* 列表样式 */
-			ul, ol {
-				margin-bottom: (24/16rem);
-				padding-left: (24/16rem);
+		/* 主标题 & 副标题 */
+		.cs-section-title {
+			font-size: clamp(2rem, 4vw, 2.75rem);
+			font-weight: 800;
+			color: var(--headerColor, #1a1a1a);
+			margin-bottom: (24/16rem);
+			line-height: 1.2em;
+		}
 
-				li {
-					margin-bottom: (10/16rem);
-					line-height: 1.6em;
+		.cs-sub-title {
+			font-size: clamp(1.35rem, 3vw, 1.75rem);
+			font-weight: 700;
+			color: var(--headerColor, #1a1a1a);
+			margin-top: (16/16rem);
+			margin-bottom: (20/16rem);
+			line-height: 1.3em;
+			padding-bottom: (8/16rem);
+			border-bottom: 2px solid var(--primary, #1a1a1a);
+		}
 
-					strong {
-						color: var(--headerColor, #1a1a1a);
-					}
-				}
-			}
+		/* 图片排版优化 */
+		.cs-img-box {
+			width: 100%;
+			margin-bottom: (24/16rem);
+			border-radius: (12/16rem);
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 
-			/* 图片排版 */
 			img {
 				width: 100%;
 				height: auto;
-				border-radius: (12/16rem);
-				margin: (32/16rem) 0;
-				box-shadow: 0 (8/16rem) (24/16rem) rgba(0, 0, 0, 0.08);
+				display: block;
 				object-fit: cover;
 			}
 		}
+
+		/* 无序列表与有序列表 */
+		.cs-list, .cs-numbered-list {
+			margin-bottom: (24/16rem);
+			padding-left: (20/16rem);
+
+			li {
+				font-size: (16/16rem);
+				line-height: 1.7em;
+				color: var(--bodyTextColor, #4e4b66);
+				margin-bottom: (12/16rem);
+
+				strong {
+					color: var(--headerColor, #1a1a1a);
+				}
+			}
+		}
+
+		/* 特性网格 */
+		.cs-feature-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: (20/16rem);
+			margin-top: (12/16rem);
+			margin-bottom: (24/16rem);
+
+			@media only screen and (min-width: 48em) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		.cs-feature-item {
+			background-color: #f8f9fa;
+			padding: (20/16rem);
+			border-radius: (8/16rem);
+			border-left: 4px solid var(--primary, #1a1a1a);
+
+			h4 {
+				font-size: (18/16rem);
+				font-weight: 700;
+				color: var(--headerColor, #1a1a1a);
+				margin-bottom: (8/16rem);
+			}
+
+			p {
+				font-size: (14/16rem);
+				margin-bottom: 0;
+			}
+		}
+
+		/* 联系方式信息框 */
+		.cs-info-box {
+			background-color: #f4f6f8;
+			padding: (24/16rem);
+			border-radius: (8/16rem);
+			margin: (20/16rem) 0;
+
+			p {
+				margin-bottom: (8/16rem);
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				strong {
+					color: var(--headerColor, #1a1a1a);
+				}
+			}
+		}
+
+		.cs-closing-tag {
+			font-weight: 600;
+			font-size: (17/16rem);
+			color: var(--headerColor, #1a1a1a);
+			margin-top: (16/16rem);
+		}
 	}
 
-	/* 暗黑模式兼容 */
+	/* 暗黑模式适配 */
 	body.dark-mode {
 		#about-details {
 			background-color: transparent;
 
-			.cs-content-body {
-				color: var(--bodyTextColorWhite, #f7f7f7);
+			.cs-section-title, .cs-sub-title, .cs-closing-tag {
+				color: #fff;
+			}
 
-				h1, h3, h4, strong {
-					color: var(--bodyTextColorWhite, #fff);
+			.cs-sub-title {
+				border-bottom-color: var(--primaryLight, #70b340);
+			}
+
+			.cs-block p, .cs-list li, .cs-numbered-list li {
+				color: #e0e0e0;
+
+				strong {
+					color: #fff;
+				}
+			}
+
+			.cs-feature-item, .cs-info-box {
+				background-color: rgba(255, 255, 255, 0.05);
+
+				h4, strong {
+					color: #fff;
 				}
 
-				h3 {
-					border-bottom-color: var(--primaryLight, #70b340);
+				p {
+					color: #e0e0e0;
 				}
 			}
 		}
