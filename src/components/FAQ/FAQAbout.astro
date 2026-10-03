@@ -1,48 +1,44 @@
 ---
-// src/components/FAQ/FAQAbout.astro
+// No utils nor props for this component
 ---
 
-<section id="faq-about">
+<section id="faq-1741">
 	<div class="cs-container">
 		<div class="cs-content">
 			<span class="cs-topper">Frequently Asked Questions</span>
-			<h2 class="cs-title">Answers to Your Questions About Bothbest Bamboo</h2>
+			<h2 class="cs-title">22Answers to Your Questions About Bothbest Bamboo</h2>
 		</div>
 		<div class="cs-flex-group">
 			<ul class="cs-faq-group">
+				<!-- Active class added as default -->
 				<li class="cs-faq-item active">
 					<button class="cs-button">
-						<span class="cs-button-text"> Question: Are you a direct manufacturing factory or a trading company, and what is your production capacity? </span>
+						<span class="cs-button-text"> Question: What is the difference between solid bamboo and strand woven bamboo flooring? </span>
 					</button>
 					<p class="cs-item-text">
-						Answer: Bothbest is a direct, large-scale bamboo manufacturing factory based in Anhui and Zhejiang, China. Equipped with heavy-duty automated hot-pressing systems and computerized CNC processing lines, our annual production capacity exceeds millions of square meters, ensuring stable supply chains and competitive direct-factory pricing for high-volume B2B orders.
+						Answer: Solid bamboo flooring is made by gluing horizontal or vertical bamboo strips together, showcasing the natural grain and knots. Strand woven bamboo flooring, however, is manufactured by shredding bamboo fibers and compressing them under extreme heat and pressure. This process makes strand woven bamboo more than twice as hard as traditional hardwood, offering exceptional durability for high-traffic commercial and residential spaces.
 					</p>
 				</li>
-
 				<li class="cs-faq-item">
 					<button class="cs-button">
-						<span class="cs-button-text"> Question: Do you offer custom manufacturing (OEM/ODM) for specific dimensions, finishes, and architectural specs? </span>
+						<span class="cs-button-text"> Question: How does bamboo decking perform outdoors compared to traditional timber? </span>
+					</button>
+					<p class="cs-item-text">Answer: Bothbest exterior bamboo decking is engineered to outperform most traditional hardwoods and timber. Through a specialized thermo-density treatment, the bamboo fibers are deeply carbonized to resist mold, rot, termites, and harsh weather elements. It features incredibly high stability, meaning it experiences minimal warping, twisting, or shrinking over years of outdoor exposure.</p>
+				</li>
+				<li class="cs-faq-item">
+					<button class="cs-button">
+						<span class="cs-button-text"> Question: Can bamboo flooring be installed over radiant heating systems? </span>
 					</button>
 					<p class="cs-item-text">
-						Answer: Yes, we provide full-scope OEM and ODM services tailored to global market demands. Our engineering team can customize plank dimensions, structural density, surface textures (such as wire-brushed or hand-scraped), specialized colors, and private-label packaging to align perfectly with your brand requirements.
+						Answer: Yes, our engineered bamboo flooring and specific strand woven lines are perfectly compatible with radiant heating systems. Because bamboo naturally distributes heat evenly and possesses great dimensional stability, it will not easily gap or cup when exposed to temperature changes. We recommend following our standard floating or glue-down installation guidelines for optimal results.
 					</p>
 				</li>
-
 				<li class="cs-faq-item">
 					<button class="cs-button">
-						<span class="cs-button-text"> Question: How does Bothbest ensure product quality and international compliance? </span>
+						<span class="cs-button-text"> Question: What are the basic maintenance requirements for outdoor bamboo decking? </span>
 					</button>
 					<p class="cs-item-text">
-						Answer: We enforce a strict Quality Assurance (QA) protocol from raw bamboo harvesting and thermal carbonization to precision milling and coating adhesion. Our bamboo products comply with rigid global standards, including European E1/E0 emissions, Japanese JAS four-star specifications, and North American CARB Phase 2 / EPA TSCA Title VI certifications.
-					</p>
-				</li>
-
-				<li class="cs-faq-item">
-					<button class="cs-button">
-						<span class="cs-button-text"> Question: Can we request material samples before placing a bulk order, and what are the delivery lead times? </span>
-					</button>
-					<p class="cs-item-text">
-						Answer: We welcome sample requests from commercial buyers to evaluate our material density and finish quality. Standard samples can be dispatched via international express within 3–5 business days, while full container production orders typically ship within 25–35 days depending on the customization complexity.
+						Answer: Maintaining bamboo decking is very simple. To preserve its rich color and premium finish, we recommend sweeping away debris regularly and washing the surface with water and a mild cleaner annually. Applying a layer of exterior-grade bamboo oil once a year will maintain its natural UV protection and keep the deck looking brand new for decades.
 					</p>
 				</li>
 			</ul>
@@ -53,25 +49,29 @@
 <style lang="less">
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0rem) {
-		#faq-about {
+		#faq-1741 {
 			padding: var(--sectionPadding);
 			position: relative;
 
 			.cs-container {
 				width: 100%;
+				/* changes to 1280px at desktop */
 				max-width: (584/16rem);
 				margin: 2em auto;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				/* 48px - 64px */
 				gap: clamp(3rem, 6vw, 4rem);
 			}
 
 			.cs-content {
+				/* set text align to left if content needs to be left aligned */
 				text-align: center;
 				width: 100%;
 				display: flex;
 				flex-direction: column;
+				/* centers content horizontally, set to flex-start to left align */
 				align-items: center;
 			}
 
@@ -94,6 +94,7 @@
 			.cs-faq-item {
 				list-style: none;
 				width: 100%;
+				/* clips all corners of the button that overlap the rounded border */
 				overflow: hidden;
 				transition: border-bottom 0.3s;
 
@@ -115,6 +116,7 @@
 
 					.cs-item-text {
 						height: auto;
+						/* 16px - 24px */
 						padding: (16/16rem) clamp(1rem, 2vw, 1.5rem);
 						opacity: 1;
 						border: 1px solid #e8e8e8;
@@ -123,6 +125,7 @@
 			}
 
 			.cs-button {
+				/* 16px - 20px */
 				font-size: clamp(1rem, 2.5vw, 1.25rem);
 				font-weight: bold;
 				line-height: 1.2em;
@@ -144,6 +147,7 @@
 				}
 
 				&:before {
+					/* left line */
 					content: "";
 					width: (8/16rem);
 					height: (2/16rem);
@@ -155,10 +159,12 @@
 					left: (18/16rem);
 					transform: rotate(45deg);
 					transition: transform 0.5s;
+					/* animate the transform from the left side of the x axis, and the center of the y */
 					transform-origin: left center;
 				}
 
 				&:after {
+					/* right line */
 					content: "";
 					width: (8/16rem);
 					height: (2/16rem);
@@ -170,15 +176,18 @@
 					left: (21/16rem);
 					transform: rotate(-45deg);
 					transition: transform 0.5s;
+					/* animate the transform from the right side of the x axis, and the center of the y */
 					transform-origin: right center;
 				}
 			}
 
 			.cs-item-text {
+				/* 14px - 16px */
 				font-size: clamp(0.875rem, 1.5vw, 1rem);
 				line-height: 1.5em;
 				height: 0;
 				margin: 0;
+				/* clips the text so it doesn't show up */
 				overflow: hidden;
 				color: var(--bodyTextColor);
 				opacity: 0;
@@ -191,7 +200,7 @@
 
 	/* Tablet - 768px */
 	@media only screen and (min-width: 48rem) {
-		#faq-about {
+		#faq-1741 {
 			.cs-gallery {
 				max-width: (1720/16rem);
 			}
@@ -204,7 +213,7 @@
 
 	/* Desktop - 1024px */
 	@media only screen and (min-width: 64rem) {
-		#faq-about {
+		#faq-1741 {
 			.cs-container {
 				max-width: (1280/16rem);
 				flex-direction: row;
@@ -216,6 +225,7 @@
 				text-align: left;
 				width: 40%;
 				align-items: flex-start;
+				/* prevents flexbox from squishing it */
 				flex: none;
 			}
 		}
@@ -224,7 +234,7 @@
 	/* Dark Mode */
 	@media only screen and (min-width: 0rem) {
 		body.dark-mode {
-			#faq-about {
+			#faq-1741 {
 				.cs-title,
 				.cs-item-text {
 					color: var(--bodyTextColorWhite);
@@ -247,6 +257,7 @@
 						}
 
 						.cs-item-text {
+							/* 20px - 24px */
 							padding-top: clamp(1.25rem, 1.3vw, 1.5rem);
 							border-color: var(--accent);
 						}
@@ -268,8 +279,9 @@
 </style>
 
 <script>
+	// Paste the JS inside Astro:page-load wrapper for View Transitions purposes
 	document.addEventListener("astro:page-load", () => {
-		const faqItems = Array.from(document.querySelectorAll("#faq-about .cs-faq-item"));
+		const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
 		for (const item of faqItems) {
 			const onClick = () => {
 				item.classList.toggle("active");
