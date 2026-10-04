@@ -390,45 +390,58 @@ const projectItems = [
     ))}
 </div>
 
-<!-- 2. 全屏放大模态框（Modal）HTML 结构 -->
-<div id="lightbox-modal" class="lightbox-modal">
+<!-- 全屏放大模态框（Modal）HTML 结构 -->
+<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
     <span class="lightbox-close">&times;</span>
     <img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
 </div>
 
-<!-- 3. 轻量级 原生 JavaScript -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
+<!-- 改进后的原生 JS 脚本 -->
+<script is:inline>
+    function setupLightbox() {
         const modal = document.getElementById('lightbox-modal');
-        const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+        const modalImg = document.getElementById('lightbox-img');
         const closeBtn = document.querySelector('.lightbox-close');
 
-        // 给所有卡片图片添加点击事件
-        document.querySelectorAll('.lightbox-trigger img').forEach(img => {
-            img.addEventListener('click', (e) => {
-                const target = e.target as HTMLImageElement;
-                if (modal && modalImg) {
+        if (!modal || !modalImg) return;
+
+        // 监听整个图片网格的点击事件（事件委托，确保 Picture/Img 标签都能响应）
+        const grid = document.querySelector('.projects-grid');
+        if (grid) {
+            grid.addEventListener('click', (e) => {
+                const target = e.target;
+                // 如果点击的是图片或带有 lightbox-trigger 的容器内的图片
+                if (target.tagName === 'IMG') {
                     modal.style.display = 'flex';
                     modalImg.src = target.currentSrc || target.src;
                 }
             });
-        });
+        }
 
-        // 点击关闭按钮或背景关闭 Modal
+        // 关闭弹窗逻辑
         const closeModal = () => {
-            if (modal) modal.style.display = 'none';
+            modal.style.display = 'none';
         };
 
-        closeBtn?.addEventListener('click', closeModal);
-        modal?.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
+        if (closeBtn) {
+            closeBtn.onclick = closeModal;
+        }
 
-        // 按 ESC 键关闭
+        modal.onclick = (e) => {
+            if (e.target === modal) closeModal();
+        };
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
-    });
+    }
+
+    // 确保 DOM 加载完成后执行
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupLightbox);
+    } else {
+        setupLightbox();
+    }
 </script>
 
 <!-- 4. Modal CSS 样式 -->
