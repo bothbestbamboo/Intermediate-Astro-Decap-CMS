@@ -423,60 +423,55 @@ const projectItems = [
 
 <!-- 全屏放大模态框（Modal）HTML 结构 -->
 <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-	<span class="lightbox-close">&times;</span>
-	<img
-		class="lightbox-content"
-		id="lightbox-img"
-		alt="Enlarged project image"
-	/>
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
 </div>
 
-<!-- 改进后的原生 JS 脚本 -->
+<!-- 适配 Astro View Transitions 的脚本 -->
 <script is:inline>
-	function setupLightbox() {
-		const modal = document.getElementById("lightbox-modal");
-		const modalImg = document.getElementById("lightbox-img");
-		const closeBtn = document.querySelector(".lightbox-close");
+    function setupLightbox() {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
 
-		if (!modal || !modalImg) return;
+        if (!modal || !modalImg) return;
 
-		// 监听整个图片网格的点击事件（事件委托，确保 Picture/Img 标签都能响应）
-		const grid = document.querySelector(".projects-grid");
-		if (grid) {
-			grid.addEventListener("click", (e) => {
-				const target = e.target;
-				// 如果点击的是图片或带有 lightbox-trigger 的容器内的图片
-				if (target.tagName === "IMG") {
-					modal.style.display = "flex";
-					modalImg.src = target.currentSrc || target.src;
-				}
-			});
-		}
+        // 绑定网格点击事件（监听 IMG）
+        const grid = document.querySelector('.projects-grid');
+        if (grid) {
+            // 先移除可能重复绑定的事件，避免多次触发
+            grid.onclick = (e) => {
+                const target = e.target;
+                if (target && target.tagName === 'IMG') {
+                    modal.style.display = 'flex';
+                    modalImg.src = target.currentSrc || target.src;
+                }
+            };
+        }
 
-		// 关闭弹窗逻辑
-		const closeModal = () => {
-			modal.style.display = "none";
-		};
+        // 关闭弹窗逻辑
+        const closeModal = () => {
+            modal.style.display = 'none';
+        };
 
-		if (closeBtn) {
-			closeBtn.onclick = closeModal;
-		}
+        if (closeBtn) {
+            closeBtn.onclick = closeModal;
+        }
 
-		modal.onclick = (e) => {
-			if (e.target === modal) closeModal();
-		};
+        modal.onclick = (e) => {
+            if (e.target === modal) closeModal();
+        };
 
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Escape") closeModal();
-		});
-	}
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    }
 
-	// 确保 DOM 加载完成后执行
-	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", setupLightbox);
-	} else {
-		setupLightbox();
-	}
+    // 1. 首次加载或刷新时初始化
+    setupLightbox();
+
+    // 2. 核心修复：监听 Astro View Transitions 切换页面完成事件
+    document.addEventListener('astro:page-load', setupLightbox);
 </script>
 
 <!-- 4. Modal CSS 样式 -->
