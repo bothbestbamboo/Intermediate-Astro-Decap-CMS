@@ -366,3 +366,125 @@ const projectItems = [
         }
     }
 </style>
+<!-- 1. 网格里的 Picture 加上 onclick 触发事件 -->
+<div class="projects-grid">
+    {projectItems.map((item) => (
+        <article class="project-card">
+            <div class="project-image-wrapper">
+                <Picture 
+                    src={item.img} 
+                    alt={item.title} 
+                    width={800} 
+                    height={600} 
+                    formats={["avif", "webp"]} 
+                    class="lightbox-trigger"
+                />
+                <span class="project-tag">{item.category}</span>
+            </div>
+            <div class="project-details">
+                <span class="project-location">{item.location}</span>
+                <h3>{item.title}</h3>
+                <p>{item.specs}</p>
+            </div>
+        </article>
+    ))}
+</div>
+
+<!-- 2. 全屏放大模态框（Modal）HTML 结构 -->
+<div id="lightbox-modal" class="lightbox-modal">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+</div>
+
+<!-- 3. 轻量级 原生 JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // 给所有卡片图片添加点击事件
+        document.querySelectorAll('.lightbox-trigger img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                const target = e.target as HTMLImageElement;
+                if (modal && modalImg) {
+                    modal.style.display = 'flex';
+                    modalImg.src = target.currentSrc || target.src;
+                }
+            });
+        });
+
+        // 点击关闭按钮或背景关闭 Modal
+        const closeModal = () => {
+            if (modal) modal.style.display = 'none';
+        };
+
+        closeBtn?.addEventListener('click', closeModal);
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // 按 ESC 键关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    });
+</script>
+
+<!-- 4. Modal CSS 样式 -->
+<style>
+    /* 鼠标悬停在卡片图片上时显示放大手势 */
+    .project-image-wrapper img {
+        cursor: zoom-in;
+        transition: transform 0.3s ease;
+    }
+    .project-card:hover .project-image-wrapper img {
+        transform: scale(1.05); /* 悬停时微微放大 */
+    }
+
+    /* Lightbox 遮罩层 */
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(5px);
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    /* 放大后的图片 */
+    .lightbox-content {
+        max-width: 90vw;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        animation: zoomIn 0.25s ease;
+    }
+
+    /* 关闭按钮 */
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    .lightbox-close:hover {
+        color: var(--primary, #22c55e);
+    }
+
+    @keyframes zoomIn {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+</style>
