@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components";
 	<div class="container">
 		<div class="review">
 			<picture>
-				<Icon name="profile" class="profile" width="99" height="99" />
+				<div class="avatar-initials profile">MV</div>
 			</picture>
 			<p>"We sourced strand woven bamboo flooring from Bothbest for a luxury villa project, and the quality completely blew us away. The finish is remarkably scratch-resistant, and the natural grain adds incredible warmth to the space. Our clients are absolutely thrilled!"</p>
 			<div class="star-group">
@@ -214,4 +214,21 @@ import { Icon } from "astro-icon/components";
 			}
 		}
 	}
+	.avatar-initials {
+    width: (99/16rem);
+    height: (99/16rem);
+    background-color: #2b5a41; /* 使用品牌绿或深色系 */
+    color: #ffffff;
+    font-size: (36/16rem);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    top: (-51/16rem);
+    left: (30/16rem);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
 </style>
