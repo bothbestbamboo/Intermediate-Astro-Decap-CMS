@@ -49,22 +49,22 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         image={optimizedImage} 
     />
 
-    <!-- 2. B2B Trust Stats Counter -->
+    <!-- 2. B2B Trust Stats Counter (Updated Unique Metrics) -->
     <section class="trust-stats">
         <div class="cs-container">
-            <div class="stat-item">
-                <span class="stat-number">20+</span>
-                <span class="stat-label">Years Factory Direct</span>
+            <div class="stat-card">
+                <span class="stat-number">100,000+ m²</span>
+                <span class="stat-label">Annual Factory Capacity</span>
             </div>
-            <div class="stat-item">
-                <span class="stat-number">80+</span>
-                <span class="stat-label">Export Countries</span>
+            <div class="stat-card">
+                <span class="stat-number">15-20 Days</span>
+                <span class="stat-label">Fast Order Lead Time</span>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <span class="stat-number">100%</span>
                 <span class="stat-label">On-Time Container Delivery</span>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <span class="stat-number">FSC / CE</span>
                 <span class="stat-label">Certified Eco-Quality</span>
             </div>
@@ -252,26 +252,65 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
 
 <style>
     /* Trust Stats Section */
+    /* Modern Light Trust Stats Section */
     .trust-stats {
-        background-color: var(--primary, #1a365d);
-        color: #fff;
-        padding: 2.5rem 1rem;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        padding: 3.5rem 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
     }
+    
     .trust-stats .cs-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 2rem;
-        text-align: center;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
+
+    .stat-card {
+        background: #ffffff;
+        padding: 2rem 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.05), 0 2px 6px -2px rgba(0, 0, 0, 0.02);
+        border: 1px solid #e2e8f0;
+        border-top: 4px solid var(--primary, #22c55e); /* 品牌绿仅作为顶部精致修饰线条 */
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.08);
+    }
+
     .stat-number {
         display: block;
-        font-size: 2.25rem;
+        font-size: 2rem;
         font-weight: 800;
-        color: var(--primaryLight, #22c55e);
+        color: #0f172a; /* 高对比度暗色文字，清晰高级 */
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
     }
+
     .stat-label {
-        font-size: 0.95rem;
-        opacity: 0.9;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 640px) {
+        .trust-stats {
+            padding: 2.5rem 1rem;
+        }
+        .stat-card {
+            padding: 1.5rem 1rem;
+        }
+        .stat-number {
+            font-size: 1.65rem;
+        }
     }
 
     /* Common Sections */
