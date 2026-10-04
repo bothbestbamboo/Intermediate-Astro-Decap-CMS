@@ -1,6 +1,7 @@
 ---
 // Utils
 import { getImage } from "astro:assets";
+import { Image } from "astro:assets";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -8,17 +9,454 @@ import Banner from "@components/Banner/Banner.astro";
 import ReviewsSection from "@components/Reviews/Reviews.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Images
+// Hero Image
 import landingImage from "@assets/images/gallery/bannerreview.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// Factory & Inspection Showcase Images
+import containerImg from "@assets/images/blog/container.jpg";
+import palletImg from "@assets/images/blog/pallet.jpg";
+import plywoodInspectImg from "@assets/images/reviews/plywood-inspection.JPG";
+import customerCheckImg from "@assets/images/reviews/customer-check-decking.JPG";
+import salesNetworkImg from "@assets/images/reviews/sales-network.jpg";
+
+// Certificates
+import certCe from "@assets/images/blog/c-ce.jpg";
+import certFsc from "@assets/images/blog/c-fsc.jpg";
+import certIso14001 from "@assets/images/reviews/c-iso14001.jpg";
+import certIso2004 from "@assets/images/reviews/c-iso2004.jpg";
+
+// Project Engineering Application Images
+import projectGymFloor1 from "@assets/images/reviews/flooring-1.jpg";
+import projectGymFloor2 from "@assets/images/reviews/flooring-2.jpg";
+import projectStairs1 from "@assets/images/reviews/panels-1.jpg";
+import projectStairs2 from "@assets/images/reviews/panels-2.jpg";
+import projectHotel1 from "@assets/images/reviews/plywood-1.jpg";
+import projectHotel2 from "@assets/images/reviews/plywood-2.jpg";
+import projectDecking1 from "@assets/images/reviews/decking-1.jpg";
+import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
 ---
 
-<BaseLayout title="Reviews" description="Customers reviews for Bothbest Bamboo Flooring, Bothbest is a professional manufacturer and exporter of bamboo panels, bamboo veneer, and bamboo flooring in China" heroImage={optimizedImage}>
+<BaseLayout 
+    title="Customer Reviews & Global Trust | Bothbest Bamboo" 
+    description="See why global wholesalers, contractors, and architects trust Bothbest for factory-direct bamboo flooring, panels, and outdoor decking." 
+    heroImage={optimizedImage}
+>
+    <!-- 1. Hero Banner -->
     <Banner 
-        title="Reviews" 
-        subtitle="See why global wholesalers, contractors, and architects trust Bothbest for factory-direct bamboo solutions and exceptional product quality." 
+        title="Customer Reviews & Global Trust" 
+        subtitle="Discover firsthand experiences from international buyers, distributors, and architects who rely on Bothbest's direct manufacturing excellence and certified quality." 
         image={optimizedImage} 
     />
+
+    <!-- 2. B2B Trust Stats Counter -->
+    <section class="trust-stats">
+        <div class="cs-container">
+            <div class="stat-item">
+                <span class="stat-number">20+</span>
+                <span class="stat-label">Years Factory Direct</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">80+</span>
+                <span class="stat-label">Export Countries</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">On-Time Container Delivery</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">FSC / CE</span>
+                <span class="stat-label">Certified Eco-Quality</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Client Inspection & Shipment Verification Showcase -->
+    <section class="proof-section">
+        <div class="cs-container">
+            <div class="section-header">
+                <span class="section-tagline">TRANSPARENT QUALITY CONTROL</span>
+                <h2>Inspected by Global Buyers, Delivered with Precision</h2>
+                <p>From client site visits and raw plywood inspections to heavy-duty export palletizing, we guarantee transparency at every stage of production.</p>
+            </div>
+
+            <div class="proof-grid">
+                <!-- Card 1 -->
+                <div class="proof-card">
+                    <div class="proof-img-wrapper">
+                        <Image src={customerCheckImg} alt="International client inspecting outdoor bamboo decking quality on site" />
+                    </div>
+                    <div class="proof-content">
+                        <h3>Face-to-Face Quality Inspection</h3>
+                        <p>Overseas clients inspect outdoor decking samples directly at our booth, confirming grain density and finish precision.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="proof-card">
+                    <div class="proof-img-wrapper">
+                        <Image src={plywoodInspectImg} alt="Foreign inspector inspecting bamboo panel thickness and lamination quality in workshop" />
+                    </div>
+                    <div class="proof-content">
+                        <h3>On-Site Factory Audits</h3>
+                        <p>Strict third-party and client audits in our workshop ensure zero-defect lamination and exact moisture standards.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="proof-card">
+                    <div class="proof-img-wrapper">
+                        <Image src={containerImg} alt="Direct factory loading of bamboo flooring into shipping container for overseas export" />
+                    </div>
+                    <div class="proof-content">
+                        <h3>Direct Container Loading</h3>
+                        <p>Full-container load (FCL) packing with reinforced strapping ensures zero movement and damage-free ocean transit.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="proof-card">
+                    <div class="proof-img-wrapper">
+                        <Image src={palletImg} alt="Professional film-wrapped bamboo flooring pallets ready for warehouse export" />
+                    </div>
+                    <div class="proof-content">
+                        <h3>Standardized Export Packaging</h3>
+                        <p>Heavy-duty shrink-wrapped pallets with corner guards preserve finish condition during transit and storage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Real Engineering & Application Gallery -->
+    <section class="projects-section">
+        <div class="cs-container">
+            <div class="section-header">
+                <span class="section-tagline">PROVEN IN COMMERCIAL PROJECTS</span>
+                <h2>Real-World Project Applications</h2>
+                <p>Explore how our bamboo products excel under high-traffic commercial conditions and high-end architectural designs globally.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: Gym Flooring -->
+                <div class="project-card">
+                    <div class="project-images-pair">
+                        <Image src={projectGymFloor1} alt="High traffic commercial gym installed with Bothbest strand woven bamboo flooring" />
+                        <Image src={projectGymFloor2} alt="Durability test of bamboo flooring under heavy fitness equipment" />
+                    </div>
+                    <div class="project-details">
+                        <span class="project-tag">Commercial Flooring</span>
+                        <h3>Fitness Center Heavy-Duty Flooring</h3>
+                        <p>High-density strand woven bamboo flooring engineered to withstand heavy gym machinery and continuous daily foot traffic.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2: Outdoor Commercial Decking -->
+                <div class="project-card">
+                    <div class="project-images-pair">
+                        <Image src={projectDecking1} alt="Large scale outdoor commercial plaza featuring Bothbest strand woven bamboo decking" />
+                        <Image src={projectDecking2} alt="Weather resistant exterior bamboo deck installation in modern office park" />
+                    </div>
+                    <div class="project-details">
+                        <span class="project-tag">Outdoor Decking</span>
+                        <h3>Commercial Plaza Weather-Proof Decking</h3>
+                        <p>Thermal-treated outdoor bamboo decking designed for extreme UV, moisture resistance, and anti-slip commercial performance.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3: Hospitality & Interior Custom Plywood -->
+                <div class="project-card">
+                    <div class="project-images-pair">
+                        <Image src={projectHotel1} alt="Luxury hotel restaurant fitted with custom bamboo panel dining furniture and wall pillars" />
+                        <Image src={projectHotel2} alt="Custom bamboo furniture and slatted booth seating made from Bothbest bamboo panels" />
+                    </div>
+                    <div class="project-details">
+                        <span class="project-tag">Architectural Panels</span>
+                        <h3>Luxury Hospitality & Interior Furniture</h3>
+                        <p>Precision-milled bamboo panels and decorative pillars customized for upscale restaurant booths and architectural millwork.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4: Interior Stair Treads -->
+                <div class="project-card">
+                    <div class="project-images-pair">
+                        <Image src={projectStairs1} alt="Modern staircase with glass railing utilizing Bothbest solid bamboo treads and risers" />
+                        <Image src={projectStairs2} alt="Close up detail of smooth laminated bamboo stair tread edge finishing" />
+                    </div>
+                    <div class="project-details">
+                        <span class="project-tag">Interior Panels</span>
+                        <h3>Architectural Bamboo Staircases</h3>
+                        <p>Multi-layer solid bamboo plywood fabricated for sleek, modern stair treads with exceptional structural stability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Global Market Reach Map -->
+    <section class="global-reach">
+        <div class="cs-container global-container">
+            <div class="global-text">
+                <span class="section-tagline">GLOBAL FOOTPRINT</span>
+                <h2>Serving Wholesalers & Contractors Worldwide</h2>
+                <p>
+                    Bothbest products are exported across North America, Europe, Australia, and the Middle East. Our standardized export logistics make overseas procurement smooth and hassle-free.
+                </p>
+                <ul class="reach-list">
+                    <li>✓ Custom OEM / ODM Branding & Cardboard Packaging</li>
+                    <li>✓ Full Compliance with EU & US Formaldehyde Regulations</li>
+                    <li>✓ Reliable Ocean Freight Shipping & Container Tracking</li>
+                </ul>
+            </div>
+            <div class="global-map-wrapper">
+                <Image src={salesNetworkImg} alt="Bothbest Bamboo global export network and destination countries" />
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Original Written Reviews Component -->
     <ReviewsSection />
+
+    <!-- 7. Official Accreditation & Certification Section -->
+    <section class="certifications-section">
+        <div class="cs-container">
+            <div class="section-header">
+                <span class="section-tagline">QUALIFICATIONS</span>
+                <h2>International Compliance & Certifications</h2>
+                <p>Our products pass rigorous test standards for mechanical durability, fire safety, and forest sustainability.</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <Image src={certCe} alt="CE EN 14342 Certification for Bamboo Flooring" />
+                    <span>CE EN 14342 Certified</span>
+                </div>
+                <div class="cert-item">
+                    <Image src={certFsc} alt="FSC Bureau Veritas Chain of Custody Certificate" />
+                    <span>FSC 100% Certified</span>
+                </div>
+                <div class="cert-item">
+                    <Image src={certIso2004} alt="ISO 14001 Environmental Management System Registration" />
+                    <span>ISO 14001 Environmental</span>
+                </div>
+                <div class="cert-item">
+                    <Image src={certIso14001} alt="NGV ISO Quality System Certificate" />
+                    <span>CNAS / IAF Compliance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Call To Action -->
     <CTA />
 </BaseLayout>
+
+<style>
+    /* Trust Stats Section */
+    .trust-stats {
+        background-color: var(--primary, #1a365d);
+        color: #fff;
+        padding: 2.5rem 1rem;
+    }
+    .trust-stats .cs-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        text-align: center;
+    }
+    .stat-number {
+        display: block;
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: var(--primaryLight, #22c55e);
+    }
+    .stat-label {
+        font-size: 0.95rem;
+        opacity: 0.9;
+    }
+
+    /* Common Sections */
+    .proof-section, .projects-section, .certifications-section, .global-reach {
+        padding: 4rem 1rem;
+    }
+    .section-header {
+        text-align: center;
+        max-width: 750px;
+        margin: 0 auto 3rem auto;
+    }
+    .section-tagline {
+        color: var(--primary, #22c55e);
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .section-header h2 {
+        font-size: 2rem;
+        margin: 0.5rem 0 1rem 0;
+        color: #111827;
+    }
+    .section-header p {
+        color: #4b5563;
+        font-size: 1rem;
+    }
+
+    /* Proof Section Cards */
+    .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+    .proof-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .proof-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .proof-img-wrapper {
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+    }
+    .proof-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .proof-content {
+        padding: 1.25rem;
+    }
+    .proof-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: #1f2937;
+    }
+    .proof-content p {
+        font-size: 0.9rem;
+        color: #6b7280;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Real Projects Section Styles */
+    .projects-section {
+        background-color: #f8fafc;
+    }
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    .project-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        display: flex;
+        flex-direction: column;
+    }
+    .project-images-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        background: #e2e8f0;
+    }
+    .project-images-pair img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+    .project-details {
+        padding: 1.5rem;
+        flex-grow: 1;
+    }
+    .project-tag {
+        display: inline-block;
+        background-color: #e0f2fe;
+        color: #0369a1;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.25rem 0.6rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+    .project-details h3 {
+        font-size: 1.2rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+    }
+    .project-details p {
+        font-size: 0.9rem;
+        color: #64748b;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Global Reach Section */
+    .global-reach {
+        background-color: #ffffff;
+    }
+    .global-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+    @media (max-width: 768px) {
+        .global-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .global-text h2 {
+        font-size: 1.8rem;
+        margin: 0.5rem 0 1rem 0;
+    }
+    .reach-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.5rem;
+    }
+    .reach-list li {
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        color: #374151;
+    }
+    .global-map-wrapper img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Certifications Grid */
+    .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    .cert-item {
+        border: 1px solid #f0f0f0;
+        padding: 1rem;
+        border-radius: 6px;
+        text-align: center;
+        background: #fff;
+    }
+    .cert-item img {
+        width: 100%;
+        max-height: 220px;
+        object-fit: contain;
+        margin-bottom: 0.75rem;
+    }
+    .cert-item span {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #4b5563;
+    }
+</style>
