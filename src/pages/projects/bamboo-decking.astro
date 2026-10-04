@@ -7,178 +7,358 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Images
-import landingImage from "@assets/images/gallery/bannerdecking.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import port1 from "@assets/images/projects/decking1.jpg";
-import port2 from "@assets/images/projects/decking2.jpg";
-import port3 from "@assets/images/projects/decking3.jpg";
-import port4 from "@assets/images/projects/decking4.jpg";
-import port5 from "@assets/images/projects/decking5.jpg";
-import port6 from "@assets/images/projects/decking6.jpg";
-import port7 from "@assets/images/projects/decking7.jpg";
-import port8 from "@assets/images/projects/decking8.jpg";
-import port9 from "@assets/images/projects/decking9.jpg";
-import port10 from "@assets/images/projects/decking10.jpg";
-import port11 from "@assets/images/projects/decking11.jpg";
-import port12 from "@assets/images/projects/decking12.jpg";
+// Banner Image
+import landingImage from "@assets/images/gallery/bannerflooring.jpg";
+
+// Project Showcase Images (根据项目资源路径替换)
+import port1 from "@assets/images/projects/port1.jpg";
+import port2 from "@assets/images/projects/port2.jpg";
+import port3 from "@assets/images/projects/port3.jpg";
+import port4 from "@assets/images/projects/port4.jpg";
+import port5 from "@assets/images/projects/port5.jpg";
+import port6 from "@assets/images/projects/port6.jpg";
+import port7 from "@assets/images/projects/port7.jpg";
+import port8 from "@assets/images/projects/port8.jpg";
+import port9 from "@assets/images/projects/port9.jpg";
+import port10 from "@assets/images/projects/port10.jpg";
+import port11 from "@assets/images/projects/port11.jpg";
+import port12 from "@assets/images/projects/port12.jpg";
+
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// Structured Outdoor Bamboo Decking Project Data
+const projectItems = [
+    {
+        img: port1,
+        title: "Seaside Resort Boardwalk & Waterfront Marina",
+        category: "Deep Groove Exterior Decking",
+        specs: "Thermo-treated anti-corrosion outdoor bamboo decking designed to withstand harsh salt-spray, high humidity, and coastal weather.",
+        location: "Resort & Coastal Infrastructure"
+    },
+    {
+        img: port2,
+        title: "Public City Park Promenade",
+        category: "Big Wave Anti-Slip Profile",
+        specs: "R11 class anti-slip surface processing ensuring superior pedestrian traction and safety during wet and rainy conditions.",
+        location: "Public Infrastructure"
+    },
+    {
+        img: port3,
+        title: "Hotel Rooftop Swimming Pool Terrace",
+        category: "Teak Color Strand Woven Decking",
+        specs: "Low thermal conductivity strand bamboo decking remaining comfortable and safe for barefoot walking under direct sunlight.",
+        location: "Hospitality & Leisure"
+    },
+    {
+        img: port4,
+        title: "Commercial Office Plaza Outdoor Courtyard",
+        category: "Class B1 Fire-Rated Decking",
+        specs: "Flame-retardant B1-s1 certified strand woven bamboo decking engineered to meet stringent public building safety requirements.",
+        location: "Commercial Real Estate"
+    },
+    {
+        img: port5,
+        title: "Luxury Villa Garden Patio Deck",
+        category: "Small Groove Natural Carbonized",
+        specs: "Elegantly finished outdoor decking planks featuring concealed clip installation systems for seamless visual appeal.",
+        location: "Residential Landscaping"
+    },
+    {
+        img: port6,
+        title: "Botanical Garden Elevated Pedestrian Bridge",
+        category: "Heavy-Duty Exterior Plank",
+        specs: "High-density strand woven bamboo planks designed for high load capacity and minimal thermal expansion/contraction.",
+        location: "Municipal Park"
+    },
+    {
+        img: port7,
+        title: "Golf Club House Exterior Veranda",
+        category: "Thermo-Treated Bamboo Decking",
+        specs: "Class 1 durability rated thermal modification process resisting rot, mold, fungi, and insect attack without chemical leaching.",
+        location: "Sports & Country Club"
+    },
+    {
+        img: port8,
+        title: "Open-Air Restaurant & Bar Platform",
+        category: "Oil-Treated Dark Brown Decking",
+        specs: "Weatherproof oil-finished bamboo boards easily cleanable and resistant to beverage stains and outdoor wear.",
+        location: "Commercial Hospitality"
+    },
+    {
+        img: port9,
+        title: "Urban Riverside Eco-Trail Boardwalk",
+        category: "Co-Extruded Exterior Wall & Deck",
+        specs: "Long-span outdoor bamboo boardwalk solution integrated with matching outdoor bamboo wall cladding profiles.",
+        location: "Civic Landscape Project"
+    },
+    {
+        img: port10,
+        title: "Outdoor Amphitheater Seating & Stage",
+        category: "Custom Beveled Decking Boards",
+        specs: "Customized curved profiles milled specifically for outdoor amphitheater benching and high-impact performance stages.",
+        location: "Cultural & Performance Venue"
+    },
+    {
+        img: port11,
+        title: "High-End Residential Rooftop Garden",
+        category: "Interlocking Outdoor Bamboo Tiles",
+        specs: "Modular deck tile system installed over pedestal supports for rapid drainage and easy utility access underneath.",
+        location: "Rooftop Landscaping"
+    },
+    {
+        img: port12,
+        title: "Theme Park Pedestrian Pathway",
+        category: "Ultra-High Density Exterior Decking",
+        specs: "Extreme wear-resistance decking engineered to withstand millions of annual foot visits with low maintenance needs.",
+        location: "Theme Park & Entertainment"
+    }
+];
 ---
 
-<BaseLayout title="Bamboo Decking" description="As a leading manufacturer, Bothbest delivers sustainable, high-density and high-performance outdoor decking solutions for architectural and high-traffic projects worldwide." heroImage={optimizedImage}>
-	<!-- ============================================ -->
-	<!--                    BANNER                   -->
-	<!-- ============================================ -->
+<BaseLayout 
+    title="Outdoor Bamboo Decking Projects | Bothbest Bamboo" 
+    description="Discover Bothbest outdoor strand woven bamboo decking installed in global resorts, waterfront boardwalks, public parks, and commercial plazas." 
+    heroImage={optimizedImage}
+>
+    <!-- Banner -->
+    <Banner 
+        title="Weatherproof Strength for Exterior Landscapes" 
+        subtitle="Explore outdoor strand woven bamboo decking installed across resorts, public promenades, and commercial venues." 
+        image={optimizedImage} 
+    />
 
-	<Banner 
-    title="High-Performance Exterior Solutions" 
-    subtitle="Real-world reference projects of strand woven bamboo decking proving its strength in diverse global climates." 
-    image={optimizedImage} 
-/>
-
-	<!-- ============================================ -->
-	<!--                   Gallery                    -->
-	<!-- ============================================ -->
-
-	<section id="gallery">
-		<div class="cs-container">
-			<div class="cs-image-group">
-				<!-- Row 1-->
-				<div class="cs-row cs-row-1">
-					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-					<Picture src={port1} alt="bamboo decking brown color big wave" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-					<Picture src={port2} alt="bamboo decking brown color deep grove" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-					<Picture src={port3} alt="bamboo decking brown color small wave" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-                    <Picture src={port4} alt="bamboo decking brown color flat sides" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-				</div>
-				<!-- Row 2 -->
-				<div class="cs-row cs-row-2">
-					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-					<Picture src={port5} alt="bamboo decking teak color big wave" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-					<Picture src={port6} alt="bamboo decking teak color deep grove" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-					<Picture src={port7} alt="bamboo decking teak color small wave" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-                    <Picture src={port8} alt="bamboo decking teak color flat sides" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-				</div>
-				<!-- Row 3 -->
-				<div class="cs-row cs-row-3">
-					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-					<Picture src={port9} alt="bamboo decking black color big wave" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-					<Picture src={port10} alt="bamboo decking black color deep grove" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-					<Picture src={port11} alt="bamboo decking black color small wave" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-                    <Picture src={port12} alt="bamboo decking black color flat sides" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-				</div>
+    <!-- Main Content & Gallery -->
+    <section class="projects-section">
+        <div class="cs-container">
+            <!-- Header Intro -->
+            <div class="section-intro">
+                <span class="section-subtitle">PROJECT PORTFOLIO</span>
+                <h2>Proven Outdoor Performance in Extreme Climates</h2>
+                <p>
+                    Utilizing patented thermal treatment and deep strand woven technology, Bothbest outdoor bamboo decking offers Class 1 durability, Class B1 fire rating, and exceptional anti-rot resistance.
+                </p>
             </div>
-			<a href="/contact/" class="cs-button-solid">Get Free Quote</a>
-		</div>
-	</section>
-	<CTA />
+
+            <!-- Project Category Filter / Tabs Header -->
+            <div class="category-nav">
+                <a href="/projects/bamboo-flooring/" class="nav-btn">Bamboo Flooring</a>
+                <a href="/projects/bamboo-plywood/" class="nav-btn">Bamboo Plywood & Panels</a>
+                <a href="/projects/bamboo-decking/" class="nav-btn active">Outdoor Bamboo Decking</a>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                {projectItems.map((item) => (
+                    <article class="project-card">
+                        <div class="project-image-wrapper">
+                            <Picture 
+                                src={item.img} 
+                                alt={item.title} 
+                                width={400} 
+                                height={300} 
+                                formats={["avif", "webp"]} 
+                            />
+                            <span class="project-tag">{item.category}</span>
+                        </div>
+                        <div class="project-details">
+                            <span class="project-location">{item.location}</span>
+                            <h3>{item.title}</h3>
+                            <p>{item.specs}</p>
+                        </div>
+                    </article>
+                ))}
+            </div>
+
+            <!-- Engineering Support Box -->
+            <div class="engineering-support-box">
+                <div class="support-text">
+                    <h3>Planning a Public Boardwalk or Commercial Landscape?</h3>
+                    <p>We supply full outdoor systems: clip installation accessories, joists, custom groove profiles (Groove/Wave/Flat), fire test reports (EN13501-1 B1), and anti-slip test certificates (R11).</p>
+                </div>
+                <a href="/contact/" class="cs-button-solid">Request Decking Specs & Samples</a>
+            </div>
+        </div>
+    </section>
+
+    <CTA />
 </BaseLayout>
 
-<style lang="less">
-	/* PAGE-SPECIFIC STYLES FOR THE PROJECTS PAGE */
+<style>
+    .projects-section {
+        padding: 4rem 1.5rem;
+        background-color: #f8fafc;
+    }
 
-	/*-- -------------------------- -->
-<---          Gallery           -->
-<--- -------------------------- -*/
+    .cs-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
 
-	/* Mobile - 360px - Contains hover animation */
-	@media only screen and (min-width: 0em) {
-		#gallery {
-			/* Centers button */
-			text-align: center;
-			padding: var(--sectionPadding);
-			position: relative;
-			/* Prevents overflow from the image going off screen */
-			overflow: hidden;
-			.cs-container {
-				width: 100%;
-				max-width: (1322/16em);
-				margin: auto;
-			}
+    /* Section Intro */
+    .section-intro {
+        text-align: center;
+        max-width: 750px;
+        margin: 0 auto 2.5rem auto;
+    }
+    .section-subtitle {
+        color: var(--primary, #22c55e);
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .section-intro h2 {
+        font-size: 2.25rem;
+        color: #0f172a;
+        margin: 0.5rem 0 1rem 0;
+        font-weight: 800;
+    }
+    .section-intro p {
+        color: #475569;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
 
-			.cs-image-group {
-				/* used rem so it doesn't scale with the font size of on parent */
-				font-size: ~"min(1.1vw, 1em)";
-				width: 100%;
-				max-width: (1322/16em);
-				margin: 0 auto (60/16rem);
-				padding: 0;
-				display: flex;
-				justify-content: center;
-				align-items: flex-start;
-				gap: (30/16em);
-			}
+    /* Category Nav Tabs */
+    .category-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 3rem;
+    }
+    .nav-btn {
+        padding: 0.6rem 1.25rem;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        color: #334155;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    .nav-btn:hover, .nav-btn.active {
+        background: var(--primary, #22c55e);
+        color: #ffffff;
+        border-color: var(--primary, #22c55e);
+    }
 
-			.cs-row {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
-				align-items: center;
-				gap: (30/16em);
-			}
+    /* Projects Grid */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
 
-			.cs-picture {
-				display: block;
-				position: relative;
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-			}
+    .project-card {
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px -3px rgba(0,0,0,0.08);
+    }
 
-			.cs-row-1 {
-				.cs-picture1 {
-					width: (420/16em);
-					height: (567/16em);
-				}
+    .project-image-wrapper {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+    }
+    .project-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .project-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: rgba(15, 23, 42, 0.85);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.3rem 0.65rem;
+        border-radius: 4px;
+        backdrop-filter: blur(4px);
+    }
 
-				.cs-picture2 {
-					width: (420/16em);
-					height: (629/16em);
-				}
+    .project-details {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .project-location {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--primary, #22c55e);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.35rem;
+    }
+    .project-details h3 {
+        font-size: 1.15rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+    .project-details p {
+        font-size: 0.9rem;
+        color: #64748b;
+        line-height: 1.5;
+        margin: 0;
+    }
 
-				.cs-picture3 {
-					width: (420/16em);
-					height: (512/16em);
-				}
-			}
+    /* Support Box */
+    .engineering-support-box {
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-left: 5px solid var(--primary, #22c55e);
+        border-radius: 12px;
+        padding: 2rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+    .support-text h3 {
+        font-size: 1.3rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+    }
+    .support-text p {
+        color: #475569;
+        margin: 0;
+        font-size: 0.95rem;
+    }
+    .cs-button-solid {
+        white-space: nowrap;
+        background-color: var(--primary, #22c55e);
+        color: #fff;
+        padding: 0.85rem 1.75rem;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+    .cs-button-solid:hover {
+        background-color: #16a34a;
+    }
 
-			.cs-row-2 {
-				.cs-picture1 {
-					width: (420/16em);
-					height: (492/16em);
-				}
-
-				.cs-picture2 {
-					width: (420/16em);
-					height: (517/16em);
-				}
-
-				.cs-picture3 {
-					width: (420/16em);
-					height: (629/16em);
-				}
-			}
-
-			.cs-row-3 {
-				.cs-picture1 {
-					width: (420/16em);
-					height: (625/16em);
-				}
-
-				.cs-picture2 {
-					width: (420/16em);
-					height: (452/16em);
-				}
-
-				.cs-picture3 {
-					width: (420/16em);
-					height: (629/16em);
-				}
-			}
-		}
-	}
+    @media (max-width: 768px) {
+        .engineering-support-box {
+            flex-direction: column;
+            text-align: center;
+            padding: 1.75rem 1.5rem;
+        }
+    }
 </style>
