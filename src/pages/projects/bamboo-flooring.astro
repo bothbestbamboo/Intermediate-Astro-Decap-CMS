@@ -139,10 +139,9 @@ const projectItems = [
 
             <!-- Project Category Filter / Tabs Header -->
             <div class="category-nav">
-                <a href="/projects/" class="nav-btn">All Engineering Projects</a>
-                <a href="/projects/flooring/" class="nav-btn active">Bamboo Flooring</a>
-                <a href="/projects/plywood/" class="nav-btn">Bamboo Plywood & Panels</a>
-                <a href="/projects/decking/" class="nav-btn">Outdoor Bamboo Decking</a>
+                <a href="/projects/bamboo-flooring/" class="nav-btn active">Bamboo Flooring</a>
+                <a href="/projects/bamboo-plywood/" class="nav-btn">Bamboo Plywood & Panels</a>
+                <a href="/projects/bamboo-decking/" class="nav-btn">Outdoor Bamboo Decking</a>
             </div>
 
             <!-- Projects Grid -->
@@ -348,6 +347,12 @@ const projectItems = [
         font-weight: 700;
         text-decoration: none;
         transition: background-color 0.2s ease;
+        
+        /* 解决文字不居中/偏下的关键属性 */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1; /* 重置行高，防止文字行高导致偏移 */
     }
     .cs-button-solid:hover {
         background-color: #16a34a;
