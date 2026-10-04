@@ -8,7 +8,7 @@ import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
-import landingImage from "@assets/images/gallery/bannerflooring.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/gallery/bannerflooring.jpg";
 import port1 from "@assets/images/projects/port1.jpg";
 import port2 from "@assets/images/projects/port2.jpg";
 import port3 from "@assets/images/projects/port3.jpg";
@@ -21,164 +21,343 @@ import port9 from "@assets/images/projects/port9.jpg";
 import port10 from "@assets/images/projects/port10.jpg";
 import port11 from "@assets/images/projects/port11.jpg";
 import port12 from "@assets/images/projects/port12.jpg";
+
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// Structured Project Data with Professional B2B Descriptions
+const projectItems = [
+    {
+        img: port1,
+        title: "Commercial Gym & Fitness Center",
+        category: "Strand Woven Flooring",
+        specs: "High-density carbonized strand woven bamboo flooring built to withstand heavy machinery and intense foot traffic.",
+        location: "Commercial Project"
+    },
+    {
+        img: port4,
+        title: "Luxury Residential Living Room",
+        category: "Click-Lock Bamboo Flooring",
+        specs: "Precision click system engineered for seamless indoor installation and superior dimensional stability.",
+        location: "Residential Interior"
+    },
+    {
+        img: port7,
+        title: "Corporate Office Open Workspace",
+        category: "Horizontal Carbonized",
+        specs: "Natural grain aesthetics treated with multi-layer UV coating for enhanced wear and scratch resistance.",
+        location: "Office Building"
+    },
+    {
+        img: port12,
+        title: "Boutique Hotel Guest Suite",
+        category: "Engineered Bamboo",
+        specs: "Acoustic-dampening bamboo flooring designed for hospitality comfort and ultra-low formaldehyde emissions.",
+        location: "Hospitality"
+    },
+    {
+        img: port2,
+        title: "Modern Architectural Villa Floor",
+        category: "Vertical Natural",
+        specs: "Clean line vertical bamboo grain adding bright, natural light reflection to modern minimalist interiors.",
+        location: "Private Residence"
+    },
+    {
+        img: port5,
+        title: "Retail Flagship Store Installation",
+        category: "Heavy-Duty Strand Woven",
+        specs: "Commercial-grade durability with Brinell hardness rating exceeding traditional hardwood flooring.",
+        location: "Commercial Space"
+    },
+    {
+        img: port8,
+        title: "Public Library Reading Hall",
+        category: "Underfloor Heating Compatible",
+        specs: "Thermally balanced engineered bamboo planks optimized for underfloor heating system compatibility.",
+        location: "Public Facility"
+    },
+    {
+        img: port10,
+        title: "Educational Auditorium & Stage",
+        category: "Custom Stain Finish",
+        specs: "Customized color coating matching architectural specs with fire-retardant (B1-s1) surface finish.",
+        location: "Institutional"
+    },
+    {
+        img: port3,
+        title: "Wellness Spa & Yoga Studio",
+        category: "Natural Carbonized",
+        specs: "Eco-certified (FSC / E0) bamboo flooring delivering zero-odor, health-conscious indoor air quality.",
+        location: "Wellness Center"
+    },
+    {
+        img: port6,
+        title: "Luxury Penthouse Corridor",
+        category: "Wide Plank Bamboo",
+        specs: "Extra-wide format planks providing continuous grain elegance and rapid large-area installation.",
+        location: "High-Rise Residential"
+    },
+    {
+        img: port9,
+        title: "Co-Working Hub Common Area",
+        category: "High-Traffic Flooring",
+        specs: "Micro-beveled edge profile preventing edge wear during continuous daily commercial activity.",
+        location: "Commercial Office"
+    },
+    {
+        img: port11,
+        title: "Airport VIP Lounge Area",
+        category: "Flame-Retardant Finish",
+        specs: "Specialized anti-slip finish meeting global commercial safety standards and high-frequency maintenance protocols.",
+        location: "Transport Terminal"
+    }
+];
 ---
 
-<BaseLayout title="Bamboo Flooring" description="Discover our comprehensive portfolio of premium bamboo flooring. From heavy-duty strand woven to precision click-lock and engineered styles, we supply high-performance, eco-certified flooring solutions for global residential and commercial projects." heroImage={optimizedImage}>
-	<!-- ============================================ -->
-	<!--                    BANNER                   -->
-	<!-- ============================================ -->
+<BaseLayout 
+    title="Bamboo Flooring Reference Projects | Bothbest Bamboo" 
+    description="Explore Bothbest's global portfolio of indoor bamboo flooring installations, featuring strand woven, click-lock, and engineered flooring in commercial and residential spaces." 
+    heroImage={optimizedImage}
+>
+    <!-- Banner -->
+    <Banner 
+        title="Engineered Excellence Foot-by-Foot" 
+        subtitle="Global project showcases featuring our high-performance, stable, and wear-resistant indoor bamboo floors." 
+        image={optimizedImage} 
+    />
 
-	<Banner 
-    title="Engineered Excellence Foot-by-Foot" 
-    subtitle="Global project showcases featuring our high-performance, stable, and wear-resistant indoor bamboo floors." 
-    image={optimizedImage} 
-/>
-
-	<!-- ============================================ -->
-	<!--                   Gallery                    -->
-	<!-- ============================================ -->
-
-	<section id="gallery">
-		<div class="cs-container">
-			<div class="cs-image-group">
-				<!-- Row 1-->
-				<div class="cs-row cs-row-1">
-					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-					<Picture src={port1} alt="horizontal carbonized bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-					<Picture src={port4} alt="strand woven bamboo flooring carbonized" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-					<Picture src={port7} alt="strand woven bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-                    <Picture src={port12} alt="strand woven bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-				</div>
-				<!-- Row 2 -->
-				<div class="cs-row cs-row-2">
-					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-					<Picture src={port2} alt="vertical carbonized bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-					<Picture src={port5} alt="strand woven bamboo flooring natural" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-					<Picture src={port8} alt="strand woven bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-                    <Picture src={port10} alt="strand woven bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-				</div>
-				<!-- Row 3 -->
-				<div class="cs-row cs-row-3">
-					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-					<Picture src={port3} alt="vertical natural bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
-					<Picture src={port6} alt="strand woven bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
-					<Picture src={port9} alt="strand woven bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-                    <Picture src={port11} alt="strand woven bamboo flooring" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
-				</div>
+    <!-- Main Content & Gallery -->
+    <section class="projects-section">
+        <div class="cs-container">
+            <!-- Header Intro -->
+            <div class="section-intro">
+                <span class="section-subtitle">PROJECT PORTFOLIO</span>
+                <h2>Proven Performance Across Global Architecture</h2>
+                <p>
+                    From high-traffic commercial hubs to eco-luxury residences, Bothbest bamboo flooring is chosen worldwide for its structural stability, scratch resistance, and international compliance.
+                </p>
             </div>
-			<a href="/contact/" class="cs-button-solid">Get Free Quote</a>
-		</div>
-	</section>
-	<CTA />
+
+            <!-- Project Category Filter / Tabs Header -->
+            <div class="category-nav">
+                <a href="/projects/" class="nav-btn">All Engineering Projects</a>
+                <a href="/projects/flooring/" class="nav-btn active">Bamboo Flooring</a>
+                <a href="/projects/plywood/" class="nav-btn">Bamboo Plywood & Panels</a>
+                <a href="/projects/decking/" class="nav-btn">Outdoor Bamboo Decking</a>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                {projectItems.map((item) => (
+                    <article class="project-card">
+                        <div class="project-image-wrapper">
+                            <Picture 
+                                src={item.img} 
+                                alt={item.title} 
+                                width={400} 
+                                height={300} 
+                                formats={["avif", "webp"]} 
+                            />
+                            <span class="project-tag">{item.category}</span>
+                        </div>
+                        <div class="project-details">
+                            <span class="project-location">{item.location}</span>
+                            <h3>{item.title}</h3>
+                            <p>{item.specs}</p>
+                        </div>
+                    </article>
+                ))}
+            </div>
+
+            <!-- Engineering Support Box -->
+            <div class="engineering-support-box">
+                <div class="support-text">
+                    <h3>Need Custom Specifications for Your Project?</h3>
+                    <p>We provide full OEM/ODM manufacturing, custom plank dimensions, surface finishes, and certified test reports (CE, FSC, Fire Rating) for architects and general contractors.</p>
+                </div>
+                <a href="/contact/" class="cs-button-solid">Request Project Quote & Samples</a>
+            </div>
+        </div>
+    </section>
+
+    <CTA />
 </BaseLayout>
 
-<style lang="less">
-	/* PAGE-SPECIFIC STYLES FOR THE PROJECTS PAGE */
+<style>
+    .projects-section {
+        padding: 4rem 1.5rem;
+        background-color: #f8fafc;
+    }
 
-	/*-- -------------------------- -->
-<---          Gallery           -->
-<--- -------------------------- -*/
+    .cs-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
 
-	/* Mobile - 360px - Contains hover animation */
-	@media only screen and (min-width: 0em) {
-		#gallery {
-			/* Centers button */
-			text-align: center;
-			padding: var(--sectionPadding);
-			position: relative;
-			/* Prevents overflow from the image going off screen */
-			overflow: hidden;
-			.cs-container {
-				width: 100%;
-				max-width: (1322/16em);
-				margin: auto;
-			}
+    /* Section Intro */
+    .section-intro {
+        text-align: center;
+        max-width: 750px;
+        margin: 0 auto 2.5rem auto;
+    }
+    .section-subtitle {
+        color: var(--primary, #22c55e);
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .section-intro h2 {
+        font-size: 2.25rem;
+        color: #0f172a;
+        margin: 0.5rem 0 1rem 0;
+        font-weight: 800;
+    }
+    .section-intro p {
+        color: #475569;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
 
-			.cs-image-group {
-				/* used rem so it doesn't scale with the font size of on parent */
-				font-size: ~"min(1.1vw, 1em)";
-				width: 100%;
-				max-width: (1322/16em);
-				margin: 0 auto (60/16rem);
-				padding: 0;
-				display: flex;
-				justify-content: center;
-				align-items: flex-start;
-				gap: (30/16em);
-			}
+    /* Category Nav Tabs */
+    .category-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 3rem;
+    }
+    .nav-btn {
+        padding: 0.6rem 1.25rem;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        color: #334155;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    .nav-btn:hover, .nav-btn.active {
+        background: var(--primary, #22c55e);
+        color: #ffffff;
+        border-color: var(--primary, #22c55e);
+    }
 
-			.cs-row {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
-				align-items: center;
-				gap: (30/16em);
-			}
+    /* Projects Grid */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
 
-			.cs-picture {
-				display: block;
-				position: relative;
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-			}
+    .project-card {
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px -3px rgba(0,0,0,0.08);
+    }
 
-			.cs-row-1 {
-				.cs-picture1 {
-					width: (420/16em);
-					height: (567/16em);
-				}
+    .project-image-wrapper {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+    }
+    .project-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .project-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: rgba(15, 23, 42, 0.85);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.3rem 0.65rem;
+        border-radius: 4px;
+        backdrop-filter: blur(4px);
+    }
 
-				.cs-picture2 {
-					width: (420/16em);
-					height: (629/16em);
-				}
+    .project-details {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .project-location {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--primary, #22c55e);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.35rem;
+    }
+    .project-details h3 {
+        font-size: 1.15rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+    .project-details p {
+        font-size: 0.9rem;
+        color: #64748b;
+        line-height: 1.5;
+        margin: 0;
+    }
 
-				.cs-picture3 {
-					width: (420/16em);
-					height: (512/16em);
-				}
-			}
+    /* Support Box */
+    .engineering-support-box {
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-left: 5px solid var(--primary, #22c55e);
+        border-radius: 12px;
+        padding: 2rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+    .support-text h3 {
+        font-size: 1.3rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+    }
+    .support-text p {
+        color: #475569;
+        margin: 0;
+        font-size: 0.95rem;
+    }
+    .cs-button-solid {
+        white-space: nowrap;
+        background-color: var(--primary, #22c55e);
+        color: #fff;
+        padding: 0.85rem 1.75rem;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+    .cs-button-solid:hover {
+        background-color: #16a34a;
+    }
 
-			.cs-row-2 {
-				.cs-picture1 {
-					width: (420/16em);
-					height: (492/16em);
-				}
-
-				.cs-picture2 {
-					width: (420/16em);
-					height: (517/16em);
-				}
-
-				.cs-picture3 {
-					width: (420/16em);
-					height: (629/16em);
-				}
-			}
-
-			.cs-row-3 {
-				.cs-picture1 {
-					width: (420/16em);
-					height: (625/16em);
-				}
-
-				.cs-picture2 {
-					width: (420/16em);
-					height: (452/16em);
-				}
-
-				.cs-picture3 {
-					width: (420/16em);
-					height: (629/16em);
-				}
-			}
-		}
-	}
+    @media (max-width: 768px) {
+        .engineering-support-box {
+            flex-direction: column;
+            text-align: center;
+            padding: 1.75rem 1.5rem;
+        }
+    }
 </style>
