@@ -217,18 +217,24 @@ import { Icon } from "astro-icon/components";
 	.avatar-initials {
     width: (99/16rem);
     height: (99/16rem);
-    background-color: #2b5a41; /* 使用品牌绿或深色系 */
+    background-color: #2b5a41; /* 品牌绿背景 */
     color: #ffffff;
-    font-size: (36/16rem);
+    font-size: (32/16rem);
     font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
+    /* 核心居中控制 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    text-align: center;
+    margin: 0 !important; /* 清除原有 margin-left 的影响 */
+
     border-radius: 50%;
     position: absolute;
     top: (-51/16rem);
     left: (30/16rem);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    letter-spacing: 1px;
+    box-sizing: border-box;
 }
 </style>
