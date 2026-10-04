@@ -163,9 +163,10 @@ const projectItems = [
 								<Picture
 									src={item.img}
 									alt={item.title}
-									width={400}
-									height={300}
+									width={800}
+									height={600}
 									formats={["avif", "webp"]}
+									class="lightbox-trigger"
 								/>
 								<span class="project-tag">{item.category}</span>
 							</div>
@@ -205,7 +206,54 @@ const projectItems = [
 	</section>
 
 	<CTA />
+
+	<!-- 全屏放大模态框（Modal）HTML 结构 -->
+	<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+		<span class="lightbox-close">&times;</span>
+		<img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+	</div>
 </BaseLayout>
+
+<!-- 适配 Astro View Transitions 的脚本 -->
+<script is:inline>
+	function setupLightbox() {
+		const modal = document.getElementById('lightbox-modal');
+		const modalImg = document.getElementById('lightbox-img');
+		const closeBtn = document.querySelector('.lightbox-close');
+
+		if (!modal || !modalImg) return;
+
+		const grid = document.querySelector('.projects-grid');
+		if (grid) {
+			grid.onclick = (e) => {
+				const target = e.target;
+				if (target && target.tagName === 'IMG') {
+					modal.style.display = 'flex';
+					modalImg.src = target.currentSrc || target.src;
+				}
+			};
+		}
+
+		const closeModal = () => {
+			modal.style.display = 'none';
+		};
+
+		if (closeBtn) {
+			closeBtn.onclick = closeModal;
+		}
+
+		modal.onclick = (e) => {
+			if (e.target === modal) closeModal();
+		};
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') closeModal();
+		});
+	}
+
+	setupLightbox();
+	document.addEventListener('astro:page-load', setupLightbox);
+</script>
 
 <style>
 	.projects-section {
@@ -303,7 +351,13 @@ const projectItems = [
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		cursor: zoom-in;
+		transition: transform 0.3s ease;
 	}
+	.project-card:hover .project-image-wrapper img {
+		transform: scale(1.05);
+	}
+
 	.project-tag {
 		position: absolute;
 		top: 1rem;
@@ -376,116 +430,16 @@ const projectItems = [
 		font-weight: 700;
 		text-decoration: none;
 		transition: background-color 0.2s ease;
-
-		/* 解决文字不居中/偏下的关键属性 */
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		line-height: 1; /* 重置行高，防止文字行高导致偏移 */
+		line-height: 1;
 	}
 	.cs-button-solid:hover {
 		background-color: #16a34a;
 	}
 
-	@media (max-width: 768px) {
-		.engineering-support-box {
-			flex-direction: column;
-			text-align: center;
-			padding: 1.75rem 1.5rem;
-		}
-	}
-</style>
-<!-- 1. 网格里的 Picture 加上 onclick 触发事件 -->
-<div class="projects-grid">
-	{
-		projectItems.map((item) => (
-			<article class="project-card">
-				<div class="project-image-wrapper">
-					<Picture
-						src={item.img}
-						alt={item.title}
-						width={800}
-						height={600}
-						formats={["avif", "webp"]}
-						class="lightbox-trigger"
-					/>
-					<span class="project-tag">{item.category}</span>
-				</div>
-				<div class="project-details">
-					<span class="project-location">{item.location}</span>
-					<h3>{item.title}</h3>
-					<p>{item.specs}</p>
-				</div>
-			</article>
-		))
-	}
-</div>
-
-<!-- 全屏放大模态框（Modal）HTML 结构 -->
-<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
-</div>
-
-<!-- 适配 Astro View Transitions 的脚本 -->
-<script is:inline>
-    function setupLightbox() {
-        const modal = document.getElementById('lightbox-modal');
-        const modalImg = document.getElementById('lightbox-img');
-        const closeBtn = document.querySelector('.lightbox-close');
-
-        if (!modal || !modalImg) return;
-
-        // 绑定网格点击事件（监听 IMG）
-        const grid = document.querySelector('.projects-grid');
-        if (grid) {
-            // 先移除可能重复绑定的事件，避免多次触发
-            grid.onclick = (e) => {
-                const target = e.target;
-                if (target && target.tagName === 'IMG') {
-                    modal.style.display = 'flex';
-                    modalImg.src = target.currentSrc || target.src;
-                }
-            };
-        }
-
-        // 关闭弹窗逻辑
-        const closeModal = () => {
-            modal.style.display = 'none';
-        };
-
-        if (closeBtn) {
-            closeBtn.onclick = closeModal;
-        }
-
-        modal.onclick = (e) => {
-            if (e.target === modal) closeModal();
-        };
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-    }
-
-    // 1. 首次加载或刷新时初始化
-    setupLightbox();
-
-    // 2. 核心修复：监听 Astro View Transitions 切换页面完成事件
-    document.addEventListener('astro:page-load', setupLightbox);
-</script>
-
-<!-- 4. Modal CSS 样式 -->
-<style>
-	/* 鼠标悬停在卡片图片上时显示放大手势 */
-	.project-image-wrapper img {
-		cursor: zoom-in;
-		transition: transform 0.3s ease;
-	}
-	.project-card:hover .project-image-wrapper img {
-		transform: scale(1.05); /* 悬停时微微放大 */
-	}
-
-	/* Lightbox 遮罩层 */
+	/* Lightbox Modal */
 	.lightbox-modal {
 		display: none;
 		position: fixed;
@@ -500,8 +454,6 @@ const projectItems = [
 		align-items: center;
 		padding: 2rem;
 	}
-
-	/* 放大后的图片 */
 	.lightbox-content {
 		max-width: 90vw;
 		max-height: 85vh;
@@ -510,8 +462,6 @@ const projectItems = [
 		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 		animation: zoomIn 0.25s ease;
 	}
-
-	/* 关闭按钮 */
 	.lightbox-close {
 		position: absolute;
 		top: 20px;
@@ -534,6 +484,14 @@ const projectItems = [
 		to {
 			transform: scale(1);
 			opacity: 1;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.engineering-support-box {
+			flex-direction: column;
+			text-align: center;
+			padding: 1.75rem 1.5rem;
 		}
 	}
 </style>
