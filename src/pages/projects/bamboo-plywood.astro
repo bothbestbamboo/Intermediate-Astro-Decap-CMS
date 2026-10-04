@@ -28,478 +28,517 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 // Structured Bamboo Plywood & Panel Project Data
 const projectItems = [
-    {
-        img: port5,
-        title: "Custom Executive Office Desk & Furniture",
-        category: "20mm Multi-Layer Bamboo Plywood",
-        specs: "Precision CNC milled solid bamboo panel with smooth edge profile, high flexural strength for heavy-duty commercial office furniture.",
-        location: "Furniture OEM / Commercial Interior"
-    },
-    {
-        img: port6,
-        title: "Architectural Acoustic Wall Paneling",
-        category: "Cross-Laminated Bamboo Panels",
-        specs: "Dimensional stability paneling installed in high-end concert halls and auditoriums for premium sound resonance and natural warmth.",
-        location: "Architectural Interior"
-    },
-    {
-        img: port7,
-        title: "Commercial Restaurant Dining Furniture",
-        category: "3-Ply Strand Woven & Vertical Panels",
-        specs: "Heavy-duty waterproof glued bamboo tabletop with food-safe UV coating built for high-frequency daily commercial use.",
-        location: "Hospitality & Retail"
-    },
-    {
-        img: port8,
-        title: "Custom Eco-Friendly Kitchen Cabinetry",
-        category: "18mm Carbonized Horizontal Panel",
-        specs: "E0 low-formaldehyde emission bamboo plywood certified for high-moisture residential kitchen and bathroom environments.",
-        location: "Kitchen & Cabinet OEM"
-    },
-    {
-        img: port1,
-        title: "Modern Floating Stair Treads & Risers",
-        category: "20mm Solid Bamboo Lumber",
-        specs: "High-density laminated bamboo beams engineered for heavy load-bearing architectural staircases and custom steps.",
-        location: "Residential Construction"
-    },
-    {
-        img: port2,
-        title: "Retail Display Shelving & Fixtures",
-        category: "Bamboo Beam & Post",
-        specs: "Lightweight yet high-tensile strength panels crafted for flexible commercial retail display racks and modular store fixtures.",
-        location: "Retail Store Design"
-    },
-    {
-        img: port3,
-        title: "Boutique Hotel Room Headboards & Doors",
-        category: "Vertical Caramel Bamboo Post",
-        specs: "Clean line vertical grain bamboo posts laminate enhancing light reflection and luxury aesthetic in hospitality guest suites.",
-        location: "Hospitality Design"
-    },
-    {
-        img: port4,
-        title: "Corporate Conference Room Table Top",
-        category: "Side Pressed Bamboo Board",
-        specs: "Side pressed bamboo lumberresisting impacts, scratches, and liquid spills during corporate meetings.",
-        location: "Corporate Office"
-    },
-    {
-        img: port9,
-        title: "Ergonomic Standing Desk Table Tops",
-        category: "UV Coated Bamboo Panels",
-        specs: "Pre-drilled and contour-routed solid bamboo panels customized for OEM electric height-adjustable desk brands.",
-        location: "Office Furniture OEM"
-    },
-    {
-        img: port10,
-        title: "Exhibition Pavilion Wall Cladding",
-        category: "Fire-Retardant Bamboo Panel",
-        specs: "Specially treated flame-retardant bamboo sheets meeting strict public hall fire safety and emission standards.",
-        location: "Exhibition & Public Space"
-    },
-    {
-        img: port11,
-        title: "Luxury RV & Yacht Interior Fit-Outs",
-        category: "Lightweight Laminated Bamboo Board",
-        specs: "Moisture-resistant marine-grade bamboo panels crafted for premium mobile homes, RV cabinetry, and vessel interiors.",
-        location: "Marine & RV Manufacturing"
-    },
-    {
-        img: port12,
-        title: "Museum Display Cases & Wall Linings",
-        category: "FSC Certified Caramel Bamboo Panel",
-        specs: "100% sustainable FSC-certified caramel bamboo sheets ensuring archival quality and neutral chemical off-gassing.",
-        location: "Museum & Gallery"
-    }
+	{
+		img: port5,
+		title: "Custom Executive Office Desk & Furniture",
+		category: "20mm Multi-Layer Bamboo Plywood",
+		specs: "Precision CNC milled solid bamboo panel with smooth edge profile, high flexural strength for heavy-duty commercial office furniture.",
+		location: "Furniture OEM / Commercial Interior",
+	},
+	{
+		img: port6,
+		title: "Architectural Acoustic Wall Paneling",
+		category: "Cross-Laminated Bamboo Panels",
+		specs: "Dimensional stability paneling installed in high-end concert halls and auditoriums for premium sound resonance and natural warmth.",
+		location: "Architectural Interior",
+	},
+	{
+		img: port7,
+		title: "Commercial Restaurant Dining Furniture",
+		category: "3-Ply Strand Woven & Vertical Panels",
+		specs: "Heavy-duty waterproof glued bamboo tabletop with food-safe UV coating built for high-frequency daily commercial use.",
+		location: "Hospitality & Retail",
+	},
+	{
+		img: port8,
+		title: "Custom Eco-Friendly Kitchen Cabinetry",
+		category: "18mm Carbonized Horizontal Panel",
+		specs: "E0 low-formaldehyde emission bamboo plywood certified for high-moisture residential kitchen and bathroom environments.",
+		location: "Kitchen & Cabinet OEM",
+	},
+	{
+		img: port1,
+		title: "Modern Floating Stair Treads & Risers",
+		category: "20mm Solid Bamboo Lumber",
+		specs: "High-density laminated bamboo beams engineered for heavy load-bearing architectural staircases and custom steps.",
+		location: "Residential Construction",
+	},
+	{
+		img: port2,
+		title: "Retail Display Shelving & Fixtures",
+		category: "Bamboo Beam & Post",
+		specs: "Lightweight yet high-tensile strength panels crafted for flexible commercial retail display racks and modular store fixtures.",
+		location: "Retail Store Design",
+	},
+	{
+		img: port3,
+		title: "Boutique Hotel Room Headboards & Doors",
+		category: "Vertical Caramel Bamboo Post",
+		specs: "Clean line vertical grain bamboo posts laminate enhancing light reflection and luxury aesthetic in hospitality guest suites.",
+		location: "Hospitality Design",
+	},
+	{
+		img: port4,
+		title: "Corporate Conference Room Table Top",
+		category: "Side Pressed Bamboo Board",
+		specs: "Side pressed bamboo lumberresisting impacts, scratches, and liquid spills during corporate meetings.",
+		location: "Corporate Office",
+	},
+	{
+		img: port9,
+		title: "Ergonomic Standing Desk Table Tops",
+		category: "UV Coated Bamboo Panels",
+		specs: "Pre-drilled and contour-routed solid bamboo panels customized for OEM electric height-adjustable desk brands.",
+		location: "Office Furniture OEM",
+	},
+	{
+		img: port10,
+		title: "Exhibition Pavilion Wall Cladding",
+		category: "Fire-Retardant Bamboo Panel",
+		specs: "Specially treated flame-retardant bamboo sheets meeting strict public hall fire safety and emission standards.",
+		location: "Exhibition & Public Space",
+	},
+	{
+		img: port11,
+		title: "Luxury RV & Yacht Interior Fit-Outs",
+		category: "Lightweight Laminated Bamboo Board",
+		specs: "Moisture-resistant marine-grade bamboo panels crafted for premium mobile homes, RV cabinetry, and vessel interiors.",
+		location: "Marine & RV Manufacturing",
+	},
+	{
+		img: port12,
+		title: "Museum Display Cases & Wall Linings",
+		category: "FSC Certified Caramel Bamboo Panel",
+		specs: "100% sustainable FSC-certified caramel bamboo sheets ensuring archival quality and neutral chemical off-gassing.",
+		location: "Museum & Gallery",
+	},
 ];
 ---
 
-<BaseLayout 
-    title="Bamboo Plywood & Panels Projects" 
-    description="Explore Bothbest's global engineering projects using bamboo plywood, furniture boards, architectural panels, and custom CNC tabletops." 
-    heroImage={optimizedImage}
+<BaseLayout
+	title="Bamboo Plywood & Panels Projects"
+	description="Explore Bothbest's global engineering projects using bamboo plywood, furniture boards, architectural panels, and custom CNC tabletops."
+	heroImage={optimizedImage}
 >
-    <!-- Banner -->
-    <Banner 
-        title="Solid Craftsmanship & Structural Performance" 
-        subtitle="Global project showcases featuring our bamboo plywood, architectural wall panels, and custom furniture boards." 
-        image={optimizedImage} 
-    />
+	<!-- Banner -->
+	<Banner
+		title="Solid Craftsmanship & Structural Performance"
+		subtitle="Global project showcases featuring our bamboo plywood, architectural wall panels, and custom furniture boards."
+		image={optimizedImage}
+	/>
 
-    <!-- Main Content & Gallery -->
-    <section class="projects-section">
-        <div class="cs-container">
-            <!-- Header Intro -->
-            <div class="section-intro">
-                <span class="section-subtitle">PROJECT PORTFOLIO</span>
-                <h2>Engineered Panels for Architecture & OEM Manufacturing</h2>
-                <p>
-                    From custom CNC office tabletops to acoustic hall paneling, Bothbest bamboo plywood is trusted by global furniture manufacturers, architects, and interior contractors.
-                </p>
-            </div>
+	<!-- Main Content & Gallery -->
+	<section class="projects-section">
+		<div class="cs-container">
+			<!-- Header Intro -->
+			<div class="section-intro">
+				<span class="section-subtitle">PROJECT PORTFOLIO</span>
+				<h2>Engineered Panels for Architecture & OEM Manufacturing</h2>
+				<p>
+					From custom CNC office tabletops to acoustic hall paneling,
+					Bothbest bamboo plywood is trusted by global furniture
+					manufacturers, architects, and interior contractors.
+				</p>
+			</div>
 
-            <!-- Project Category Filter / Tabs Header -->
-            <div class="category-nav">
-                <a href="/projects/bamboo-flooring/" class="nav-btn">Bamboo Flooring</a>
-                <a href="/projects/bamboo-plywood/" class="nav-btn active">Bamboo Plywood</a>
-                <a href="/projects/bamboo-decking/" class="nav-btn">Bamboo Decking</a>
-            </div>
+			<!-- Project Category Filter / Tabs Header -->
+			<div class="category-nav">
+				<a href="/projects/bamboo-flooring/" class="nav-btn"
+					>Bamboo Flooring</a
+				>
+				<a href="/projects/bamboo-plywood/" class="nav-btn active"
+					>Bamboo Plywood</a
+				>
+				<a href="/projects/bamboo-decking/" class="nav-btn"
+					>Bamboo Decking</a
+				>
+			</div>
 
-            <!-- Projects Grid -->
-            <div class="projects-grid">
-                {projectItems.map((item) => (
-                    <article class="project-card">
-                        <div class="project-image-wrapper">
-                            <Picture 
-                                src={item.img} 
-                                alt={item.title} 
-                                width={400} 
-                                height={300} 
-                                formats={["avif", "webp"]} 
-                            />
-                            <span class="project-tag">{item.category}</span>
-                        </div>
-                        <div class="project-details">
-                            <span class="project-location">{item.location}</span>
-                            <h3>{item.title}</h3>
-                            <p>{item.specs}</p>
-                        </div>
-                    </article>
-                ))}
-            </div>
+			<!-- Projects Grid -->
+			<div class="projects-grid">
+				{
+					projectItems.map((item) => (
+						<article class="project-card">
+							<div class="project-image-wrapper">
+								<Picture
+									src={item.img}
+									alt={item.title}
+									width={400}
+									height={300}
+									formats={["avif", "webp"]}
+								/>
+								<span class="project-tag">{item.category}</span>
+							</div>
+							<div class="project-details">
+								<span class="project-location">
+									{item.location}
+								</span>
+								<h3>{item.title}</h3>
+								<p>{item.specs}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
 
-            <!-- Engineering Support Box -->
-            <div class="engineering-support-box">
-                <div class="support-text">
-                    <h3>Need Custom Bamboo Panels or CNC Cut-to-Size Parts?</h3>
-                    <p>We offer full OEM factory support: multi-layer structures (1-ply to 5-ply), custom dimensions up to 4000mm, CNC routing, edge finishing, and FSC/CE/E0 certifications.</p>
-                </div>
-                <a href="/contact/" class="cs-button-solid">Request Panel Quote & Samples</a>
-            </div>
-        </div>
-    </section>
+			<!-- Technical Resources Support Box -->
+			<div class="engineering-support-box">
+				<div class="support-text">
+					<h3>
+						Need Complete Panel Specifications & Custom Sizing
+						Options?
+					</h3>
+					<p>
+						Download our Bamboo Plywood Catalogue to view full
+						technical details, including multi-layer structure
+						availability, CNC machining guidelines, edge profiles,
+						and factory certifications.
+					</p>
+				</div>
+				<a
+					href="/pdf/bothbest-bamboo-flooring-catalogue.pdf"
+					target="_blank"
+					class="cs-button-solid">Download Product Catalog (PDF)</a
+				>
+			</div>
+		</div>
+	</section>
 
-    <CTA />
+	<CTA />
 </BaseLayout>
 
 <style>
-    .projects-section {
-        padding: 4rem 1.5rem;
-        background-color: #f8fafc;
-    }
+	.projects-section {
+		padding: 4rem 1.5rem;
+		background-color: #f8fafc;
+	}
 
-    .cs-container {
-        max-width: 1280px;
-        margin: 0 auto;
-    }
+	.cs-container {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
 
-    /* Section Intro */
-    .section-intro {
-        text-align: center;
-        max-width: 750px;
-        margin: 0 auto 2.5rem auto;
-    }
-    .section-subtitle {
-        color: var(--primary, #22c55e);
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-    }
-    .section-intro h2 {
-        font-size: 2.25rem;
-        color: #0f172a;
-        margin: 0.5rem 0 1rem 0;
-        font-weight: 800;
-    }
-    .section-intro p {
-        color: #475569;
-        font-size: 1.05rem;
-        line-height: 1.6;
-    }
+	/* Section Intro */
+	.section-intro {
+		text-align: center;
+		max-width: 750px;
+		margin: 0 auto 2.5rem auto;
+	}
+	.section-subtitle {
+		color: var(--primary, #22c55e);
+		font-weight: 700;
+		font-size: 0.85rem;
+		letter-spacing: 1.5px;
+		text-transform: uppercase;
+	}
+	.section-intro h2 {
+		font-size: 2.25rem;
+		color: #0f172a;
+		margin: 0.5rem 0 1rem 0;
+		font-weight: 800;
+	}
+	.section-intro p {
+		color: #475569;
+		font-size: 1.05rem;
+		line-height: 1.6;
+	}
 
-    /* Category Nav Tabs */
-    .category-nav {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-bottom: 3rem;
-    }
-    .nav-btn {
-        padding: 0.6rem 1.25rem;
-        border-radius: 9999px;
-        background: #ffffff;
-        border: 1px solid #cbd5e1;
-        color: #334155;
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-decoration: none;
-        transition: all 0.2s ease;
-    }
-    .nav-btn:hover, .nav-btn.active {
-        background: var(--primary, #22c55e);
-        color: #ffffff;
-        border-color: var(--primary, #22c55e);
-    }
+	/* Category Nav Tabs */
+	.category-nav {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-bottom: 3rem;
+	}
+	.nav-btn {
+		padding: 0.6rem 1.25rem;
+		border-radius: 9999px;
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		color: #334155;
+		font-weight: 600;
+		font-size: 0.9rem;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+	.nav-btn:hover,
+	.nav-btn.active {
+		background: var(--primary, #22c55e);
+		color: #ffffff;
+		border-color: var(--primary, #22c55e);
+	}
 
-    /* Projects Grid */
-    .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-bottom: 4rem;
-    }
+	/* Projects Grid */
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
 
-    .project-card {
-        background: #ffffff;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        display: flex;
-        flex-direction: column;
-    }
-    .project-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 20px -3px rgba(0,0,0,0.08);
-    }
+	.project-card {
+		background: #ffffff;
+		border-radius: 12px;
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+		transition:
+			transform 0.25s ease,
+			box-shadow 0.25s ease;
+		display: flex;
+		flex-direction: column;
+	}
+	.project-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.08);
+	}
 
-    .project-image-wrapper {
-        position: relative;
-        aspect-ratio: 4 / 3;
-        overflow: hidden;
-    }
-    .project-image-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .project-tag {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        background: rgba(15, 23, 42, 0.85);
-        color: #ffffff;
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 0.3rem 0.65rem;
-        border-radius: 4px;
-        backdrop-filter: blur(4px);
-    }
+	.project-image-wrapper {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+	}
+	.project-image-wrapper img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.project-tag {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+		background: rgba(15, 23, 42, 0.85);
+		color: #ffffff;
+		font-size: 0.75rem;
+		font-weight: 600;
+		padding: 0.3rem 0.65rem;
+		border-radius: 4px;
+		backdrop-filter: blur(4px);
+	}
 
-    .project-details {
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-    .project-location {
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--primary, #22c55e);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 0.35rem;
-    }
-    .project-details h3 {
-        font-size: 1.15rem;
-        color: #0f172a;
-        margin-bottom: 0.5rem;
-        font-weight: 700;
-    }
-    .project-details p {
-        font-size: 0.9rem;
-        color: #64748b;
-        line-height: 1.5;
-        margin: 0;
-    }
+	.project-details {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+	.project-location {
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: var(--primary, #22c55e);
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		margin-bottom: 0.35rem;
+	}
+	.project-details h3 {
+		font-size: 1.15rem;
+		color: #0f172a;
+		margin-bottom: 0.5rem;
+		font-weight: 700;
+	}
+	.project-details p {
+		font-size: 0.9rem;
+		color: #64748b;
+		line-height: 1.5;
+		margin: 0;
+	}
 
-    /* Support Box */
-    .engineering-support-box {
-        background: #ffffff;
-        border: 1px solid #cbd5e1;
-        border-left: 5px solid var(--primary, #22c55e);
-        border-radius: 12px;
-        padding: 2rem 2.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 2rem;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-    }
-    .support-text h3 {
-        font-size: 1.3rem;
-        color: #0f172a;
-        margin-bottom: 0.5rem;
-    }
-    .support-text p {
-        color: #475569;
-        margin: 0;
-        font-size: 0.95rem;
-    }
-    .cs-button-solid {
-        white-space: nowrap;
-        background-color: var(--primary, #22c55e);
-        color: #fff;
-        padding: 0.85rem 1.75rem;
-        border-radius: 8px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: background-color 0.2s ease;
-        
-        /* 解决文字不居中/偏下的关键属性 */
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1; /* 重置行高，防止文字行高导致偏移 */
-    }
-    .cs-button-solid:hover {
-        background-color: #16a34a;
-    }
+	/* Support Box */
+	.engineering-support-box {
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		border-left: 5px solid var(--primary, #22c55e);
+		border-radius: 12px;
+		padding: 2rem 2.5rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+	}
+	.support-text h3 {
+		font-size: 1.3rem;
+		color: #0f172a;
+		margin-bottom: 0.5rem;
+	}
+	.support-text p {
+		color: #475569;
+		margin: 0;
+		font-size: 0.95rem;
+	}
+	.cs-button-solid {
+		white-space: nowrap;
+		background-color: var(--primary, #22c55e);
+		color: #fff;
+		padding: 0.85rem 1.75rem;
+		border-radius: 8px;
+		font-weight: 700;
+		text-decoration: none;
+		transition: background-color 0.2s ease;
 
-    @media (max-width: 768px) {
-        .engineering-support-box {
-            flex-direction: column;
-            text-align: center;
-            padding: 1.75rem 1.5rem;
-        }
-    }
+		/* 解决文字不居中/偏下的关键属性 */
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		line-height: 1; /* 重置行高，防止文字行高导致偏移 */
+	}
+	.cs-button-solid:hover {
+		background-color: #16a34a;
+	}
+
+	@media (max-width: 768px) {
+		.engineering-support-box {
+			flex-direction: column;
+			text-align: center;
+			padding: 1.75rem 1.5rem;
+		}
+	}
 </style>
 <!-- 1. 网格里的 Picture 加上 onclick 触发事件 -->
 <div class="projects-grid">
-    {projectItems.map((item) => (
-        <article class="project-card">
-            <div class="project-image-wrapper">
-                <Picture 
-                    src={item.img} 
-                    alt={item.title} 
-                    width={800} 
-                    height={600} 
-                    formats={["avif", "webp"]} 
-                    class="lightbox-trigger"
-                />
-                <span class="project-tag">{item.category}</span>
-            </div>
-            <div class="project-details">
-                <span class="project-location">{item.location}</span>
-                <h3>{item.title}</h3>
-                <p>{item.specs}</p>
-            </div>
-        </article>
-    ))}
+	{
+		projectItems.map((item) => (
+			<article class="project-card">
+				<div class="project-image-wrapper">
+					<Picture
+						src={item.img}
+						alt={item.title}
+						width={800}
+						height={600}
+						formats={["avif", "webp"]}
+						class="lightbox-trigger"
+					/>
+					<span class="project-tag">{item.category}</span>
+				</div>
+				<div class="project-details">
+					<span class="project-location">{item.location}</span>
+					<h3>{item.title}</h3>
+					<p>{item.specs}</p>
+				</div>
+			</article>
+		))
+	}
 </div>
 
 <!-- 全屏放大模态框（Modal）HTML 结构 -->
 <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+	<span class="lightbox-close">&times;</span>
+	<img
+		class="lightbox-content"
+		id="lightbox-img"
+		alt="Enlarged project image"
+	/>
 </div>
 
 <!-- 改进后的原生 JS 脚本 -->
 <script is:inline>
-    function setupLightbox() {
-        const modal = document.getElementById('lightbox-modal');
-        const modalImg = document.getElementById('lightbox-img');
-        const closeBtn = document.querySelector('.lightbox-close');
+	function setupLightbox() {
+		const modal = document.getElementById("lightbox-modal");
+		const modalImg = document.getElementById("lightbox-img");
+		const closeBtn = document.querySelector(".lightbox-close");
 
-        if (!modal || !modalImg) return;
+		if (!modal || !modalImg) return;
 
-        // 监听整个图片网格的点击事件（事件委托，确保 Picture/Img 标签都能响应）
-        const grid = document.querySelector('.projects-grid');
-        if (grid) {
-            grid.addEventListener('click', (e) => {
-                const target = e.target;
-                // 如果点击的是图片或带有 lightbox-trigger 的容器内的图片
-                if (target.tagName === 'IMG') {
-                    modal.style.display = 'flex';
-                    modalImg.src = target.currentSrc || target.src;
-                }
-            });
-        }
+		// 监听整个图片网格的点击事件（事件委托，确保 Picture/Img 标签都能响应）
+		const grid = document.querySelector(".projects-grid");
+		if (grid) {
+			grid.addEventListener("click", (e) => {
+				const target = e.target;
+				// 如果点击的是图片或带有 lightbox-trigger 的容器内的图片
+				if (target.tagName === "IMG") {
+					modal.style.display = "flex";
+					modalImg.src = target.currentSrc || target.src;
+				}
+			});
+		}
 
-        // 关闭弹窗逻辑
-        const closeModal = () => {
-            modal.style.display = 'none';
-        };
+		// 关闭弹窗逻辑
+		const closeModal = () => {
+			modal.style.display = "none";
+		};
 
-        if (closeBtn) {
-            closeBtn.onclick = closeModal;
-        }
+		if (closeBtn) {
+			closeBtn.onclick = closeModal;
+		}
 
-        modal.onclick = (e) => {
-            if (e.target === modal) closeModal();
-        };
+		modal.onclick = (e) => {
+			if (e.target === modal) closeModal();
+		};
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-    }
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") closeModal();
+		});
+	}
 
-    // 确保 DOM 加载完成后执行
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupLightbox);
-    } else {
-        setupLightbox();
-    }
+	// 确保 DOM 加载完成后执行
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", setupLightbox);
+	} else {
+		setupLightbox();
+	}
 </script>
 
 <!-- 4. Modal CSS 样式 -->
 <style>
-    /* 鼠标悬停在卡片图片上时显示放大手势 */
-    .project-image-wrapper img {
-        cursor: zoom-in;
-        transition: transform 0.3s ease;
-    }
-    .project-card:hover .project-image-wrapper img {
-        transform: scale(1.05); /* 悬停时微微放大 */
-    }
+	/* 鼠标悬停在卡片图片上时显示放大手势 */
+	.project-image-wrapper img {
+		cursor: zoom-in;
+		transition: transform 0.3s ease;
+	}
+	.project-card:hover .project-image-wrapper img {
+		transform: scale(1.05); /* 悬停时微微放大 */
+	}
 
-    /* Lightbox 遮罩层 */
-    .lightbox-modal {
-        display: none;
-        position: fixed;
-        z-index: 9999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(5px);
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-    }
+	/* Lightbox 遮罩层 */
+	.lightbox-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.85);
+		backdrop-filter: blur(5px);
+		justify-content: center;
+		align-items: center;
+		padding: 2rem;
+	}
 
-    /* 放大后的图片 */
-    .lightbox-content {
-        max-width: 90vw;
-        max-height: 85vh;
-        object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        animation: zoomIn 0.25s ease;
-    }
+	/* 放大后的图片 */
+	.lightbox-content {
+		max-width: 90vw;
+		max-height: 85vh;
+		object-fit: contain;
+		border-radius: 8px;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		animation: zoomIn 0.25s ease;
+	}
 
-    /* 关闭按钮 */
-    .lightbox-close {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        color: #fff;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: color 0.2s;
-    }
-    .lightbox-close:hover {
-        color: var(--primary, #22c55e);
-    }
+	/* 关闭按钮 */
+	.lightbox-close {
+		position: absolute;
+		top: 20px;
+		right: 30px;
+		color: #fff;
+		font-size: 40px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: color 0.2s;
+	}
+	.lightbox-close:hover {
+		color: var(--primary, #22c55e);
+	}
 
-    @keyframes zoomIn {
-        from { transform: scale(0.9); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
-    }
+	@keyframes zoomIn {
+		from {
+			transform: scale(0.9);
+			opacity: 0;
+		}
+		to {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
 </style>
