@@ -70,10 +70,10 @@ Combining rustic natural charm with durable practicality, bamboo drinking straws
 
 ## 🖼️ Product Gallery
 
+![Chemical-Free Boiling Process and Variety](@assets/images/products/bamboo-drinking-straws-1.jpeg)
 ![Natural Bamboo Drinking Straws Overview](@assets/images/products/bamboo-drinking-straws-3.jpeg)
 ![Smooth Burr-Free Bamboo Straw Openings](@assets/images/products/bamboo-drinking-straws-5.jpeg)
 ![Chemical-Free Boiling Process and Variety](@assets/images/products/bamboo-drinking-straws-4.jpeg)
-![Chemical-Free Boiling Process and Variety](@assets/images/products/bamboo-drinking-straws-1.jpeg)
 
 ---
 
