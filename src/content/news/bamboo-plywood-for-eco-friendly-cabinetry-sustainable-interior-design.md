@@ -5,7 +5,7 @@ author: "bothbest"
 date: 2026-09-28T09:43:30.000Z
 image: "@assets/images/blog/20260928-bamboo-plywood-for-cabinetry-1.jpg"
 imageAlt: "Bamboo Plywood for Eco-Friendly Cabinetry"
-isFeatured: false
+isFeatured: true
 ---
 
 The conversation surrounding residential and commercial interiors has shifted dramatically toward materials that balance structural integrity with genuine ecological responsibility. Designers and builders constantly search for alternatives to standard timber products that deplete old-growth forests. Among the available options, bamboo plywood stands out as a remarkably versatile, renewable resource. Utilizing this dense grass species for cabinetry allows craftsmen to construct durable, beautiful fixtures while significantly reducing environmental impact. 

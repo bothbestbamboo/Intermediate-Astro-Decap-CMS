@@ -5,7 +5,7 @@ author: "bothbest"
 date: 2026-09-29T22:59:00.000Z
 image: "@assets/images/blog/20260930-bamboo-standing-desk-1.JPG"
 imageAlt: "Eco Bamboo Standing Desk Workstation"
-isFeatured: false
+isFeatured: true
 ---
 
 

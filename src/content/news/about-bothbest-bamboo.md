@@ -5,7 +5,7 @@ author: bothbest
 date: 2026-07-01T15:42:34.591Z
 image: "@assets/images/blog/about-bothbest.jpg"
 imageAlt: bamboo flooring manufacturing
-isFeatured: true
+isFeatured: false
 ---
 
 # Welcome to Bothbest

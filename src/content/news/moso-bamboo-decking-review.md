@@ -5,7 +5,7 @@ author: "bothbest"
 date: 2026-09-24T14:37:42.000Z
 image: "@assets/images/blog/moso-bamboo-decking-review-2.jpg"
 imageAlt: "Moso Bamboo Decking Review"
-isFeatured: false
+isFeatured: true
 ---
 
 Selecting outdoor building materials used to be a simple choice between natural pressure-treated lumber and standard composite decking. Over the past decade, dense thermalized bamboo products have disrupted the market, presenting property owners with an attractive third category. Among these products, high-density exterior bamboo planks made from mature giant bamboo stalks have gained immense popularity across residential and commercial projects. Manufacturers frequently emphasize incredible hardness ratings, Class A fire resistance, and impressive quarter-century warranties to justify their premium price tag.

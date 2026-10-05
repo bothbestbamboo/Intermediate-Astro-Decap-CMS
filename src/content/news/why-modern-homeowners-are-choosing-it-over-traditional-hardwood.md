@@ -5,7 +5,7 @@ author: bothbest
 date: 2026-07-03T15:32:34.591Z
 image: "@assets/images/blog/201605111634532967174.jpg"
 imageAlt: engineered bamboo flooring
-isFeatured: true
+isFeatured: false
 ---
 
 Choosing the right surface for your home is one of the most significant decisions you will make during a renovation or new build. The floor under your feet sets the tone for your entire living space, influencing everything from visual warmth and acoustic comfort to how much time you spend on cleaning and upkeep. For generations, traditional hardwoods like oak, maple, and walnut were considered the gold standard for premium residential design. However, the needs of the modern homeowner have shifted, and a sophisticated alternative has moved into the spotlight.
