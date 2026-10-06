@@ -24,98 +24,98 @@ import port12 from "@assets/images/projects/floor12.jpg";
 
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// Structured Project Data with Professional B2B Descriptions
+// Structured Project Data aligned with 12 actual flooring types
 const projectItems = [
 	{
 		img: port1,
-		title: "Commercial Gym & Fitness Center",
-		category: "Horizontal Caramel",
-		specs: "Horizontal carbonized solid bamboo flooring built to withstand heavy machinery and intense foot traffic.",
+		title: "Commercial Gym & Athletic Club",
+		category: "Horizontal Natural & Carbonized",
+		specs: "Classic horizontal solid bamboo flooring with visible node character, built to withstand continuous foot traffic.",
 		location: "Commercial Project",
 	},
 	{
-		img: port4,
-		title: "Luxury Residential Living Room",
-		category: "Click-Lock Bamboo Flooring",
-		specs: "Precision click system engineered for seamless indoor installation and superior dimensional stability.",
-		location: "Residential Interior",
-	},
-	{
-		img: port7,
-		title: "Corporate Office Open Workspace",
-		category: "Strand Woven Stained",
-		specs: "Natural grain aesthetics treated with multi-layer UV coating for enhanced wear and scratch resistance.",
-		location: "Office Building",
-	},
-	{
-		img: port12,
-		title: "Boutique Hotel Guest Suite",
-		category: "Engineered Bamboo",
-		specs: "Acoustic-dampening bamboo flooring designed for hospitality comfort and ultra-low formaldehyde emissions.",
-		location: "Hospitality",
-	},
-	{
 		img: port2,
-		title: "Modern Architectural Villa Floor",
-		category: "Vertical Carbonized",
-		specs: "Clean line vertical bamboo grain adding bright, natural light reflection to modern minimalist interiors.",
+		title: "Modern Architectural Villa",
+		category: "Vertical Carbonized Bamboo",
+		specs: "Narrow-line vertical grain structure creating a sleek, contemporary aesthetic for high-end residential interiors.",
 		location: "Private Residence",
-	},
-	{
-		img: port5,
-		title: "Retail Flagship Store Installation",
-		category: "High Density Strand Woven",
-		specs: "Commercial-grade durability with Brinell hardness rating exceeding traditional hardwood flooring.",
-		location: "Commercial Space",
-	},
-	{
-		img: port8,
-		title: "Public Library Reading Hall",
-		category: "Underfloor Heating Compatible",
-		specs: "Thermally balanced engineered bamboo planks optimized for underfloor heating system compatibility.",
-		location: "Public Facility",
-	},
-	{
-		img: port10,
-		title: "Educational Auditorium & Stage",
-		category: "Custom Stain Finish",
-		specs: "Customized color coating matching architectural specs with fire-retardant (B1-s1) surface finish.",
-		location: "Institutional",
 	},
 	{
 		img: port3,
 		title: "Wellness Spa & Yoga Studio",
-		category: "Natural Vertical",
-		specs: "Eco-certified (FSC / E0) bamboo flooring delivering zero-odor, health-conscious indoor air quality.",
+		category: "Vertical Natural Bamboo",
+		specs: "Bright, eco-certified vertical bamboo planks offering zero-VOC emissions and a tranquil natural feel.",
 		location: "Wellness Center",
 	},
 	{
+		img: port4,
+		title: "Corporate Office Open Space",
+		category: "Medium Carbonized Strand Woven",
+		specs: "Caramel-toned high-density strand woven flooring engineered for maximum impact and scratch resistance.",
+		location: "Office Building",
+	},
+	{
+		img: port5,
+		title: "Boutique Hotel Guest Suite",
+		category: "Light Carbonized Strand Woven",
+		specs: "Warm natural caramel finish with ultra-low formaldehyde emissions for premium indoor air quality.",
+		location: "Hospitality Space",
+	},
+	{
 		img: port6,
-		title: "Luxury Penthouse Corridor",
-		category: "Wide Plank Bamboo",
-		specs: "Extra-wide format planks providing continuous grain elegance and rapid large-area installation.",
-		location: "High-Rise Residential",
+		title: "Luxury Living Room Interior",
+		category: "Tiger Strand Woven Bamboo",
+		specs: "Exotic dual-tone bi-color weave combining natural and carbonized fibers for a striking decorative statement.",
+		location: "Residential Interior",
+	},
+	{
+		img: port7,
+		title: "High-Traffic Retail Flagship",
+		category: "Dark Carbonized Strand Woven",
+		specs: "Deep espresso tone with exceptional Brinell hardness rating exceeding traditional hardwood flooring.",
+		location: "Commercial Space",
+	},
+	{
+		img: port8,
+		title: "Executive Penthouse Residence",
+		category: "Hand-Scraped Wave Surface",
+		specs: "Rustic distressed texture with distressed wave relief, providing rich tactile depth and anti-slip surface properties.",
+		location: "Luxury Apartment",
 	},
 	{
 		img: port9,
-		title: "Co-Working Hub Common Area",
-		category: "High-Traffic Flooring",
-		specs: "Micro-beveled edge profile preventing edge wear during continuous daily commercial activity.",
-		location: "Commercial Office",
+		title: "Contemporary Minimalist Lounge",
+		category: "Modern Gray Strand Woven",
+		specs: "Stained modern gray bamboo planks tailored for Nordic and urban industrial interior architecture.",
+		location: "Commercial Lounge",
+	},
+	{
+		img: port10,
+		title: "Heritage Villa & Suite Flooring",
+		category: "Tiger Stripe Strand Woven",
+		specs: "High-density strand woven bamboo featuring dynamic natural contrast and multi-layer UV scratch protection.",
+		location: "Luxury Villa",
 	},
 	{
 		img: port11,
-		title: "Airport VIP Lounge Area",
-		category: "Flame-Retardant Finish",
-		specs: "Specialized anti-slip finish meeting global commercial safety standards and high-frequency maintenance protocols.",
-		location: "Transport Terminal",
+		title: "VIP Airport & Hotel Corridor",
+		category: "Midnight Black Strand Woven",
+		specs: "Sleek jet-black finish meeting commercial fire-retardant standards (B1-s1) and high-frequency maintenance protocols.",
+		location: "Public & Transport Facility",
+	},
+	{
+		img: port12,
+		title: "Co-Working Hub & Workspace",
+		category: "Taupe Brown Strand Woven",
+		specs: "Sophisticated earth-toned engineered bamboo compatible with underfloor heating systems.",
+		location: "Corporate Workplace",
 	},
 ];
 ---
 
 <BaseLayout
-	title="Bamboo Flooring Reference Projects"
-	description="Explore Bothbest's global portfolio of indoor bamboo flooring installations, featuring strand woven, click-lock, and engineered flooring in commercial and residential spaces."
+	title="Bamboo Flooring Reference Projects | Bothbest"
+	description="Explore Bothbest's global portfolio of indoor bamboo flooring installations, featuring strand woven, horizontal, vertical, and hand-scraped bamboo floors."
 	heroImage={optimizedImage}
 >
 	<!-- Banner -->
@@ -205,14 +205,14 @@ const projectItems = [
 
 	<CTA />
 
-	<!-- 全屏放大模态框（Modal）HTML 结构 -->
+	<!-- Lightbox Modal HTML -->
 	<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
 		<span class="lightbox-close">&times;</span>
 		<img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
 	</div>
 </BaseLayout>
 
-<!-- 适配 Astro View Transitions 的脚本 -->
+<!-- Astro View Transitions Lightbox Script -->
 <script is:inline>
 	function setupLightbox() {
 		const modal = document.getElementById('lightbox-modal');
