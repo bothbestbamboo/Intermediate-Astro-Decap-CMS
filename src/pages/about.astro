@@ -342,7 +342,7 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 				</div>
 			</div>
 
-			<!-- Section 6: Patent Innovations & Core Technologies (Moved Here) -->
+			<!-- Section 6: Patent Innovations & Core Technologies -->
 			<div class="cs-section-header">
 				<span class="cs-topper">INTELLECTUAL PROPERTY</span>
 				<h2 class="cs-title">Patent Innovations & Core Technologies</h2>
@@ -358,8 +358,8 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 					<div class="cs-patent-info">
 						<span class="cs-patent-tag">Utility Model Patent</span>
 						<h3>Bamboo & Wood Quick-Install Flooring</h3>
-						<p><strong>Patent No.:</strong> ZL 2007 2 0112267.5</p>
-						<p><strong>Granted:</strong> June 2008</p>
+						<p><strong>Patent No.:</strong> ZL 2007 2 0112267.5[cite: 13]</p>
+						<p><strong>Granted:</strong> June 2008[cite: 13]</p>
 						<p class="cs-patent-desc">Enables rapid, secure mechanical interlocks, reducing installation time and improving structural alignment for modern interiors.</p>
 					</div>
 				</div>
@@ -372,8 +372,8 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 					<div class="cs-patent-info">
 						<span class="cs-patent-tag">Utility Model Patent</span>
 						<h3>Specialized Bamboo Pressing Molds</h3>
-						<p><strong>Patent No.:</strong> ZL 2007 2 0311567.6</p>
-						<p><strong>Granted:</strong> October 2008</p>
+						<p><strong>Patent No.:</strong> ZL 2007 2 0311567.6[cite: 2, 14]</p>
+						<p><strong>Granted:</strong> October 2008[cite: 2, 14]</p>
 						<p class="cs-patent-desc">Precision-engineered molds designed for high-tonnage hot pressing, ensuring uniform density and core stability in structural panels.</p>
 					</div>
 				</div>
@@ -386,8 +386,8 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 					<div class="cs-patent-info">
 						<span class="cs-patent-tag">Invention Patent</span>
 						<h3>Bamboo Composite Technology Panels</h3>
-						<p><strong>Patent No.:</strong> ZL 2007 1 0160468.7</p>
-						<p><strong>Granted:</strong> June 2010</p>
+						<p><strong>Patent No.:</strong> ZL 2007 1 0160468.7[cite: 3, 15]</p>
+						<p><strong>Granted:</strong> June 2010[cite: 3, 15]</p>
 						<p class="cs-patent-desc">Innovative cross-laminated composite structuring method that delivers superior tensile strength, load capacity, and anti-warping performance.</p>
 					</div>
 				</div>
@@ -400,8 +400,8 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 					<div class="cs-patent-info">
 						<span class="cs-patent-tag">Invention Patent</span>
 						<h3>Carbonized Bamboo Board Method</h3>
-						<p><strong>Patent No.:</strong> ZL 2007 1 0071320.6</p>
-						<p><strong>Granted:</strong> May 2010</p>
+						<p><strong>Patent No.:</strong> ZL 2007 1 0071320.6[cite: 16]</p>
+						<p><strong>Granted:</strong> May 2010[cite: 16]</p>
 						<p class="cs-patent-desc">Proprietary thermo-treatment technology that enhances weather resistance, enriches color tone naturally, and prevents rotting without toxic additives.</p>
 					</div>
 				</div>
@@ -414,8 +414,8 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 					<div class="cs-patent-info">
 						<span class="cs-patent-tag">Utility Model Patent</span>
 						<h3>Advanced Bamboo Decorative Panels</h3>
-						<p><strong>Patent No.:</strong> ZL 2009 2 0118850.6</p>
-						<p><strong>Granted:</strong> March 2010</p>
+						<p><strong>Patent No.:</strong> ZL 2009 2 0118850.6[cite: 1, 12]</p>
+						<p><strong>Granted:</strong> March 2010[cite: 1, 12]</p>
 						<p class="cs-patent-desc">Showcases natural grain elegance and dimensional stability, tailored for high-end architectural wall linings and surface design solutions.</p>
 					</div>
 				</div>
@@ -756,13 +756,25 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 			}
 		}
 
-		/* Patent Cards Specific Styling */
+		/* Patent Cards Specific Styling (Adjusted for 800x1173 vertical certificates) */
 		.cs-patent-card {
 			display: flex;
 			flex-direction: column;
 
 			.cs-card-img {
-				height: (320/16rem);
+				height: (440/16rem); /* 调整高度以适配纵向证书比例 */
+				background: #fdfdfd;
+				padding: (10/16rem);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: contain; /* 改为 contain，确保证书全文及印章完整展示不被裁切 */
+					display: block;
+				}
 			}
 
 			.cs-patent-info {
@@ -950,6 +962,10 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 
 			.cs-patent-card .cs-patent-info .cs-patent-desc {
 				border-top-color: rgba(255, 255, 255, 0.1);
+			}
+
+			.cs-patent-card .cs-card-img {
+				background: rgba(255, 255, 255, 0.03);
 			}
 
 			.cs-feature-box.highlight-box {
