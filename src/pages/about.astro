@@ -359,7 +359,7 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 
 			<div class="cs-grid-3">
 				<!-- Test 1 -->
-				<div class="cs-card cs-patent-card">
+				<div class="cs-card cs-test-card">
 					<div class="cs-card-img">
 						<Image src={test1} alt="Floor Abrasion Resistance Simulator" />
 					</div>
@@ -371,7 +371,7 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 				</div>
 
 				<!-- Test 2 -->
-				<div class="cs-card cs-patent-card">
+				<div class="cs-card cs-test-card">
 					<div class="cs-card-img">
 						<Image src={test2} alt="Cubic Meter VOC Emission Test Chamber" />
 					</div>
@@ -383,7 +383,7 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 				</div>
 
 				<!-- Test 3 -->
-				<div class="cs-card cs-patent-card">
+				<div class="cs-card cs-test-card">
 					<div class="cs-card-img">
 						<Image src={test3} alt="Falling Ball Impact Tester" />
 					</div>
@@ -395,7 +395,7 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 				</div>
 
 				<!-- Test 4 -->
-				<div class="cs-card cs-patent-card">
+				<div class="cs-card cs-test-card">
 					<div class="cs-card-img">
 						<Image src={test4} alt="Taber Abrasion Tester" />
 					</div>
@@ -407,7 +407,7 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 				</div>
 
 				<!-- Test 5 -->
-				<div class="cs-card cs-patent-card">
+				<div class="cs-card cs-test-card">
 					<div class="cs-card-img">
 						<Image src={test5} alt="Constant Climate Chamber" />
 					</div>
@@ -419,7 +419,7 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 				</div>
 
 				<!-- Test 6 -->
-				<div class="cs-card cs-patent-card">
+				<div class="cs-card cs-test-card">
 					<div class="cs-card-img">
 						<Image src={test6} alt="Floor Dimension and Squareness Testing Apparatus" />
 					</div>
@@ -845,13 +845,79 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 			}
 		}
 
-		/* Patent & Testing Cards Specific Styling */
-		.cs-patent-card {
+		/* Testing Equipment Cards Specific Styling (Optimized for mixed horizontal/vertical photos) */
+		.cs-test-card {
 			display: flex;
 			flex-direction: column;
 
 			.cs-card-img {
 				height: (320/16rem);
+				background: #fdfdfd;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover; /* 改为 cover，确保横版和竖版照片都能充满卡片区域，保持整齐划一 */
+					display: block;
+				}
+			}
+
+			.cs-patent-info {
+				padding: (20/16rem);
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+
+				.cs-patent-tag {
+					display: inline-block;
+					font-size: (12/16rem);
+					font-weight: 700;
+					color: var(--primary, #70b340);
+					background: rgba(112, 179, 64, 0.1);
+					padding: (3/16rem) (10/16rem);
+					border-radius: (20/16rem);
+					margin-bottom: (8/16rem);
+					align-self: flex-start;
+				}
+
+				h3 {
+					font-size: (17/16rem);
+					font-weight: 700;
+					color: var(--headerColor, #1a1a1a);
+					margin-bottom: (10/16rem);
+					padding: 0;
+					line-height: 1.3em;
+				}
+
+				p {
+					font-size: (13/16rem);
+					color: var(--bodyTextColor, #555);
+					padding: 0;
+					margin-bottom: (6/16rem);
+				}
+
+				.cs-patent-desc {
+					margin-top: auto;
+					padding-top: (10/16rem);
+					border-top: 1px solid #eee;
+					font-size: (13/16rem);
+					line-height: 1.5em;
+					color: var(--bodyTextColor, #666);
+				}
+			}
+		}
+
+		/* Patent Cards Specific Styling */
+		.cs-patent-card {
+			display: flex;
+			flex-direction: column;
+
+			.cs-card-img {
+				height: (440/16rem);
 				background: #fdfdfd;
 				padding: (10/16rem);
 				display: flex;
@@ -1037,7 +1103,8 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 			.cs-timeline-content h3,
 			.cs-timeline-content ul li strong,
 			.cs-patent-card .cs-patent-info h3,
-			.cs-patent-card .cs-patent-info p strong {
+			.cs-patent-card .cs-patent-info p strong,
+			.cs-test-card .cs-patent-info h3 {
 				color: #fff;
 			}
 
@@ -1049,11 +1116,13 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 				border-color: rgba(255, 255, 255, 0.1);
 			}
 
-			.cs-patent-card .cs-patent-info .cs-patent-desc {
+			.cs-patent-card .cs-patent-info .cs-patent-desc,
+			.cs-test-card .cs-patent-info .cs-patent-desc {
 				border-top-color: rgba(255, 255, 255, 0.1);
 			}
 
-			.cs-patent-card .cs-card-img {
+			.cs-patent-card .cs-card-img,
+			.cs-test-card .cs-card-img {
 				background: rgba(255, 255, 255, 0.03);
 			}
 
@@ -1067,7 +1136,8 @@ import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
 			.cs-card p,
 			.cs-feature-box p,
 			.cs-timeline-content ul li,
-			.cs-patent-card .cs-patent-info p {
+			.cs-patent-card .cs-patent-info p,
+			.cs-test-card .cs-patent-info p {
 				color: #ccc;
 			}
 
