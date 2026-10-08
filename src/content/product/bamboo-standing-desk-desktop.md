@@ -22,7 +22,7 @@ Finished with an eco-friendly piano paint coating, the surface features outstand
 | --- | --- |
 | **Product Name** | Bamboo Standing Desk Desktop |
 | **Structure & Craft** | High-Density Multi-Layer Compressed Bamboo Panel |
-| **Color & Finish** | Natural Bamboo Tone / Carbonized Caramel / High-Gloss Eco Piano Paint |
+| **Color & Finish** | Natural Bamboo Tone / Carbonized Caramel |
 | **Edge & Shape Options** | Straight Rectangular / Ergonomic Curved Contour / Smooth Chamfered Edges |
 | **Maximum Dimensions** | Max Length: 2440 mm \| Max Width: 1220 mm \| Thickness: 15 - 30 mm |
 | **Environmental Standard** | European E1 Grade Standard, Eco-Friendly Non-Toxic Lacquer, Low VOC |
@@ -68,6 +68,7 @@ Designed for versatile integration with sit-stand desk frames and office environ
 ![Bamboo Standing Desk Desktop Natural Grain](@assets/images/products/bamboo-standing-desk-2.jpg)
 ![Bamboo Standing Desk Desktop Contour Edge](@assets/images/products/bamboo-standing-desk-3.jpg)
 ![Bamboo Standing Desk Desktop Setup](@assets/images/products/bamboo-standing-desk-4.jpg)
+![Bamboo Standing Desk Desktop Setup](@assets/images/products/bamboo-standing-desk-8.jpg)
 
 ---
 
