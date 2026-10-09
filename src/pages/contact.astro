@@ -1,3 +1,4 @@
+---
 // Utils
 import { Picture, getImage } from "astro:assets";
 
@@ -9,12 +10,12 @@ import Banner from "@components/Banner/Banner.astro";
 import { BUSINESS } from "@data/client";
 
 // Images
-import landingImage from "@assets/images/gallery/bannercontact.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/gallery/bannercontact.jpg";
 import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// 在 Frontmatter (---) 头部引入你的静态地图图片
-import factoryMapImage from "@assets/images/gallery/factory-map.jpg"; // 
+// 引入静态地图图片
+import factoryMapImage from "@assets/images/gallery/factory-map.jpg";
 ---
 
 <BaseLayout
