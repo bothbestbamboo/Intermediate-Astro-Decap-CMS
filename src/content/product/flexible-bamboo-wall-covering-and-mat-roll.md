@@ -26,8 +26,8 @@ Designed for convenient installation and long-lasting performance, our bamboo ro
 | **Backing & Craft** | Precision Bamboo Slats on Flexible Textile Backing |
 | **Slat Width Options** | 8 mm / 11 mm / 16 mm |
 | **Standard Roll Width** | 1.8 Meters / 2.1 Meters |
-| **Standard Roll Length** | 15 Meters per Roll (Custom Lengths Available) |
-| **Color & Finish** | Natural Light / Carbonized Amber / Tiger Pattern (Flame Treated) / Dyed Tones |
+| **Standard Roll Length** | 15 Meters per Roll |
+| **Color & Finish** | Natural / Carbonized / Flame Treated / Dyed Tones |
 | **Material Performance** | Flexible, Easy to Cut & Install, Wear-Resistant Surface |
 | **Environmental Standard** | Sustainable Natural Bamboo, Low VOC, Eco-Friendly Interior Solution |
 
@@ -67,12 +67,14 @@ Thanks to its natural elegance and flexible structure, bamboo wall covering tran
 
 ## 🖼️ Product Gallery
 
-![Bamboo Mat Roll Slat Detail](@assets/images/products/bamboo-mat-1.jpg)
-![Carbonized Bamboo Roll Finish](@assets/images/products/bamboo-mat-2.jpg)
-![Flame Treated Tiger Bamboo Roll](@assets/images/products/bamboo-mat-3.jpg)
-![Flame Treated Tiger Bamboo Roll](@assets/images/products/bamboo-mat-4.jpg)
-![Flame Treated Tiger Bamboo Roll](@assets/images/products/bamboo-mat-5.jpg)
-![Flame Treated Tiger Bamboo Roll](@assets/images/products/bamboo-mat-6.jpg)
+![Bamboo Mat Roll Slat Natural Color](@assets/images/products/bamboo-mat-10.jpg)
+![Carbonized Bamboo Roll Finish](@assets/images/products/bamboo-mat-11.jpg)
+![Bamboo Mat Roll Slat Green Color](@assets/images/products/bamboo-mat-12.jpg)
+![Bamboo Mat Roll Slat Flame Treated Color](@assets/images/products/bamboo-mat-13.jpg)
+![Bamboo Mat Roll Slat Yellow Color](@assets/images/products/bamboo-mat-14.jpg)
+![Bamboo Mat Roll Slat Yellow Color](@assets/images/products/bamboo-mat-15.jpg)
+![Bamboo Mat Roll Slat White Color](@assets/images/products/bamboo-mat-16.jpg)
+![Bamboo Mat Roll Slat Walnut Color](@assets/images/products/bamboo-mat-17.jpg)
 
 ---
 
