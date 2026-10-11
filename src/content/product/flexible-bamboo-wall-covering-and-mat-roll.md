@@ -69,12 +69,15 @@ Thanks to its natural elegance and flexible structure, bamboo wall covering tran
 
 ![Bamboo Mat Roll Slat Natural Color](@assets/images/products/bamboo-mat-10.jpg)
 ![Carbonized Bamboo Roll Finish](@assets/images/products/bamboo-mat-11.jpg)
-![Bamboo Mat Roll Slat Green Color](@assets/images/products/bamboo-mat-12.jpg)
-![Bamboo Mat Roll Slat Flame Treated Color](@assets/images/products/bamboo-mat-13.jpg)
+![Bamboo Mat Roll Slat Flamed Green Color](@assets/images/products/bamboo-mat-12.jpg)
+![Bamboo Mat Roll Slat Flame Yellow Color](@assets/images/products/bamboo-mat-13.jpg)
 ![Bamboo Mat Roll Slat Yellow Color](@assets/images/products/bamboo-mat-14.jpg)
 ![Bamboo Mat Roll Slat Yellow Color](@assets/images/products/bamboo-mat-15.jpg)
+![Bamboo Mat Roll Slat Green Color](@assets/images/products/bamboo-mat-18.jpg)
 ![Bamboo Mat Roll Slat White Color](@assets/images/products/bamboo-mat-16.jpg)
 ![Bamboo Mat Roll Slat Walnut Color](@assets/images/products/bamboo-mat-17.jpg)
+![Bamboo Mat Roll Slat Coffee Color](@assets/images/products/bamboo-mat-19.jpg)
+![Bamboo Mat Roll Slat Carbonized Color](@assets/images/products/bamboo-mat-20.jpg)
 
 ---
 
