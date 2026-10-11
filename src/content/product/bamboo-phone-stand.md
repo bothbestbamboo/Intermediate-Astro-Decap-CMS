@@ -65,8 +65,6 @@ With its compact footprint and practical design, the bamboo phone stand fits sea
 ## 🖼️ Product Gallery
 
 ![Carbonized Bamboo Phone Stand](@assets/images/products/bamboo-phone-stand-2.jpg)
-![Carbonized Bamboo Phone Stand](@assets/images/products/bamboo-phone-stand-3.jpg)
-![Carbonized Bamboo Phone Stand](@assets/images/products/bamboo-phone-stand-4.jpg)
 ![Carbonized Bamboo Phone Stand](@assets/images/products/bamboo-phone-stand-4.jpg)
 ![Carbonized Bamboo Phone Stand](@assets/images/products/bamboo-phone-stand-5.jpg)
 ![Carbonized Bamboo Phone Stand](@assets/images/products/bamboo-phone-stand-6.jpg)
