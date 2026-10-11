@@ -78,6 +78,7 @@ Thanks to its natural elegance and flexible structure, bamboo wall covering tran
 ![Bamboo Mat Roll Slat Walnut Color](@assets/images/products/bamboo-mat-17.jpg)
 ![Bamboo Mat Roll Slat Coffee Color](@assets/images/products/bamboo-mat-19.jpg)
 ![Bamboo Mat Roll Slat Carbonized Color](@assets/images/products/bamboo-mat-20.jpg)
+![Bamboo Mat Roll Slat Natural Color](@assets/images/products/bamboo-mat-21.jpg)
 
 ---
 
