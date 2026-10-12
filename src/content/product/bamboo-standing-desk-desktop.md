@@ -4,7 +4,7 @@ description: "Ergonomic and durable bamboo standing desk desktops engineered wit
 date: 2026-10-07
 image: "@assets/images/products/bamboo-standing-desk-1.jpg"
 imageAlt: "Bamboo Standing Desk Desktop"
-tags: ["plywood"]
+tags: ["Plywood"]
 isFeatured: true
 ---
 
