@@ -240,8 +240,11 @@ const projectItems = [
 			closeBtn.onclick = closeModal;
 		}
 
+		// 点击背景或点击图片本身均可关闭弹窗
 		modal.onclick = (e) => {
-			if (e.target === modal) closeModal();
+			if (e.target === modal || e.target === modalImg) {
+				closeModal();
+			}
 		};
 
 		document.addEventListener('keydown', (e) => {
@@ -459,6 +462,7 @@ const projectItems = [
 		border-radius: 8px;
 		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 		animation: zoomIn 0.25s ease;
+		cursor: zoom-out; /* 鼠标悬停时显示缩小图标 */
 	}
 	.lightbox-close {
 		position: absolute;
