@@ -169,7 +169,7 @@ const projectItems = [
 				<p>
 					From custom CNC office tabletops to acoustic hall paneling,
 					Bothbest bamboo plywood is trusted by global furniture
-					manufacturers, architects, and interior contractors[cite: 18].
+					manufacturers, architects, and interior contractors.
 				</p>
 			</div>
 
@@ -225,7 +225,7 @@ const projectItems = [
 						Download our Bamboo Plywood Catalogue to view full
 						technical details, including multi-layer structure
 						availability, CNC machining guidelines, edge profiles,
-						and factory certifications[cite: 18].
+						and factory certifications.
 					</p>
 				</div>
 				<a
@@ -241,8 +241,18 @@ const projectItems = [
 
 	<!-- 全屏放大模态框（Modal）HTML 结构 -->
 	<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-		<span class="lightbox-close">&times;</span>
-		<img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+		<span class="lightbox-close" title="Close">&times;</span>
+		<div class="lightbox-image-wrap">
+			<img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+			<!-- 鼠标悬停在图片上时出现的“缩小”图标 -->
+			<span class="lightbox-zoomout" title="Click to shrink / close">
+				<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+					<line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</span>
+		</div>
 	</div>
 </BaseLayout>
 
@@ -252,6 +262,7 @@ const projectItems = [
 		const modal = document.getElementById('lightbox-modal');
 		const modalImg = document.getElementById('lightbox-img');
 		const closeBtn = document.querySelector('.lightbox-close');
+		const zoomOutBtn = document.querySelector('.lightbox-zoomout');
 
 		if (!modal || !modalImg) return;
 
@@ -268,10 +279,19 @@ const projectItems = [
 
 		const closeModal = () => {
 			modal.style.display = 'none';
+			modalImg.src = '';
 		};
 
 		if (closeBtn) {
 			closeBtn.onclick = closeModal;
+		}
+
+		// 点击缩小图标也能关闭
+		if (zoomOutBtn) {
+			zoomOutBtn.onclick = (e) => {
+				e.stopPropagation();
+				closeModal();
+			};
 		}
 
 		// 点击背景或点击放大后的图片本身（带有缩小光标），都可以关闭/缩小弹窗
@@ -489,6 +509,17 @@ const projectItems = [
 		align-items: center;
 		padding: 2rem;
 	}
+
+	/* 包裹图片和缩小图标的容器 */
+	.lightbox-image-wrap {
+		position: relative;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		max-width: 90vw;
+		max-height: 85vh;
+	}
+
 	.lightbox-content {
 		max-width: 90vw;
 		max-height: 85vh;
@@ -497,7 +528,44 @@ const projectItems = [
 		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 		animation: zoomIn 0.25s ease;
 		cursor: zoom-out; /* 鼠标放在放大后的图片上时显示缩小光标 */
+		display: block;
 	}
+
+	/* 缩小图标（默认隐藏，悬停在图片上时显示） */
+	.lightbox-zoomout {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(0.9);
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		background: rgba(15, 23, 42, 0.6);
+		color: #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		pointer-events: none;
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease,
+			background-color 0.2s ease;
+		cursor: zoom-out;
+		backdrop-filter: blur(3px);
+	}
+
+	/* 鼠标悬停在图片上时显示缩小图标 */
+	.lightbox-image-wrap:hover .lightbox-zoomout {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	.lightbox-zoomout:hover {
+		background: var(--primary, #9cc813);
+		color: #ffffff;
+	}
+
 	.lightbox-close {
 		position: absolute;
 		top: 20px;
@@ -507,6 +575,8 @@ const projectItems = [
 		font-weight: bold;
 		cursor: pointer;
 		transition: color 0.2s;
+		line-height: 1;
+		z-index: 2;
 	}
 	.lightbox-close:hover {
 		color: var(--primary, #9cc813);
