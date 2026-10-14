@@ -169,7 +169,7 @@ const projectItems = [
 				<p>
 					From custom CNC office tabletops to acoustic hall paneling,
 					Bothbest bamboo plywood is trusted by global furniture
-					manufacturers, architects, and interior contractors.
+					manufacturers, architects, and interior contractors[cite: 18].
 				</p>
 			</div>
 
@@ -225,7 +225,7 @@ const projectItems = [
 						Download our Bamboo Plywood Catalogue to view full
 						technical details, including multi-layer structure
 						availability, CNC machining guidelines, edge profiles,
-						and factory certifications.
+						and factory certifications[cite: 18].
 					</p>
 				</div>
 				<a
@@ -274,8 +274,11 @@ const projectItems = [
 			closeBtn.onclick = closeModal;
 		}
 
+		// 点击背景或点击放大后的图片本身（带有缩小光标），都可以关闭/缩小弹窗
 		modal.onclick = (e) => {
-			if (e.target === modal) closeModal();
+			if (e.target === modal || e.target === modalImg) {
+				closeModal();
+			}
 		};
 
 		document.addEventListener('keydown', (e) => {
@@ -493,6 +496,7 @@ const projectItems = [
 		border-radius: 8px;
 		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 		animation: zoomIn 0.25s ease;
+		cursor: zoom-out; /* 鼠标放在放大后的图片上时显示缩小光标 */
 	}
 	.lightbox-close {
 		position: absolute;
