@@ -18,6 +18,8 @@ A metal pocket clip makes the pen convenient to carry on notebooks, folders, uni
 
 This bamboo ballpoint pen is suitable for bulk promotional orders, corporate gift packages, conference materials, trade show giveaways, customer appreciation programs, eco-conscious brand campaigns, school events, and everyday office use.
 
+![Bamboo Promotional Pens with Metal Clips](@assets/images/products/bamboo-ballpoint-pen-2.jpg)
+
 ## 🔬 Technical Specifications
 
 | Parameter | Specifications & Details |
@@ -57,6 +59,8 @@ This bamboo ballpoint pen is suitable for bulk promotional orders, corporate gif
 
 * **Suitable for Bulk Branding:** The design is easy to coordinate with corporate gift orders, school activities, trade shows, hotel promotions, employee welcome kits, and customer campaigns.
 
+![Custom Logo Bamboo Ballpoint Pen](@assets/images/products/bamboo-ballpoint-pen-3.jpg)
+
 ## 🏭 Manufacturing Process
 
 Our bamboo ballpoint pens are produced through a controlled manufacturing process designed to balance natural appearance, smooth handling, and reliable promotional customization.
@@ -79,6 +83,8 @@ Our bamboo ballpoint pens are produced through a controlled manufacturing proces
 
 9. **Packing and Shipment:** Approved pens are packed in protective bulk packaging or customized gift packaging to reduce rubbing, impact, and surface damage during storage and transport.
 
+![Bamboo Pen Detail with Silver-Tone Fittings](@assets/images/products/bamboo-ballpoint-pen-4.jpg)
+
 ## 🎨 Custom Logo and Advertising Options
 
 The bamboo barrel provides a visible promotional area for branding. A company logo can be placed along the length of the pen for a clean horizontal presentation, or positioned in another suitable area according to the artwork and printing equipment.
@@ -98,6 +104,8 @@ Common customization content includes:
 Before production, the artwork should be supplied in a clear, high-resolution format. Vector artwork is preferred for logos with fine lines, small text, or multiple colors. The final print size should be reviewed against the 12 cm pen body so that the logo remains easy to recognize without affecting the clean appearance of the bamboo grain.
 
 Because bamboo is a natural material, small differences in grain direction and color may appear from one pen to another. These natural variations are part of the character of the product. For campaigns that require highly uniform branding, a pre-production sample can be approved before bulk printing begins.
+
+![Natural Bamboo Ballpoint Pen Set](@assets/images/products/bamboo-ballpoint-pen-5.jpg)
 
 ## 🗺️ Primary Applications
 
@@ -123,6 +131,8 @@ This bamboo ballpoint pen fits a wide range of promotional and professional scen
 
 * **Daily Office Writing:** Keep the pen available for signing documents, writing notes, marking files, planning schedules, and general desk use.
 
+![Bamboo Advertising Pen with Custom Branding](@assets/images/products/bamboo-ballpoint-pen-6.jpg)
+
 ## 🧩 Design and User Experience
 
 The design combines the familiar function of a standard ballpoint pen with the visual warmth of bamboo. The cylindrical shape is easy to grip, while the metal tip helps create a balanced transition from the barrel to the writing point.
@@ -130,6 +140,8 @@ The design combines the familiar function of a standard ballpoint pen with the v
 The clip is useful for attaching the pen to a notebook cover, shirt pocket, document folder, or planner. The push-button operation keeps the design simple and allows users to open and close the pen without removing a cap. This is particularly convenient in meetings, classrooms, reception areas, and busy office environments.
 
 The natural bamboo body can be matched with kraft paper packaging, recycled paper cards, bamboo notebooks, wooden gift boxes, canvas bags, or other natural-material promotional products. It also works well with modern corporate packaging when paired with white, black, navy, silver, or metallic brand colors.
+
+![Bamboo Ballpoint Pen Barrel and Clip Detail](@assets/images/products/bamboo-ballpoint-pen-7.jpg)
 
 ## 📦 Packaging and Bulk Order Support
 
@@ -146,6 +158,8 @@ Possible packaging formats include:
 
 For large orders, it is recommended to confirm the logo artwork, print position, print color, packaging format, quantity, and shipping marks before production. A production sample can be arranged when the campaign requires close control over the final appearance.
 
+![Bamboo Ballpoint Pen Tip Detail](@assets/images/products/bamboo-ballpoint-pen-8.jpg)
+
 ## 🧼 Care and Storage Recommendations
 
 Store bamboo pens in a clean, dry environment away from prolonged direct sunlight, high humidity, rain, and extreme heat. Keep the pens inside their original packaging until distribution to reduce dust and surface rubbing.
@@ -154,16 +168,4 @@ For normal use, wipe the barrel with a soft dry cloth when needed. Avoid soaking
 
 Natural bamboo may show minor grain differences, and the appearance can develop subtle changes over time. These variations do not affect ordinary writing use and help preserve the natural character of the material.
 
-## 🖼️ Product Gallery
-
-![Bamboo Promotional Pens with Metal Clips](@assets/images/products/bamboo-ballpoint-pen-2.jpg)
-![Custom Logo Bamboo Ballpoint Pen](@assets/images/products/bamboo-ballpoint-pen-3.jpg)
-![Bamboo Pen Detail with Silver-Tone Fittings](@assets/images/products/bamboo-ballpoint-pen-4.jpg)
-![Natural Bamboo Ballpoint Pen Set](@assets/images/products/bamboo-ballpoint-pen-5.jpg)
-
-## 🏡 Promotional Application Showcase
-
-![Bamboo Advertising Pen with Custom Branding](@assets/images/products/bamboo-ballpoint-pen-6.jpg)
-![Bamboo Ballpoint Pen Barrel and Clip Detail](@assets/images/products/bamboo-ballpoint-pen-7.jpg)
-![Bamboo Ballpoint Pen Tip Detail](@assets/images/products/bamboo-ballpoint-pen-8.jpg)
 ![Bamboo Ballpoint Pens for Corporate Gift Sets](@assets/images/products/bamboo-ballpoint-pen-9.jpg)
