@@ -14,6 +14,8 @@ isFeatured: false
 
 Finely finished with smoothly rounded, splinter-free edges and protective surface sealing, they provide a premium tactile experience suitable for custom desks, patio tables, coffee bars, and commercial furniture projects both indoors and outdoors.
 
+![Carbonized Strand Woven Bamboo Tabletop](@assets/images/products/bamboo-tabletop-strand-caramel-1.jpg)
+
 ---
 
 ## 🔬 Technical Specifications
@@ -43,6 +45,8 @@ Finely finished with smoothly rounded, splinter-free edges and protective surfac
 * **Rich Carbonized Aesthetics:** Thermal carbonization caramelizes the natural bamboo sugars, producing a rich, warm brown tone that penetrates throughout the panel rather than just a surface stain.
 * **Precision Smooth Edging:** Features professionally polished, rounded edges that deliver comfortable wrist support and a safe, sleek profile.
 
+![Carbonized Strand Woven Bamboo Tabletop Detail](@assets/images/products/bamboo-tabletop-strand-caramel-2.jpg)
+
 ---
 
 ## 🏭 Manufacturing Process
@@ -55,6 +59,8 @@ Our strand woven bamboo tabletops undergo a rigorous thermal-mechanical transfor
 4. **Precision CNC Milling & Edging:** Solid blocks are sliced into exact tabletop dimensions (20mm thickness) and milled with smooth rounded corners.
 5. **Surface Coating & Quality Inspection:** Panels receive multiple protective seal coats for UV and moisture resistance before final quality inspection and protective packaging.
 
+![Carbonized Strand Woven Bamboo Tabletop Surface](@assets/images/products/bamboo-tabletop-strand-caramel-3.jpg)
+
 ---
 
 ## 🗺️ Primary Applications
@@ -64,14 +70,6 @@ Thanks to its weather-resistant properties and striking visual appeal, carbonize
 * **Patio, Garden & Balcony Furniture:** Built to withstand outdoor weather exposure, making it ideal for garden leisure tables and semi-enclosed balcony bars.
 * **Commercial Cafes & Restaurants:** Adds a warm, sophisticated natural wood feel to dining tables, bistro seating, and coffee counters.
 * **Public Parks & Outdoor Scenery:** Perfectly suited for scenic park benches, outdoor coffee stations, and recreational counters.
-
----
-
-## 🖼️ Product Gallery
-
-![Carbonized Strand Woven Bamboo Tabletop](@assets/images/products/bamboo-tabletop-strand-caramel-1.jpg)
-![Carbonized Strand Woven Bamboo Tabletop Detail](@assets/images/products/bamboo-tabletop-strand-caramel-2.jpg)
-![Carbonized Strand Woven Bamboo Tabletop Surface](@assets/images/products/bamboo-tabletop-strand-caramel-3.jpg)
 
 ---
 

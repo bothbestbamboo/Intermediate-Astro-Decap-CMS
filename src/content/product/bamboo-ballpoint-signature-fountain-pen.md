@@ -16,6 +16,8 @@ Three nib styles cover the way most people actually write. The ballpoint is the 
 
 A hinged bamboo gift case is included. The case measures 17.3 × 5.6 × 2.3 cm, with a 15 cm long × 1.3 cm wide contoured slot that holds any of the three pens securely, closed by a small concealed magnet.
 
+![Bamboo Ballpoint, Signature and Fountain Pen Set](@assets/images/products/bamboo-pen-set-2.jpg)
+
 ## 🔬 Technical Specifications
 
 | Parameter | Specifications & Details |
@@ -41,6 +43,8 @@ A hinged bamboo gift case is included. The case measures 17.3 × 5.6 × 2.3 cm, 
 * **Fountain Pen Ready to Use:** A factory-tuned steel nib in a gold finish writes cleanly out of the box and accepts bottled ink through a standard international converter or cartridge.
 * **Gift-Ready Presentation:** Each pen rests in a contoured slot inside a hinged bamboo case with a magnetic closure, ready to give without additional wrapping.
 
+![Carbonized Bamboo Pen Trio in Gift Cases](@assets/images/products/bamboo-pen-set-3.jpg)
+
 ## 🏭 Manufacturing Process
 
 Each pen is produced through a controlled, repeatable workshop process:
@@ -54,6 +58,8 @@ Each pen is produced through a controlled, repeatable workshop process:
 7. **Nib Tuning (Fountain Pen):** The steel nib is aligned, flow-tested, and inspected for consistent line width before assembly.
 8. **Case Packing:** Each pen is paired with its bamboo case, checked against a writing test, and packed for shipment.
 
+![Bamboo Pen Set with Three Nib Styles](@assets/images/products/bamboo-pen-set-4.jpg)
+
 ## 🗺️ Primary Applications
 
 * **Corporate and Executive Gifting:** A ready-to-give set for client handoffs, retirement presentations, and milestone recognition, with engraving available on the barrel or case lid.
@@ -62,12 +68,10 @@ Each pen is produced through a controlled, repeatable workshop process:
 * **Personal Daily Use:** A long-lasting everyday pen for planners, notebooks, and desk drawers, with a tactile feel that plastic or metal pens rarely match.
 * **Cultural and Heritage Collections:** A bamboo-and-gold pen set that complements traditional paper, ink, and seal collections for users who value natural materials.
 
+![Bamboo Ballpoint, Signature and Fountain Pen Set](@assets/images/products/bamboo-pen-set-5.jpg)
+
 ## 🖼️ Product Gallery
 
-![Bamboo Ballpoint, Signature and Fountain Pen Set](@assets/images/products/bamboo-pen-set-2.jpg)
-![Carbonized Bamboo Pen Trio in Gift Cases](@assets/images/products/bamboo-pen-set-3.jpg)
-![Bamboo Pen Set with Three Nib Styles](@assets/images/products/bamboo-pen-set-4.jpg)
-![Bamboo Ballpoint, Signature and Fountain Pen Set](@assets/images/products/bamboo-pen-set-5.jpg)
 ![Bamboo Ballpoint, Signature and Fountain Pen Set](@assets/images/products/bamboo-pen-set-6.jpg)
 ![Bamboo Ballpoint, Signature and Fountain Pen Set](@assets/images/products/bamboo-pen-set-7.jpg)
 
