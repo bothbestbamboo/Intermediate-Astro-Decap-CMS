@@ -5,7 +5,7 @@ date: 2026-10-02
 image: "@assets/images/products/bamboo-tumbler-sleeve-1.jpg"
 imageAlt: "Multi-Layer Rolled Bamboo Office Tumbler Sleeve"
 tags: ["Bamboo"]
-isFeatured: true
+isFeatured: false
 ---
 
 ## 📝 Product Overview

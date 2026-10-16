@@ -5,7 +5,7 @@ date: 2026-09-23
 image: "@assets/images/products/bamboo-tabletop-strand-caramel-3.jpg"
 imageAlt: "Carbonized Strand Woven Bamboo Tabletop"
 tags: ["Plywood"]
-isFeatured: true
+isFeatured: false
 ---
 
 ## 📝 Product Overview
