@@ -1,5 +1,5 @@
 ---
-title: "Bamboo Ballpoint Pen - 12 cm Promotional Advertising Pen with Custom Logo"
+title: "Bamboo Ballpoint Pen Promotional Advertising Pen"
 description: "Natural bamboo ballpoint pen with a smooth cylindrical barrel, silver-tone metal fittings, comfortable clip, and custom logo printing for corporate gifts, events, and brand promotion."
 date: 2026-10-15
 image: "@assets/images/products/bamboo-ballpoint-pen-1.jpg"
