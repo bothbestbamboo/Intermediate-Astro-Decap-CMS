@@ -16,8 +16,12 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Images
-import placeholderImage from "@assets/images/gallery/bannerproduct2.jpg";
+// 🌟 导入不同分类专属的 Banner 图片（请根据你的实际图片路径进行调整或引入）
+import defaultBannerImg from "@assets/images/gallery/bannerproduct2.jpg";
+import flooringBannerImg from "@assets/images/gallery/bannerflooring.jpg"; // 示例：地板分类专属图
+import deckingBannerImg from "@assets/images/gallery/bannerdecking.jpg";   // 示例：户外重竹专属图
+import plywoodBannerImg from "@assets/images/gallery/bannerplywood.jpg";   // 示例：板材分类专属图
+import bambooBannerImg from "@assets/images/gallery/bannerreview.jpg";     // 示例：天然竹系列专属图
 
 // 预先优化图片
 const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
