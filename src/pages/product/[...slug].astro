@@ -23,9 +23,6 @@ import deckingBannerImg from "@assets/images/gallery/bannerdecking.jpg";   // �
 import plywoodBannerImg from "@assets/images/gallery/bannerplywood.jpg";   // 示例：板材分类专属图
 import bambooBannerImg from "@assets/images/gallery/bannerreview.jpg";     // 示例：天然竹系列专属图
 
-// 预先优化图片
-const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
-
 // 定义支持的分类列表（与 Tag 一致）
 const CATEGORIES = [
   { name: "All Series", slug: "all" },
