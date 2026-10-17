@@ -80,4 +80,39 @@
 		padding: (16/16rem);
 		margin: (16/16rem) 0;
 	}
+
+	/* --- 高端工业风美化表格样式 --- */
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: (24/16rem) 0;
+		font-size: (15/16rem);
+		background-color: #fff;
+		border-radius: 6px;
+		overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	}
+
+	th {
+		background-color: #e5eddc; /* 现代浅竹绿灰色表头，与下文明显区分 */
+		color: #1a2e05;
+		font-weight: 700;
+		text-align: left;
+		padding: (12/16rem) (16/16rem);
+		border: 1px solid #d1d5db;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		font-size: (14/16rem);
+	}
+
+	td {
+		padding: (12/16rem) (16/16rem);
+		border: 1px solid #e5e7eb;
+		color: var(--bodyTextColor);
+		line-height: 1.5em;
+	}
+
+	tr:nth-child(even) {
+		background-color: #f9fafb; /* 斑马纹隔行变色，增强可读性 */
+	}
 }
