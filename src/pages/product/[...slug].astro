@@ -32,7 +32,7 @@ const CATEGORIES = [
   { name: "Bamboo", slug: "bamboo" },
 ];
 
-// 🎯 为不同的分类自定义单独的 SEO 元数据（可在此处自由修改文字）
+// 🎯 为不同的分类自定义单独的 SEO 元数据
 const SEO_CONFIG: Record<string, { title: string; description: string }> = {
   all: {
     title: "All Bamboo Products",
@@ -70,10 +70,8 @@ export async function getStaticPaths() {
   const paths = [];
 
   for (const category of categories) {
-    // 根据分类动态指定每页数量：全部分类 24 个，其他标签分类 100 个
     const pageSize = category === "all" ? 24 : 100;
 
-    // 筛选当前分类的产品
     const filteredProducts = category === "all"
       ? allProducts
       : allProducts.filter((product) => {
@@ -87,7 +85,6 @@ export async function getStaticPaths() {
       const startIndex = (pageNum - 1) * pageSize;
       const pageProducts = filteredProducts.slice(startIndex, startIndex + pageSize);
 
-      // 构建干净的 URL 路径 (slug)
       let slug: string | undefined = undefined;
       if (category === "all") {
         slug = pageNum === 1 ? undefined : `${pageNum}`;
@@ -110,7 +107,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-// 定义 Astro.props 类型以消除红色波浪线警告
 interface Props {
   products: CollectionEntry<"products">[];
   currentPage: number;
@@ -118,18 +114,27 @@ interface Props {
   currentCategory: string;
 }
 
-// 获取从 getStaticPaths 传入的 props
 const { products, currentPage, totalPages, currentCategory } = Astro.props;
 
-// 🎯 动态匹配当前分类对应的 SEO 信息
-const currentSeo = SEO_CONFIG[currentCategory] || SEO_CONFIG.all;
+// 🌟 根据当前分类动态匹配专属 Banner 图片（若未找到则回退到 defaultBannerImg）
+const CATEGORY_BANNERS: Record<string, any> = {
+  flooring: flooringBannerImg,
+  decking: deckingBannerImg,
+  plywood: plywoodBannerImg,
+  bamboo: bambooBannerImg,
+  all: defaultBannerImg,
+};
 
-// 如果翻到了第 2 页及以上，自动在 Title 后面加上页码（对 SEO 更友好，避免重复 title）
+const selectedBannerImage = CATEGORY_BANNERS[currentCategory] || defaultBannerImg;
+
+// 预先优化当前分类的 Banner 图片
+const optimizedBannerImage = await getImage({ src: selectedBannerImage, format: "webp" });
+
+const currentSeo = SEO_CONFIG[currentCategory] || SEO_CONFIG.all;
 const pageSuffix = currentPage > 1 ? ` - Page ${currentPage}` : "";
 const pageTitle = `${currentSeo.title}${pageSuffix}`;
 const pageDescription = currentSeo.description;
 
-// 辅助函数：生成极简无问号链接
 const getCleanUrl = (category: string, pageNum: number) => {
   if (category === "all") {
     return pageNum === 1 ? "/product" : `/product/${pageNum}`;
@@ -137,7 +142,6 @@ const getCleanUrl = (category: string, pageNum: number) => {
   return pageNum === 1 ? `/product/${category}` : `/product/${category}/${pageNum}`;
 };
 
-// 动态 Badge 样式
 const getBadgeClass = (tag?: string) => {
   switch (tag?.toLowerCase()) {
     case "plywood":
@@ -157,13 +161,14 @@ const getBadgeClass = (tag?: string) => {
 <BaseLayout 
     title={pageTitle} 
     description={pageDescription} 
-    heroImage={placeholderOptimizedImage}
+    heroImage={optimizedBannerImage}
     imageAlt="Bothbest bamboo products banner"
 >
+    <!-- 🌟 这里会自动根据当前选中的分类渲染专属的 Banner -->
     <Banner 
-        title="Premium Bamboo Solutions" 
-        subtitle="High-performance, eco-friendly bamboo products manufactured to global standards." 
-        image={placeholderOptimizedImage} 
+        title={currentSeo.title} 
+        subtitle={currentSeo.description} 
+        image={optimizedBannerImage} 
         alt="Bothbest bamboo products banner" 
         imageAlt="Bothbest bamboo products banner" 
     />
@@ -192,7 +197,7 @@ const getBadgeClass = (tag?: string) => {
             {products.map((product) => {
                 const imgUrl = typeof product.data.image === 'string' 
                   ? product.data.image 
-                  : (product.data.image?.src || placeholderImage.src);
+                  : (product.data.image?.src || defaultBannerImg.src);
 
                 return (
                     <a href={`/product/${product.id}`} class="project-card-link">
@@ -225,7 +230,6 @@ const getBadgeClass = (tag?: string) => {
     {totalPages > 1 && (
         <nav class="pagination-container" aria-label="Product pagination">
             <div class="pagination">
-                <!-- 上一页 -->
                 {currentPage > 1 ? (
                     <a href={getCleanUrl(currentCategory, currentPage - 1)} class="pagination-btn">
                         &laquo; Previous
@@ -234,7 +238,6 @@ const getBadgeClass = (tag?: string) => {
                     <span class="pagination-btn disabled">&laquo; Previous</span>
                 )}
 
-                <!-- 页码数字列表 -->
                 <div class="pagination-numbers">
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
                         const isCurrent = currentPage === pageNum;
@@ -250,7 +253,6 @@ const getBadgeClass = (tag?: string) => {
                     })}
                 </div>
 
-                <!-- 下一页 -->
                 {currentPage < totalPages ? (
                     <a href={getCleanUrl(currentCategory, currentPage + 1)} class="pagination-btn">
                         Next &raquo;
@@ -266,25 +268,22 @@ const getBadgeClass = (tag?: string) => {
 </BaseLayout>
 
 <style lang="less">
-    /* 🎯 样式保留 */
+    /* 样式保持不变 */
     .pagination-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
     }
-
     .pagination {
         display: flex;
         align-items: center;
         gap: 0.75rem;
     }
-
     .pagination-numbers {
         display: flex;
         align-items: center;
         gap: 0.5rem;
     }
-
     .pagination-btn, .pagination-number {
         display: inline-flex;
         align-items: center;
@@ -299,28 +298,24 @@ const getBadgeClass = (tag?: string) => {
         transition: all 0.2s ease;
         background-color: #fff;
     }
-
     .pagination-btn:hover:not(.disabled),
     .pagination-number:hover:not(.active) {
         border-color: #9cc813;
         color: #000;
         background-color: #f7fee7;
     }
-
     .pagination-number.active {
         background-color: #9cc813;
         color: #000000;
         border-color: #9cc813;
         font-weight: 600;
     }
-
     .pagination-btn.disabled {
         color: #cbd5e1;
         border-color: #f1f5f9;
         cursor: not-allowed;
         background-color: #f8fafc;
     }
-
     .filter-tab-container {
         display: flex;
         justify-content: center;
@@ -358,11 +353,9 @@ const getBadgeClass = (tag?: string) => {
             }
         }
     }
-
     .vp-page-title {
         text-align: center;
         padding: 3.5rem 1rem 1rem 1rem;
-        
         .title {
             font-size: 2.25rem;
             font-weight: 800;
@@ -375,13 +368,11 @@ const getBadgeClass = (tag?: string) => {
             margin: 0;
         }
     }
-
     .projects-section {
         padding: 1rem 1.5rem 2rem 1.5rem;
         max-width: 1200px;
         margin: 0 auto;
     }
-
     .ProjectsContent {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
@@ -389,13 +380,11 @@ const getBadgeClass = (tag?: string) => {
         gap: 24px;
         margin: 0 auto;
     }
-
     .project-card-link {
         text-decoration: none;
         color: inherit;
         display: block;
     }
-
     .project-card {
         overflow: hidden;
         border: 1px solid #e2e8f0;
@@ -411,18 +400,15 @@ const getBadgeClass = (tag?: string) => {
             border-color: #3730a3; 
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-
             .product-description {
                 color: #1e293b;
             }
         }
     }
-
     .banner-box {
         width: 100%;
         height: 10rem;
         overflow: hidden;
-        
         .banner-img {
             width: 100%;
             height: 100%;
@@ -432,7 +418,6 @@ const getBadgeClass = (tag?: string) => {
             transition: transform 0.5s ease;
         }
     }
-
     .text-content {
         padding: 1rem;
         padding-bottom: 1.5rem;
@@ -440,13 +425,11 @@ const getBadgeClass = (tag?: string) => {
         flex-direction: column;
         flex-grow: 1;
     }
-
     .title-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
-
         .product-title {
             font-size: 1.125rem;
             font-weight: 700;
@@ -455,7 +438,6 @@ const getBadgeClass = (tag?: string) => {
             line-height: 1.3;
         }
     }
-
     .product-description {
         margin: 0.5rem 0 0 0;
         font-size: 0.875rem;
@@ -467,7 +449,6 @@ const getBadgeClass = (tag?: string) => {
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-
     .badge {
         font-size: 12px;
         padding: 0.125rem 0.5rem;
@@ -475,24 +456,9 @@ const getBadgeClass = (tag?: string) => {
         white-space: nowrap;
         font-weight: 500;
     }
-    .badge-plywood {
-        background-color: #115e59;
-        color: #ffffff;
-    }
-    .badge-flooring {
-        background-color: #0369a1;
-        color: #ffffff;
-    }
-    .badge-decking {
-        background-color: #b45309;
-        color: #ffffff;
-    }
-    .badge-bamboo {
-        background-color: #16a34a;
-        color: #ffffff;
-    }
-    .badge-default {
-        border: 1px solid #cbd5e1;
-        color: #64748b;
-    }
+    .badge-plywood { background-color: #115e59; color: #ffffff; }
+    .badge-flooring { background-color: #0369a1; color: #ffffff; }
+    .badge-decking { background-color: #b45309; color: #ffffff; }
+    .badge-bamboo { background-color: #16a34a; color: #ffffff; }
+    .badge-default { border: 1px solid #cbd5e1; color: #64748b; }
 </style>
