@@ -39,15 +39,14 @@ const { title, subtitle, image } = Astro.props;
 <---   Interior Page Header     -->
 <--- -------------------------- -*/
 
-	/* Mobile & Default */
+	/* Mobile & Default (手机端优化：减小高度和字号) */
 	@media only screen and (min-width: 0em) {
 		#int-hero {
-			/* 🌟 总高度设为 454px，扣除顶部 Header 压住的 88px 后，实际露出的图片高度刚好是 366px */
-			height: 454px !important;
-			max-height: 454px !important;
+			/* 🌟 手机端总高度设为 320px（扣除顶部 Header 后可见约 240px-260px），轻巧紧凑 */
+			height: 320px !important;
+			max-height: 320px !important;
 			width: 100%;
-			/* 顶部加上 88px 偏移补偿，保证文字在下方 366px 的可见区域内垂直居中 */
-			padding-top: 88px !important;
+			padding-top: 60px !important; /* 手机端顶部适配 */
 			padding-bottom: 0 !important;
 			margin: 0 !important;
 			display: flex;
@@ -73,7 +72,7 @@ const { title, subtitle, image } = Astro.props;
 			}
 
 			.hero-content {
-				width: 96%;
+				width: 92%;
 				max-width: (1100/16rem);
 				display: flex;
 				flex-direction: column;
@@ -103,7 +102,8 @@ const { title, subtitle, image } = Astro.props;
 			}
 
 			h1 {
-				font-size: var(--headerFontSize);
+				/* 手机端适当缩小主标题字号，防止挤压 */
+				font-size: clamp(1.35rem, 5vw, 1.85rem) !important;
 				text-align: center;
 				width: 100%;
 				max-width: (950/16rem);
@@ -115,19 +115,21 @@ const { title, subtitle, image } = Astro.props;
 			}
 
 			p {
+				/* 手机端副标题字号微调，并可根据需要选择是否在极小屏幕隐藏副标题 */
+				font-size: clamp(0.85rem, 2.5vw, 1rem) !important;
 				text-align: center;
 				width: 100%;
 				max-width: (850/16rem);
-				margin: (12/16rem) auto 0 auto !important;
+				margin: (8/16rem) auto 0 auto !important;
 				padding: 0 !important;
 				color: #fff;
 				word-wrap: break-word;
-				line-height: 1.5;
+				line-height: 1.4;
 			}
 		}
 	}
 
-	/* Small Desktop */
+	/* Tablet & Desktop (平板与电脑端保持大气的 454px) */
 	@media only screen and (min-width: 64em) {
 		#int-hero {
 			height: 454px !important;
@@ -135,7 +137,12 @@ const { title, subtitle, image } = Astro.props;
 			padding-top: 88px !important;
 			background-attachment: fixed;
 
+			h1 {
+				font-size: var(--headerFontSize) !important;
+			}
+
 			p {
+				font-size: 1rem !important;
 				max-width: (1100/16rem);
 			}
 		}
