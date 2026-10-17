@@ -2,7 +2,7 @@
 title: "Natural Bamboo Drinking Straws Reusable & Biodegradable"
 description: "Eco-friendly natural bamboo drinking straws made from premium Moso bamboo. Features high-temperature boiling treatment, zero chemical additives, smooth burr-free edges, and custom logo options."
 date: 2026-10-04
-image: "@assets/images/products/bamboo-drinking-straws-2.jpeg"
+image: "@assets/images/products/bamboo-drinking-straws-2.jpg"
 imageAlt: "Natural Bamboo Drinking Straws"
 tags: ["Bamboo"]
 isFeatured: true
