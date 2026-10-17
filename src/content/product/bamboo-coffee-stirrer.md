@@ -79,4 +79,3 @@ These versatile bamboo drink stirrers are tailored for diverse food & beverage s
 
 ![Bamboo Coffee Stirrer](@assets/images/products/bamboo-coffee-stirrer-6.jpeg)
 ![Bamboo Coffee Stirrer](@assets/images/products/bamboo-coffee-stirrer-7.jpeg)
-![Bamboo Coffee Stirrer](@assets/images/products/bamboo-coffee-stirrer-5.jpeg)
